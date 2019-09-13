@@ -30,10 +30,12 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `ideal-gatsby`,
+        /* eslint-disable @typescript-eslint/camelcase */
         short_name: `Ideal`,
         start_url: `/`,
         background_color: `#fffafa`,
         theme_color: `#ae0011`,
+        /* eslint-enable @typescript-eslint/camelcase */
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },

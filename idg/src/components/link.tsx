@@ -18,6 +18,7 @@ const Link: React.FC<{
   to: string
   activeClassName?: string
   partiallyActive?: boolean
+  // eslint-disable-next-line
   [x: string]: any
 }> = ({ children, to, activeClassName, partiallyActive, ...other }) => {
   const { allSitePage } = useStaticQuery(internalPageQuery)
