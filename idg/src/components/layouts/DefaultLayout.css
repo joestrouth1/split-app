@@ -1,0 +1,19 @@
+@import "tailwindcss/base";
+
+/* Add custom base element styles here, e.g. using @apply */
+
+@import "tailwindcss/components";
+
+/* Add custom extracted components here, if necessary, e.g. using @apply */
+
+@import "tailwindcss/utilities";
+/* 
+@tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+/* 
+  Instead of adding custom base styles or components here, you can also write 
+  a tailwind plugin in the tailwind config file. Useful if you want to publish 
+  those shared styles as a JS dependency.
+ */
