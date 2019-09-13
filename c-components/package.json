@@ -13,15 +13,11 @@
     "test": "tsdx test --env=jsdom",
     "lint": "tsdx lint",
     "styleguide": "cross-env BABEL_ENV=styleguide styleguidist server",
-    "styleguide:build": "cross-env BABEL_ENV=styleguide styleguidist build"
+    "styleguide:build": "cross-env BABEL_ENV=styleguide styleguidist build",
+    "precommit": "pretty-quick --staged"
   },
   "peerDependencies": {
     "react": ">=16"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "prettier": {
     "printWidth": 80,
