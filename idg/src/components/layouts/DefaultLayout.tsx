@@ -9,7 +9,7 @@ import React, { Fragment, ReactNode } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Header from '../header'
-import { Header as LibHeader } from "c-components";
+import { Header as LibHeader } from 'c-components'
 import './DefaultLayout.css'
 
 interface DefaultLayoutProps {
