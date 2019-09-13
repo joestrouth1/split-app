@@ -1,11 +1,11 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import GatsbyImage from 'gatsby-image'
+import GatsbyImage, { GatsbyImageProps } from 'gatsby-image'
 import Layout from '../components/layouts'
 import SEO from '../components/seo'
 import Link from '../components/link'
 
-const Image = props => {
+const Image = (props: GatsbyImageProps) => {
   const { cathedral } = useStaticQuery(graphql`
     query {
       cathedral: file(relativePath: { eq: "cathedral.jpg" }) {

@@ -9,8 +9,8 @@
     "idg"
   ],
   "scripts": {
-    "build": "yarn workspace idg build",
-    "develop": "yarn workspace idg develop"
+    "develop": "yarn workspace idg develop",
+    "build": "yarn workspace idg build"
   },
   "devDependencies": {
     "husky": "^3.0.5"

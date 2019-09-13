@@ -4,13 +4,13 @@
     "types",
     "node_modules/@testing-library/jest-dom/extend-expect.d.ts"
   ],
-  
+
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",
     "jsx": "preserve",
     "lib": ["dom", "esnext"],
-    // "strict": true,
+    "strict": true,
     "allowJs": true,
     // "checkJs": true,
     "esModuleInterop": true,

@@ -6,42 +6,33 @@
  */
 
 import React, { Fragment, ReactNode } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-
-import Header from '../header'
-import { Header as LibHeader } from 'c-components'
-import './DefaultLayout.css'
+import { ThemeProvider, Layout, Footer, Styled } from 'theme-ui'
+import 'typeface-open-sans'
+import { Header, defaultTheme } from 'c-components'
 
 interface DefaultLayoutProps {
   children: ReactNode
 }
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
-    <Fragment>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <LibHeader />
-      <div>
-        <main>{children}</main>
-        <footer>
-          <div className="mt-8 px-4 md:px-8 py-12 bg-orange-900 text-blue-100 font-serif">
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+    <ThemeProvider theme={defaultTheme}>
+      <Styled.root>
+        <Layout>
+          <Header />
+          <div>
+            <main>{children}</main>
+            <Footer>
+              <div className="">
+                © {new Date().getFullYear()}, Built with
+                {` `}
+                <a href="https://www.gatsbyjs.org">Gatsby</a>
+              </div>
+            </Footer>
           </div>
-        </footer>
-      </div>
-    </Fragment>
+        </Layout>
+      </Styled.root>
+    </ThemeProvider>
   )
 }
 

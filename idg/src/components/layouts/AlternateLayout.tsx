@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-const AlternateLayout = ({ children }) => (
+interface AlternateLayoutProps {
+  children: ReactNode
+}
+
+const AlternateLayout = ({ children }: AlternateLayoutProps) => (
   <div>
     <h1>
       Alternate layout

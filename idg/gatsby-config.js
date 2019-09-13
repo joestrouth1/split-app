@@ -1,3 +1,5 @@
+const path = require('path')
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -5,7 +7,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Ideal Gatsby`,
-    description: `Fast static sites with Gatsby, including tests with Jest and a component explorer powered by Storybook`,
+    description: `Fast static sites with Gatsby`,
     author: `@joestrouth1`,
     siteUrl: 'https://www.joes.house',
   },
@@ -29,7 +31,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `ideal-gatsby`,
+        name: `idg`,
         /* eslint-disable @typescript-eslint/camelcase */
         short_name: `Ideal`,
         start_url: `/`,
@@ -44,12 +46,17 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
     // to completely remove a previous service worker from plugin-offline, use gatsby-plugin-remove-serviceworker in its place
-    'gatsby-plugin-postcss',
+    {
+      resolve: 'gatsby-plugin-postcss',
+      options: {
+        config: {
+          path: path.resolve(__dirname, 'postcss.config.js'),
+        },
+      },
+    },
     {
       resolve: 'gatsby-plugin-purgecss',
-      options: {
-        tailwind: true,
-      },
+      options: {},
     },
     {
       resolve: 'gatsby-plugin-sitemap',

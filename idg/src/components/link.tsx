@@ -22,8 +22,8 @@ const Link: React.FC<{
   [x: string]: any
 }> = ({ children, to, activeClassName, partiallyActive, ...other }) => {
   const { allSitePage } = useStaticQuery(internalPageQuery)
-  const paths: Array<string | undefined> = allSitePage.nodes.map(
-    node => node.path
+  const paths: (string | undefined)[] = allSitePage.nodes.map(
+    (node: { path: string }) => node.path
   )
 
   const internal = paths.includes(to)
