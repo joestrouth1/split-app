@@ -1,0 +1,15 @@
+{
+  "name": "application-mono",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Joe Strouth <joestrouth@curo.com>",
+  "private": true,
+  "workspaces": [
+    "c-components",
+    "idg"
+  ],
+  "scripts": {
+    "build": "yarn workspace idg build",
+    "develop": "yarn workspace idg develop"
+  }
+}
