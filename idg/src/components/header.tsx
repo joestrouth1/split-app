@@ -1,8 +1,11 @@
 import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
 import React from 'react'
 
-const Header = ({ siteTitle }) => (
+interface HeaderProps {
+  siteTitle: string
+}
+
+const Header = ({ siteTitle }: HeaderProps) => (
   <header className="bg-blue-900">
     <div className="px-4 md:px-8 py-4">
       <h1 className="font-serif text-3xl">
@@ -13,10 +16,6 @@ const Header = ({ siteTitle }) => (
     </div>
   </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
 
 Header.defaultProps = {
   siteTitle: ``,
