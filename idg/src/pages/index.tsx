@@ -1,42 +1,136 @@
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import GatsbyImage, { GatsbyImageProps } from 'gatsby-image'
-import Layout from '../components/layouts'
+/**@jsx jsx */
+import { jsx, Flex, Container } from 'theme-ui'
+import { useState, FormEventHandler } from 'react'
+import { TextField, Link, Button } from 'c-components'
+import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'
-import Link from '../components/link'
+import { parse } from 'query-string'
 
-const Image = (props: GatsbyImageProps) => {
-  const { cathedral } = useStaticQuery(graphql`
-    query {
-      cathedral: file(relativePath: { eq: "cathedral.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  return <GatsbyImage fluid={cathedral.childImageSharp.fluid} {...props} />
+interface IndexPageProps {
+  location: Location
 }
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <div className="container mx-auto px-4 md:px-8">
-      <h1 className="text-4xl leading-tight tracking-tight mt-8 mb-4">
-        Hi people
-      </h1>
-      <p className="leading-normal mb-4">Welcome to a new Gatsby site.</p>
-      <p className="leading-normal mb-4">Now go build something great.</p>
-      <Image className="mb-8" />
-      <Link to="/page-2/">Go to page 2</Link>
-      <Link to="/page-2">Go to page 2</Link>
-      <Link to="/page-3/">Go to page 2</Link>
-      <Link to="/page-3">Go to page 2</Link>
-    </div>
-  </Layout>
-)
+interface User {
+  first: string
+  middle: string
+  last: string
+  email: string
+}
+
+function sanitizeUserField(field: string | string[] | null) {
+  if (Array.isArray(field) || !field) return ''
+  return field
+}
+
+const IndexPage = ({ location }: IndexPageProps) => {
+  const parsedQueryString = parse(location.search)
+  const { first = '', middle = '', last = '', email = '' } = parsedQueryString
+
+  const [user, replaceUser] = useState<User>({
+    first: sanitizeUserField(first),
+    middle: sanitizeUserField(middle),
+    last: sanitizeUserField(last),
+    email: sanitizeUserField(email),
+  })
+
+  function setUserField<K extends keyof User, T extends User[K]>(
+    field: K,
+    value: T
+  ) {
+    replaceUser(user => ({ ...user, [field]: value }))
+  }
+
+  const handleSubmit: FormEventHandler = e => {
+    console.log(e)
+  }
+
+  return (
+    <Layout>
+      <SEO title="Basic info" />
+      <Container sx={{ px: 3, py: 4 }}>
+        <h1 sx={{ variant: 'type.title', mb: 4 }}>
+          Let&apos;s get to know each other
+        </h1>
+
+        <Flex
+          as="form"
+          sx={{ flexFlow: 'column nowrap' }}
+          onSubmit={handleSubmit}
+          data-testid="personal-info-form"
+        >
+          {/* First name and middle initial */}
+          <Flex
+            sx={{
+              flexFlow: 'row nowrap',
+              mb: 3,
+            }}
+          >
+            <TextField
+              required
+              label="First name"
+              name="firstname"
+              autoComplete="given-name"
+              value={user.first}
+              onChange={e => setUserField('first', e.target.value)}
+              sx={{
+                flex: 1,
+                mr: 2,
+              }}
+            />
+            <TextField
+              label="Middle"
+              name="middleinitial"
+              value={user.middle}
+              onChange={e => setUserField('middle', e.target.value)}
+              sx={{ flex: '0 0 56px' }}
+            />
+          </Flex>
+
+          <TextField
+            required
+            label="Last name"
+            name="lastname"
+            autoComplete="family-name"
+            value={user.last}
+            onChange={e => setUserField('last', e.target.value)}
+            sx={{ mb: 3 }}
+          />
+
+          <TextField
+            required
+            label="Email address"
+            name="email"
+            autoComplete="email"
+            value={user.email}
+            type="email"
+            onChange={e => setUserField('email', e.target.value)}
+            sx={{
+              mb: 3,
+            }}
+            hint={
+              <div
+                sx={{
+                  display: 'flex',
+                  flexFlow: 'row nowrap',
+                  alignItems: 'center',
+                }}
+              >
+                <img src="https://placebear.com/16/16" alt="" sx={{ mr: 1 }} />
+                <span>
+                  We take your privacy seriously.{' '}
+                  <Link href="/privacy">Our policy</Link>
+                </span>
+              </div>
+            }
+          />
+
+          <Button variant="primary" type="submit">
+            Next
+          </Button>
+        </Flex>
+      </Container>
+    </Layout>
+  )
+}
 
 export default IndexPage

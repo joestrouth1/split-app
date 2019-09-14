@@ -1,4 +1,1 @@
-import DefaultLayout from './DefaultLayout'
-export * from './AlternateLayout'
-
-export default DefaultLayout
+export * from './DefaultLayout'
