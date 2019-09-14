@@ -6,6 +6,7 @@ import { TextField, Link, Button } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'
 import { parse } from 'query-string'
+import { sanitizeQueryField } from '../util'
 
 interface PersonalInfoPageProps {
   location: Location
@@ -18,20 +19,15 @@ interface User {
   email: string
 }
 
-function sanitizeUserField(field: string | string[] | null) {
-  if (Array.isArray(field) || !field) return ''
-  return field
-}
-
 const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
   const parsedQueryString = parse(location.search)
   const { first = '', middle = '', last = '', email = '' } = parsedQueryString
 
   const [user, replaceUser] = useState<User>({
-    first: sanitizeUserField(first),
-    middle: sanitizeUserField(middle),
-    last: sanitizeUserField(last),
-    email: sanitizeUserField(email),
+    first: sanitizeQueryField(first),
+    middle: sanitizeQueryField(middle),
+    last: sanitizeQueryField(last),
+    email: sanitizeQueryField(email),
   })
 
   function setUserField<K extends keyof User, T extends User[K]>(
