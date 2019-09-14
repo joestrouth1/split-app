@@ -1,12 +1,13 @@
 /**@jsx jsx */
 import { jsx, Flex, Container } from 'theme-ui'
 import { useState, FormEventHandler } from 'react'
+import { navigate } from 'gatsby'
 import { TextField, Link, Button } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'
 import { parse } from 'query-string'
 
-interface IndexPageProps {
+interface PersonalInfoPageProps {
   location: Location
 }
 
@@ -22,7 +23,7 @@ function sanitizeUserField(field: string | string[] | null) {
   return field
 }
 
-const IndexPage = ({ location }: IndexPageProps) => {
+const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
   const parsedQueryString = parse(location.search)
   const { first = '', middle = '', last = '', email = '' } = parsedQueryString
 
@@ -41,7 +42,8 @@ const IndexPage = ({ location }: IndexPageProps) => {
   }
 
   const handleSubmit: FormEventHandler = e => {
-    console.log(e)
+    e.preventDefault()
+    navigate('/save-password')
   }
 
   return (
@@ -133,4 +135,4 @@ const IndexPage = ({ location }: IndexPageProps) => {
   )
 }
 
-export default IndexPage
+export default PersonalInfoPage

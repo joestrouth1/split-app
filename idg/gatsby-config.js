@@ -6,8 +6,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Ideal Gatsby`,
-    description: `Fast static sites with Gatsby`,
+    title: `Application`,
+    description: `Brand neutral application flow`,
     author: `@joestrouth1`,
     siteUrl: 'https://www.joes.house',
   },
