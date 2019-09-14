@@ -1,5 +1,5 @@
 {
-  "name": "application-mono",
+  "name": "split-app",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Joe Strouth <joestrouth@curo.com>",

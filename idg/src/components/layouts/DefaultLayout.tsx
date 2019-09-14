@@ -5,10 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { Fragment, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { ThemeProvider, Layout, Footer, Styled } from 'theme-ui'
-import 'typeface-open-sans'
 import { Header, defaultTheme } from 'c-components'
+import './layout-base.css'
 
 interface DefaultLayoutProps {
   children: ReactNode

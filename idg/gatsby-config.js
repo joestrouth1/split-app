@@ -55,10 +55,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-purgecss',
-      options: {},
-    },
-    {
       resolve: 'gatsby-plugin-sitemap',
       options: {},
     },
@@ -95,7 +91,14 @@ module.exports = {
         // Setting a color is optional.
         color: `#0A7E76`,
         // Disable the loading spinner.
-        showSpinner: false,
+        // showSpinner: false,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-purgecss',
+      options: {
+        ignore: ['normalize.css', 'typeface-open-sans'],
+        whitelistPatterns: [/^nprogress/],
       },
     },
   ],
