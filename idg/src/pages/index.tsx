@@ -45,7 +45,7 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
   return (
     <Layout>
       <SEO title="Basic info" />
-      <Container sx={{ px: 3, py: 4 }}>
+      <Container sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[1] }}>
         <h1 sx={{ variant: 'type.title', mb: 4 }}>
           Let&apos;s get to know each other
         </h1>

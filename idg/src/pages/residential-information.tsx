@@ -60,7 +60,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   return (
     <Layout>
       <SEO title="Residential information" />
-      <Container sx={{ px: 3, py: 4 }}>
+      <Container sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[1] }}>
         <h1 sx={{ variant: 'type.title', mb: 2 }}>Where do you live?</h1>
         <Flex
           as="form"

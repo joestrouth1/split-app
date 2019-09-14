@@ -32,6 +32,7 @@ const SavePasswordPage = () => {
         sx={{
           px: 3,
           py: 4,
+          maxWidth: theme => theme.breakpoints[1],
         }}
       >
         <h1
