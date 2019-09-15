@@ -18,7 +18,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Styled.root>
-        <Layout>
+        <Layout sx={{ bg: 'grays.0' }}>
           <Header />
           {children}
           <Footer
