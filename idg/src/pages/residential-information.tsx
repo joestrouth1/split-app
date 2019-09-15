@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, Flex, Container } from 'theme-ui'
+import { jsx, Flex, Main, Container } from 'theme-ui'
 import { useState, useRef, useMemo, FormEventHandler, ChangeEvent } from 'react'
 import { Button, TextField } from 'c-components'
 import { parse } from 'query-string'
@@ -67,95 +67,99 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   return (
     <Layout>
       <SEO title="Residential information" />
-      <Container sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[1] }}>
-        <h1 sx={{ variant: 'type.title', mb: 2 }}>Where do you live?</h1>
-        <Flex
-          as="form"
-          onSubmit={handleSubmit}
-          sx={{
-            flexFlow: 'column nowrap',
-          }}
-          data-testid="residential-info-form"
-          ref={(ref: any) => {
-            formRef.current = ref
-          }}
+      <Main>
+        <Container
+          sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
         >
-          <TextField
-            label="Address"
-            name="address1"
-            autoComplete="address-line1"
-            required
-            sx={{ mb: 2 }}
-            onChange={setField('address1')}
-          />
-
-          <TextField
-            label="Apartment, suite, or building (optional)"
-            name="address2"
-            autoComplete="address-line2"
-            sx={{ mb: 2 }}
-            onChange={setField('address2')}
-          />
-
-          <TextField
-            label="City"
-            name="city"
-            autoComplete="address-level2"
-            required
-            sx={{ mb: 2 }}
-            onChange={setField('city')}
-          />
-
-          <Flex sx={{ flexFlow: 'row nowrap', mb: 2 }}>
-            <TextField
-              label="State"
-              name="state"
-              autoComplete="address-level3"
-              required
-              sx={{ flex: 2, mr: 1 }}
-              onChange={setField('state')}
-              /* TODO add dataset */
-            />
-            <TextField
-              label="ZIP"
-              name="zip"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              maxLength={5}
-              autoComplete="postal-code"
-              required
-              onChange={setField('zip')}
-              sx={{
-                flex: 1,
-              }}
-            />
-          </Flex>
-
-          <TextField
-            label="Phone number"
-            name="phone"
-            inputMode="tel"
-            autoComplete="mobile tel"
-            required
-            sx={{ mb: 2 }}
-            onChange={setField('phone')}
-          />
+          <h1 sx={{ variant: 'type.title', mb: 2 }}>Where do you live?</h1>
           <Flex
-            onClick={() =>
-              !isValid && formRef.current && formRef.current.reportValidity()
-            }
+            as="form"
+            onSubmit={handleSubmit}
+            sx={{
+              flexFlow: 'column nowrap',
+            }}
+            data-testid="residential-info-form"
+            ref={(ref: unknown) => {
+              formRef.current = ref as HTMLFormElement
+            }}
           >
-            <Button
-              variant="primary"
-              type="submit"
-              disabled={!isValid}
-              sx={{ flex: 1 }}
+            <TextField
+              label="Address"
+              name="address1"
+              autoComplete="address-line1"
+              required
+              sx={{ mb: 2 }}
+              onChange={setField('address1')}
+            />
+
+            <TextField
+              label="Apartment, suite, or building (optional)"
+              name="address2"
+              autoComplete="address-line2"
+              sx={{ mb: 2 }}
+              onChange={setField('address2')}
+            />
+
+            <TextField
+              label="City"
+              name="city"
+              autoComplete="address-level2"
+              required
+              sx={{ mb: 2 }}
+              onChange={setField('city')}
+            />
+
+            <Flex sx={{ flexFlow: 'row nowrap', mb: 2 }}>
+              <TextField
+                label="State"
+                name="state"
+                autoComplete="address-level3"
+                required
+                sx={{ flex: 2, mr: 1 }}
+                onChange={setField('state')}
+                /* TODO add dataset */
+              />
+              <TextField
+                label="ZIP"
+                name="zip"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={5}
+                autoComplete="postal-code"
+                required
+                onChange={setField('zip')}
+                sx={{
+                  flex: 1,
+                }}
+              />
+            </Flex>
+
+            <TextField
+              label="Phone number"
+              name="phone"
+              inputMode="tel"
+              autoComplete="mobile tel"
+              required
+              sx={{ mb: 2 }}
+              onChange={setField('phone')}
+            />
+            <Flex
+              onClick={() =>
+                !isValid && formRef.current && formRef.current.reportValidity()
+              }
             >
-              Next
-            </Button>
+              <Button
+                variant="primary"
+                type="submit"
+                disabled={!isValid}
+                sx={{ flex: 1 }}
+              >
+                Next
+              </Button>
+            </Flex>
           </Flex>
-        </Flex>
-      </Container>
+        </Container>
+      </Main>
     </Layout>
   )
 }
