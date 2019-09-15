@@ -17,7 +17,7 @@ interface LogoProps
  * The company logo.
  */
 export const Logo = ({
-  src = 'https://placebear.com/217/40',
+  src = 'https://placekitten.com/434/80',
   alt,
   ...props
 }: LogoProps) => <img {...props} alt={alt} src={src} />

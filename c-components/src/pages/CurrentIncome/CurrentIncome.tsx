@@ -16,7 +16,7 @@ export const CurrentIncome = () => {
         </h1>
       </header>
       <img
-        src="https://placebear.com/343/246"
+        src="https://placekitten.com/686/492"
         alt=""
         sx={{
           maxWidth: '100%',

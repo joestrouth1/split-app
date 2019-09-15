@@ -28,6 +28,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
               flexFlow: 'column nowrap',
               textAlign: 'center',
               p: 3,
+              variant: 'type.disclaimer',
             }}
           >
             © {new Date().getFullYear()}

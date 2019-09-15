@@ -83,7 +83,7 @@ export const SavePassword = ({
                 }}
               >
                 <img
-                  src="https://placebear.com/16/16"
+                  src="https://placekitten.com/16/16"
                   alt=""
                   sx={{
                     mr: 1,
@@ -102,7 +102,7 @@ export const SavePassword = ({
                 }}
               >
                 <img
-                  src="https://placebear.com/16/16"
+                  src="https://placekitten.com/16/16"
                   alt=""
                   sx={{
                     mr: 1,
@@ -119,7 +119,7 @@ export const SavePassword = ({
                 }}
               >
                 <img
-                  src="https://placebear.com/16/16"
+                  src="https://placekitten.com/16/16"
                   alt=""
                   sx={{
                     mr: 1,

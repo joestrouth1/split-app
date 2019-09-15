@@ -16,7 +16,7 @@ export const Prequalified = () => {
         </p>
       </header>
       <img
-        src="https://placebear.com/311/240"
+        src="https://placekitten.com/622/480"
         alt="However much they're qualified for"
         sx={{
           maxWidth: '100%',

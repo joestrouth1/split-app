@@ -12,7 +12,7 @@ export const SecureAccount = () => {
         <h1 sx={{ variant: 'type.title', mb: 4 }}>Secure your account</h1>
       </header>
       <img
-        src="https://placebear.com/343/200"
+        src="https://placekitten.com/686/400"
         alt=""
         sx={{
           maxWidth: '100%',

@@ -74,7 +74,7 @@ const SavePasswordPage = () => {
                     }}
                   >
                     <img
-                      src="https://placebear.com/16/16"
+                      src="https://placekitten.com/g/16/16"
                       alt=""
                       sx={{
                         mr: 1,
@@ -93,7 +93,7 @@ const SavePasswordPage = () => {
                     }}
                   >
                     <img
-                      src="https://placebear.com/16/16"
+                      src="https://placekitten.com/g/16/16"
                       alt=""
                       sx={{
                         mr: 1,
@@ -112,7 +112,7 @@ const SavePasswordPage = () => {
                     }}
                   >
                     <img
-                      src="https://placebear.com/16/16"
+                      src="https://placekitten.com/g/16/16"
                       alt=""
                       sx={{
                         mr: 1,

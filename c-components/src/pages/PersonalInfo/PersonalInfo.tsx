@@ -112,7 +112,7 @@ export const PersonalInfo = (props: PersonalInfoProps) => {
                 alignItems: 'center',
               }}
             >
-              <img src="https://placebear.com/16/16" alt="" sx={{ mr: 1 }} />
+              <img src="https://placekitten.com/16/16" alt="" sx={{ mr: 1 }} />
               <span>
                 We take your privacy seriously.{' '}
                 <Link href="/privacy">Our policy</Link>

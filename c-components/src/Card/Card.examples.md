@@ -16,7 +16,7 @@ import { Link } from '../Link'
       mb: 3,
     }}
   >
-    <img src="https://placebear.com/32/32" />
+    <img src="https://placekitten.com/g/32/32" />
     <span sx={{ variant: 'type.subtitle', color: 'grays.9' }}>
       Recommended option
     </span>
@@ -36,7 +36,7 @@ import { Link } from '../Link'
           flex: 1,
         }}
       >
-        <img src="https://placebear.com/32/32" />
+        <img src="https://placekitten.com/g/32/32" />
         <span sx={{ variant: 'type.body', color: 'grays.9' }}>Text me</span>
       </Card>
     </Link>
@@ -53,7 +53,7 @@ import { Link } from '../Link'
           maxWidth: '100%',
         }}
       >
-        <img src="https://placebear.com/32/32" />
+        <img src="https://placekitten.com/g/32/32" />
         <span sx={{ variant: 'type.body', color: 'grays.9' }}>Email me</span>
       </Card>
     </Link>

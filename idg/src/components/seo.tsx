@@ -16,7 +16,7 @@ interface SEOProps {
   title: string
 }
 
-function SEO({ description, lang, meta = [], title }: SEOProps) {
+function SEO({ description = '', lang = 'en', meta = [], title }: SEOProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -77,12 +77,6 @@ function SEO({ description, lang, meta = [], title }: SEOProps) {
       ]}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
 }
 
 export default SEO

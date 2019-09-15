@@ -22,6 +22,8 @@ export const Header = () => {
         alt="Company Name"
         sx={{
           py: [2],
+          maxWidth: 217,
+          height: 'auto',
         }}
       />
       <nav

@@ -22,7 +22,7 @@ export const VerifyIdentity = () => {
         }}
       >
         <img
-          src="https://placebear.com/16/16"
+          src="https://placekitten.com/16/16"
           alt="Security lock"
           sx={{
             display: 'inline-block',
