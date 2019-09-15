@@ -23,12 +23,13 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
           {children}
           <Footer
             sx={{
+              variant: 'type.disclaimer',
               bg: 'grays.2',
               display: 'flex',
               flexFlow: 'column nowrap',
               textAlign: 'center',
               p: 3,
-              variant: 'type.disclaimer',
+              color: 'greens.7',
             }}
           >
             © {new Date().getFullYear()}
