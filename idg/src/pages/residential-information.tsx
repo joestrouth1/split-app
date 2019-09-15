@@ -79,6 +79,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
               flexFlow: 'column nowrap',
             }}
             data-testid="residential-info-form"
+            /* TODO: put a Flex inside a form, use a proper ref */
             ref={(ref: unknown) => {
               formRef.current = ref as HTMLFormElement
             }}
