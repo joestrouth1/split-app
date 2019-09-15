@@ -1,12 +1,20 @@
 /**@jsx jsx */
-import { jsx, Flex, Container, Main } from 'theme-ui'
+import { jsx, Container, Main } from 'theme-ui'
 import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'
+import { useRef, FormEventHandler } from 'react'
 
 /**
  * Where applicants give us their bank acct. info
  */
 const LinkAccountPage = () => {
+  const formRef = useRef<HTMLFormElement>(null)
+  const handleSubmit: FormEventHandler = e => {
+    /* TODO: Add validation, disabled checks, navigation */
+    e.preventDefault()
+    console.log('submitted')
+  }
+
   return (
     <Layout>
       <SEO title="Link your bank account" />
@@ -40,15 +48,17 @@ const LinkAccountPage = () => {
             or enter your routing and account numbers manually.
           </p>
 
-          <Flex
-            as="form"
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
             sx={{
+              display: 'flex',
               flexFlow: 'column nowrap',
             }}
           >
             {/* TODO: replace these with radio Cards */}
             <pre>Radio button Card group</pre>
-          </Flex>
+          </form>
         </Container>
       </Main>
     </Layout>

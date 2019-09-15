@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
 import { TextField, Button } from 'c-components'
+import { useRef, FormEventHandler } from 'react'
 import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'
 
@@ -8,6 +9,13 @@ import SEO from '../components/seo'
  * Where applicants tell us how much they earn.
  */
 const CurrentIncomePage = () => {
+  const formRef = useRef<HTMLFormElement>(null)
+  const handleSubmit: FormEventHandler = e => {
+    /* TODO: Add validation and form submit navigation */
+    e.preventDefault()
+    console.log('submitted')
+  }
+
   return (
     <Layout>
       <SEO title="Income" />
@@ -37,7 +45,11 @@ const CurrentIncomePage = () => {
             }}
           />
 
-          <Flex as="form" sx={{ flexFlow: 'column nowrap' }}>
+          <form
+            sx={{ display: 'flex', flexFlow: 'column nowrap' }}
+            ref={formRef}
+            onSubmit={handleSubmit}
+          >
             {/* TODO: Income field variant with preceding $ icon and active state */}
             <TextField
               label="Individual annual income"
@@ -46,7 +58,7 @@ const CurrentIncomePage = () => {
             />
 
             <Button variant="primary">Next</Button>
-          </Flex>
+          </form>
         </Container>
       </Main>
     </Layout>

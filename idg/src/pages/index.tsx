@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
-import { useState, FormEventHandler } from 'react'
+import { useState, FormEventHandler, useRef } from 'react'
 import { navigate } from 'gatsby'
 import { TextField, Link, Button } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -37,6 +37,9 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
     replaceUser(user => ({ ...user, [field]: value }))
   }
 
+  /* TODO: Add validation and disabled checks */
+  const formRef = useRef<HTMLFormElement>(null)
+
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
     navigate('/save-password')
@@ -53,9 +56,9 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
             Let&rsquo;s get to know each other
           </h1>
 
-          <Flex
-            as="form"
-            sx={{ flexFlow: 'column nowrap' }}
+          <form
+            sx={{ display: 'flex', flexFlow: 'column nowrap' }}
+            ref={formRef}
             onSubmit={handleSubmit}
             data-testid="personal-info-form"
           >
@@ -132,7 +135,7 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
             <Button variant="primary" type="submit">
               Next
             </Button>
-          </Flex>
+          </form>
         </Container>
       </Main>
     </Layout>
