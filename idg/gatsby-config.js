@@ -9,7 +9,7 @@ module.exports = {
     title: `Application`,
     description: `Brand neutral application flow`,
     author: `@joestrouth1`,
-    siteUrl: 'https://www.joes.house',
+    siteUrl: 'https://application-demo.joes.house',
   },
   plugins: [
     {
@@ -61,7 +61,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://www.joes.house`,
+        siteUrl: `https://application-demo.joes.house`,
         stripQueryString: true,
       },
     },
