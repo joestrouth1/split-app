@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, Flex, Container, Main } from 'theme-ui'
+import { jsx, Container, Main } from 'theme-ui'
 import { Button } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'

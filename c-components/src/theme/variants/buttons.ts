@@ -15,7 +15,7 @@ const base = {
   px: 3,
   py: 2,
   border: 0,
-  transitionProperty: 'opacity, box-shadow, transform',
+  transitionProperty: 'opacity, box-shadow, transform, background-color',
   transitionDuration: '150ms',
   transitionTimingFunction: 'ease-out',
   '&[disabled]': {
@@ -64,6 +64,23 @@ export const buttons = {
     },
     '&:active': {
       transform: 'translateY(0)',
+    },
+  },
+  outline: {
+    ...base,
+    backgroundColor: 'transparent',
+    py: 3,
+    px: 4,
+    borderWidth: 2,
+    borderColor: 'primary',
+    borderStyle: 'solid',
+    borderRadius: 9999,
+    color: 'primary',
+    fontSize: 4,
+    lineHeight: 1.3333333,
+    '&:hover, &:focus': {
+      backgroundColor: 'primary',
+      color: 'white',
     },
   },
 }
