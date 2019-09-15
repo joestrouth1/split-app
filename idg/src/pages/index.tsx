@@ -50,7 +50,7 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
           sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
         >
           <h1 sx={{ variant: 'type.title', mb: 4 }}>
-            Let&apos;s get to know each other
+            Let&rsquo;s get to know each other
           </h1>
 
           <Flex

@@ -20,7 +20,7 @@ const ScanIdPage = () => {
             </p>
           </header>
           <p sx={{ variant: 'type.body' }}>
-            We&apos;ll use your card to fill out some of the application for
+            We&rsquo;ll use your card to fill out some of the application for
             you, as well as to protect against fraud.
           </p>
 
@@ -31,7 +31,7 @@ const ScanIdPage = () => {
           </form>
 
           <p sx={{ variant: 'type.body' }}>
-            Don&apos;t have an ID card? You can{' '}
+            Don&rsquo;t have an ID card? You can{' '}
             <Link href="">enter your information manually.</Link>
           </p>
         </Container>
