@@ -13,7 +13,7 @@ export const CheckMyRates = () => {
         <h1 sx={{ variant: 'type.title', mb: 4 }}>Making progress!</h1>
       </header>
       <img
-        src="https://placebear.com/257/269"
+        src="https://placekitten.com/514/538"
         alt=""
         sx={{
           maxWidth: '100%',
@@ -33,7 +33,7 @@ export const CheckMyRates = () => {
           Let's see if you qualify.
         </p>
         {/* TODO: Alert with icon and positive/negative variants */}
-        <pre
+        <p
           sx={{
             backgroundColor: 'greens.0',
             p: 2,
@@ -44,7 +44,7 @@ export const CheckMyRates = () => {
           }}
         >
           TODO: alert/toast: "This won't impact your credit score.
-        </pre>
+        </p>
         <Button variant="primary">View my offer</Button>
       </Flex>
     </Flex>

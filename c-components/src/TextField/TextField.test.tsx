@@ -20,7 +20,7 @@ describe('TextField', () => {
   it('Displays custom hint', () => {
     const Hint = (
       <div sx={{ display: 'flex' }}>
-        <img src="https://placebear.com/16/16" alt="" sx={{ mr: 1 }} />
+        <img src="https://placekitten.com/16/16" alt="" sx={{ mr: 1 }} />
         <span sx={{ flex: 1 }}>We take your privacy seriously.</span>
       </div>
     )
