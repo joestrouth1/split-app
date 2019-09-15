@@ -36,16 +36,23 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
     zip = '',
     phone = '',
   } = parsedQueryString
-  const sanitizedAddress = Object.fromEntries(
-    Object.entries({
-      address1,
-      address2,
-      city,
-      state,
-      zip,
-      phone,
-    }).map(([key, value]) => [key, sanitizeQueryField(value)])
-  )
+  const sanitizedAddress = Object.entries({
+    address1,
+    address2,
+    city,
+    state,
+    zip,
+    phone,
+  })
+    .map(
+      ([key, value]) =>
+        [key, sanitizeQueryField(value)] as [keyof Address, string]
+    )
+    .reduce<Address>((obj, [key, val]) => {
+      obj[key] = val
+      return obj
+    }, {})
+
   const [address, replaceAddress] = useState<Address>(sanitizedAddress)
   function setField<T extends keyof Address>(fieldName: T) {
     return (e: ChangeEvent<HTMLInputElement>) =>
