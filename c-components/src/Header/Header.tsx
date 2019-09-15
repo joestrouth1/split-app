@@ -3,7 +3,6 @@ import { jsx, Header as BaseHeader } from 'theme-ui'
 import { useState } from 'react'
 import { Logo } from '../Logo'
 import { Button } from '../Button'
-import { Link } from '../Link'
 
 /**
  * The site header.
@@ -25,7 +24,6 @@ export const Header = () => {
           py: [2],
         }}
       />
-      <Link>Click me I'm a link</Link>
       <nav
         aria-expanded={isNavOpen}
         aria-label="Main Navigation"

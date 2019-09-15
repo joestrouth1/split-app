@@ -4,9 +4,9 @@
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
-
-import React, { ReactNode } from 'react'
-import { ThemeProvider, Layout, Footer, Styled } from 'theme-ui'
+/**@jsx jsx */
+import { ReactNode } from 'react'
+import { jsx, ThemeProvider, Layout, Footer, Styled } from 'theme-ui'
 import { Header, defaultTheme } from 'c-components'
 import './layout-base.css'
 
@@ -14,26 +14,26 @@ interface DefaultLayoutProps {
   children: ReactNode
 }
 
-const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Styled.root>
         <Layout>
           <Header />
-          <div>
-            <main>{children}</main>
-            <Footer>
-              <div className="">
-                © {new Date().getFullYear()}, Built with
-                {` `}
-                <a href="https://www.gatsbyjs.org">Gatsby</a>
-              </div>
-            </Footer>
-          </div>
+          {children}
+          <Footer
+            sx={{
+              bg: 'grays.2',
+              display: 'flex',
+              flexFlow: 'column nowrap',
+              textAlign: 'center',
+              p: 3,
+            }}
+          >
+            © {new Date().getFullYear()}
+          </Footer>
         </Layout>
       </Styled.root>
     </ThemeProvider>
   )
 }
-
-export default DefaultLayout
