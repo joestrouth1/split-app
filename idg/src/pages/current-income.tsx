@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, Flex, Container, Main } from 'theme-ui'
+import { jsx, Container, Main } from 'theme-ui'
 import { TextField, Button } from 'c-components'
 import { useRef, FormEventHandler } from 'react'
 import { DefaultLayout as Layout } from '../components/layouts'
