@@ -1,5 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+  root: true, // Stop ESLint from looking for configs in ancestor directories
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
