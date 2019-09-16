@@ -2,7 +2,7 @@
   "include": [
     "./src/**/*",
     "types",
-    "node_modules/@testing-library/jest-dom/extend-expect.d.ts"
+    "../node_modules/@testing-library/jest-dom/extend-expect.d.ts"
   ],
 
   "compilerOptions": {
@@ -12,7 +12,7 @@
     "lib": ["dom", "esnext"],
     "strict": true,
     "allowJs": true,
-    // "checkJs": true,
+    "checkJs": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     // "noUnusedLocals": false,
