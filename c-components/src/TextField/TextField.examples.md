@@ -22,11 +22,18 @@ With string hint:
 With custom hint content (for validation hints, etc):
 
 ```jsx
-import { Link } from 'c-components'
+import { Link, Icon } from 'c-components'
 
 const Hint = (
   <div sx={{ display: 'flex' }}>
-    <img src="https://placekitten.com/16/16" alt="" sx={{ mr: 1 }} />
+    <Icon
+      name="lock"
+      alt=""
+      fill="grays.7"
+      sx={{ mr: 1 }}
+      width={16}
+      height={16}
+    />
     <span sx={{ flex: 1 }}>
       We take your privacy seriously.
       <Link href="/privacy-policy">Our policy</Link>

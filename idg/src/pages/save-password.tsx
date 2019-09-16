@@ -3,7 +3,7 @@ import { jsx, Flex, Container, Main } from 'theme-ui'
 import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'
 import { FormEventHandler, useState, Fragment } from 'react'
-import { TextField, Button } from 'c-components'
+import { TextField, Button, Icon } from 'c-components'
 
 const ICON_STYLES = {
   valid: `1px solid green`,
@@ -14,6 +14,20 @@ const handleSubmit: FormEventHandler = e => {
   e.preventDefault()
   console.log('submitted')
 }
+
+interface StatusIconProps {
+  isValid: boolean
+}
+const StatusIcon = ({ isValid }: StatusIconProps) => (
+  <Icon
+    name={isValid ? 'check' : 'times'}
+    alt={`Requirement ${!isValid && 'not yet '}met`}
+    fill={isValid ? 'primary' : 'red'}
+    width={16}
+    height={16}
+    sx={{ mr: 1 }}
+  />
+)
 
 const SavePasswordPage = () => {
   const [password, setPassword] = useState('')
@@ -73,16 +87,7 @@ const SavePasswordPage = () => {
                       alignItems: 'center',
                     }}
                   >
-                    <img
-                      src="https://placekitten.com/g/16/16"
-                      alt=""
-                      sx={{
-                        mr: 1,
-                        border: isMultiCase
-                          ? ICON_STYLES.valid
-                          : ICON_STYLES.invalid,
-                      }}
-                    />
+                    <StatusIcon isValid={isMultiCase} />
                     <span>Uppercase and lowercase letters (e.g. Aa)</span>
                   </div>
                   <div
@@ -92,16 +97,7 @@ const SavePasswordPage = () => {
                       alignItems: 'center',
                     }}
                   >
-                    <img
-                      src="https://placekitten.com/g/16/16"
-                      alt=""
-                      sx={{
-                        mr: 1,
-                        border: isComplex
-                          ? ICON_STYLES.valid
-                          : ICON_STYLES.invalid,
-                      }}
-                    />
+                    <StatusIcon isValid={isComplex} />
                     <span>At least one number or symbol</span>
                   </div>
                   <div
@@ -111,16 +107,7 @@ const SavePasswordPage = () => {
                       alignItems: 'center',
                     }}
                   >
-                    <img
-                      src="https://placekitten.com/g/16/16"
-                      alt=""
-                      sx={{
-                        mr: 1,
-                        border: isCorrectLength
-                          ? ICON_STYLES.valid
-                          : ICON_STYLES.invalid,
-                      }}
-                    />
+                    <StatusIcon isValid={isCorrectLength} />
                     <span>8-25 characters long</span>
                   </div>
                 </Fragment>
