@@ -41,13 +41,13 @@ export const Header = () => {
         </Button>
         <ul hidden={!isNavOpen}>
           <li>
-            <a href="#">Link</a>
+            <a href="/">Link</a>
           </li>
           <li>
-            <a href="#">Link</a>
+            <a href="/">Link</a>
           </li>
           <li>
-            <a href="#">Link</a>
+            <a href="/">Link</a>
           </li>
         </ul>
       </nav>

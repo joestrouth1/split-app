@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Flex, Main, Container } from 'theme-ui'
-import { useState, useRef, useMemo, FormEventHandler, ChangeEvent } from 'react'
+import { useState, useRef, FormEventHandler, ChangeEvent } from 'react'
 import { Button, TextField } from 'c-components'
 import { parse } from 'query-string'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -59,10 +59,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
       replaceAddress({ ...address, [fieldName]: e.target.value })
   }
 
-  const isValid = useMemo(
-    () => formRef.current && formRef.current.checkValidity(),
-    [address]
-  )
+  const isValid = formRef.current && formRef.current.checkValidity()
 
   return (
     <Layout>

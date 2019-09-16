@@ -14,7 +14,7 @@
     "lint": "tsdx lint",
     "styleguide": "cross-env BABEL_ENV=styleguide styleguidist server",
     "styleguide:build": "cross-env BABEL_ENV=styleguide styleguidist build",
-    "precommit": "pretty-quick --staged"
+    "precommit": "yarn lint src test --fix && pretty-quick --staged"
   },
   "peerDependencies": {
     "react": ">=16"
