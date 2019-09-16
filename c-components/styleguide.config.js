@@ -38,10 +38,10 @@ module.exports = {
       name: 'Typography',
       content: 'docs/typography.md',
     },
-    {
-      name: 'Pages',
-      components: 'src/pages/**/*.tsx',
-    },
+    // {
+    //   name: 'Pages',
+    //   components: 'src/pages/**/*.tsx',
+    // },
     {
       name: 'Colors',
       content: 'docs/colors.md',

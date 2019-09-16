@@ -33,8 +33,7 @@ module.exports = {
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    // disabled because auto-fixing can break code
-    'react-hooks/exhaustive-deps': 'off',
+    'react-hooks/exhaustive-deps': 'off', // disabled because auto-fixing can break code
   },
   overrides: [
     // Override some TypeScript rules just for .js files

@@ -63,6 +63,15 @@ const PrequalifiedPage = () => {
               mb: 3,
             }}
           >
+            Not interested in that amount? Let&rsquo;s keep going to see what we
+            can do.
+          </p>
+          <p
+            sx={{
+              variant: 'type.body',
+              mb: 3,
+            }}
+          >
             Next up, you&rsquo;ll need your bank details. Ready?
           </p>
 
