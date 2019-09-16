@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Flex } from 'theme-ui'
-import { useState, useRef, useMemo, FormEventHandler, ChangeEvent } from 'react'
+import { useState, useRef, FormEventHandler, ChangeEvent } from 'react'
 import { Button } from '../../Button'
 import { TextField } from '../../TextField'
 
@@ -45,10 +45,7 @@ export function ResidentialInfo(props: ResidentialInfoProps) {
       replaceAddress({ ...address, [fieldName]: e.target.value })
   }
 
-  const isValid = useMemo(
-    () => formRef.current && formRef.current.checkValidity(),
-    [address]
-  )
+  const isValid = formRef.current && formRef.current.checkValidity()
 
   return (
     <main sx={{ px: 3, py: 4 }}>
