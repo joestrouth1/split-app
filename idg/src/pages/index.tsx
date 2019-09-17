@@ -1,6 +1,12 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
-import { useState, FormEventHandler, useRef } from 'react'
+import {
+  useState,
+  useEffect,
+  useCallback,
+  FormEventHandler,
+  useRef,
+} from 'react'
 import { navigate } from 'gatsby'
 import { TextField, Link, Button, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -20,25 +26,36 @@ interface User {
 }
 
 const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
+  // Find User values passed in query string
   const parsedQueryString = parse(location.search)
   const { first = '', middle = '', last = '', email = '' } = parsedQueryString
-
-  const [user, replaceUser] = useState<User>({
+  let initialUser = {
     first: sanitizeQueryField(first),
     middle: sanitizeQueryField(middle),
     last: sanitizeQueryField(last),
     email: sanitizeQueryField(email),
-  })
-
-  function setUserField<K extends keyof User, T extends User[K]>(
-    field: K,
-    value: T
-  ) {
-    replaceUser(user => ({ ...user, [field]: value }))
   }
+  // Find User values saved from previous submissions (navigating back)
+  // Prefer user-entered/saved values over affiliate query strings
+  const sessionUser = sessionStorage.user && JSON.parse(sessionStorage.user)
+  if (sessionUser) initialUser = Object.assign(initialUser, sessionUser)
+
+  const [user, replaceUser] = useState<User>(initialUser)
+  useEffect(() => {
+    sessionStorage.user = JSON.stringify(user)
+  }, [user])
+
+  const setUserField = useCallback(
+    <K extends keyof User, T extends User[K]>(field: K, value: T) => {
+      replaceUser(user => ({ ...user, [field]: value }))
+    },
+    []
+  )
+
+  const formRef = useRef<HTMLFormElement>(null)
+  const isValid = formRef.current && formRef.current.checkValidity()
 
   /* TODO: Add validation and disabled checks */
-  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
@@ -135,9 +152,20 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
               }
             />
 
-            <Button variant="primary" type="submit">
-              Next
-            </Button>
+            <Flex
+              onClick={() =>
+                !isValid && formRef.current && formRef.current.reportValidity()
+              }
+            >
+              <Button
+                variant="primary"
+                type="submit"
+                disabled={!isValid}
+                sx={{ flex: 1 }}
+              >
+                Next
+              </Button>
+            </Flex>
           </form>
         </Container>
       </Main>
