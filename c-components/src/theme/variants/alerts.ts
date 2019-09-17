@@ -1,6 +1,7 @@
 const base = {
   borderRadius: 4,
   padding: 2,
+  boxSizing: 'border-box',
 }
 
 const alerts = {

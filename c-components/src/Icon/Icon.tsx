@@ -309,6 +309,7 @@ export const Icon = forwardRef<IconRef, IconProps>(
           viewBox={viewBox}
           focusable="no"
           role="img"
+          aria-hidden={alt ? 'false' : 'true'}
           {...rest}
         >
           {path}
