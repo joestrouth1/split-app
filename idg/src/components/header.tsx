@@ -9,7 +9,12 @@ type HeaderProps = Omit<ComponentPropsWithoutRef<typeof BaseHeader>, 'logo'>
 export const Header = ({ children, ...props }: HeaderProps) => (
   <BaseHeader
     logo={
-      <Link to="/">
+      <Link
+        to="/"
+        sx={{
+          lineHeight: 1,
+        }}
+      >
         <Logo
           alt="Company Name"
           sx={{

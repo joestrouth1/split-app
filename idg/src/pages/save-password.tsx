@@ -24,6 +24,7 @@ const StatusIcon = ({ isValid }: StatusIconProps) => (
   />
 )
 
+/** Where applicants choose a password for their new account */
 const SavePasswordPage = () => {
   const [password, setPassword] = useState('')
 

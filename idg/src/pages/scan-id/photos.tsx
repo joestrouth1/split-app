@@ -5,7 +5,7 @@ import { Alert, Icon } from 'c-components'
 import { SEO } from '../../components/seo'
 import { DefaultLayout as Layout } from '../../components/layouts'
 
-const ScanIdPage = () => {
+const ScanIdPhotosPage = () => {
   return (
     <Layout>
       <SEO title="Scan your ID" />
@@ -91,4 +91,4 @@ const ScanIdPage = () => {
   )
 }
 
-export default ScanIdPage
+export default ScanIdPhotosPage

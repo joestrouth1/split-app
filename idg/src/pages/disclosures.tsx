@@ -6,9 +6,9 @@ import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 
 /**
- * Where applicants tell us how much they earn.
+ * Where applicants accept our policies.
  */
-const CurrentIncomePage = () => {
+const DisclosuresPage = () => {
   const formRef = useRef<HTMLFormElement>(null)
   const handleSubmit: FormEventHandler = e => {
     /* TODO: Add validation and submit navigation */
@@ -52,4 +52,4 @@ const CurrentIncomePage = () => {
   )
 }
 
-export default CurrentIncomePage
+export default DisclosuresPage

@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx, Flex, Main, Container } from 'theme-ui'
 import { useState, useRef, FormEventHandler, ChangeEvent } from 'react'
+import { navigate } from 'gatsby'
 import { Button, TextField } from 'c-components'
 import { parse } from 'query-string'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -16,15 +17,11 @@ interface Address {
   phone?: string
 }
 
-const handleSubmit: FormEventHandler = e => {
-  e.preventDefault()
-  alert('submitted')
-}
-
 interface ResidentialInfoPageProps {
   location: Location
 }
 
+/** Where applicants tell us their home address. */
 function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   const formRef = useRef<HTMLFormElement>(null)
   const parsedQueryString = parse(location.search)
@@ -53,6 +50,10 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
       return obj
     }, {})
 
+  const handleSubmit: FormEventHandler = e => {
+    e.preventDefault()
+    navigate('/secure-account')
+  }
   const [address, replaceAddress] = useState<Address>(sanitizedAddress)
   function setField<T extends keyof Address>(fieldName: T) {
     return (e: ChangeEvent<HTMLInputElement>) =>
@@ -68,7 +69,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
         <Container
           sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
         >
-          <h1 sx={{ variant: 'type.title', mb: 2 }}>Where do you live?</h1>
+          <h1 sx={{ variant: 'type.title', mb: 3 }}>Where do you live?</h1>
           <form
             onSubmit={handleSubmit}
             data-testid="residential-info-form"
@@ -84,7 +85,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 name="address1"
                 autoComplete="address-line1"
                 required
-                sx={{ mb: 2 }}
+                sx={{ mb: 3 }}
                 onChange={setField('address1')}
               />
 
@@ -92,7 +93,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 label="Apartment, suite, or building (optional)"
                 name="address2"
                 autoComplete="address-line2"
-                sx={{ mb: 2 }}
+                sx={{ mb: 3 }}
                 onChange={setField('address2')}
               />
 
@@ -101,11 +102,11 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 name="city"
                 autoComplete="address-level2"
                 required
-                sx={{ mb: 2 }}
+                sx={{ mb: 3 }}
                 onChange={setField('city')}
               />
 
-              <Flex sx={{ flexFlow: 'row nowrap', mb: 2 }}>
+              <Flex sx={{ flexFlow: 'row nowrap', mb: 3 }}>
                 <TextField
                   label="State"
                   name="state"
@@ -136,7 +137,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 inputMode="tel"
                 autoComplete="mobile tel"
                 required
-                sx={{ mb: 2 }}
+                sx={{ mb: 3 }}
                 onChange={setField('phone')}
               />
               <Flex

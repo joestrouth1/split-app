@@ -58,7 +58,7 @@ const CheckRatesPage = () => {
             </Alert>
             {/* TODO: replace this link with the proper destination */}
             <Link sx={{ variant: 'buttons.primary', mb: 4 }} to="/">
-              View my offer
+              View my options
             </Link>
             <p sx={{ variant: 'type.disclaimer' }}>
               <small sx={{ variant: 'type.disclaimer' }}>

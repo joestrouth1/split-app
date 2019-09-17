@@ -29,7 +29,7 @@ const ScanIdPage = () => {
             What type of ID card do you have?
           </p>
 
-          <div sx={{ overflow: 'hidden' }}>
+          <div>
             <Flex
               sx={{
                 flexFlow: 'row wrap',
