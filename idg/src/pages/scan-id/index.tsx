@@ -91,7 +91,10 @@ const ScanIdPage = () => {
 
           <p sx={{ variant: 'type.body', mt: 3 }}>
             Don&rsquo;t have an ID card? You can{' '}
-            <Link to="#" sx={{ variant: 'links.default' }}>
+            <Link
+              to="/residential-information"
+              sx={{ variant: 'links.default' }}
+            >
               enter your information manually.
             </Link>
           </p>

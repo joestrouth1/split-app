@@ -1,6 +1,12 @@
 /**@jsx jsx */
 import { jsx, Flex, Main, Container } from 'theme-ui'
-import { useState, useRef, FormEventHandler, ChangeEvent } from 'react'
+import {
+  useState,
+  useRef,
+  useEffect,
+  FormEventHandler,
+  ChangeEvent,
+} from 'react'
 import { navigate } from 'gatsby'
 import { Button, TextField } from 'c-components'
 import { parse } from 'query-string'
@@ -24,43 +30,57 @@ interface ResidentialInfoPageProps {
 /** Where applicants tell us their home address. */
 function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   const formRef = useRef<HTMLFormElement>(null)
-  const parsedQueryString = parse(location.search)
-  const {
-    address1 = '',
-    address2 = '',
-    city = '',
-    state = '',
-    zip = '',
-    phone = '',
-  } = parsedQueryString
-  const sanitizedAddress = Object.entries({
-    address1,
-    address2,
-    city,
-    state,
-    zip,
-    phone,
-  })
-    .map(
-      ([key, value]) =>
-        [key, sanitizeQueryField(value)] as [keyof Address, string]
-    )
-    .reduce<Address>((obj, [key, val]) => {
-      obj[key] = val
-      return obj
-    }, {})
-
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
     navigate('/secure-account')
   }
-  const [address, replaceAddress] = useState<Address>(sanitizedAddress)
+  const isValid = formRef.current && formRef.current.checkValidity()
+
+  const [address, replaceAddress] = useState<Address>(() => {
+    // look for initial data in query string
+    const parsedQueryString = parse(location.search)
+    // Look for user-entered values in sessionStorage
+    const sessionAddress: Address =
+      (sessionStorage.address && JSON.parse(sessionStorage.address)) || {}
+    const {
+      address1 = '',
+      address2 = '',
+      city = '',
+      state = '',
+      zip = '',
+      phone = '',
+    } = parsedQueryString
+    // sanitize said data to remove arrays/nulls/etc
+    const sanitizedAddress = Object.entries({
+      address1,
+      address2,
+      city,
+      state,
+      zip,
+      phone,
+    })
+      .map(
+        ([key, value]) =>
+          [key, sanitizeQueryField(value)] as [keyof Address, string]
+      )
+      .reduce<Address>((obj, [key, val]) => {
+        // Prefer user-entered values over URL params
+        if (sessionAddress[key]) {
+          obj[key] = sessionAddress[key]
+        } else {
+          obj[key] = val
+        }
+        return obj
+      }, {})
+    return sanitizedAddress
+  })
   function setField<T extends keyof Address>(fieldName: T) {
     return (e: ChangeEvent<HTMLInputElement>) =>
       replaceAddress({ ...address, [fieldName]: e.target.value })
   }
-
-  const isValid = formRef.current && formRef.current.checkValidity()
+  useEffect(() => {
+    sessionStorage.address = JSON.stringify(address)
+  }, [address])
 
   return (
     <Layout>
@@ -87,6 +107,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 required
                 sx={{ mb: 3 }}
                 onChange={setField('address1')}
+                value={address.address1}
               />
 
               <TextField
@@ -95,6 +116,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 autoComplete="address-line2"
                 sx={{ mb: 3 }}
                 onChange={setField('address2')}
+                value={address.address2}
               />
 
               <TextField
@@ -104,6 +126,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 required
                 sx={{ mb: 3 }}
                 onChange={setField('city')}
+                value={address.city}
               />
 
               <Flex sx={{ flexFlow: 'row nowrap', mb: 3 }}>
@@ -114,6 +137,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                   required
                   sx={{ flex: 2, mr: 1 }}
                   onChange={setField('state')}
+                  value={address.state}
                   /* TODO add dataset */
                 />
                 <TextField
@@ -125,6 +149,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                   autoComplete="postal-code"
                   required
                   onChange={setField('zip')}
+                  value={address.zip}
                   sx={{
                     flex: 1,
                   }}
@@ -139,6 +164,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 required
                 sx={{ mb: 3 }}
                 onChange={setField('phone')}
+                value={address.phone}
               />
               <Flex
                 onClick={() =>

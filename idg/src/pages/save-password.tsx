@@ -1,13 +1,14 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
-import { DefaultLayout as Layout } from '../components/layouts'
-import { SEO } from '../components/seo'
 import { FormEventHandler, useState, Fragment } from 'react'
 import { TextField, Button, Icon } from 'c-components'
+import { navigate } from 'gatsby'
+import { DefaultLayout as Layout } from '../components/layouts'
+import { SEO } from '../components/seo'
 
 const handleSubmit: FormEventHandler = e => {
   e.preventDefault()
-  console.log('submitted')
+  navigate('/scan-id')
 }
 
 interface StatusIconProps {
