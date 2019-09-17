@@ -37,7 +37,10 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
   }
   // Find User values saved from previous submissions (navigating back)
   // Prefer user-entered/saved values over affiliate query strings
-  const sessionUser = sessionStorage.user && JSON.parse(sessionStorage.user)
+  const sessionUser =
+    typeof window === 'undefined'
+      ? null
+      : sessionStorage.user && JSON.parse(sessionStorage.user)
   if (sessionUser) initialUser = Object.assign(initialUser, sessionUser)
 
   const [user, replaceUser] = useState<User>(initialUser)

@@ -36,44 +36,50 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   }
   const isValid = formRef.current && formRef.current.checkValidity()
 
-  const [address, replaceAddress] = useState<Address>(() => {
-    // look for initial data in query string
-    const parsedQueryString = parse(location.search)
-    // Look for user-entered values in sessionStorage
-    const sessionAddress: Address =
-      (sessionStorage.address && JSON.parse(sessionStorage.address)) || {}
-    const {
-      address1 = '',
-      address2 = '',
-      city = '',
-      state = '',
-      zip = '',
-      phone = '',
-    } = parsedQueryString
-    // sanitize said data to remove arrays/nulls/etc
-    const sanitizedAddress = Object.entries({
-      address1,
-      address2,
-      city,
-      state,
-      zip,
-      phone,
-    })
-      .map(
-        ([key, value]) =>
-          [key, sanitizeQueryField(value)] as [keyof Address, string]
-      )
-      .reduce<Address>((obj, [key, val]) => {
-        // Prefer user-entered values over URL params
-        if (sessionAddress[key]) {
-          obj[key] = sessionAddress[key]
-        } else {
-          obj[key] = val
+  // web storage is undefined during prerender
+  const initialAddress: Address | (() => Address) =
+    typeof window === 'undefined'
+      ? {}
+      : () => {
+          // look for initial data in query string
+          const parsedQueryString = parse(location.search)
+          // Look for user-entered values in sessionStorage
+          const sessionAddress: Address =
+            (sessionStorage.address && JSON.parse(sessionStorage.address)) || {}
+          const {
+            address1 = '',
+            address2 = '',
+            city = '',
+            state = '',
+            zip = '',
+            phone = '',
+          } = parsedQueryString
+          // sanitize said data to remove arrays/nulls/etc
+          const sanitizedAddress = Object.entries({
+            address1,
+            address2,
+            city,
+            state,
+            zip,
+            phone,
+          })
+            .map(
+              ([key, value]) =>
+                [key, sanitizeQueryField(value)] as [keyof Address, string]
+            )
+            .reduce<Address>((obj, [key, val]) => {
+              // Prefer user-entered values over URL params
+              if (sessionAddress[key]) {
+                obj[key] = sessionAddress[key]
+              } else {
+                obj[key] = val
+              }
+              return obj
+            }, {})
+          return sanitizedAddress
         }
-        return obj
-      }, {})
-    return sanitizedAddress
-  })
+
+  const [address, replaceAddress] = useState<Address>(initialAddress)
   function setField<T extends keyof Address>(fieldName: T) {
     return (e: ChangeEvent<HTMLInputElement>) =>
       replaceAddress({ ...address, [fieldName]: e.target.value })
