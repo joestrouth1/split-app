@@ -7,19 +7,69 @@
 /**@jsx jsx */
 import { ReactNode } from 'react'
 import { jsx, ThemeProvider, Layout, Footer, Styled } from 'theme-ui'
-import { Header, defaultTheme } from 'c-components'
+import { useStaticQuery, graphql, Link } from 'gatsby'
+import { defaultTheme } from 'c-components'
+import { Header } from '../header'
 import './layout-base.css'
 
-interface DefaultLayoutProps {
-  children: ReactNode
+const allPagesQuery = graphql`
+  query {
+    allPages: allSitePage {
+      nodes {
+        path
+      }
+    }
+  }
+`
+interface AllPagesQueryResult {
+  allPages: {
+    nodes: { path: string }[]
+  }
 }
 
-export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+export interface PureDefaultLayoutProps {
+  children: ReactNode
+  data: AllPagesQueryResult
+}
+
+export const PureDefaultLayout = ({
+  children,
+  data,
+}: PureDefaultLayoutProps) => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Styled.root>
         <Layout sx={{ bg: 'grays.0' }}>
-          <Header />
+          <Header>
+            <ul
+              sx={{
+                m: 0,
+                p: 3,
+                listStyle: 'none',
+                bg: 'grays.1',
+                display: 'flex',
+                flexFlow: 'column nowrap',
+                alignItems: 'center',
+                '& > * + *': {
+                  mt: 2,
+                },
+              }}
+            >
+              {data.allPages.nodes.map(({ path }) => {
+                return (
+                  <li key={path}>
+                    <Link
+                      to={path}
+                      sx={{ variant: 'links.default' }}
+                      activeClassName="active"
+                    >
+                      {path}
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
+          </Header>
           {children}
           <Footer
             sx={{
@@ -38,4 +88,12 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
       </Styled.root>
     </ThemeProvider>
   )
+}
+
+type DefaultLayoutProps = Omit<PureDefaultLayoutProps, 'data'>
+
+export const DefaultLayout = (props: DefaultLayoutProps) => {
+  const data: AllPagesQueryResult = useStaticQuery(allPagesQuery)
+
+  return <PureDefaultLayout {...props} data={data} />
 }

@@ -1,10 +1,23 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { DefaultLayout } from '../layouts'
+import {
+  PureDefaultLayout,
+  PureDefaultLayoutProps,
+} from '../layouts/DefaultLayout'
 
 describe('Default layout', () => {
-  it('renders', () => {
-    const { getByText } = render(<DefaultLayout>Page content</DefaultLayout>)
-    expect(getByText(/menu/i)).toBeVisible()
+  const props: Omit<PureDefaultLayoutProps, 'children'> = {
+    data: {
+      allPages: {
+        nodes: [{ path: '/' }, { path: '/404' }],
+      },
+    },
+  }
+
+  it('Renders its children', () => {
+    const { getByText } = render(
+      <PureDefaultLayout {...props}>Page content</PureDefaultLayout>
+    )
+    expect(getByText('Page content')).toBeVisible()
   })
 })

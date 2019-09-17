@@ -1,10 +1,13 @@
 /** @jsx jsx */
 import { jsx, Header as BaseHeader } from 'theme-ui'
 import { useState, ReactNode } from 'react'
-import { Logo } from '../Logo'
 import { Button } from '../Button'
 
 interface HeaderProps {
+  /**
+   * Logo that will always be rendered
+   */
+  logo: ReactNode
   /**
    * Content to render inside of the toggle menu
    * If no children are passed, the menu and its button will not be rendered.
@@ -15,7 +18,7 @@ interface HeaderProps {
 /**
  * The site header.
  */
-export const Header = ({ children }: HeaderProps) => {
+export const Header = ({ children, logo }: HeaderProps) => {
   const [isNavOpen, setNavOpen] = useState(false)
   const toggleNav = () => setNavOpen(!isNavOpen)
 
@@ -26,14 +29,7 @@ export const Header = ({ children }: HeaderProps) => {
         alignItems: 'center',
       }}
     >
-      <Logo
-        alt="Company Name"
-        sx={{
-          py: [2],
-          maxWidth: 217,
-          height: 'auto',
-        }}
-      />
+      {logo}
       {children && (
         <nav
           aria-expanded={isNavOpen}

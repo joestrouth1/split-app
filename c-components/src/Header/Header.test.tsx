@@ -1,17 +1,20 @@
 import React from 'react'
 import { render, act, fireEvent } from '@testing-library/react'
 import { Header } from './Header'
+import { Logo } from '../Logo'
 import { Link } from '../Link'
 
 describe('Header', () => {
   it('Shows company logo', async () => {
-    const { getByAltText } = render(<Header />)
-    expect(getByAltText('Company Name')).toBeInTheDocument()
+    const { getByAltText } = render(
+      <Header logo={<Logo alt="Company name" />} />
+    )
+    expect(getByAltText('Company name')).toBeInTheDocument()
   })
 
   it('Shows menu button when children are passed', () => {
     const { getByText } = render(
-      <Header>
+      <Header logo={<Logo alt="Company name" />}>
         <Link href="/some-page">Click here</Link>
       </Header>
     )
@@ -20,7 +23,7 @@ describe('Header', () => {
 
   it('Hides child content by default', () => {
     const { getByText } = render(
-      <Header>
+      <Header logo={<Logo alt="Company name" />}>
         <Link href="/some-page">A link</Link>
       </Header>
     )
@@ -32,7 +35,7 @@ describe('Header', () => {
 
   it('Reveals child content when Menu button is clicked', () => {
     const { getByText } = render(
-      <Header>
+      <Header logo={<Logo alt="Company name" />}>
         <Link href="/some-page">A link</Link>
       </Header>
     )

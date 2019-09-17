@@ -10,5 +10,9 @@ export const links = {
     '&:visited': {
       color: 'accent',
     },
+    '&.active': {
+      color: 'primary',
+      fontWeight: 'bold',
+    },
   },
 }
