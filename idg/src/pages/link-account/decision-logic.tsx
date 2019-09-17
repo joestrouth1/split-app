@@ -1,13 +1,14 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
-import { DefaultLayout as Layout } from '../components/layouts'
-import { SEO } from '../components/seo'
+import { Alert, Icon } from 'c-components'
+import { DefaultLayout as Layout } from '../../components/layouts'
+import { SEO } from '../../components/seo'
 
 /**
- * Where applicants tell us how much they earn.
+ * Where applicants sign in to their bank account.
  */
-const CurrentIncomePage = () => {
+const DecisionLogicPage = () => {
   return (
     <Layout>
       <SEO title="Sign in to your bank" />
@@ -22,8 +23,21 @@ const CurrentIncomePage = () => {
           }}
         >
           <header>
-            <h1 sx={{ variant: 'type.title', mb: 4 }}>Sign in to your bank</h1>
+            <h1 sx={{ variant: 'type.title', mb: 3 }}>Sign in to your bank</h1>
           </header>
+          <Alert variant="positive" sx={{ mb: 3 }}>
+            <Icon
+              name="lightbulb"
+              alt=""
+              fill="greens.6"
+              sx={{ mr: 2, flexShrink: 0 }}
+              width={16}
+              height={16}
+            />
+            <span>
+              We can&rsquo;t see (and don&rsquo;t store) your login or password.
+            </span>
+          </Alert>
           <img
             src="https://placekitten.com/686/700"
             alt=""
@@ -60,4 +74,4 @@ const CurrentIncomePage = () => {
   )
 }
 
-export default CurrentIncomePage
+export default DecisionLogicPage
