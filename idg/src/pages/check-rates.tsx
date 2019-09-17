@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
+import { Alert, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'
 
@@ -44,20 +45,17 @@ const CheckRatesPage = () => {
             >
               Let&rsquo;s see if you qualify.
             </p>
-            {/* TODO: Alert with icon and positive/negative variants */}
-            <p
-              sx={{
-                backgroundColor: 'greens.0',
-                p: 2,
-                color: 'greens.4',
-                mt: 0,
-                mx: 0,
-                mb: 3,
-              }}
-            >
-              TODO: alert: &ldquo;This won&rsquo;t impact your credit
-              score.&rdquo;
-            </p>
+            <Alert variant="positive" sx={{ mb: 3 }}>
+              <Icon
+                name="lightbulb"
+                alt=""
+                fill="greens.6"
+                sx={{ mr: 2 }}
+                width={16}
+                height={16}
+              />
+              <span>This won&rsquo;t impact your credit score.</span>
+            </Alert>
             {/* TODO: replace this link with the proper destination */}
             <Link sx={{ variant: 'buttons.primary', mb: 4 }} to="/">
               View my offer
