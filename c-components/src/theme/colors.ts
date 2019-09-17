@@ -26,8 +26,19 @@ const greens = [
 ]
 const green = greens[4]
 
-const reds = ['#ebd3d6', '#981e2c']
-const red = reds[1]
+const reds = [
+  '#f5eaeb',
+  '#ebd3d6',
+  '#deb8bd',
+  '#d0989e',
+  '#bc6d76',
+  '#981e2c',
+  '#881a27',
+  '#761722',
+  '#61131c',
+  '#430d13',
+]
+const red = reds[5]
 
 export const colors = {
   text: grays[8],
