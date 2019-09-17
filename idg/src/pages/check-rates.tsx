@@ -3,7 +3,7 @@ import { jsx, Flex, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
 import { Alert, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 
 /**
  * Confirmation screen for pre-qual applicants seeking a loan

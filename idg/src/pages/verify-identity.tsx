@@ -3,7 +3,7 @@ import { jsx, Flex, Container, Main } from 'theme-ui'
 import { Button, TextField } from 'c-components'
 import Link from '../components/link'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 
 /**
  * Where applicants give us their SSN and DOB.

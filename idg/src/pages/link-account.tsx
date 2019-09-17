@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 import { useRef, FormEventHandler } from 'react'
 
 /**

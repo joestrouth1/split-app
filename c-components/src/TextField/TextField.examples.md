@@ -1,8 +1,8 @@
 ### Usage notes
 
-`TextField` accepts the same props as an HTML input. Most of them are passed on.
+`TextField` accepts all the attributes of an HTML input. Most of them are forwarded to the input.
 
-`sx` **is not** passed on to the `input`. It's given to the wrapping element instead, so you can size & layout the entire component as a unit.
+Styles applied using the `sx` prop will be applied to the component as a whole.
 
 ### Examples
 

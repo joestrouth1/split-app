@@ -1,14 +1,9 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 import { FormEventHandler, useState, Fragment } from 'react'
 import { TextField, Button, Icon } from 'c-components'
-
-const ICON_STYLES = {
-  valid: `1px solid green`,
-  invalid: `1px solid red`,
-}
 
 const handleSubmit: FormEventHandler = e => {
   e.preventDefault()

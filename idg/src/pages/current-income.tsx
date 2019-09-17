@@ -3,7 +3,7 @@ import { jsx, Container, Main } from 'theme-ui'
 import { TextField, Button } from 'c-components'
 import { useRef, FormEventHandler } from 'react'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 
 /**
  * Where applicants tell us how much they earn.

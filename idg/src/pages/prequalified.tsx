@@ -2,7 +2,7 @@
 import { jsx, Container, Main } from 'theme-ui'
 import { Button } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 
 /**
  * Congrats customer, you're pre-qual'd for up to X amt.

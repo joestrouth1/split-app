@@ -2,7 +2,7 @@
 import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 
 /**
  * Where applicants tell us how much they earn.

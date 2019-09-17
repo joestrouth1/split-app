@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'c-components'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 import { DefaultLayout as Layout } from '../components/layouts'
 
 const ScanIdPage = () => {

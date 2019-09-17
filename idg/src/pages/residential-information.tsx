@@ -4,7 +4,7 @@ import { useState, useRef, FormEventHandler, ChangeEvent } from 'react'
 import { Button, TextField } from 'c-components'
 import { parse } from 'query-string'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 import { sanitizeQueryField } from '../util'
 
 interface Address {

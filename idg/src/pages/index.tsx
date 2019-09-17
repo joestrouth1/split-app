@@ -4,7 +4,7 @@ import { useState, FormEventHandler, useRef } from 'react'
 import { navigate } from 'gatsby'
 import { TextField, Link, Button, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
-import SEO from '../components/seo'
+import { SEO } from '../components/seo'
 import { parse } from 'query-string'
 import { sanitizeQueryField } from '../util'
 
