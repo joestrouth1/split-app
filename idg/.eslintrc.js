@@ -1,8 +1,10 @@
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+  root: true, // Stop ESLint from looking for configs in ancestor directories
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'plugin:jest/recommended',
@@ -19,7 +21,7 @@ module.exports = {
     es6: true,
     'jest/globals': true,
   },
-  plugins: ['@typescript-eslint', 'react', 'jest'],
+  plugins: ['@typescript-eslint', 'react-hooks', 'react', 'jest'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -30,6 +32,8 @@ module.exports = {
   rules: {
     'react/prop-types': 'off', // Disable prop-types as we use TypeScript for type checking
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'off', // disabled because auto-fixing can break code
   },
   overrides: [
     // Override some TypeScript rules just for .js files

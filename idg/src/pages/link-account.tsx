@@ -33,8 +33,7 @@ const LinkAccountPage = () => {
               Link your bank account
             </h1>
             <p sx={{ variant: 'type.subtitle', mb: 3 }}>
-              Accepting a loan from us means we&rsquo;ll send your money to your
-              bank account.
+              Accepting a loan = $$ straight to your bank!
             </p>
           </header>
 

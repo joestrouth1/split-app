@@ -1,6 +1,6 @@
 ```jsx
 import { Flex } from 'theme-ui'
-import { Link } from '../Link'
+import { Icon, Link } from 'c-components'
 ;<Flex sx={{ flexFlow: 'column nowrap' }}>
   <Card variant="radio" sx={{ mb: 3 }}>
     Nice card!
@@ -16,7 +16,7 @@ import { Link } from '../Link'
       mb: 3,
     }}
   >
-    <img src="https://placekitten.com/g/32/32" />
+    <Icon name="comments" alt="" fill="primary" />
     <span sx={{ variant: 'type.subtitle', color: 'grays.9' }}>
       Recommended option
     </span>
@@ -36,7 +36,7 @@ import { Link } from '../Link'
           flex: 1,
         }}
       >
-        <img src="https://placekitten.com/g/32/32" />
+        <Icon name="comments" alt="" fill="greens.3" />
         <span sx={{ variant: 'type.body', color: 'grays.9' }}>Text me</span>
       </Card>
     </Link>
@@ -53,7 +53,7 @@ import { Link } from '../Link'
           maxWidth: '100%',
         }}
       >
-        <img src="https://placekitten.com/g/32/32" />
+        <Icon name="envelope" alt="" fill="greens.3" />
         <span sx={{ variant: 'type.body', color: 'grays.9' }}>Email me</span>
       </Card>
     </Link>

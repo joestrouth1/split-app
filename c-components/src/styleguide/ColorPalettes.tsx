@@ -6,7 +6,7 @@ import reduce from 'lodash/reduce'
 
 function isObject(value: unknown) {
   var type = typeof value
-  return value != null && (type == 'object' || type == 'function')
+  return value != null && (type === 'object' || type === 'function')
 }
 
 const flattenKeys = (

@@ -9,7 +9,7 @@ module.exports = {
     title: `Application`,
     description: `Brand neutral application flow`,
     author: `@joestrouth1`,
-    siteUrl: 'https://application-demo.joes.house',
+    siteUrl: 'https://application.demo.joes.house',
   },
   plugins: [
     {
@@ -39,7 +39,7 @@ module.exports = {
         theme_color: `#ae0011`,
         /* eslint-enable @typescript-eslint/camelcase */
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.jpg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

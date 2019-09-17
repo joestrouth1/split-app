@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import { forwardRef, AnchorHTMLAttributes } from 'react'
+import { forwardRef, AnchorHTMLAttributes, ReactNode } from 'react'
 
 interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /**
@@ -10,12 +10,13 @@ interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   //  Defaults should be annotated for now,
   //  see: https://github.com/styleguidist/react-docgen-typescript/pull/205
   variant?: string
+  children: ReactNode
 }
 
 export type LinkRef = HTMLAnchorElement
 
 export const Link = forwardRef<LinkRef, LinkProps>(
-  ({ variant = 'links.default', ...props }, ref) => {
+  ({ variant = 'links.default', children, ...props }, ref) => {
     return (
       <a
         {...props}
@@ -24,7 +25,9 @@ export const Link = forwardRef<LinkRef, LinkProps>(
           // pass variant prop to sx
           variant,
         }}
-      />
+      >
+        {children}
+      </a>
     )
   }
 )

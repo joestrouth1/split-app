@@ -2,7 +2,7 @@
 import { jsx, Flex, Container, Main } from 'theme-ui'
 import { useState, FormEventHandler, useRef } from 'react'
 import { navigate } from 'gatsby'
-import { TextField, Link, Button } from 'c-components'
+import { TextField, Link, Button, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import SEO from '../components/seo'
 import { parse } from 'query-string'
@@ -119,10 +119,13 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
                     alignItems: 'center',
                   }}
                 >
-                  <img
-                    src="https://placekitten.com/g/16/16"
+                  <Icon
+                    name="lock"
                     alt=""
+                    fill="grays.7"
                     sx={{ mr: 1 }}
+                    width={16}
+                    height={16}
                   />
                   <span>
                     We take your privacy seriously.{' '}

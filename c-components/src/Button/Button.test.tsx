@@ -9,7 +9,11 @@ describe('Button', () => {
   })
 
   it('Respects `disabled` prop', () => {
-    const { getByText } = render(<Button variant="primary" disabled={true}>Disabled</Button>)
+    const { getByText } = render(
+      <Button variant="primary" disabled={true}>
+        Disabled
+      </Button>
+    )
     expect(getByText('Disabled')).toBeDisabled()
   })
 })

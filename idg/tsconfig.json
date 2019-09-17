@@ -2,17 +2,17 @@
   "include": [
     "./src/**/*",
     "types",
-    "node_modules/@testing-library/jest-dom/extend-expect.d.ts"
+    "../node_modules/@testing-library/jest-dom/extend-expect.d.ts"
   ],
 
   "compilerOptions": {
     "module": "commonjs",
     "target": "esnext",
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "esnext"],
     "strict": true,
     "allowJs": true,
-    // "checkJs": true,
+    "checkJs": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     // "noUnusedLocals": false,
