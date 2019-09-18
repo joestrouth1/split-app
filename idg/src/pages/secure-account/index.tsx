@@ -55,7 +55,7 @@ const SecureAccountPage = () => {
 
           <div sx={{ display: 'flex', flexFlow: 'row nowrap' }}>
             <Link
-              to="/secure-account/verify?method=sms"
+              to="/secure-account/verify-contact?method=sms"
               sx={{
                 variant: 'cards.radio',
                 display: 'flex',
@@ -71,7 +71,7 @@ const SecureAccountPage = () => {
               <span>Text me</span>
             </Link>
             <Link
-              to="/secure-account/verify?method=email"
+              to="/secure-account/verify-contact?method=email"
               sx={{
                 variant: 'cards.radio',
                 display: 'flex',

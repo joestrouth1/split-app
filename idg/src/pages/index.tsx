@@ -6,7 +6,6 @@ import {
   useCallback,
   FormEventHandler,
   useRef,
-  useLayoutEffect,
 } from 'react'
 import { navigate } from 'gatsby'
 import { TextField, Link, Button, Icon } from 'c-components'
