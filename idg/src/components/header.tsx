@@ -1,8 +1,9 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
-import { Header as BaseHeader, Logo } from 'c-components'
+import { Header as BaseHeader } from 'c-components'
 import { ComponentPropsWithoutRef } from 'react'
 import { Link } from 'gatsby'
+import { Wordmark } from './wordmark'
 
 type HeaderProps = Omit<ComponentPropsWithoutRef<typeof BaseHeader>, 'logo'>
 
@@ -15,13 +16,11 @@ export const Header = ({ children, ...props }: HeaderProps) => (
           lineHeight: 1,
         }}
       >
-        <Logo
-          alt="Company Name"
-          sx={{
-            py: [2],
-            maxWidth: 217,
-            height: 'auto',
-          }}
+        <Wordmark
+          alt="company name"
+          width={124.8}
+          sx={{ py: [2] }}
+          fill="greens.7"
         />
       </Link>
     }

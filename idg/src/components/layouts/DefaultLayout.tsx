@@ -46,7 +46,7 @@ export const PureDefaultLayout = ({
                 m: 0,
                 p: 3,
                 listStyle: 'none',
-                bg: 'grays.1',
+                bg: 'white',
                 display: 'flex',
                 flexFlow: 'column nowrap',
                 alignItems: 'center',
