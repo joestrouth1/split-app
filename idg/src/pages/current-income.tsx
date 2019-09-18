@@ -3,6 +3,7 @@ import { jsx, Container, Main } from 'theme-ui'
 import { TextField, Button } from 'c-components'
 import { useRef, FormEventHandler } from 'react'
 import { DefaultLayout as Layout } from '../components/layouts'
+import { Illustration } from '../components/illustration'
 import { SEO } from '../components/seo'
 
 /**
@@ -34,16 +35,17 @@ const CurrentIncomePage = () => {
               What&rsquo;s your current income?
             </h1>
           </header>
-          <img
-            src="https://placekitten.com/686/492"
-            alt=""
+          <Illustration
             sx={{
+              height: 245,
               maxWidth: '100%',
-              height: 'auto',
-              mx: 'auto',
               mb: 4,
             }}
-          />
+          >
+            <p sx={{ variant: 'type.subtitle', fontWeight: 'bold' }}>
+              Illustration
+            </p>
+          </Illustration>
 
           <form
             sx={{ display: 'flex', flexFlow: 'column nowrap' }}

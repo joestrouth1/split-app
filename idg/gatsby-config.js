@@ -39,7 +39,7 @@ module.exports = {
         theme_color: `#ae0011`,
         /* eslint-enable @typescript-eslint/camelcase */
         display: `minimal-ui`,
-        icon: `src/images/icon.jpg`, // This path is relative to the root of the site.
+        icon: `src/images/illustration_leaf.svg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

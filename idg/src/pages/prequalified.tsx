@@ -2,6 +2,7 @@
 import { jsx, Container, Main } from 'theme-ui'
 import { Button } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
+import { Illustration } from '../components/illustration'
 import { SEO } from '../components/seo'
 
 /**
@@ -37,15 +38,17 @@ const PrequalifiedPage = () => {
             p: 0,
           }}
         >
-          <img
-            src="https://placekitten.com/622/480"
-            alt="However much they're qualified for"
+          <Illustration
             sx={{
+              height: 240,
               maxWidth: '100%',
-              height: 'auto',
-              alignSelf: 'center',
             }}
-          />
+          >
+            <p sx={{ variant: 'type.title', fontWeight: 'bold' }}>$5,000</p>
+            <p sx={{ variant: 'type.subtitle', color: 'greens.8' }}>
+              (Illustrated amt.)
+            </p>
+          </Illustration>
         </Container>
 
         <Container
@@ -60,7 +63,6 @@ const PrequalifiedPage = () => {
           <p
             sx={{
               variant: 'type.body',
-              mb: 3,
             }}
           >
             Not interested in that amount? Let&rsquo;s keep going to see what we
@@ -69,13 +71,14 @@ const PrequalifiedPage = () => {
           <p
             sx={{
               variant: 'type.body',
-              mb: 3,
             }}
           >
             Next up, you&rsquo;ll need your bank details. Ready?
           </p>
 
-          <Button variant="primary">Let&rsquo;s go</Button>
+          <Button variant="primary" sx={{ mt: 3 }}>
+            Let&rsquo;s go
+          </Button>
         </Container>
       </Main>
     </Layout>

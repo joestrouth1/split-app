@@ -3,6 +3,7 @@ import { jsx, Flex, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
 import { Alert, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
+import { Illustration } from '../components/illustration'
 import { SEO } from '../components/seo'
 
 /**
@@ -25,16 +26,17 @@ const CheckRatesPage = () => {
           <header>
             <h1 sx={{ variant: 'type.title', mb: 4 }}>Making progress!</h1>
           </header>
-          <img
-            src="https://placekitten.com/514/538"
-            alt=""
+          <Illustration
             sx={{
+              height: 240,
               maxWidth: '100%',
-              height: 'auto',
-              alignSelf: 'center',
               mb: 4,
             }}
-          />
+          >
+            <p sx={{ variant: 'type.subtitle', fontWeight: 'bold' }}>
+              Illustration
+            </p>
+          </Illustration>
 
           <Flex sx={{ flexFlow: 'column nowrap' }}>
             <p

@@ -3,6 +3,7 @@ import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
 import { Alert, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../../components/layouts'
+import { Illustration } from '../../components/illustration'
 import { SEO } from '../../components/seo'
 
 /**
@@ -38,16 +39,16 @@ const DecisionLogicPage = () => {
               We can&rsquo;t see (and don&rsquo;t store) your login or password.
             </span>
           </Alert>
-          <img
-            src="https://placekitten.com/686/700"
-            alt=""
+          <Illustration
             sx={{
-              maxWidth: '100%',
-              height: 'auto',
-              mx: 'auto',
+              height: 350,
               mb: 3,
             }}
-          />
+          >
+            <p sx={{ variant: 'type.subtitle', fontWeight: 'bold' }}>
+              Decision Logic
+            </p>
+          </Illustration>
 
           <p
             sx={{

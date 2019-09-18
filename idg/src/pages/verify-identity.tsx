@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
-import { Button, TextField } from 'c-components'
+import { Button, TextField, Icon } from 'c-components'
 import Link from '../components/link'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
@@ -32,14 +32,7 @@ const VerifyIdentityPage = () => {
               mb: 3,
             }}
           >
-            <img
-              src="https://placekitten.com/16/16"
-              alt="Security lock"
-              sx={{
-                display: 'inline-block',
-                mr: 1,
-              }}
-            />
+            <Icon name="lock" alt="" width={16} height={16} sx={{ mr: 1 }} />
             Your information is encrypted and held securely according to{' '}
             <Link to="/privacy-policy" sx={{ variant: 'links.default' }}>
               our privacy policy

@@ -307,7 +307,7 @@ export const Icon = forwardRef<IconRef, IconProps>(
           width={width}
           height={height}
           viewBox={viewBox}
-          focusable="no"
+          focusable="false"
           role="img"
           aria-hidden={alt ? 'false' : 'true'}
           {...rest}

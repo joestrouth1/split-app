@@ -5,6 +5,7 @@ import { Link, navigate } from 'gatsby'
 import { useState, useRef, FormEventHandler } from 'react'
 import { TextField, Button, Alert, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../../components/layouts'
+import { Illustration } from '../../components/illustration'
 import { SEO } from '../../components/seo'
 
 /**
@@ -62,11 +63,18 @@ const AccountDetailsPage = () => {
               or enter your numbers below:
             </p>
           </header>
-          <img
-            src="https://placekitten.com/686/364"
-            alt="Diagram of a check, showing routing, account, and check numbers in the bottom left"
-            sx={{ mb: 4, maxWidth: '100%' }}
-          />
+
+          <Illustration
+            sx={{
+              height: 182,
+              maxWidth: '100%',
+              mb: 4,
+            }}
+          >
+            <p sx={{ variant: 'type.subtitle', fontWeight: 'bold' }}>
+              Check diagram, showing routing/account numbers
+            </p>
+          </Illustration>
           <form
             onSubmit={handleSubmit}
             ref={formRef}

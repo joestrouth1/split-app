@@ -3,6 +3,7 @@ import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
 import { Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../../components/layouts'
+import { Illustration } from '../../components/illustration'
 import { SEO } from '../../components/seo'
 
 /**
@@ -22,16 +23,16 @@ const SecureAccountPage = () => {
         </Container>
 
         <Container sx={{ p: 0, maxWidth: theme => theme.breakpoints[0] }}>
-          <img
-            src="https://placekitten.com/g/1372/800"
-            alt=""
+          <Illustration
             sx={{
+              height: 250,
               maxWidth: '100%',
-              display: 'block',
-              height: 'auto',
-              mx: 'auto',
             }}
-          />
+          >
+            <p sx={{ variant: 'type.subtitle', fontWeight: 'bold' }}>
+              Security illustration
+            </p>
+          </Illustration>
         </Container>
 
         <Container
