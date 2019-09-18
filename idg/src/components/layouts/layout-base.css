@@ -1,2 +1,23 @@
 @import '~typeface-open-sans';
 @import '~normalize.css';
+
+.react-modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-modal__content {
+  margin: 16px;
+  background-color: transparent;
+  max-height: calc(100vh - 32px);
+  max-width: calc(100vw - 32px);
+  position: relative;
+}

@@ -1,4 +1,9 @@
+/**@jsx jsx */
 import { createContext, ReactNode, Dispatch } from 'react'
+import { jsx } from 'theme-ui'
+
+import { ModalContent } from '../components/modal'
+
 interface ModalState {
   content: ReactNode
   isOpen: boolean
@@ -14,7 +19,10 @@ interface ModalAction {
 const modalReducer = (state: ModalState, action: ModalAction) => {
   switch (action.type) {
     case 'SET_CONTENT':
-      return { ...state, content: action.payload }
+      return {
+        ...state,
+        content: <ModalContent>{action.payload}</ModalContent>,
+      }
     case 'OPEN':
       return { ...state, isOpen: true }
     case 'CLOSE':

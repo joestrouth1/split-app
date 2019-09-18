@@ -8,6 +8,7 @@
 import { ReactNode, useReducer } from 'react'
 import { jsx, ThemeProvider, Layout, Footer, Styled } from 'theme-ui'
 import { useStaticQuery, graphql, Link } from 'gatsby'
+import ReactModal from 'react-modal'
 import { defaultTheme } from 'c-components'
 import { Header } from '../header'
 import './layout-base.css'
@@ -16,6 +17,8 @@ import {
   modalReducer,
   initialModalState,
 } from '../../contexts/modal'
+
+ReactModal.setAppElement('#___gatsby')
 
 const allPagesQuery = graphql`
   query {
@@ -38,16 +41,6 @@ export interface PureDefaultLayoutProps {
   data: AllPagesQueryResult
 }
 
-const ModalTestComponent = () => (
-  <ModalContext.Consumer>
-    {dispatchModalAction => (
-      <button onClick={() => dispatchModalAction({ type: 'TOGGLE' })}>
-        Toggle Modal
-      </button>
-    )}
-  </ModalContext.Consumer>
-)
-
 export const PureDefaultLayout = ({
   children,
   data,
@@ -62,8 +55,6 @@ export const PureDefaultLayout = ({
       <ModalContext.Provider value={modalDispatch}>
         <Styled.root>
           <Layout sx={{ bg: 'grays.0' }}>
-            {modalState.isOpen && <div>I am a modal.</div>}
-            <ModalTestComponent />
             <Header>
               <ul
                 sx={{
@@ -108,6 +99,17 @@ export const PureDefaultLayout = ({
             >
               © {new Date().getFullYear()}
             </Footer>
+            <ReactModal
+              isOpen={modalState.isOpen}
+              shouldCloseOnOverlayClick={true}
+              shouldCloseOnEsc={true}
+              shouldReturnFocusAfterClose={true}
+              onRequestClose={() => modalDispatch({ type: 'CLOSE' })}
+              className="react-modal__content"
+              overlayClassName="react-modal__overlay"
+            >
+              {modalState.content}
+            </ReactModal>
           </Layout>
         </Styled.root>
       </ModalContext.Provider>
