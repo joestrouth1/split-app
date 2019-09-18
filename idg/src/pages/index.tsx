@@ -6,6 +6,7 @@ import {
   useCallback,
   FormEventHandler,
   useRef,
+  useLayoutEffect,
 } from 'react'
 import { navigate } from 'gatsby'
 import { TextField, Link, Button, Icon } from 'c-components'
@@ -56,9 +57,10 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
   )
 
   const formRef = useRef<HTMLFormElement>(null)
-  const isValid = formRef.current && formRef.current.checkValidity()
-
-  /* TODO: Add validation and disabled checks */
+  const [isValid, setIsValid] = useState<boolean>(false)
+  useEffect(() => {
+    setIsValid((formRef.current && formRef.current.checkValidity()) || false)
+  }, [formRef.current, user])
 
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()

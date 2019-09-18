@@ -29,13 +29,6 @@ interface ResidentialInfoPageProps {
 
 /** Where applicants tell us their home address. */
 function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
-  const formRef = useRef<HTMLFormElement>(null)
-  const handleSubmit: FormEventHandler = e => {
-    e.preventDefault()
-    navigate('/secure-account')
-  }
-  const isValid = formRef.current && formRef.current.checkValidity()
-
   // web storage is undefined during prerender
   const initialAddress: Address | (() => Address) =
     typeof window === 'undefined'
@@ -78,7 +71,6 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
             }, {})
           return sanitizedAddress
         }
-
   const [address, replaceAddress] = useState<Address>(initialAddress)
   function setField<T extends keyof Address>(fieldName: T) {
     return (e: ChangeEvent<HTMLInputElement>) =>
@@ -87,6 +79,16 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   useEffect(() => {
     sessionStorage.address = JSON.stringify(address)
   }, [address])
+
+  const formRef = useRef<HTMLFormElement>(null)
+  const [isValid, setIsValid] = useState<boolean>(false)
+  useEffect(() => {
+    setIsValid((formRef.current && formRef.current.checkValidity()) || false)
+  }, [formRef.current, address])
+  const handleSubmit: FormEventHandler = e => {
+    e.preventDefault()
+    navigate('/secure-account')
+  }
 
   return (
     <Layout>
