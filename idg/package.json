@@ -1,7 +1,7 @@
 {
   "name": "idg",
   "description": "Gatsby with all the fixins",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Joe Strouth <joestrouth1@gmail.com>",
   "dependencies": {
     "c-components": "*",
