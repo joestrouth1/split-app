@@ -59,7 +59,7 @@ const CheckRatesPage = () => {
               <span>This won&rsquo;t impact your credit score.</span>
             </Alert>
             {/* TODO: replace this link with the proper destination */}
-            <Link sx={{ variant: 'buttons.primary', mb: 4 }} to="/">
+            <Link sx={{ variant: 'buttons.primary', mb: 4 }} to="/prequalified">
               View my options
             </Link>
             <p sx={{ variant: 'type.disclaimer' }}>

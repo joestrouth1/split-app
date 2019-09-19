@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
-import { Button } from 'c-components'
+import { Link } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { Illustration } from '../components/illustration'
 import { SEO } from '../components/seo'
@@ -76,9 +76,12 @@ const PrequalifiedPage = () => {
             Next up, you&rsquo;ll need your bank details. Ready?
           </p>
 
-          <Button variant="primary" sx={{ mt: 3 }}>
+          <Link
+            sx={{ variant: 'buttons.primary', mt: 3 }}
+            to="/verify-identity"
+          >
             Let&rsquo;s go
-          </Button>
+          </Link>
         </Container>
       </Main>
     </Layout>

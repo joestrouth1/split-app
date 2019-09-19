@@ -2,23 +2,41 @@
 import { jsx, Container, Main, Flex } from 'theme-ui'
 import { Link, navigate } from 'gatsby'
 // TODO: add form ref, check validity to Form
-import { useState, useRef, FormEventHandler } from 'react'
+import { useState, useEffect, useRef, FormEventHandler } from 'react'
 import { TextField, Button, Alert, Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { Illustration } from '../../components/illustration'
 import { SEO } from '../../components/seo'
 
+interface LocationWithAccountState extends Location {
+  state?: {
+    account?: string
+    routing?: string
+  }
+}
+
+interface AccountDetailsPageProps {
+  location: LocationWithAccountState
+}
+
 /**
  * Where applicants manulaly enter their bank acct. info or scan a check
  */
-const AccountDetailsPage = () => {
-  const [routingNumber, setRoutingNumber] = useState<string>('')
-  const [accountNumber, setAccountNumber] = useState<string>('')
+const AccountDetailsPage = (props: AccountDetailsPageProps) => {
+  let account, routing
+  if (props.location.state) {
+    account = props.location.state.account
+    routing = props.location.state.routing
+  }
+  const [routingNumber, setRoutingNumber] = useState<string>(routing || '')
+  const [accountNumber, setAccountNumber] = useState<string>(account || '')
   const [serverRejected, setServerRejected] = useState(false)
 
   const formRef = useRef<HTMLFormElement>(null)
-
-  const isValid = formRef.current && formRef.current.checkValidity()
+  const [isValid, setIsValid] = useState<boolean>(false)
+  useEffect(() => {
+    setIsValid((formRef.current && formRef.current.checkValidity()) || false)
+  }, [accountNumber, routingNumber, formRef.current])
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
