@@ -1,8 +1,8 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
-import { Checkbox } from 'c-components'
+import { Button, Checkbox } from 'c-components'
 import { useRef, FormEventHandler } from 'react'
-import { Link } from 'gatsby'
+import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 
@@ -15,6 +15,7 @@ const DisclosuresPage = () => {
     /* TODO: Add validation and submit navigation */
     e.preventDefault()
     console.log(e.target, 'form submitted')
+    navigate('/scoring')
   }
 
   return (
@@ -63,9 +64,9 @@ const DisclosuresPage = () => {
               application terms outlined in the Consumer Credit Inquiry and
               Reporting Agreement.
             </Checkbox>
-            <Link sx={{ variant: 'buttons.primary' }} to="/scoring">
+            <Button variant="primary" type="submit">
               Next
-            </Link>
+            </Button>
           </form>
         </Container>
       </Main>
