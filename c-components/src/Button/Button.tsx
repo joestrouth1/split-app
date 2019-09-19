@@ -29,8 +29,4 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
   }
 )
 
-Button.defaultProps = {
-  variant: 'primary',
-}
-
 Button.displayName = 'Button'

@@ -51,7 +51,7 @@ export const PureDefaultLayout = ({
   )
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={{ ...defaultTheme, useCustomProperties: false }}>
       <ModalContext.Provider value={modalDispatch}>
         <Styled.root>
           <Layout sx={{ bg: 'grays.0' }}>

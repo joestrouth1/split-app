@@ -31,12 +31,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `idg`,
+        name: `Application`,
         /* eslint-disable @typescript-eslint/camelcase */
         short_name: `Ideal`,
         start_url: `/`,
-        background_color: `#fffafa`,
-        theme_color: `#ae0011`,
+        background_color: `#f8f8f9`,
+        theme_color: `#0a7e76`,
         /* eslint-enable @typescript-eslint/camelcase */
         display: `minimal-ui`,
         icon: `src/images/illustration_leaf.svg`, // This path is relative to the root of the site.
@@ -61,7 +61,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://application-demo.joes.house`,
+        siteUrl: `https://application.demo.joes.house`,
         stripQueryString: true,
       },
     },
