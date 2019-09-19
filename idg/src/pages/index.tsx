@@ -7,7 +7,7 @@ import {
   FormEventHandler,
   useRef,
 } from 'react'
-import { navigate, Link } from 'gatsby'
+import { navigate } from 'gatsby'
 import { TextField, Button, Icon } from 'c-components'
 import PrivacyPolicyModal from './privacy-policy/modal'
 import { ModalContext } from '../contexts/modal'
@@ -154,7 +154,7 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
                       />
                       <span>
                         We take your privacy seriously.{' '}
-                        <Link
+                        <Button
                           onClick={e => {
                             e.preventDefault()
                             dispatch({
@@ -163,11 +163,10 @@ const PersonalInfoPage = ({ location }: PersonalInfoPageProps) => {
                             })
                             dispatch({ type: 'OPEN' })
                           }}
-                          to=""
-                          sx={{ variant: 'links.default' }}
+                          variant="link"
                         >
                           Our policy
-                        </Link>
+                        </Button>
                       </span>
                     </div>
                   }

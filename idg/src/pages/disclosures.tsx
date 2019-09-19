@@ -45,20 +45,20 @@ const DisclosuresPage = () => {
               flexFlow: 'column nowrap',
             }}
           >
-            <Checkbox>
+            <Checkbox required>
               By checking this box, I agree to the terms and conditions set out
               in the Consent to Electronic Disclosure and Communication.
               Agreement
             </Checkbox>
-            <Checkbox>
+            <Checkbox required>
               By checking this box, I agree to the terms of the Privacy Policy.
             </Checkbox>
-            <Checkbox>
+            <Checkbox required>
               By checking this box, I acknowledge that I have read, understand
               and agree to the terms and conditions of the Agreements for
               Resolving Disputes which includes a binding arbitration agreement.
             </Checkbox>
-            <Checkbox sx={{ my: 3 }}>
+            <Checkbox sx={{ my: 3 }} required>
               By checking this box, I authorize{' '}
               <span sx={{ fontFamily: 'monospace' }}>brand</span> to the
               application terms outlined in the Consumer Credit Inquiry and
