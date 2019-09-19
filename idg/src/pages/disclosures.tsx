@@ -2,6 +2,7 @@
 import { jsx, Container, Main } from 'theme-ui'
 import { Button } from 'c-components'
 import { useRef, FormEventHandler } from 'react'
+import { Checkbox } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 
@@ -43,7 +44,25 @@ const DisclosuresPage = () => {
               flexFlow: 'column nowrap',
             }}
           >
-            <p>TODO: add checkboxes</p>
+            <Checkbox>
+              By checking this box, I agree to the terms and conditions set out
+              in the Consent to Electronic Disclosure and Communication.
+              Agreement
+            </Checkbox>
+            <Checkbox>
+              By checking this box, I agree to the terms of the Privacy Policy.
+            </Checkbox>
+            <Checkbox>
+              By checking this box, I acknowledge that I have read, understand
+              and agree to the terms and conditions of the Agreements for
+              Resolving Disputes which includes a binding arbitration agreement.
+            </Checkbox>
+            <Checkbox sx={{ my: 3 }}>
+              By checking this box, I authorize{' '}
+              <span sx={{ fontFamily: 'monospace' }}>brand</span> to the
+              application terms outlined in the Consumer Credit Inquiry and
+              Reporting Agreement.
+            </Checkbox>
             <Button variant="primary">Next</Button>
           </form>
         </Container>
