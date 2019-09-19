@@ -1,6 +1,7 @@
 /**@jsx jsx */
-import { jsx, Container, Main } from 'theme-ui'
+import { jsx, Container, Main, Flex } from 'theme-ui'
 import { Button, TextField, Icon } from 'c-components'
+import { useState, useEffect, useRef } from 'react'
 import { navigate } from 'gatsby'
 import Link from '../components/link'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -13,6 +14,15 @@ import { FormEventHandler } from 'react'
  * Where applicants give us their SSN and DOB.
  */
 const VerifyIdentityPage = () => {
+  const formRef = useRef<HTMLFormElement>(null)
+  const [social, setSocial] = useState<string>('')
+  const [dateOfBirth, setDateOfBirth] = useState<Date>(new Date())
+  const formattedDateOfBirth = dateOfBirth.toISOString().substring(0, 10)
+  const [isValid, setIsValid] = useState(false)
+  useEffect(() => {
+    setIsValid((formRef.current && formRef.current.checkValidity()) || false)
+  }, [social, dateOfBirth, formRef.current])
+
   /* TODO: add isValid check, button wrapper to reportValidity, conditionally disable button */
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
@@ -73,23 +83,46 @@ const VerifyIdentityPage = () => {
               <form
                 sx={{ display: 'flex', flexFlow: 'column nowrap' }}
                 onSubmit={handleSubmit}
+                ref={formRef}
               >
                 <TextField
                   label="Social Security Number"
                   type="text"
+                  name="ssn"
                   hint="123-45-6789"
                   pattern="[0-9-]*"
                   sx={{ mb: 3 }}
+                  value={social}
+                  onChange={e => setSocial(e.currentTarget.value)}
                   required
                 />
                 <TextField
                   label="Date of birth"
+                  name="dob"
                   type="date"
                   sx={{ mb: 3 }}
+                  value={formattedDateOfBirth}
+                  onChange={e =>
+                    setDateOfBirth(new Date(e.currentTarget.value))
+                  }
                   required
                 />
-
-                <Button variant="primary">Next</Button>
+                <Flex
+                  onClick={() =>
+                    !isValid &&
+                    formRef.current &&
+                    formRef.current.reportValidity()
+                  }
+                >
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    disabled={!isValid}
+                    sx={{ flex: 1 }}
+                  >
+                    Next
+                  </Button>
+                </Flex>
               </form>
             </Container>
           </Main>
