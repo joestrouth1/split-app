@@ -1,8 +1,8 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
-import { Button } from 'c-components'
-import { useRef, FormEventHandler } from 'react'
 import { Checkbox } from 'c-components'
+import { useRef, FormEventHandler } from 'react'
+import { Link } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 
@@ -63,7 +63,9 @@ const DisclosuresPage = () => {
               application terms outlined in the Consumer Credit Inquiry and
               Reporting Agreement.
             </Checkbox>
-            <Button variant="primary">Next</Button>
+            <Link sx={{ variant: 'buttons.primary' }} to="/scoring">
+              Next
+            </Link>
           </form>
         </Container>
       </Main>
