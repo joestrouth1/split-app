@@ -2,6 +2,7 @@
 import { jsx, Container, Main } from 'theme-ui'
 import { TextField, Button } from 'c-components'
 import { useRef, FormEventHandler } from 'react'
+import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { Illustration } from '../components/illustration'
 import { SEO } from '../components/seo'
@@ -15,6 +16,7 @@ const CurrentIncomePage = () => {
     /* TODO: Add validation and form submit navigation */
     e.preventDefault()
     console.log('submitted')
+    navigate('/check-rates')
   }
 
   return (
