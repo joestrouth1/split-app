@@ -1,8 +1,8 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
-import { Button } from 'c-components'
+import { Button, Checkbox } from 'c-components'
 import { useRef, FormEventHandler } from 'react'
-import { Checkbox } from 'c-components'
+import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 
@@ -15,6 +15,7 @@ const DisclosuresPage = () => {
     /* TODO: Add validation and submit navigation */
     e.preventDefault()
     console.log(e.target, 'form submitted')
+    navigate('/scoring')
   }
 
   return (
