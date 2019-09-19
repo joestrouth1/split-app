@@ -3,6 +3,7 @@ export const links = {
     lineHeight: 'inherit',
     fontSize: 'inherit',
     color: 'inherit',
+    textDecoration: 'underline',
     '&:focus': {
       outline: 'none',
       boxShadow: 'outline',

@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
 import { useState, FormEventHandler } from 'react'
-import { navigate } from 'gatsby'
+import { navigate, Link } from 'gatsby'
 import { Icon, TextField, Button, Alert } from 'c-components'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { SEO } from '../../components/seo'
@@ -32,16 +32,13 @@ const SecureAccountConfirmationPage = () => {
           sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
         >
           <header>
-            <h1 sx={{ variant: 'type.title', mb: 3 }}>Secure your account</h1>
-            <p sx={{ variant: 'type.subtitle', mb: 3 }}>
-              We just sent you an authentication code.
-            </p>
+            <h1 sx={{ variant: 'type.title', mb: 3 }}>Confirm your code</h1>
           </header>
           <p sx={{ variant: 'type.body', mb: 3 }}>
             Please check your messages and enter it below. It may take a few
             minutes to arrive.
           </p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} sx={{ mb: 3 }}>
             <Flex sx={{ flexFlow: 'column nowrap' }}>
               <TextField
                 name="confirmation-code"
@@ -83,6 +80,23 @@ const SecureAccountConfirmationPage = () => {
               </Button>
             </Flex>
           </form>
+
+          <p sx={{ variant: 'type.body' }}>
+            Having trouble?{' '}
+            <button
+              onClick={e => {
+                e.preventDefault()
+              }}
+              sx={{ variant: 'buttons.link' }}
+            >
+              Request another code
+            </button>{' '}
+            or{' '}
+            <Link to="/contact-us" sx={{ variant: 'links.default' }}>
+              contact us
+            </Link>
+            .
+          </p>
         </Container>
       </Main>
     </Layout>

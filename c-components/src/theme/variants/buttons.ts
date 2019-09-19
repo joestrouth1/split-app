@@ -1,4 +1,5 @@
 import { gradients } from '../gradients'
+import { links } from './links'
 
 const base = {
   appearance: 'none',
@@ -82,5 +83,13 @@ export const buttons = {
       backgroundColor: 'primary',
       color: 'white',
     },
+  },
+  link: {
+    ...base,
+    backgroundColor: 'transparent',
+    fontWeight: 'inherit',
+    ...links.default,
+    p: 0,
+    m: 0,
   },
 }

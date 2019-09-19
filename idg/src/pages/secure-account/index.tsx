@@ -39,19 +39,11 @@ const SecureAccountPage = () => {
           sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
         >
           <p sx={{ variant: 'type.body' }}>
-            To keep your account extra safe, we recommend two-factor
-            authentication.
+            To keep your account safe, we need to verify your contact
+            information.
           </p>
 
-          <p sx={{ variant: 'type.body' }}>
-            If someone tries to access your account, we&rsquo;ll send you a
-            notification with a secret code. You&rsquo;ll need to enter it to
-            log in.
-          </p>
-
-          <p sx={{ variant: 'type.body', my: 3 }}>
-            How would you like to be notified?
-          </p>
+          <p sx={{ variant: 'type.body', my: 3 }}>How should we reach you?</p>
 
           <div sx={{ display: 'flex', flexFlow: 'row nowrap' }}>
             <Link

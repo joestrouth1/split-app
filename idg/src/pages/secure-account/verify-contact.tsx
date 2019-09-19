@@ -11,6 +11,19 @@ interface SecureAccountVerificationPageProps {
   location: Location
 }
 
+function maskEmail(email: string): string {
+  const [address, host] = email.split('@')
+  const [firstLetter, secondLetter, ...rest] = address.split('')
+  const placeholders = '*'.repeat(rest.length)
+  return `${firstLetter}${secondLetter}${placeholders}@${host}`
+}
+
+function maskPhone(phone: string): string {
+  const digits = phone.split('')
+  const lastFour = digits.splice(digits.length - 4)
+  return `***-***-${lastFour.join('')}`
+}
+
 /**
  * Where customers confirm their contact info for 2FA.
  */
@@ -60,6 +73,7 @@ const SecureAccountVerificationPage = ({
       setCurrentContact(savedContact)
     }
   }, [useExisting, savedContact])
+  const maskingFunction = method === 'sms' ? maskPhone : maskEmail
 
   return (
     <Layout>
@@ -69,10 +83,9 @@ const SecureAccountVerificationPage = ({
           sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
         >
           <header>
-            <h1 sx={{ variant: 'type.title', mb: 3 }}>Secure your account</h1>
-            <p sx={{ variant: 'type.subtitle', mb: 3 }}>
+            <h1 sx={{ variant: 'type.title', mb: 3 }}>
               Where should we contact you?
-            </p>
+            </h1>
           </header>
           <Flex sx={{ flexFlow: 'column nowrap', mb: 3 }}>
             {savedContact && (
@@ -102,7 +115,7 @@ const SecureAccountVerificationPage = ({
                     fontWeight: useExisting ? 'bold' : 'body',
                   }}
                 >
-                  {savedContact}
+                  {maskingFunction(savedContact)}
                 </span>
               </button>
             )}

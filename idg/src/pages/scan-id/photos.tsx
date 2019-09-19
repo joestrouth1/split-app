@@ -48,7 +48,7 @@ const ScanIdPhotosPage = () => {
           >
             <Icon name="camera" alt="Camera" width={48} height={48} />
             <span sx={{ variant: 'type.subtitle', color: 'grays.7' }}>
-              Add photo
+              Add front photo
             </span>
           </div>
           <div sx={{ mb: 3 }}>

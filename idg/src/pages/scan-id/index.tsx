@@ -14,19 +14,15 @@ const ScanIdPage = () => {
           sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
         >
           <header>
-            <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan your ID card</h1>
+            <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan your ID</h1>
             <p sx={{ variant: 'type.subtitle', mb: 3 }}>
-              Save time and secure your account by uploading a picture of your
-              ID.
+              We&rsquo;ll use your card to fill out some of the application and
+              to protect against fraud.
             </p>
           </header>
-          <p sx={{ variant: 'type.body', mb: 3 }}>
-            We&rsquo;ll use your card to fill out some of the application for
-            you, as well as to protect against fraud.
-          </p>
 
           <p sx={{ variant: 'type.body', mb: 3 }}>
-            What type of ID card do you have?
+            What type of ID do you have?
           </p>
 
           <div>
