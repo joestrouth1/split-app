@@ -11,8 +11,8 @@ export const LinkAccount = () => {
       <header>
         <h1 sx={{ variant: 'type.title', mb: 3 }}>Link your bank account</h1>
         <p sx={{ variant: 'type.subtitle', mb: 3 }}>
-          Accepting a loan from us means we'll send your money to your bank
-          account.
+          Accepting a loan from us means we&rsquo;ll send your money to your
+          bank account.
         </p>
       </header>
 

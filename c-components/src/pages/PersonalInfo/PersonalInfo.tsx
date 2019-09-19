@@ -5,7 +5,7 @@ import { TextField } from '../../TextField'
 import { Link } from '../../Link'
 import { Button } from '../../Button'
 
-type User = {
+interface User {
   /** First name */
   first?: string
   /** Middle initial */
@@ -46,7 +46,7 @@ export const PersonalInfo = (props: PersonalInfoProps) => {
   return (
     <main sx={{ px: 3, py: 4 }}>
       <h1 sx={{ variant: 'type.title', mb: 4 }}>
-        Let's get to know each other
+        Let&rsquo;s get to know each other
       </h1>
 
       <Flex

@@ -12,7 +12,7 @@ export const CurrentIncome = () => {
     <main>
       <header sx={{ px: 3, pt: 4 }}>
         <h1 sx={{ variant: 'type.title', mb: 4 }}>
-          What's your current income?
+          What&rsquo;s your current income?
         </h1>
       </header>
       <img

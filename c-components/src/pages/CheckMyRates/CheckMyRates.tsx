@@ -30,7 +30,7 @@ export const CheckMyRates = () => {
             mb: 3,
           }}
         >
-          Let's see if you qualify.
+          Let&rsquo;s see if you qualify.
         </p>
         {/* TODO: Alert with icon and positive/negative variants */}
         <p
@@ -43,7 +43,8 @@ export const CheckMyRates = () => {
             mb: 3,
           }}
         >
-          TODO: alert/toast: "This won't impact your credit score.
+          TODO: alert/toast: &ldquo;This won&rsquo;t impact your credit
+          score.&rdquo;
         </p>
         <Button variant="primary">View my offer</Button>
       </Flex>

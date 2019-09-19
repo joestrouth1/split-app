@@ -4,7 +4,7 @@ import { useState, useRef, FormEventHandler, ChangeEvent } from 'react'
 import { Button } from '../../Button'
 import { TextField } from '../../TextField'
 
-type Address = {
+interface Address {
   address1?: string
   address2?: string
   city?: string
@@ -57,8 +57,8 @@ export function ResidentialInfo(props: ResidentialInfoProps) {
           flexFlow: 'column nowrap',
         }}
         data-testid="residential-info-form"
-        ref={(ref: any) => {
-          formRef.current = ref
+        ref={(ref: unknown) => {
+          formRef.current = ref as HTMLFormElement
         }}
       >
         <TextField

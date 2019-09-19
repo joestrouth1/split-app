@@ -57,3 +57,5 @@ export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
     )
   }
 )
+
+Checkbox.displayName = 'Checkbox'

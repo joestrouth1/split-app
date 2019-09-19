@@ -2,16 +2,16 @@ import '@testing-library/jest-dom/extend-expect'
 // console.log(Object.keys(expect))
 const consoleError = console.error
 
-let consoleErrorLog: any[] = []
+let consoleErrorLog: unknown[] = []
 
 beforeEach(() => {
   consoleErrorLog = []
   // Make sure we aren't triggering React console.error calls
-  console.error = (...args: any[]) => {
+  console.error = (...args: unknown[]) => {
     // NOTE: We can't throw in here directly as most console.error calls happen
     // inside promises and result in an unhandled promise rejection
     consoleErrorLog.push(`console.error called with args: ${args}`)
-    consoleError.apply(console, args as any)
+    consoleError.apply(console, args as unknown)
   }
 })
 

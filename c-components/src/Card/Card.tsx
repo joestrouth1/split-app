@@ -31,3 +31,5 @@ export const Card = forwardRef<CardRef, CardProps>(
     )
   }
 )
+
+Card.displayName = 'Card'

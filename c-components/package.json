@@ -11,10 +11,10 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --env=jsdom",
-    "lint": "tsdx lint",
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
     "styleguide": "cross-env BABEL_ENV=styleguide styleguidist server",
     "styleguide:build": "cross-env BABEL_ENV=styleguide styleguidist build",
-    "precommit": "yarn lint src test --fix && pretty-quick --staged"
+    "precommit": "yarn lint --fix && pretty-quick --staged"
   },
   "peerDependencies": {
     "react": ">=16"

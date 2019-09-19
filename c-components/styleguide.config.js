@@ -104,7 +104,7 @@ module.exports = {
   propsParser: require('react-docgen-typescript').withCustomConfig(
     './tsconfig.json',
     {
-      propFilter: (props, component) => {
+      propFilter: props => {
         if (props.parent) {
           return !props.parent.fileName.includes('node_modules')
         }

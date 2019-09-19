@@ -16,8 +16,8 @@ export const ScanId = () => {
         </p>
       </header>
       <p sx={{ variant: 'type.body' }}>
-        We'll use your card to fill out some of the application for you, as well
-        as to protect against fraud.
+        We&rsquo;ll use your card to fill out some of the application for you,
+        as well as to protect against fraud.
       </p>
 
       <p sx={{ variant: 'type.body' }}>What type of ID card do you have?</p>
@@ -27,7 +27,7 @@ export const ScanId = () => {
       </form>
 
       <p sx={{ variant: 'type.body' }}>
-        Don't have an ID card? You can{' '}
+        Don&rsquo;t have an ID card? You can{' '}
         <Link href="">enter your information manually.</Link>
       </p>
     </main>

@@ -319,3 +319,5 @@ export const Icon = forwardRef<IconRef, IconProps>(
     )
   }
 )
+
+Icon.displayName = 'Icon'

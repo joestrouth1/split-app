@@ -28,8 +28,9 @@ export const SecureAccount = () => {
         </p>
 
         <p sx={{ variant: 'type.body' }}>
-          Whenever someone tries to access your account, we'll send you a
-          notification with a secret code. You'll need to enter it to log in.
+          Whenever someone tries to access your account, we&rsquo;ll send you a
+          notification with a secret code. You&rsquo;ll need to enter it to log
+          in.
         </p>
 
         <p sx={{ variant: 'type.body' }}>How would you like to be notified?</p>

@@ -76,3 +76,5 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
     )
   }
 )
+
+TextField.displayName = 'TextField'

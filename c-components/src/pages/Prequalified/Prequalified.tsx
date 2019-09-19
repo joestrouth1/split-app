@@ -12,7 +12,7 @@ export const Prequalified = () => {
       <header sx={{ px: 3, pt: 4 }}>
         <h1 sx={{ variant: 'type.title', mb: 3 }}>Nice!</h1>
         <p sx={{ variant: 'type.subtitle', mb: 4 }}>
-          You're pre-qualified for up to:
+          You&rsquo;re pre-qualified for up to:
         </p>
       </header>
       <img
@@ -33,10 +33,10 @@ export const Prequalified = () => {
             mb: 3,
           }}
         >
-          Next up, you'll need your bank details. Ready?
+          Next up, you&rsquo;ll need your bank details. Ready?
         </p>
 
-        <Button variant="primary">Let's go</Button>
+        <Button variant="primary">Let&rsquo;s go</Button>
       </Flex>
     </Flex>
   )

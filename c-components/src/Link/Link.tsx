@@ -31,3 +31,5 @@ export const Link = forwardRef<LinkRef, LinkProps>(
     )
   }
 )
+
+Link.displayName = 'Link'
