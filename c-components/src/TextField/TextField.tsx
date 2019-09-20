@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Box } from 'theme-ui'
-import { InputHTMLAttributes, forwardRef, ReactNode } from 'react'
+import { InputHTMLAttributes, forwardRef, useMemo, ReactNode } from 'react'
 import { uuid } from '../utils/uuid'
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -25,7 +25,13 @@ export type TextFieldRef = HTMLInputElement
  * Wrapper for HTML's `input` element.
  */
 export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
-  ({ name = uuid(), label, hint, className, ...props }, ref) => {
+  ({ name: nameProp, label, hint, className, ...props }, ref) => {
+    // only generate a UUID name if name is not passed.
+    // Memoize it so it doesn't generate a new one each render
+    const name = useMemo(() => {
+      if (nameProp) return nameProp
+      return uuid()
+    }, [nameProp])
     return (
       <Box className={className}>
         <label

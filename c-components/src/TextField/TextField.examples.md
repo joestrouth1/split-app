@@ -14,7 +14,7 @@ With string hint:
   name="ssn"
   hint="123-45-6789"
   type="text"
-  value="486-12-7592"
+  defaultValue="486-12-7592"
   sx={{ width: '100%' }}
 />
 ```
