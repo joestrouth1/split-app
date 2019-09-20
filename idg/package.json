@@ -64,7 +64,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
+    "lint": "eslint --ignore-path .gitignore --ext ts --ext tsx --ext js --ext jsx .",
     "lint:fix": "yarn lint --fix",
     "start": "npm run develop",
     "serve": "gatsby serve",

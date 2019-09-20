@@ -20,15 +20,10 @@ const ScanIdPhotosPage = () => {
           }}
         >
           <header>
-            <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan your ID card</h1>
-            <p sx={{ variant: 'type.subtitle', mb: 3 }}>
-              Save time and secure your account by uploading a picture of your
-              ID.
-            </p>
+            <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan your ID</h1>
           </header>
           <p sx={{ variant: 'type.body', mb: 3 }}>
-            Please choose clear photos that show all four corners, front and
-            back.
+            Please take clear photos that show all four corners, front and back.
           </p>
 
           {/* TODO: add dropzone / tap to add photo */}

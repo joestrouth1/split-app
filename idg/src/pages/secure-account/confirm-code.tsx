@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
 import { useState, FormEventHandler } from 'react'
-import { navigate, Link } from 'gatsby'
+import { navigate } from 'gatsby'
 import { Icon, TextField, Button, Alert } from 'c-components'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { SEO } from '../../components/seo'
@@ -62,8 +62,8 @@ const SecureAccountConfirmationPage = () => {
                       sx={{ mr: 2 }}
                     />
                     <span>
-                      Sorry, that code didn&rsquo;t work. Verify your code and
-                      try again.
+                      Sorry, that code didn’t work. Verify your code and try
+                      again.
                     </span>
                   </Alert>
                   {failedAttempts >= 3 && failedAttempts < 8 && (
@@ -90,11 +90,7 @@ const SecureAccountConfirmationPage = () => {
               sx={{ variant: 'buttons.link' }}
             >
               Request another code
-            </button>{' '}
-            or{' '}
-            <Link to="/contact-us" sx={{ variant: 'links.default' }}>
-              contact us
-            </Link>
+            </button>
             .
           </p>
         </Container>

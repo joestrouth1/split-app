@@ -14,7 +14,8 @@ interface SecureAccountVerificationPageProps {
 function maskEmail(email: string): string {
   const [address, host] = email.split('@')
   const [firstLetter, secondLetter, ...rest] = address.split('')
-  const placeholders = '*'.repeat(rest.length)
+  const placeholderLength = Math.max(rest.length, 5)
+  const placeholders = '*'.repeat(placeholderLength)
   return `${firstLetter}${secondLetter}${placeholders}@${host}`
 }
 
@@ -48,6 +49,9 @@ const SecureAccountVerificationPage = ({
     }
     return method
   })
+
+  const methodText = method === 'sms' ? 'Text' : 'Email'
+
   const [savedContact] = useState<string>(() => {
     if (typeof window === 'undefined') return ''
     if (method === 'email') {
@@ -162,7 +166,7 @@ const SecureAccountVerificationPage = ({
               to="/secure-account/confirm-code"
               sx={{ variant: 'buttons.primary' }}
             >
-              Send my code
+              {methodText} my code
             </Link>
           </Flex>
         </Container>

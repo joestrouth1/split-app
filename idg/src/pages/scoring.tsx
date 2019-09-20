@@ -31,7 +31,9 @@ const ScoringPage = () => {
           }}
         >
           <header>
-            <h1 sx={{ variant: 'type.title', mb: 4 }}>Working on it...</h1>
+            <h1 sx={{ variant: 'type.title', mb: 4 }}>
+              We’re creating the best loan option for you.
+            </h1>
           </header>
           <Illustration
             sx={{
@@ -44,16 +46,13 @@ const ScoringPage = () => {
               Illustration
             </p>
           </Illustration>
-          <p sx={{ variant: 'type.subtitle', mb: 3 }}>
-            We’re creating the best loan option for you.
-          </p>
 
           <p sx={{ variant: 'type.body' }}>
             This might take a couple of minutes but we’ll be quick—please don’t
             close or refresh the page! How’s the application going?
           </p>
           <p sx={{ variant: 'type.body', my: 3 }}>
-            How&rsquo;s the application going?
+            How’s the application going?
           </p>
           <form
             ref={formRef}

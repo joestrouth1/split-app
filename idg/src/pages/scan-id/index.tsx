@@ -16,8 +16,8 @@ const ScanIdPage = () => {
           <header>
             <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan your ID</h1>
             <p sx={{ variant: 'type.subtitle', mb: 3 }}>
-              We&rsquo;ll use your card to fill out some of the application and
-              to protect against fraud.
+              We’ll use your card to fill out some of the application and to
+              protect against fraud.
             </p>
           </header>
 
@@ -46,7 +46,7 @@ const ScanIdPage = () => {
                 }}
               >
                 <Icon name="car" alt="" fill="primary" />
-                <span>Drivers License</span>
+                <span>Driver’s License</span>
               </Link>
 
               <Link
@@ -86,12 +86,11 @@ const ScanIdPage = () => {
           </div>
 
           <p sx={{ variant: 'type.body', mt: 3 }}>
-            Don&rsquo;t have an ID card? You can{' '}
             <Link
               to="/residential-information"
               sx={{ variant: 'links.default' }}
             >
-              enter your information manually.
+              Enter your information manually.
             </Link>
           </p>
         </Container>
