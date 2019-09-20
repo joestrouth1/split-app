@@ -152,6 +152,7 @@ const SecureAccountVerificationPage = ({
             {!useExisting && (
               <TextField
                 label={method === 'sms' ? 'Contact phone' : 'Contact email'}
+                name="2fa-contact"
                 value={currentContact}
                 sx={{ mb: 3 }}
                 onChange={e => setCurrentContact(e.currentTarget.value)}
