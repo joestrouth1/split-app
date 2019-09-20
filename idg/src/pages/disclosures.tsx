@@ -1,7 +1,7 @@
 /**@jsx jsx */
-import { jsx, Container, Main } from 'theme-ui'
+import { jsx, Container, Main, Flex } from 'theme-ui'
 import { Button, Checkbox } from 'c-components'
-import { useRef, FormEventHandler } from 'react'
+import { useState, useEffect, useRef, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
@@ -11,12 +11,39 @@ import { SEO } from '../components/seo'
  */
 const DisclosuresPage = () => {
   const formRef = useRef<HTMLFormElement>(null)
-  const handleSubmit: FormEventHandler = e => {
+  const [edcaConsent, setEdcaConsent] = useState<boolean>(false)
+  const [privacyPolicyConsent, setPrivacyPolicyConsent] = useState<boolean>(
+    false
+  )
+  const [arbitrationConsent, setArbitrationConsent] = useState<boolean>(false)
+  const [creditInquiryConsent, setCreditInquiryConsent] = useState<boolean>(
+    false
+  )
+  const [tcpaConsent, setTcpaConsent] = useState<boolean>(false)
+  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     /* TODO: Add validation and submit navigation */
     e.preventDefault()
-    console.log(e.target, 'form submitted')
+    console.log('form submitted. Consented to: ', {
+      edcaConsent,
+      privacyPolicyConsent,
+      arbitrationConsent,
+      creditInquiryConsent,
+      tcpaConsent,
+    })
     navigate('/scoring')
   }
+
+  const [isValid, setIsValid] = useState<boolean>(false)
+  useEffect(() => {
+    setIsValid((formRef.current && formRef.current.checkValidity()) || false)
+  }, [
+    formRef.current,
+    edcaConsent,
+    privacyPolicyConsent,
+    arbitrationConsent,
+    creditInquiryConsent,
+    tcpaConsent,
+  ])
 
   return (
     <Layout>
@@ -45,28 +72,65 @@ const DisclosuresPage = () => {
               flexFlow: 'column nowrap',
             }}
           >
-            <Checkbox required>
+            <Checkbox
+              required
+              name="edcaConsent"
+              onChange={() => setEdcaConsent(!edcaConsent)}
+            >
               By checking this box, I agree to the terms and conditions set out
-              in the Consent to Electronic Disclosure and Communication.
+              in the Consent to Electronic Disclosure and Communication
               Agreement
             </Checkbox>
-            <Checkbox required>
+            <Checkbox
+              required
+              name="privacyPolicyConsent"
+              onChange={() => setPrivacyPolicyConsent(!privacyPolicyConsent)}
+            >
               By checking this box, I agree to the terms of the Privacy Policy.
             </Checkbox>
-            <Checkbox required>
+            <Checkbox
+              required
+              name="arbitrationConsent"
+              onChange={() => setArbitrationConsent(!arbitrationConsent)}
+            >
               By checking this box, I acknowledge that I have read, understand
               and agree to the terms and conditions of the Agreements for
               Resolving Disputes which includes a binding arbitration agreement.
             </Checkbox>
-            <Checkbox sx={{ my: 3 }} required>
+            <Checkbox
+              required
+              name="creditInquiryConsent"
+              onChange={() => setCreditInquiryConsent(!creditInquiryConsent)}
+            >
               By checking this box, I authorize{' '}
               <span sx={{ fontFamily: 'monospace' }}>brand</span> to the
               application terms outlined in the Consumer Credit Inquiry and
               Reporting Agreement.
             </Checkbox>
-            <Button variant="primary" type="submit">
-              Next
-            </Button>
+            <Checkbox
+              sx={{ my: 3 }}
+              name="tcpaConsent"
+              checked={tcpaConsent}
+              onChange={() => setTcpaConsent(!tcpaConsent)}
+            >
+              By checking this box, I authorize{' '}
+              <span sx={{ fontFamily: 'monospace' }}>brand</span> to contact me
+              via automated phone calls and/or text messages (optional).
+            </Checkbox>
+            <Flex
+              onClick={() =>
+                !isValid && formRef.current && formRef.current.reportValidity()
+              }
+            >
+              <Button
+                disabled={!isValid}
+                variant="primary"
+                type="submit"
+                sx={{ flex: 1 }}
+              >
+                Next
+              </Button>
+            </Flex>
           </form>
         </Container>
       </Main>

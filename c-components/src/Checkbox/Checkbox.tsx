@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Flex } from 'theme-ui'
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, InputHTMLAttributes, ReactNode, useMemo } from 'react'
 import { uuid } from '../utils/uuid'
 
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -18,7 +18,14 @@ interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
 export type CheckboxRef = HTMLInputElement
 
 export const Checkbox = forwardRef<CheckboxRef, CheckboxProps>(
-  ({ children, name = uuid(), className, ...props }, ref) => {
+  ({ children, name: nameProp, className, ...props }, ref) => {
+    // only generate a UUID name if name is not passed.
+    // Memoize it so it doesn't generate a new one each render
+    const name = useMemo(() => {
+      if (nameProp) return nameProp
+      return uuid()
+    }, [nameProp])
+
     return (
       <Flex
         className={className}
