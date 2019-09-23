@@ -58,7 +58,7 @@ const CurrentIncomePage = () => {
             <TextField
               label="Individual annual income"
               required
-              hint="The total amount you make per year before taxes. Include tips, bonuses, and any other income you'd like to be considered for this loan"
+              hint="The total amount you make per year before taxes. Include tips, bonuses, and any other income you&rsquo;d like to be considered for this loan."
               name="income"
               sx={{ mb: 3 }}
             />

@@ -16,7 +16,7 @@ const ScanIdPage = () => {
           <header>
             <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan your ID</h1>
             <p sx={{ variant: 'type.subtitle', mb: 3 }}>
-              We’ll use your card to fill out some of the application and to
+              We’ll use your ID to fill out some of the application and to
               protect against fraud.
             </p>
           </header>

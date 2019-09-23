@@ -1,16 +1,17 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
 import { Button, Checkbox } from 'c-components'
-import { useState, useEffect, useRef, FormEventHandler } from 'react'
+import { useEffect, useRef, useState, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
+// TODO: add links to each policy that open in modals
+import { ModalContext } from '../contexts/modal'
 
 /**
  * Where applicants accept our policies.
  */
 const DisclosuresPage = () => {
-  const formRef = useRef<HTMLFormElement>(null)
   const [edcaConsent, setEdcaConsent] = useState<boolean>(false)
   const [privacyPolicyConsent, setPrivacyPolicyConsent] = useState<boolean>(
     false
@@ -20,6 +21,18 @@ const DisclosuresPage = () => {
     false
   )
   const [tcpaConsent, setTcpaConsent] = useState<boolean>(false)
+  const formRef = useRef<HTMLFormElement>(null)
+  const [isValid, setIsValid] = useState<boolean>(false)
+  useEffect(() => {
+    setIsValid((formRef.current && formRef.current.checkValidity()) || false)
+  }, [
+    formRef.current,
+    edcaConsent,
+    privacyPolicyConsent,
+    arbitrationConsent,
+    creditInquiryConsent,
+    tcpaConsent,
+  ])
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     /* TODO: Add validation and submit navigation */
     e.preventDefault()
@@ -32,18 +45,6 @@ const DisclosuresPage = () => {
     })
     navigate('/scoring')
   }
-
-  const [isValid, setIsValid] = useState<boolean>(false)
-  useEffect(() => {
-    setIsValid((formRef.current && formRef.current.checkValidity()) || false)
-  }, [
-    formRef.current,
-    edcaConsent,
-    privacyPolicyConsent,
-    arbitrationConsent,
-    creditInquiryConsent,
-    tcpaConsent,
-  ])
 
   return (
     <Layout>
