@@ -57,8 +57,9 @@ const CurrentIncomePage = () => {
             {/* TODO: Income field variant with preceding $ icon and active state */}
             <TextField
               label="Individual annual income"
-              name="income"
+              required
               hint="The total amount you make per year before taxes. Include tips, bonuses, and any other income you'd like to be considered for this loan"
+              name="income"
               sx={{ mb: 3 }}
             />
 

@@ -36,7 +36,6 @@ const ScoringPage = () => {
   const handleFeedback = (
     rating: Rating
   ): MouseEventHandler<HTMLButtonElement> => (): void => {
-    /* TODO: Add feedback, thank you, and submit navigation */
     console.log(`User rated the application: ${rating}`)
     setFeedback(rating)
   }

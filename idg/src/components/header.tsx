@@ -17,7 +17,7 @@ export const Header = ({ children, ...props }: HeaderProps) => (
         }}
       >
         <Wordmark
-          alt="company name"
+          alt="Company name"
           width={124.8}
           sx={{ py: [2] }}
           fill="greens.7"

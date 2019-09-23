@@ -4,7 +4,7 @@ import { Icon } from 'c-components'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { SEO } from '../../components/seo'
 import { Link } from 'gatsby'
-/* TODO: Add check scan page */
+
 const ScanCheckPage = () => (
   <Layout>
     <SEO title="Scan a check" />

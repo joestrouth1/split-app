@@ -7,7 +7,7 @@
 /**@jsx jsx */
 import { ReactNode, useReducer } from 'react'
 import { jsx, ThemeProvider, Layout, Footer, Styled } from 'theme-ui'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
 import ReactModal from 'react-modal'
 import { defaultTheme } from 'c-components'
 import { Header } from '../header'
@@ -18,33 +18,16 @@ import {
   initialModalState,
 } from '../../contexts/modal'
 
-ReactModal.setAppElement('#___gatsby')
-
-const allPagesQuery = graphql`
-  query {
-    allPages: allSitePage {
-      nodes {
-        path
-      }
-    }
-  }
-`
-
-interface AllPagesQueryResult {
-  allPages: {
-    nodes: { path: string }[]
-  }
+// This element won't exist when rendering isolated components during testing
+if (process.env.NODE_ENV !== 'test') {
+  ReactModal.setAppElement('#___gatsby')
 }
 
-export interface PureDefaultLayoutProps {
+export interface DefaultLayoutProps {
   children: ReactNode
-  data: AllPagesQueryResult
 }
 
-export const PureDefaultLayout = ({
-  children,
-  data,
-}: PureDefaultLayoutProps) => {
+export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   const [modalState, modalDispatch] = useReducer(
     modalReducer,
     initialModalState
@@ -70,19 +53,15 @@ export const PureDefaultLayout = ({
                   },
                 }}
               >
-                {data.allPages.nodes.map(({ path }) => {
-                  return (
-                    <li key={path}>
-                      <Link
-                        to={path}
-                        sx={{ variant: 'links.default' }}
-                        activeClassName="active"
-                      >
-                        {path}
-                      </Link>
-                    </li>
-                  )
-                })}
+                <li>
+                  <Link
+                    to="/"
+                    sx={{ variant: 'links.default' }}
+                    activeClassName="active"
+                  >
+                    {'Table of Contents'}
+                  </Link>
+                </li>
               </ul>
             </Header>
             {children}
@@ -115,12 +94,4 @@ export const PureDefaultLayout = ({
       </ModalContext.Provider>
     </ThemeProvider>
   )
-}
-
-type DefaultLayoutProps = Omit<PureDefaultLayoutProps, 'data'>
-
-export const DefaultLayout = (props: DefaultLayoutProps) => {
-  const data: AllPagesQueryResult = useStaticQuery(allPagesQuery)
-
-  return <PureDefaultLayout {...props} data={data} />
 }
