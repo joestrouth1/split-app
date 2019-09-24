@@ -58,8 +58,8 @@ module.exports = {
         '**/styleguide/Wrapper.tsx',
         '**/styleguide/ColorPalettes.tsx',
       ],
-      exampleMode: 'expand', // 'hide' | 'collapse' | 'expand'
-      usageMode: 'expand', // 'hide' | 'collapse' | 'expand'
+      exampleMode: 'collapse', // 'hide' | 'collapse' | 'expand'
+      usageMode: 'collapse', // 'hide' | 'collapse' | 'expand'
     },
   ],
   moduleAliases: {

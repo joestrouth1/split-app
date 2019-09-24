@@ -1,3 +1,5 @@
+You probably want `TextField` instead, unless you're building something very custom.
+
 ```jsx
-<PasswordField label="Password" hint="Letters and numbers only" />
+<PasswordField />
 ```
