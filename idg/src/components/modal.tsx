@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, Styled } from 'theme-ui'
 import { ReactNode, useContext, Fragment } from 'react'
-import { Icon } from 'c-components'
+import { Icon, Button } from 'c-components'
 import { ModalContext } from '../contexts/modal'
 
 interface ModalContentProps {
@@ -13,12 +13,13 @@ const ModalContent = ({ children }: ModalContentProps) => {
 
   return (
     <Fragment>
-      <Icon
-        sx={{ position: 'absolute', top: 16, right: 16 }}
-        name="times"
-        alt="Close modal"
+      <Button
+        variant="link"
         onClick={() => dispatch({ type: 'CLOSE' })}
-      />
+        sx={{ position: 'absolute', top: 16, right: 16 }}
+      >
+        <Icon name="times" alt="Close modal" />
+      </Button>
       <Styled.root sx={{ maxHeight: '100%', overflow: 'auto' }}>
         {children}
       </Styled.root>

@@ -86,8 +86,10 @@ export const buttons = {
   },
   link: {
     ...base,
+    textAlign: 'inherit',
     backgroundColor: 'transparent',
     fontWeight: 'inherit',
+    letterSpacing: 'inherit',
     ...links.default,
     p: 0,
     m: 0,

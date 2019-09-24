@@ -1,12 +1,56 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
-import { Button, Checkbox } from 'c-components'
-import { useEffect, useRef, useState, FormEventHandler } from 'react'
+import {
+  useEffect,
+  useRef,
+  useState,
+  useContext,
+  FormEventHandler,
+  ReactNode,
+} from 'react'
 import { navigate } from 'gatsby'
-import { DefaultLayout as Layout } from '../components/layouts'
-import { SEO } from '../components/seo'
-// TODO: add links to each policy that open in modals
-import { ModalContext } from '../contexts/modal'
+import { Button, Checkbox } from 'c-components'
+import { DefaultLayout as Layout } from '../../components/layouts'
+import { SEO } from '../../components/seo'
+import { ModalContext } from '../../contexts/modal'
+import { CreditInquiryModal } from './credit-inquiry'
+import { DisputeResolutionModal } from './dispute-resolution'
+import { EdcaModal } from './edca'
+import { PrivacyPolicyModal } from './privacy-policy'
+import { TcpaModal } from './tcpa'
+
+interface ModalLinkProps {
+  modalContent: ReactNode
+  children: ReactNode
+}
+/* eslint-disable jsx-a11y/anchor-is-valid */
+const ModalLink = ({ modalContent, children }: ModalLinkProps) => {
+  const dispatch = useContext(ModalContext)
+  const openModal = (content: ReactNode) => {
+    dispatch({ type: 'SET_CONTENT', payload: content })
+    dispatch({ type: 'OPEN' })
+  }
+  return (
+    <a
+      role="button"
+      sx={{ variant: 'links.default' }}
+      tabIndex={0}
+      onKeyDown={e => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault()
+          openModal(modalContent)
+        }
+      }}
+      onClick={e => {
+        e.preventDefault()
+        openModal(modalContent)
+      }}
+    >
+      {children}
+    </a>
+  )
+}
+/* eslint-enable jsx-a11y/anchor-is-valid */
 
 /**
  * Where applicants accept our policies.
@@ -16,11 +60,14 @@ const DisclosuresPage = () => {
   const [privacyPolicyConsent, setPrivacyPolicyConsent] = useState<boolean>(
     false
   )
-  const [arbitrationConsent, setArbitrationConsent] = useState<boolean>(false)
+  const [disputeResolutionConsent, setDisputeResolutionConsent] = useState<
+    boolean
+  >(false)
   const [creditInquiryConsent, setCreditInquiryConsent] = useState<boolean>(
     false
   )
   const [tcpaConsent, setTcpaConsent] = useState<boolean>(false)
+
   const formRef = useRef<HTMLFormElement>(null)
   const [isValid, setIsValid] = useState<boolean>(false)
   useEffect(() => {
@@ -29,7 +76,7 @@ const DisclosuresPage = () => {
     formRef.current,
     edcaConsent,
     privacyPolicyConsent,
-    arbitrationConsent,
+    disputeResolutionConsent,
     creditInquiryConsent,
     tcpaConsent,
   ])
@@ -39,7 +86,7 @@ const DisclosuresPage = () => {
     console.log('form submitted. Consented to: ', {
       edcaConsent,
       privacyPolicyConsent,
-      arbitrationConsent,
+      disputeResolutionConsent,
       creditInquiryConsent,
       tcpaConsent,
     })
@@ -79,34 +126,45 @@ const DisclosuresPage = () => {
               onChange={() => setEdcaConsent(!edcaConsent)}
             >
               By checking this box, I agree to the terms and conditions set out
-              in the Consent to Electronic Disclosure and Communication
-              Agreement
+              in the{' '}
+              <ModalLink modalContent={<EdcaModal />}>
+                Consent to Electronic Disclosure and Communication Agreement.
+              </ModalLink>
             </Checkbox>
             <Checkbox
               required
               name="privacyPolicyConsent"
               onChange={() => setPrivacyPolicyConsent(!privacyPolicyConsent)}
             >
-              By checking this box, I agree to the terms of the Privacy Policy.
+              By checking this box, I agree to the terms of the{' '}
+              <ModalLink modalContent={<PrivacyPolicyModal />}>
+                Privacy Policy.
+              </ModalLink>
             </Checkbox>
             <Checkbox
               required
-              name="arbitrationConsent"
-              onChange={() => setArbitrationConsent(!arbitrationConsent)}
+              name="disputeResolutionConsent"
+              onChange={() =>
+                setDisputeResolutionConsent(!disputeResolutionConsent)
+              }
             >
               By checking this box, I acknowledge that I have read, understand
-              and agree to the terms and conditions of the Agreements for
-              Resolving Disputes which includes a binding arbitration agreement.
+              and agree to the terms and conditions of the{' '}
+              <ModalLink modalContent={<DisputeResolutionModal />}>
+                Agreements for Resolving Disputes
+              </ModalLink>{' '}
+              which includes a binding arbitration agreement.
             </Checkbox>
             <Checkbox
               required
               name="creditInquiryConsent"
               onChange={() => setCreditInquiryConsent(!creditInquiryConsent)}
             >
-              By checking this box, I authorize{' '}
-              <span sx={{ fontFamily: 'monospace' }}>brand</span> to the
-              application terms outlined in the Consumer Credit Inquiry and
-              Reporting Agreement.
+              By checking this box, I authorize Brand to the application terms
+              outlined in the{' '}
+              <ModalLink modalContent={<CreditInquiryModal />}>
+                Consumer Credit Inquiry and Reporting Agreement.
+              </ModalLink>
             </Checkbox>
             <Checkbox
               sx={{ my: 3 }}
@@ -114,9 +172,12 @@ const DisclosuresPage = () => {
               checked={tcpaConsent}
               onChange={() => setTcpaConsent(!tcpaConsent)}
             >
-              By checking this box, I authorize{' '}
-              <span sx={{ fontFamily: 'monospace' }}>brand</span> to contact me
-              via automated phone calls and/or text messages (optional).
+              By checking this box, I authorize Brand to contact me via
+              automated phone calls and/or text messages in accordance with the{' '}
+              <ModalLink modalContent={<TcpaModal />}>
+                Telecommunications Policy
+              </ModalLink>{' '}
+              (optional).
             </Checkbox>
             <Flex
               onClick={() =>
