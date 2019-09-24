@@ -6,11 +6,14 @@ let consoleErrorLog: unknown[] = []
 beforeEach(() => {
   consoleErrorLog = []
   // Make sure we aren't triggering React console.error calls
-  console.error = (...args) => {
+  // eslint-disable-next-line
+  console.error = (message?: any, ...args: any[]) => {
     // NOTE: We can't throw in here directly as most console.error calls happen
     // inside promises and result in an unhandled promise rejection
-    consoleErrorLog.push(`console.error called with args: ${args}`)
-    consoleError.apply(console, args)
+    consoleErrorLog.push(
+      `console.error called with args: ${[message, ...args]}`
+    )
+    consoleError.apply(console, [message, ...args])
   }
 })
 

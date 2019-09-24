@@ -49,3 +49,43 @@ const Hint = (
   sx={{ width: '100%' }}
 />
 ```
+
+Automatically wrapping `PasswordField` if `type="password"`:
+
+```jsx
+<TextField
+  label="Password"
+  name="password"
+  type="password"
+  sx={{ width: '100%' }}
+  show={false}
+  hint="mAkE iT sEcUrE"
+/>
+```
+
+```jsx
+import { useState, useEffect, useRef } from 'react'
+// toggles `show` every second
+function PasswordExample() {
+  const timer = useRef()
+  const [isOpen, setIsOpen] = useState(false)
+  useEffect(() => {
+    timer.current = window.setInterval(() => {
+      setIsOpen(isOpen => !isOpen)
+    }, 1000)
+    return () => window.clearInterval(timer.current)
+  }, [])
+
+  return (
+    <TextField
+      label="Password"
+      name="password"
+      type="password"
+      sx={{ width: '100%' }}
+      show={isOpen}
+      hint="mAkE iT sEcUrE"
+    />
+  )
+}
+;<PasswordExample />
+```

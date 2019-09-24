@@ -6,6 +6,6 @@ describe('Current income assessment page', () => {
   it('Renders', () => {
     const { getByText } = render(<CurrentIncome />)
 
-    expect(getByText(`What's your current income?`)).toBeVisible()
+    expect(getByText(`What’s your current income?`)).toBeVisible()
   })
 })
