@@ -2,7 +2,7 @@
 
 `TextField` accepts all the attributes of an HTML input. Most of them are forwarded to the input.
 
-Styles applied using the `sx` prop will be applied to the component as a whole.
+CSS classes will be applied to the component as a whole.
 
 ### Examples
 
@@ -58,34 +58,6 @@ Automatically wrapping `PasswordField` if `type="password"`:
   name="password"
   type="password"
   sx={{ width: '100%' }}
-  show={false}
   hint="mAkE iT sEcUrE"
 />
-```
-
-```jsx
-import { useState, useEffect, useRef } from 'react'
-// toggles `show` every second
-function PasswordExample() {
-  const timer = useRef()
-  const [isOpen, setIsOpen] = useState(false)
-  useEffect(() => {
-    timer.current = window.setInterval(() => {
-      setIsOpen(isOpen => !isOpen)
-    }, 1000)
-    return () => window.clearInterval(timer.current)
-  }, [])
-
-  return (
-    <TextField
-      label="Password"
-      name="password"
-      type="password"
-      sx={{ width: '100%' }}
-      show={isOpen}
-      hint="mAkE iT sEcUrE"
-    />
-  )
-}
-;<PasswordExample />
 ```

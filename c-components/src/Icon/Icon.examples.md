@@ -12,6 +12,7 @@ All icons:
     <Icon alt="Text message or comments" name="comments" />
     <Icon alt="Enlarge, expand" name="expand" />
     <Icon alt="Reveal password, view" name="eye" />
+    <Icon alt="Hide password" name="eye-slash" />
     <Icon alt="Mail or email" name="envelope" />
     <Icon alt="Negative review/feedback" name="frown" />
     <Icon alt="Goverment ID card" name="id" />

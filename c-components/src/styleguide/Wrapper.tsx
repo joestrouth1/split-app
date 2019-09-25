@@ -4,6 +4,7 @@ import { Component } from 'react'
 import { ThemeProvider } from 'theme-ui'
 import { defaultTheme } from '../theme'
 import 'typeface-open-sans'
+import 'normalize.css'
 
 function SpacedStack(props: React.HTMLAttributes<HTMLDivElement>) {
   return (

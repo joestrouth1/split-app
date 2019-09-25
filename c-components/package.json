@@ -17,6 +17,7 @@
     "precommit": "yarn lint --fix && pretty-quick --staged"
   },
   "peerDependencies": {
+    "normalize.css": "^8.0.1",
     "react": ">=16"
   },
   "prettier": {

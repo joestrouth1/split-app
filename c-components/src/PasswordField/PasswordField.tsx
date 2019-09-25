@@ -115,6 +115,7 @@ export const PasswordField = forwardRef<PasswordFieldRef, PasswordFieldProps>(
         type="text"
         value={show ? unmasked : value}
         onChange={onChange}
+        autoComplete="new-password"
       />
     )
   }

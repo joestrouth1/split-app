@@ -30,6 +30,7 @@ const base = {
 }
 
 export const buttons = {
+  base,
   nav: {
     ...base,
     backgroundColor: 'grays.9',
