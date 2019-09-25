@@ -8,15 +8,13 @@ import { DefaultLayout as Layout } from '../../components/layouts'
 import { Illustration } from '../../components/illustration'
 import { SEO } from '../../components/seo'
 
-interface LocationWithAccountState extends Location {
-  state?: {
-    account?: string
-    routing?: string
-  }
-}
-
 interface AccountDetailsPageProps {
-  location: LocationWithAccountState
+  location: {
+    state?: {
+      account?: string
+      routing?: string
+    }
+  }
 }
 
 /**
@@ -30,6 +28,7 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
   }
   const [routingNumber, setRoutingNumber] = useState<string>(routing || '')
   const [accountNumber, setAccountNumber] = useState<string>(account || '')
+  // This isn't being used right now, will be used to display alert in case of bad request
   const [serverRejected, setServerRejected] = useState(false)
 
   const formRef = useRef<HTMLFormElement>(null)
@@ -40,18 +39,18 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
-    const serverResponse = confirm(
-      `Asking you, the server, is this OK?\n${JSON.stringify(
-        { isValid, routingNumber, accountNumber },
-        null,
-        2
-      )}`
-    )
-    if (serverResponse) {
-      navigate('/disclosures')
-    } else {
-      setServerRejected(true)
-    }
+    // const serverResponse = confirm(
+    //   `Asking you, the server, is this OK?\n${JSON.stringify(
+    //     { isValid, routingNumber, accountNumber },
+    //     null,
+    //     2
+    //   )}`
+    // )
+    // if (serverResponse) {
+    navigate('/disclosures')
+    // } else {
+    //   setServerRejected(true)
+    // }
   }
 
   return (
@@ -97,6 +96,7 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
             onSubmit={handleSubmit}
             ref={formRef}
             sx={{ display: 'flex', flexFlow: 'column nowrap' }}
+            data-testid="enter-details-form"
           >
             <TextField
               label="Routing number"
