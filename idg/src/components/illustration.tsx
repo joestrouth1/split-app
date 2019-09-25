@@ -1,7 +1,20 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
-import { forwardRef, ReactNode } from 'react'
+import { forwardRef, ReactNode, HTMLAttributes } from 'react'
+
+interface IllustrationProps extends HTMLAttributes<HTMLDivElement> {
+  /** Content to overlay on the image for now */
+  children?: ReactNode
+}
+
+type PureIllustrationProps = IllustrationProps & { data: ImageQueryResult }
+
+interface ImageQueryResult {
+  file: {
+    publicURL: string
+  }
+}
 
 const imageQuery = graphql`
   query {
@@ -11,17 +24,19 @@ const imageQuery = graphql`
   }
 `
 
-interface ImageQueryResult {
-  file: {
-    publicURL: string
-  }
-}
-
 export type IllustrationRef = HTMLDivElement
 
-export const Illustration = forwardRef<
+export const Illustration = forwardRef<IllustrationRef, IllustrationProps>(
+  (props, ref) => {
+    const data: ImageQueryResult = useStaticQuery(imageQuery)
+
+    return <PureIllustration {...props} data={data} ref={ref} />
+  }
+)
+
+export const PureIllustration = forwardRef<
   IllustrationRef,
-  { children?: ReactNode }
+  PureIllustrationProps
 >(
   (
     {
@@ -70,3 +85,4 @@ export const Illustration = forwardRef<
 )
 
 Illustration.displayName = 'Illustration'
+PureIllustration.displayName = 'PureIllustration'

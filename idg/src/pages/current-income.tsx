@@ -1,7 +1,7 @@
 /**@jsx jsx */
-import { jsx, Container, Main } from 'theme-ui'
+import { jsx, Container, Main, Flex } from 'theme-ui'
 import { TextField, Button } from 'c-components'
-import { useRef, FormEventHandler } from 'react'
+import { useRef, useState, useEffect, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { Illustration } from '../components/illustration'
@@ -13,11 +13,16 @@ import { SEO } from '../components/seo'
 const CurrentIncomePage = () => {
   const formRef = useRef<HTMLFormElement>(null)
   const handleSubmit: FormEventHandler = e => {
-    /* TODO: Add validation and form submit navigation */
     e.preventDefault()
-    console.log('submitted')
     navigate('/check-rates')
   }
+
+  const [income, setIncome] = useState<string>('')
+
+  const [isValid, setIsValid] = useState<boolean>(false)
+  useEffect(() => {
+    setIsValid((formRef.current && formRef.current.checkValidity()) || false)
+  }, [formRef.current, income])
 
   return (
     <Layout>
@@ -53,17 +58,34 @@ const CurrentIncomePage = () => {
             sx={{ display: 'flex', flexFlow: 'column nowrap' }}
             ref={formRef}
             onSubmit={handleSubmit}
+            data-testid="current-income-form"
           >
             {/* TODO: Income field variant with preceding $ icon and active state */}
+
             <TextField
               label="Individual annual income"
               required
               hint="The total amount you make per year before taxes. Include tips, bonuses, and any other income you&rsquo;d like to be considered for this loan."
               name="income"
+              value={income}
+              onChange={e => setIncome(e.target.value)}
               sx={{ mb: 3 }}
             />
 
-            <Button variant="primary">Next</Button>
+            <Flex
+              onClick={() =>
+                !isValid && formRef.current && formRef.current.reportValidity()
+              }
+            >
+              <Button
+                disabled={!isValid}
+                variant="primary"
+                type="submit"
+                sx={{ flex: 1 }}
+              >
+                Next
+              </Button>
+            </Flex>
           </form>
         </Container>
       </Main>

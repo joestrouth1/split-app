@@ -21,3 +21,9 @@
   max-width: calc(100vw - 32px);
   position: relative;
 }
+
+@media (min-width: 768px) {
+  .react-modal__content {
+    max-width: 746px;
+  }
+}

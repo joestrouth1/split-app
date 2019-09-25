@@ -1,56 +1,16 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
-import {
-  useEffect,
-  useRef,
-  useState,
-  useContext,
-  FormEventHandler,
-  ReactNode,
-} from 'react'
+import { useEffect, useRef, useState, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { Button, Checkbox } from 'c-components'
 import { DefaultLayout as Layout } from '../../components/layouts'
+import { ModalLink } from '../../components/modal-link'
 import { SEO } from '../../components/seo'
-import { ModalContext } from '../../contexts/modal'
 import { CreditInquiryModal } from './credit-inquiry'
 import { DisputeResolutionModal } from './dispute-resolution'
 import { EdcaModal } from './edca'
 import { PrivacyPolicyModal } from './privacy-policy'
 import { TcpaModal } from './tcpa'
-
-interface ModalLinkProps {
-  modalContent: ReactNode
-  children: ReactNode
-}
-/* eslint-disable jsx-a11y/anchor-is-valid */
-const ModalLink = ({ modalContent, children }: ModalLinkProps) => {
-  const dispatch = useContext(ModalContext)
-  const openModal = (content: ReactNode) => {
-    dispatch({ type: 'SET_CONTENT', payload: content })
-    dispatch({ type: 'OPEN' })
-  }
-  return (
-    <a
-      role="button"
-      sx={{ variant: 'links.default' }}
-      tabIndex={0}
-      onKeyDown={e => {
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault()
-          openModal(modalContent)
-        }
-      }}
-      onClick={e => {
-        e.preventDefault()
-        openModal(modalContent)
-      }}
-    >
-      {children}
-    </a>
-  )
-}
-/* eslint-enable jsx-a11y/anchor-is-valid */
 
 /**
  * Where applicants accept our policies.
@@ -81,15 +41,7 @@ const DisclosuresPage = () => {
     tcpaConsent,
   ])
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
-    /* TODO: Add validation and submit navigation */
     e.preventDefault()
-    console.log('form submitted. Consented to: ', {
-      edcaConsent,
-      privacyPolicyConsent,
-      disputeResolutionConsent,
-      creditInquiryConsent,
-      tcpaConsent,
-    })
     navigate('/scoring')
   }
 
@@ -119,6 +71,7 @@ const DisclosuresPage = () => {
               display: 'flex',
               flexFlow: 'column nowrap',
             }}
+            data-testid="disclosures-form"
           >
             <Checkbox
               required

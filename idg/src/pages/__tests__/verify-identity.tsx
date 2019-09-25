@@ -8,6 +8,7 @@ describe('Verify ID page', () => {
     const page = <VerifyIdentityPage />
 
     const { getByLabelText } = render(page)
+    expect(getByLabelText('Date of birth')).toBeVisible()
     expect(getByLabelText('Social Security Number')).toBeVisible()
   })
 })
