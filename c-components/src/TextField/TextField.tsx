@@ -133,7 +133,10 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
               }}
               onClick={
                 props.onIconClick ||
-                (() => isPassword && setShowPassword(val => !val))
+                (e => {
+                  e.preventDefault()
+                  isPassword && setShowPassword(val => !val)
+                })
               }
               ref={iconRef}
             >
