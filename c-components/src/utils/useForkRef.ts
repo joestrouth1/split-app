@@ -7,6 +7,7 @@ import { useCallback } from 'react'
 
 type MutableRef<T> =
   | ((instance: T | null) => void)
+  | ((instance: T) => void)
   | { current: T | null }
   | null
 
@@ -19,7 +20,7 @@ export function setRef<T>(ref: MutableRef<T>, value: T) {
   }
 }
 
-export function useForkRef<T>(
+export function useForkRef<T extends HTMLElement>(
   refA: MutableRef<T> | null,
   refB: MutableRef<T> | null
 ) {
