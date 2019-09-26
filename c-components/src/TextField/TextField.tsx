@@ -14,7 +14,7 @@ import { PasswordField } from '../PasswordField'
 import { Icon } from '../Icon'
 import { uuid } from '../utils/uuid'
 
-interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * Informative label to display above the input
    */

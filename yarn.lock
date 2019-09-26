@@ -759,6 +759,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.3.1":
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.6.2.tgz#c3d6e41b304ef10dcf13777a33e7694ec4a9a6dd"
+  integrity sha512-EXxN64agfUqqIGeEjI5dL5z0Sw0ZwWo1mLTi4mQowCZ42O59b7DRpZAnTC6OqdF28wMBMFKNb/4uFGrVaigSpg==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.1.0", "@babel/template@^7.4.0", "@babel/template@^7.4.4", "@babel/template@^7.6.0":
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.6.0.tgz#7f0159c7f5012230dad64cca42ec9bdb5c9536e6"
@@ -1716,13 +1723,6 @@
   version "3.8.3"
   resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.8.3.tgz#e7fb1ab42203d7344d33ec04c99e99bfeab4d34f"
   integrity sha512-UBSa21GApA6Jly7ll9OQnZmEDttEJ8joy2TrfIEdf5bK6Sr8VTb3zHX0sPx7FTFDFdM9NpG4X0s5Dd2OXVTRhg==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-text-mask@^5.4.6":
-  version "5.4.6"
-  resolved "https://registry.yarnpkg.com/@types/react-text-mask/-/react-text-mask-5.4.6.tgz#3a81e9de472beb939038e78cb16d737ae94ba14a"
-  integrity sha512-0KkER9oXZY/v1x8aoMTHwANlWnKT5tnmV7Zz+g81gBvcHRtcIHotcpY4KgWRwx0T5JMcsYmEh7wGOz0lwdONew==
   dependencies:
     "@types/react" "*"
 
@@ -12852,7 +12852,7 @@ prompts@^2.0.1, prompts@^2.2.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -13367,13 +13367,6 @@ react-styleguidist@^9.1.16:
     unist-util-visit "^1.4.0"
     webpack-dev-server "^3.2.1"
     webpack-merge "^4.2.1"
-
-react-text-mask@^5.4.3:
-  version "5.4.3"
-  resolved "https://registry.yarnpkg.com/react-text-mask/-/react-text-mask-5.4.3.tgz#991efb4299e30c2e6c2c46d13f617169463e0d2d"
-  integrity sha1-mR77QpnjDC5sLEbRP2FxaUY+DS0=
-  dependencies:
-    prop-types "^15.5.6"
 
 react@^16.9.0:
   version "16.9.0"
@@ -13967,6 +13960,13 @@ rgba-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/rgba-regex/-/rgba-regex-1.0.0.tgz#43374e2e2ca0968b0ef1523460b7d730ff22eeb3"
   integrity sha1-QzdOLiyglosO8VI0YLfXMP8i7rM=
+
+rifm@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/rifm/-/rifm-0.9.1.tgz#d3f7f07c5587fad64f0a0440e0dc5e6094964cc0"
+  integrity sha512-vUDdDw6MMOIyNdnzfXFBl6eWJX+HKd05vdWy6bRRCVoB2TTNlomJSDwl7aIJ5afJhAntKAPNtKf3bx3TGjHSUA==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
 
 rimraf@2.6.3:
   version "2.6.3"
