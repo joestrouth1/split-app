@@ -35,6 +35,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'off', // disabled because auto-fixing can break code
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
+    'no-duplicate-imports': 'error',
   },
   overrides: [
     // Override some TypeScript rules just for .js files
