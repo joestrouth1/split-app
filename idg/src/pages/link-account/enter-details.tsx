@@ -28,7 +28,9 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
   }
   const [routingNumber, setRoutingNumber] = useState<string>(routing || '')
   const [accountNumber, setAccountNumber] = useState<string>(account || '')
+
   // This isn't being used right now, will be used to display alert in case of bad request
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [serverRejected, setServerRejected] = useState(false)
 
   const formRef = useRef<HTMLFormElement>(null)

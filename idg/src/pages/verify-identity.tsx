@@ -1,13 +1,12 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
 import { Button, TextField, Icon } from 'c-components'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 import { ModalLink } from '../components/modal-link'
 import PrivacyPolicyModal from './privacy-policy/modal'
-import { FormEventHandler } from 'react'
 
 /**
  * Where applicants give us their SSN and DOB.
@@ -23,7 +22,6 @@ const VerifyIdentityPage = () => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
   }, [social, dateOfBirth, formRef.current])
 
-  /* TODO: add isValid check, button wrapper to reportValidity, conditionally disable button */
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
     navigate('/link-account')

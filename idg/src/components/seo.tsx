@@ -22,6 +22,11 @@ interface SEOProps {
   title: string
 }
 
+/**
+ * TODO: split PureSEO and SEO components for testing
+ * Mock SEO by returning PureSEO instance with static metadata
+ */
+
 export function SEO({
   description = '',
   lang = 'en',

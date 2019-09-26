@@ -11,4 +11,4 @@ interface SEOProps {
   /** Page title, shown in tab/window */
   title: string
 }
-export const SEO = (props: SEOProps) => React.createElement('seo-mock')
+export const SEO = () => React.createElement('seo-mock')
