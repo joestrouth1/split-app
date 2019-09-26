@@ -89,9 +89,11 @@
   "dependencies": {
     "@emotion/core": "^10.0.16",
     "@mdx-js/react": "^1.4.0",
+    "@types/react-text-mask": "^5.4.6",
     "colorable": "^1.0.5",
     "lodash": "^4.17.15",
     "lodash-es": "^4.17.15",
+    "react-text-mask": "^5.4.3",
     "theme-ui": "^0.2.38"
   },
   "resolutions": {

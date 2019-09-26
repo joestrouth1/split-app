@@ -6,6 +6,6 @@ describe('Prequal rate-check confirmation prompt', () => {
   it('Renders', () => {
     const { getByText } = render(<Prequalified />)
 
-    expect(getByText(`You're pre-qualified for up to:`)).toBeInTheDocument()
+    expect(getByText(`You’re pre-qualified for up to:`)).toBeInTheDocument()
   })
 })

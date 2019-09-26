@@ -3,19 +3,6 @@ import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from 'gatsby'
 import { forwardRef, ReactNode, HTMLAttributes } from 'react'
 
-interface IllustrationProps extends HTMLAttributes<HTMLDivElement> {
-  /** Content to overlay on the image for now */
-  children?: ReactNode
-}
-
-type PureIllustrationProps = IllustrationProps & { data: ImageQueryResult }
-
-interface ImageQueryResult {
-  file: {
-    publicURL: string
-  }
-}
-
 const imageQuery = graphql`
   query {
     file(relativePath: { eq: "illustration_progress.svg" }) {
@@ -23,6 +10,18 @@ const imageQuery = graphql`
     }
   }
 `
+
+interface ImageQueryResult {
+  file: {
+    publicURL: string
+  }
+}
+
+interface IllustrationProps extends HTMLAttributes<HTMLDivElement> {
+  /** Content to overlay on the image for now */
+  children?: ReactNode
+}
+type PureIllustrationProps = IllustrationProps & { data: ImageQueryResult }
 
 export type IllustrationRef = HTMLDivElement
 
@@ -51,7 +50,7 @@ export const PureIllustration = forwardRef<
   ) => {
     const {
       file: { publicURL },
-    }: ImageQueryResult = useStaticQuery(imageQuery)
+    } = props.data
 
     return (
       <div

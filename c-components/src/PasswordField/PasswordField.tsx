@@ -10,7 +10,8 @@ import {
 } from 'react'
 import { useForkRef } from '../utils/useForkRef'
 
-interface PasswordFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface PasswordFieldProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   /** Character(s) to display instead of each password character */
   mask?: string
   /** How long to wait after input before hiding each character  */
@@ -20,7 +21,7 @@ interface PasswordFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   show?: boolean
 }
 
-type PasswordFieldRef = HTMLInputElement
+export type PasswordFieldRef = HTMLInputElement
 
 /**
  * Text input that can hide/reveal password contents.
