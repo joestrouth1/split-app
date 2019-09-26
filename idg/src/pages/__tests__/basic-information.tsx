@@ -40,12 +40,14 @@ describe('Basic info page', () => {
     const first = getByLabelText('First name')
     const last = getByLabelText('Last name')
     const email = getByLabelText('Email address')
+    const eConsent = getByLabelText(/ESIGN Act Consent/i)
     const button = getByText('Next')
 
     act(() => {
       fireEvent.change(first, { target: { value: 'John' } })
       fireEvent.change(last, { target: { value: 'Jacob-Jingleheimerschmidt' } })
       fireEvent.change(email, { target: { value: 'jimmydean@aol.net' } })
+      fireEvent.click(eConsent)
     })
 
     expect(form).toBeValid()

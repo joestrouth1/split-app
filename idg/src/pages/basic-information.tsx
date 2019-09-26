@@ -9,11 +9,12 @@ import {
 } from 'react'
 import { navigate } from 'gatsby'
 import { parse } from 'query-string'
-import { TextField, Button, Icon } from 'c-components'
+import { TextField, Button, Icon, Checkbox } from 'c-components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 import { ModalLink } from '../components/modal-link'
-import PrivacyPolicyModal from './privacy-policy/modal'
+import { PrivacyPolicyModal } from './disclosures/privacy-policy'
+import { EsignActConsentModal } from './disclosures/esign-act-consent'
 import { sanitizeQueryField } from '../util'
 
 interface BasicInfoPageProps {
@@ -70,6 +71,8 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
     },
     []
   )
+
+  const [econsent, setEconsent] = useState<boolean>(false)
 
   const formRef = useRef<HTMLFormElement>(null)
   const [isValid, setIsValid] = useState<boolean>(false)
@@ -161,7 +164,7 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
                     name="lock"
                     alt=""
                     fill="grays.7"
-                    sx={{ mr: 1 }}
+                    sx={{ mr: 2 }}
                     width={16}
                     height={16}
                   />
@@ -174,6 +177,21 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
                 </div>
               }
             />
+            <Checkbox
+              checked={econsent}
+              onChange={() => setEconsent(!econsent)}
+              name="econsent"
+              required
+              sx={{
+                mb: 3,
+              }}
+            >
+              I have read, understood, and consent to the language and
+              authorizations outlined in Brand&rsquo;s{' '}
+              <ModalLink modalContent={<EsignActConsentModal />}>
+                ESIGN Act Consent.
+              </ModalLink>
+            </Checkbox>
 
             <Flex
               onClick={() =>
