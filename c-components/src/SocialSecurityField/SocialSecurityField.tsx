@@ -5,7 +5,7 @@ import { Rifm } from 'rifm'
 import { TextField, TextFieldProps } from '../TextField'
 
 const parseDigits = (str: string) => (str.match(/\d+/g) || []).join('')
-const formatDate = (str: string) => {
+const formatDigits = (str: string) => {
   const digits = parseDigits(str)
   const chars = digits.split('')
   return chars
@@ -57,7 +57,7 @@ export const SocialSecurityField = forwardRef<
   return (
     <Rifm
       accept={/[\d]/g}
-      format={formatDate}
+      format={formatDigits}
       replace={addMask}
       value={masked}
       onChange={handleChange}

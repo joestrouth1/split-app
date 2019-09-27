@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
-import { TextField, Button } from 'c-components'
+import { CurrencyField, Button } from 'c-components'
 import { useRef, useState, useEffect, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -61,14 +61,13 @@ const CurrentIncomePage = () => {
             data-testid="current-income-form"
           >
             {/* TODO: Income field variant with preceding $ icon and active state */}
-
-            <TextField
+            <CurrencyField
               label="Individual annual income"
               required
               hint="The total amount you make per year before taxes. Include tips, bonuses, and any other income you&rsquo;d like to be considered for this loan."
               name="income"
               value={income}
-              onChange={e => setIncome(e.target.value)}
+              onChange={setIncome}
               sx={{ mb: 3 }}
             />
 
