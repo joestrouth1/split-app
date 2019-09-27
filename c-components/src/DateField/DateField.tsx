@@ -1,12 +1,8 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
-import { useState, forwardRef, ChangeEventHandler } from 'react'
+import { useState, forwardRef } from 'react'
 import { Rifm } from 'rifm'
 import { TextField, TextFieldProps } from '../TextField'
-
-export type DateFieldRef = HTMLInputElement
-
-type DateFieldProps = TextFieldProps // temporary alias
 
 const parseDigits = (str: string) => (str.match(/\d+/g) || []).join('')
 const formatDate = (str: string) => {
@@ -14,7 +10,7 @@ const formatDate = (str: string) => {
   const chars = digits.split('')
   return chars
     .reduce(
-      (r, v, index) => (index === 2 || index === 4 ? `${r}-${v}` : `${r}${v}`),
+      (r, v, index) => (index === 2 || index === 4 ? `${r}/${v}` : `${r}${v}`),
       ''
     )
     .substr(0, 10)
@@ -24,19 +20,25 @@ const addMask = (str: string) => {
   const days = digits.slice(0, 2).padEnd(2, '_')
   const months = digits.slice(2, 4).padEnd(2, '_')
   const years = digits.slice(4, 8).padEnd(4, '_')
-  return `${days}-${months}-${years}`
+  return `${days}/${months}/${years}`
+}
+
+export type DateFieldRef = HTMLInputElement
+
+interface DateFieldProps extends Omit<TextFieldProps, 'onChange'> {
+  /** Called with the formatted value, _not_ the actual event. */
+  onChange?: (value: string) => void
 }
 
 /**
- * A form field for inputting dates.
+ * A form field for inputting dates. Includes masking & base validation.
  */
 export const DateField = forwardRef<DateFieldRef, DateFieldProps>(
-  (props, ref) => {
+  ({ onChange, ...props }, ref) => {
     const [masked, setMasked] = useState('')
     const handleChange = (newMasked: string) => {
       setMasked(newMasked)
-      // TODO: figure out bubbling / calling parent change listener in addition to doing local logic
-      if (props.onChange) props.onChange({ target: { value: newMasked } })
+      onChange && onChange(newMasked)
     }
 
     return (
@@ -49,13 +51,12 @@ export const DateField = forwardRef<DateFieldRef, DateFieldProps>(
       >
         {({ value, onChange }) => (
           <TextField
-            label="Date of birth"
+            {...props}
             type="tel"
+            autoComplete="bday"
+            pattern="\d\d\/\d\d\/\d\d\d\d"
             value={value}
-            onChange={e => {
-              onChange(e)
-              console.log(e.target.value)
-            }}
+            onChange={onChange}
             ref={ref}
           />
         )}

@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
-import { Button, TextField, Icon } from 'c-components'
+import { Button, TextField, DateField, Icon } from 'c-components'
 import { useState, useEffect, useRef, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -13,8 +13,7 @@ import PrivacyPolicyModal from './privacy-policy/modal'
  */
 const VerifyIdentityPage = () => {
   const [social, setSocial] = useState<string>('')
-  const [dateOfBirth, setDateOfBirth] = useState<Date>(new Date())
-  const formattedDateOfBirth = dateOfBirth.toISOString().substring(0, 10)
+  const [dateOfBirth, setDateOfBirth] = useState<string>('')
 
   const formRef = useRef<HTMLFormElement>(null)
   const [isValid, setIsValid] = useState(false)
@@ -68,19 +67,19 @@ const VerifyIdentityPage = () => {
               type="text"
               name="ssn"
               hint="123-45-6789"
-              pattern="[0-9-]*"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
               sx={{ mb: 3 }}
               value={social}
               onChange={e => setSocial(e.currentTarget.value)}
               required
             />
-            <TextField
+            <DateField
               label="Date of birth"
               name="dob"
               type="date"
               sx={{ mb: 3 }}
-              value={formattedDateOfBirth}
-              onChange={e => setDateOfBirth(new Date(e.currentTarget.value))}
+              value={dateOfBirth}
+              onChange={setDateOfBirth}
               required
             />
             <Flex
