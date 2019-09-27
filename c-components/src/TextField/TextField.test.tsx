@@ -6,7 +6,7 @@ const BasicExample = (
   <TextField label="Social Security Number" hint="123-45-6789" type="text" />
 )
 
-describe('TextField', () => {
+describe('TextField renders', () => {
   it('Displays given label', () => {
     const { getByLabelText } = render(BasicExample)
     expect(getByLabelText('Social Security Number')).toBeVisible()
