@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
-import { Button, TextField, DateField, Icon } from 'c-components'
+import { Button, SocialSecurityField, DateField, Icon } from 'c-components'
 import { useState, useEffect, useRef, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -62,15 +62,12 @@ const VerifyIdentityPage = () => {
             onSubmit={handleSubmit}
             ref={formRef}
           >
-            <TextField
-              label="Social Security Number"
-              type="text"
+            <SocialSecurityField
               name="ssn"
-              hint="123-45-6789"
               pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
               sx={{ mb: 3 }}
               value={social}
-              onChange={e => setSocial(e.currentTarget.value)}
+              onChange={setSocial}
               required
             />
             <DateField

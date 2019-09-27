@@ -4,7 +4,7 @@ import { DateField } from './DateField'
 
 const LABEL = 'Date of birth'
 const HINT = 'MM/DD/YYYY'
-const BasicExample = () => <DateField label="Date of birth" hint="MM/DD/YYYY" />
+const BasicExample = () => <DateField label={LABEL} hint={HINT} />
 
 describe('DateField renders', () => {
   it('Label', () => {
@@ -18,22 +18,18 @@ describe('DateField renders', () => {
   })
 
   it('Custom hint', () => {
+    const HINT_TEXT = 'We take your privacy seriously.'
     const Hint = (
       <div sx={{ display: 'flex' }}>
         <img src="https://placekitten.com/16/16" alt="" sx={{ mr: 1 }} />
-        <span sx={{ flex: 1 }}>We take your privacy seriously.</span>
+        <span sx={{ flex: 1 }}>{HINT_TEXT}</span>
       </div>
     )
 
     const { getByText } = render(
-      <DateField
-        label="Email address"
-        hint={Hint}
-        type="email"
-        sx={{ width: '100%' }}
-      />
+      <DateField label={LABEL} hint={Hint} sx={{ width: '100%' }} />
     )
-    expect(getByText('We take your privacy seriously.')).toBeVisible()
+    expect(getByText(HINT_TEXT)).toBeVisible()
   })
 })
 
