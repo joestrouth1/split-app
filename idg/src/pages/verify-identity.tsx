@@ -61,6 +61,7 @@ const VerifyIdentityPage = () => {
             sx={{ display: 'flex', flexFlow: 'column nowrap' }}
             onSubmit={handleSubmit}
             ref={formRef}
+            data-testid="verify-identity-form"
           >
             <SocialSecurityField
               name="ssn"
