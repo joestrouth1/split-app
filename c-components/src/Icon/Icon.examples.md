@@ -29,11 +29,13 @@ All icons:
     <Icon alt="Positive review/feedback" name="smile" />
     <Icon alt="Invalid or close" name="times" />
     <Icon alt="Delete, destructive action" name="trash" />
+    <Icon alt="Warning, error" name="exclamation-circle" />
+    <Icon alt="Warning, error" name="warning" />
   </div>
 </div>
 ```
 
-`fill` values can pull from the theme, as well as regular CSS colors and keywords
+`fill` values can pull from the theme, as well as regular CSS colors and keywords.
 
 ```jsx
 <div>

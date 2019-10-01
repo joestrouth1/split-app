@@ -11,6 +11,7 @@ type IconName =
   | 'comments'
   | 'envelope'
   | 'expand'
+  | 'exclamation-circle'
   | 'eye'
   | 'eye-slash'
   | 'frown'
@@ -28,6 +29,7 @@ type IconName =
   | 'smile'
   | 'times'
   | 'trash'
+  | 'warning'
 
 type PathProps = SVGAttributes<SVGPathElement>
 
@@ -68,6 +70,13 @@ const Comments = (props: PathProps) => (
 const Envelope = (props: PathProps) => (
   <path
     d="M3 8v18h26V8H3zm4.31 2H24.7L16 15.78 7.31 10zM5 10.88l10.44 6.96.56.35.56-.35L27 10.88V24H5V10.87z"
+    {...props}
+  />
+)
+
+const ExclamationCircle = (props: PathProps) => (
+  <path
+    d="M 16 4 C 9.3844277 4 4 9.3844277 4 16 C 4 22.615572 9.3844277 28 16 28 C 22.615572 28 28 22.615572 28 16 C 28 9.3844277 22.615572 4 16 4 z M 16 6 C 21.534692 6 26 10.465308 26 16 C 26 21.534692 21.534692 26 16 26 C 10.465308 26 6 21.534692 6 16 C 6 10.465308 10.465308 6 16 6 z M 15 10 L 15 18 L 17 18 L 17 10 L 15 10 z M 15 20 L 15 22 L 17 22 L 17 20 L 15 20 z"
     {...props}
   />
 )
@@ -201,6 +210,13 @@ const Trash = (props: PathProps) => (
   />
 )
 
+const Warning = (props: PathProps) => (
+  <path
+    d="M 16 3.21875 L 15.125 4.71875 L 3.125 25.5 L 2.28125 27 L 4 27 L 28 27 L 29.71875 27 L 28.875 25.5 L 16.875 4.71875 L 16 3.21875 z M 16 7.21875 L 26.25 25 L 5.75 25 L 16 7.21875 z M 15 14 L 15 20 L 17 20 L 17 14 L 15 14 z M 15 21 L 15 23 L 17 23 L 17 21 L 15 21 z"
+    {...props}
+  />
+)
+
 interface IconProps extends SVGAttributes<SVGSVGElement> {
   /**
    * Text to show assistive technologies.
@@ -251,6 +267,9 @@ export const Icon = forwardRef<IconRef, IconProps>(
         break
       case 'envelope':
         path = <Envelope sx={pathStyles} />
+        break
+      case 'exclamation-circle':
+        path = <ExclamationCircle sx={pathStyles} />
         break
       case 'expand':
         path = <Expand sx={pathStyles} />
@@ -305,6 +324,9 @@ export const Icon = forwardRef<IconRef, IconProps>(
         break
       case 'trash':
         path = <Trash sx={pathStyles} />
+        break
+      case 'warning':
+        path = <Warning sx={pathStyles} />
         break
       default:
         path = null

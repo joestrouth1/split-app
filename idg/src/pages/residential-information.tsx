@@ -12,7 +12,7 @@ import { Button, TextField } from 'c-components'
 import { parse } from 'query-string'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
-import { sanitizeQueryField } from '../util'
+import { sanitizeQueryField } from '../utils'
 
 interface Address {
   address1?: string
@@ -24,7 +24,9 @@ interface Address {
 }
 
 interface ResidentialInfoPageProps {
-  location: Location
+  location: {
+    search: string
+  }
 }
 
 /** Where applicants tell us their home address. */

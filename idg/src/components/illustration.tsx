@@ -44,13 +44,14 @@ export const PureIllustration = forwardRef<
           Illustration
         </p>
       ),
+      data,
       ...props
     },
     ref
   ) => {
     const {
       file: { publicURL },
-    } = props.data
+    } = data
 
     return (
       <div

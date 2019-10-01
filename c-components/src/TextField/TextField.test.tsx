@@ -1,9 +1,13 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render } from '../test-utils'
+import { ThemeProvider } from 'theme-ui'
+import { defaultTheme } from '../theme'
 import { TextField } from './TextField'
 
 const BasicExample = (
-  <TextField label="Social Security Number" hint="123-45-6789" type="text" />
+  <ThemeProvider theme={defaultTheme}>
+    <TextField label="Social Security Number" hint="123-45-6789" type="text" />
+  </ThemeProvider>
 )
 
 describe('TextField renders', () => {
@@ -26,12 +30,14 @@ describe('TextField renders', () => {
     )
 
     const { getByText } = render(
-      <TextField
-        label="Email address"
-        hint={Hint}
-        type="email"
-        sx={{ width: '100%' }}
-      />
+      <ThemeProvider theme={defaultTheme}>
+        <TextField
+          label="Email address"
+          hint={Hint}
+          type="email"
+          sx={{ width: '100%' }}
+        />
+      </ThemeProvider>
     )
     expect(getByText('We take your privacy seriously.')).toBeVisible()
   })

@@ -21,7 +21,7 @@ function getScoreAndNavigate() {
       'Did the applicant score well?\nOK for yes, Cancel for no.'
     )
     if (goodScore) {
-      navigate('/link-account')
+      navigate('/loan-options')
     } else {
       navigate('/income-details')
     }

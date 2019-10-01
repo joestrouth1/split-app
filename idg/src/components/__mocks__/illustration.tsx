@@ -1,3 +1,10 @@
 import React from 'react'
 
-export const Illustration = () => React.createElement('illustration-mock')
+const mockFile = {
+  file: {
+    publicURL: 'http://localhost/images/nice-image.jpeg2k',
+  },
+}
+
+const { PureIllustration } = jest.requireActual('../illustration')
+export const Illustration = () => <PureIllustration data={mockFile} />

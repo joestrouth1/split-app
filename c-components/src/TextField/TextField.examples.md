@@ -54,12 +54,97 @@ With error:
 
 ```jsx
 import { Alert, Icon } from 'c-components'
-;<TextField
-  label="Invalid input"
-  sx={{ width: '100%' }}
-  hint="Hint text"
-  error="Houston, we have a problem."
-/>
+;<div>
+  <TextField
+    label="Name of your first pet"
+    sx={{ width: '100%', mb: 3 }}
+    defaultValue="Roscoe"
+  />
+  <TextField
+    label="Mother's maiden name"
+    sx={{ width: '100%', mb: 3 }}
+    hint="Her first last name"
+    error={
+      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+        <Icon
+          name="exclamation-circle"
+          alt="Error: "
+          sx={{ mr: 1, flexShrink: 0 }}
+          width={16}
+          height={16}
+          fill="red"
+        />
+        <span sx={{ variant: 'type.hint', color: 'red' }}>
+          This field cannot be empty
+        </span>
+      </div>
+    }
+  />
+  <TextField
+    label="Mother's maiden name"
+    sx={{ width: '100%', mb: 3 }}
+    hint="Her first last name"
+    error={
+      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+        <Icon
+          name="warning"
+          alt="Error: "
+          sx={{ mr: 1, flexShrink: 0 }}
+          width={16}
+          height={16}
+          fill="red"
+        />
+        <span sx={{ variant: 'type.hint', color: 'red' }}>
+          This field cannot be empty
+        </span>
+      </div>
+    }
+  />
+  <TextField
+    label="Invalid input"
+    sx={{ width: '100%' }}
+    hint="Hint text"
+    error={
+      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+        <Icon
+          name="exclamation-circle"
+          alt="Error: "
+          sx={{ mr: 1, flexShrink: 0 }}
+          width={16}
+          height={16}
+          fill="red"
+        />
+        <span sx={{ variant: 'type.hint', color: 'red' }}>
+          Houston, we have a problem. Houston, we have a problem. Houston, we
+          have a problem. Houston, we have a problem. Houston, we have a
+          problem.
+        </span>
+      </div>
+    }
+  />
+  <TextField
+    label="Invalid input"
+    sx={{ width: '100%' }}
+    hint="Hint text"
+    error={
+      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+        <Icon
+          name="warning"
+          alt="Error: "
+          sx={{ mr: 1, flexShrink: 0 }}
+          width={16}
+          height={16}
+          fill="red"
+        />
+        <span sx={{ variant: 'type.hint', color: 'red' }}>
+          Houston, we have a problem. Houston, we have a problem. Houston, we
+          have a problem. Houston, we have a problem. Houston, we have a
+          problem.
+        </span>
+      </div>
+    }
+  />
+</div>
 ```
 
 Automatically wrapping `PasswordField` if `type="password"`:

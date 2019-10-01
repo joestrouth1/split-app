@@ -100,6 +100,7 @@ const SecureAccountVerificationPage = ({
                   display: 'flex',
                   alignItems: 'center',
                   mb: 2,
+                  borderWidth: useExisting ? 2 : 1,
                 }}
                 onClick={() => setUseExisting(true)}
               >
@@ -129,6 +130,7 @@ const SecureAccountVerificationPage = ({
                 textAlign: 'left',
                 display: 'flex',
                 alignItems: 'center',
+                borderWidth: !useExisting ? 2 : 1,
               }}
               onClick={() => setUseExisting(false)}
             >

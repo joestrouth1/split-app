@@ -71,7 +71,9 @@ const SavePasswordPage = () => {
               autoComplete="new-password"
               type="password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
+              onChange={e => {
+                setPassword(e.target.value)
+              }}
               sx={{
                 mb: 3,
               }}

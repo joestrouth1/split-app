@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, act } from '@testing-library/react'
+import { render, fireEvent, act } from '../../test-utils'
 import { default as Page } from '../verify-identity'
 
 const SOCIAL_LABEL = 'Social Security Number'

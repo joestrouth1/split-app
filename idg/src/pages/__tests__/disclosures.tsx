@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
-import { render, act, fireEvent } from '@testing-library/react'
+import { render, act, fireEvent } from '../../test-utils'
 import DisclosuresPage from '../disclosures'
 import { navigate } from 'gatsby'
 

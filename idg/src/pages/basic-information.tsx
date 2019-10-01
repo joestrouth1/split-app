@@ -15,7 +15,7 @@ import { SEO } from '../components/seo'
 import { ModalLink } from '../components/modal-link'
 import { PrivacyPolicyModal } from './disclosures/privacy-policy'
 import { EsignActConsentModal } from './disclosures/esign-act-consent'
-import { sanitizeQueryField } from '../util'
+import { sanitizeQueryField } from '../utils'
 
 interface BasicInfoPageProps {
   location: {
@@ -78,7 +78,7 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
   const [isValid, setIsValid] = useState<boolean>(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
-  }, [formRef.current, user])
+  }, [formRef.current, user, econsent])
 
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()

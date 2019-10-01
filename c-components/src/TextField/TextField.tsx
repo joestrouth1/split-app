@@ -10,7 +10,6 @@ import {
   ReactNode,
   MouseEventHandler,
 } from 'react'
-import { Alert } from '../Alert'
 import { PasswordField } from '../PasswordField'
 import { Icon } from '../Icon'
 import { uuid } from '../utils/uuid'
@@ -113,14 +112,24 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
               borderRight: 0,
               borderBottom: 2,
               borderLeft: 0,
-              borderBottomColor: 'grays.7',
+              borderBottomColor: error ? 'red' : 'grays.7',
               borderBottomStyle: 'solid',
               borderTopLeftRadius: 4,
               borderTopRightRadius: 4,
               backgroundColor: 'white',
               boxShadow: 'medium',
               variant: 'type.body',
-              mb: typeof hint === 'string' ? 1 : 2,
+              mb: 2,
+              outlineColor: 'transparent',
+              transitionProperty: 'outline-color',
+              transitionDuration: '150ms',
+              transitionTimingFunction: 'ease-out',
+              '&:focus, &:active': {
+                // outline: 0,
+                outlineWidth: 2,
+                outlineColor: theme => theme.colors.grays[7],
+                // outlineStyle: 'solid',
+              },
             }}
           />
           {icon && (
@@ -161,17 +170,15 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
           </div>
         )}
         {error && (
-          <Alert variant="negative">
-            <Icon
-              name="times"
-              alt="Error: "
-              sx={{ mr: 1 }}
-              width={16}
-              height={16}
-              fill="red"
-            />
-            <span>{error}</span>
-          </Alert>
+          <div
+            sx={
+              {
+                // mb: hint ? 1 : 0
+              }
+            }
+          >
+            {error}
+          </div>
         )}
       </Box>
     )

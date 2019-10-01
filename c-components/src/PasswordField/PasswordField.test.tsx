@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, act, fireEvent } from '@testing-library/react'
+import { render, act, fireEvent } from '../test-utils'
 import { PasswordField } from './PasswordField'
 
 const VALUE = 'super-secret123'

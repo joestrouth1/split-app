@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, act, fireEvent } from '@testing-library/react'
+import { render, act, fireEvent } from '../test-utils'
 import { SocialSecurityField } from './SocialSecurityField'
 
 const LABEL = 'Social Security Number'

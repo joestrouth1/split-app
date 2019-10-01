@@ -11,4 +11,6 @@ interface SEOProps {
   /** Page title, shown in tab/window */
   title: string
 }
+// TODO: separate SEO into pure/non-pure components, requireActual PureSEO and pass static data
+// Make sure jest.mock is called in jest.setup, like for Illustration
 export const SEO = () => React.createElement('seo-mock')
