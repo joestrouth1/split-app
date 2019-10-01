@@ -3,7 +3,6 @@ import { jsx } from 'theme-ui'
 import { render, act, fireEvent } from '../../../test-utils'
 import { navigate } from 'gatsby'
 import EnterDetailsPage from '../../link-account/enter-details'
-jest.mock('../../../components/illustration')
 
 describe('Enter bank details page', () => {
   it('Renders - not prepopulated', () => {

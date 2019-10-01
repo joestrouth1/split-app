@@ -3,7 +3,6 @@ import { jsx } from 'theme-ui'
 import { render, act, fireEvent } from '../../test-utils'
 import CurrentIncomePage from '../current-income'
 import { navigate } from 'gatsby'
-jest.mock('../../components/illustration')
 
 const Example = () => <CurrentIncomePage />
 
