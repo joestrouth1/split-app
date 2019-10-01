@@ -39,7 +39,14 @@
     "moduleNameMapper": {
       "\\.(css)$": "<rootDir>/test/__mocks__/styleMock.ts",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/test/__mocks__/fileMock.ts"
-    }
+    },
+    "watchPathIgnorePatterns": [
+      "<rootDir>/dist/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/coverage/",
+      "<rootDir>/.rts2_cache_cjs/",
+      "<rootDir>/.rts2_cache_esm/"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
