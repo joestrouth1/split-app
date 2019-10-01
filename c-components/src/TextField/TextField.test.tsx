@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '../test-utils'
 import { ThemeProvider } from 'theme-ui'
 import { defaultTheme } from '../theme'
-import { TextField } from './TextField'
+import { TextField } from '.'
 
 const BasicExample = (
   <ThemeProvider theme={defaultTheme}>

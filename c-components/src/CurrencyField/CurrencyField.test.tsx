@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, act, fireEvent } from '../test-utils'
-import { CurrencyField } from './CurrencyField'
+import { CurrencyField } from '.'
 
 const LABEL = 'Individual annual income'
 const HINT =

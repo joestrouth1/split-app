@@ -1,11 +1,14 @@
 import React from 'react'
 import { render } from '../test-utils'
-import { Alert } from './Alert'
+import { Alert } from '.'
 
 describe('Alert', () => {
   it('Renders', () => {
-    const { getByText } = render(<Alert variant="positive">Good news</Alert>)
+    const { getByText } = render(<Alert>Good news</Alert>)
     expect(getByText('Good news')).toBeVisible()
-    expect(getByText('Good news')).toBeInTheDocument()
+  })
+  it('Renders, negative', () => {
+    const { getByText } = render(<Alert variant="negative">Bad news</Alert>)
+    expect(getByText('Bad news')).toBeVisible()
   })
 })

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, act, fireEvent } from '../test-utils'
-import { SocialSecurityField } from './SocialSecurityField'
+import { SocialSecurityField } from '.'
 
 const LABEL = 'Social Security Number'
 const HINT = '123-45-6789'

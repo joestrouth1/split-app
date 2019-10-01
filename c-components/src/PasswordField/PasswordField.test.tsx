@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, act, fireEvent } from '../test-utils'
-import { PasswordField } from './PasswordField'
+import { PasswordField } from '.'
 
 const VALUE = 'super-secret123'
 const MASK = '*'

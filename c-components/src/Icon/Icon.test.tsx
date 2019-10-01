@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '../test-utils'
-import { Icon } from './Icon'
+import { Icon } from '.'
 
 describe('Icon', () => {
   it('Renders', () => {

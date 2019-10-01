@@ -1,12 +1,12 @@
 import React from 'react'
 import { render } from '../test-utils'
-import { Card } from './Card'
+import { Card } from '.'
 
 describe('Card', () => {
   it(`Renders its children without throwing`, () => {
     const STRING_CHILD = `I'm in a card!`
     const { getByText } = render(
-      <Card variant="radio">
+      <Card>
         <p>{STRING_CHILD}</p>
       </Card>
     )

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from '../test-utils'
-import { Logo } from './Logo'
+import { Logo } from '.'
 
 describe('Logo', () => {
   it('Shows company logo', async () => {

@@ -1,5 +1,6 @@
 const path = require('path')
 const { version } = require('./package')
+const { getDefaultExportForFile } = require('react-docgen-typescript')
 const styleguideTheme = require('./styleguide.theme')
 
 module.exports = {
@@ -8,6 +9,9 @@ module.exports = {
   // },
   title: 'c-components',
   theme: styleguideTheme,
+  template: {
+    // favicon: 'https://placekitten.com/16/16.png'
+  },
   defaultExample: false,
   getExampleFilename(componentPath) {
     return componentPath.replace(/\.(js|ts)x?$/, '.examples.md')
@@ -55,6 +59,7 @@ module.exports = {
         '**/*.spec.{js,jsx,ts,tsx}',
         '**/*.d.ts',
         'src/pages/**/*.tsx',
+        'src/test-utils.tsx',
         '**/styleguide/Wrapper.tsx',
         '**/styleguide/ColorPalettes.tsx',
       ],
@@ -111,6 +116,13 @@ module.exports = {
         return true
       },
       shouldExtractLiteralValuesFromEnum: true,
+      componentNameResolver: (exp, source) => {
+        const name = exp.getName()
+        if (name === 'ForwardRefExoticComponent') {
+          return getDefaultExportForFile(source)
+        }
+        return name
+      },
     }
   ).parse,
   styleguideComponents: {

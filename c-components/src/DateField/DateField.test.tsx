@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, act, fireEvent } from '../test-utils'
-import { DateField } from './DateField'
+import { DateField } from '.'
 
 const LABEL = 'Date of birth'
 const HINT = 'MM/DD/YYYY'

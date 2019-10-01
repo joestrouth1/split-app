@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, act, fireEvent } from '../test-utils'
-import { Header } from './Header'
+import { Header } from '.'
 import { Logo } from '../Logo'
 import { Link } from '../Link'
 
