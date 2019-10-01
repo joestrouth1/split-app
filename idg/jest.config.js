@@ -11,6 +11,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testPathIgnorePatterns: [`node_modules`, `.cache`, `public`],
   transformIgnorePatterns: [`node_modules/(?!(gatsby)/)`],
+  collectCoverageFrom: ['./src/**/*.{ts,tsx}'],
   globals: {
     __PATH_PREFIX__: ``,
   },
