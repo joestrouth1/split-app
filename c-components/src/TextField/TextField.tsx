@@ -10,6 +10,7 @@ import {
   ReactNode,
   MouseEventHandler,
 } from 'react'
+import { Alert } from '../Alert'
 import { PasswordField } from '../PasswordField'
 import { Icon } from '../Icon'
 import { uuid } from '../utils/uuid'
@@ -29,6 +30,10 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
    */
   hint?: ReactNode
   /**
+   * Error text to display
+   */
+  error?: string
+  /**
    * Icon to show at right of input, e.g. eye for password
    */
   icon?: ReactNode
@@ -44,7 +49,7 @@ export type TextFieldRef = HTMLInputElement
  * Wrapper for HTML's `input` element.
  */
 export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
-  ({ name: nameProp, label, hint, className, icon, ...props }, ref) => {
+  ({ name: nameProp, label, hint, error, className, icon, ...props }, ref) => {
     const isPassword = props.type ? props.type === 'password' : false
     const Input = isPassword ? PasswordField : 'input'
 
@@ -148,11 +153,25 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
           <div
             sx={{
               variant: 'type.hint',
+              mb: error ? 1 : 0,
             }}
             id={`input-${name}__hint`}
           >
             {hint}
           </div>
+        )}
+        {error && (
+          <Alert variant="negative">
+            <Icon
+              name="times"
+              alt="Error: "
+              sx={{ mr: 1 }}
+              width={16}
+              height={16}
+              fill="red"
+            />
+            <span>{error}</span>
+          </Alert>
         )}
       </Box>
     )

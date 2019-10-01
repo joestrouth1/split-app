@@ -50,6 +50,18 @@ const Hint = (
 />
 ```
 
+With error:
+
+```jsx
+import { Alert, Icon } from 'c-components'
+;<TextField
+  label="Invalid input"
+  sx={{ width: '100%' }}
+  hint="Hint text"
+  error="Houston, we have a problem."
+/>
+```
+
 Automatically wrapping `PasswordField` if `type="password"`:
 
 ```jsx
