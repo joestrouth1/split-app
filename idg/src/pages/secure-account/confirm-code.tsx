@@ -89,9 +89,8 @@ const SecureAccountConfirmationPage = () => {
               }}
               sx={{ variant: 'buttons.link' }}
             >
-              Request another code
+              Request another code.
             </button>
-            .
           </p>
         </Container>
       </Main>

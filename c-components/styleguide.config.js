@@ -25,6 +25,7 @@ module.exports = {
     },
     {
       name: 'UI Components',
+      content: 'docs/components.md',
       components: 'src/**/*.tsx',
       ignore: [
         '**/__tests__/**',

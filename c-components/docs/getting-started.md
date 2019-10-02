@@ -6,7 +6,7 @@ Look inside and you'll see that this project is made up of two parts:
   styleguide you're reading lives in here.
 - `idg`: A website built with Gatsby + Typescript.
 
-The site depends on and uses `c-components` as if it were an NPM module, via
+The site depends on and uses `c-components` as if it were an npm module, via
 [Yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
 
 ## Installation
@@ -14,7 +14,7 @@ The site depends on and uses `c-components` as if it were an NPM module, via
 You'll need these tools installed:
 
 - [Node.js](https://nodejs.org/en/): tested on v10.x
-- [Yarn](https://yarnpkg.com/): NPM is not sufficient.
+- [Yarn](https://yarnpkg.com/): npm is not sufficient.
 
 Running `yarn` at the root of the project will install and link the project's
 dependencies. This may take a while.
@@ -67,16 +67,3 @@ yarn workspace idg test --watch
 If you look at the `scripts` key in each `package.json`, you'll see a full list
 of commands and exactly what they do. There's a `package.json` at the root of
 the project, plus one in each workspace.
-
-Wrap them in a `ThemeProvider` from `theme-ui`.
-
-You'll need a `theme` object, which can be imported from this package or written separately.
-
-```jsx
-import { ThemeProvider } from 'theme-ui'
-import { Header } from 'c-components'
-import { defaultTheme } from 'c-components/theme'
-;<ThemeProvider theme={defaultTheme}>
-  <Header linkText="Click me" />
-</ThemeProvider>
-```
