@@ -53,25 +53,22 @@ const Hint = (
 With error, with icon:
 
 ```jsx
-import { Alert, Icon } from 'c-components'
-;<>
-  <TextField label="Name of your first pet" defaultValue="Roscoe" />
-  <TextField
-    label="Mother's maiden name"
-    hint="Her first last name"
-    error="Please fill out this field"
-  />
-  <TextField
-    label="Favorite happy hour beverage"
-    defaultValue="Milk"
-    error="Enter a different beverage"
-  />
-  <TextField
-    label="Preferred biome"
-    hint="Cold biomes only"
-    defaultValue="Tundra"
-  />
-</>
+<TextField label="Name of your first pet" defaultValue="Roscoe" />
+<TextField
+  label="Mother's maiden name"
+  hint="Her first last name"
+  error="Please fill out this field"
+/>
+<TextField
+  label="Favorite happy hour beverage"
+  defaultValue="Milk"
+  error="Enter a different beverage"
+/>
+<TextField
+  label="Preferred biome"
+  hint="Cold biomes only"
+  defaultValue="Tundra"
+/>
 ```
 
 Automatically wrapping `PasswordField` if `type="password"`:
