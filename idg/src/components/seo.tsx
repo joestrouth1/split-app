@@ -1,73 +1,105 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-interface SEOProps {
-  /** Meta description for the page */
+export interface SEOProps {
+  /**
+   * Meta description for the page
+   * @default `siteMetadata.description`
+   */
   description?: string
-  /** Language of page content, <html lang={lang}> */
+  /**
+   * Language of page content, <html lang={lang}>
+   * @default en
+   */
   lang?: string
   /** Additional meta tags to insert into <head>.
    * @example [{ name: 'some:meta', content: 'cool content' }]
    */
   meta?: object[]
-  /** Page title, shown in tab/window */
+  /**
+   * Page title, shown in tab/window
+   * @default `siteMetadata.title`
+   */
   title: string
+  /**
+   * Creator of the page
+   * @default `siteMetadata.author`
+   */
+  author?: string
 }
 
-/**
- * TODO: split PureSEO and SEO components for testing
- * Mock SEO by returning PureSEO instance with static metadata
- */
+interface SiteQuery {
+  site: {
+    siteMetadata: {
+      title: string
+      description: string
+      author: string
+    }
+  }
+}
+const siteQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
+  }
+`
 
+/**
+ * Renders site/page metadata to the page head.
+ */
 export function SEO({
-  description = '',
+  author,
+  description,
   lang = 'en',
   meta = [],
   title,
 }: SEOProps) {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
+  const { site } = useStaticQuery<SiteQuery>(siteQuery)
 
-  const metaDescription = description || site.siteMetadata.description
+  const data = {
+    author: author || site.siteMetadata.author,
+    description: description || site.siteMetadata.description,
+    lang,
+    meta,
+    pageTitle: title,
+    siteTitle: site.siteMetadata.title,
+  }
+
+  return <PureSEO {...data} />
+}
+
+type PureSEOProps = Omit<SEOProps, 'title'> & {
+  pageTitle?: string
+  siteTitle: string
+}
+export function PureSEO(props: PureSEOProps) {
+  const { lang, siteTitle, pageTitle, description, author, meta = [] } = props
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={pageTitle}
+      titleTemplate={`%s | ${siteTitle}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: description,
         },
         {
           property: `og:type`,
@@ -79,15 +111,15 @@ export function SEO({
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: author,
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: pageTitle,
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: description,
         },
         ...meta,
       ]}
