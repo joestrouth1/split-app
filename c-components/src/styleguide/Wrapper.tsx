@@ -1,7 +1,6 @@
 /**@jsx jsx */
-import { jsx, Styled } from 'theme-ui'
+import { jsx, Styled, ThemeProvider } from 'theme-ui'
 import { Component } from 'react'
-import { ThemeProvider } from 'theme-ui'
 import { defaultTheme } from '../theme'
 import 'typeface-open-sans'
 import 'normalize.css'

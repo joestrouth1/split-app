@@ -5,9 +5,9 @@ const styleguideTheme = require('./styleguide.theme')
 
 module.exports = {
   // ribbon: {
-  //   url: 'https://github.com/joestrouth1/c-components',
+  //   url: 'https://github.com/joestrouth1/split-app',
   // },
-  title: 'c-components',
+  title: 'App Components',
   theme: styleguideTheme,
   template: {
     // favicon: 'https://placekitten.com/16/16.png'
@@ -19,36 +19,9 @@ module.exports = {
   pagePerSection: true,
   sections: [
     {
-      name: 'Introduction',
-      content: 'docs/introduction.md',
-    },
-    {
-      name: 'Documentation',
-      sections: [
-        {
-          name: 'Installation',
-          content: 'docs/installation.md',
-          description: 'How do I add these components to a project?',
-        },
-        {
-          name: 'Configuration',
-          description: 'How can I customize these components?',
-          content: 'docs/configuration.md',
-          exampleMode: 'expand',
-        },
-      ],
-    },
-    {
-      name: 'Typography',
-      content: 'docs/typography.md',
-    },
-    // {
-    //   name: 'Pages',
-    //   components: 'src/pages/**/*.tsx',
-    // },
-    {
-      name: 'Colors',
-      content: 'docs/colors.md',
+      name: 'Getting started',
+      content: 'docs/getting-started.md',
+      exampleMode: 'expand',
     },
     {
       name: 'UI Components',
@@ -66,12 +39,41 @@ module.exports = {
       exampleMode: 'collapse', // 'hide' | 'collapse' | 'expand'
       usageMode: 'collapse', // 'hide' | 'collapse' | 'expand'
     },
+    {
+      name: 'Typography',
+      content: 'docs/typography.md',
+    },
+    {
+      name: 'Colors',
+      content: 'docs/colors.md',
+    },
   ],
   moduleAliases: {
     'c-components': path.resolve(__dirname, 'src'),
     styleguide: path.resolve(__dirname, 'src', 'styleguide'),
   },
   version,
+  styles: {
+    Heading: {
+      heading1: {
+        marginTop: 16,
+        marginBottom: 24,
+      },
+      heading2: {
+        marginTop: 24,
+        marginBottom: 16,
+      },
+      heading3: {
+        marginTop: 24,
+        marginBottom: 16,
+      },
+    },
+    StyleGuide: {
+      footer: {
+        display: 'none',
+      },
+    },
+  },
   webpackConfig: {
     module: {
       rules: [

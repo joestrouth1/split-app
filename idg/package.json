@@ -67,7 +67,7 @@
     "develop": "gatsby develop",
     "lint": "eslint --ignore-path .gitignore --ext ts --ext tsx --ext js --ext jsx .",
     "lint:fix": "yarn lint --fix",
-    "start": "npm run develop",
+    "start": "yarn develop",
     "serve": "gatsby serve",
     "test": "jest",
     "type-check": "tsc",
