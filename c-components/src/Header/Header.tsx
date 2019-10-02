@@ -11,12 +11,12 @@ interface HeaderProps {
   /**
    * Content to render inside of the toggle menu
    * If no children are passed, the menu and its button will not be rendered.
-   * */
+   */
   children?: ReactNode
 }
 
 /**
- * The site header.
+ * The site header. Shared across all pages.
  */
 export const Header = ({ children, logo }: HeaderProps) => {
   const [isNavOpen, setNavOpen] = useState(false)

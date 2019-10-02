@@ -27,7 +27,7 @@ export type SocialSecurityFieldRef = HTMLInputElement
 
 interface SocialSecurityFieldProps
   extends Omit<TextFieldProps, 'onChange' | 'label' | 'hint'> {
-  /** Called with the formatted value, _not_ the actual event. */
+  /** Called with the formatted value, _not_ the actual DOM event. */
   onChange?: (value: string) => void
   /**
    * Identifying text to show above the input.

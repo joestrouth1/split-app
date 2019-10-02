@@ -8,17 +8,20 @@ type ButtonVariant = keyof typeof buttons
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * Preset variant to use, defined in theme.buttons
-   * @default 'primary'
+   * @default primary
    */
-  variant: ButtonVariant
+  variant?: ButtonVariant
 }
-const defaultProps: Partial<ButtonProps> = {
-  variant: 'primary',
-}
+
 export type ButtonRef = HTMLButtonElement
 
+/**
+ * Represents a clickable action _on the current page_, e.g. not navigation.
+ *
+ * @see See [Link](./#/Link) for triggering navigation, or use an `<a>` with some variant
+ */
 export const Button = forwardRef<ButtonRef, ButtonProps>(
-  ({ variant, ...props }, ref) => {
+  ({ variant = 'primary', ...props }, ref) => {
     return (
       <button
         {...props}
@@ -31,7 +34,5 @@ export const Button = forwardRef<ButtonRef, ButtonProps>(
     )
   }
 )
-
-Button.defaultProps = defaultProps
 
 Button.displayName = 'Button'

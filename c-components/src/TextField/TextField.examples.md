@@ -50,19 +50,14 @@ const Hint = (
 />
 ```
 
-With error:
+With error, with icon:
 
 ```jsx
 import { Alert, Icon } from 'c-components'
-;<div>
-  <TextField
-    label="Name of your first pet"
-    sx={{ width: '100%', mb: 3 }}
-    defaultValue="Roscoe"
-  />
+;<>
+  <TextField label="Name of your first pet" defaultValue="Roscoe" />
   <TextField
     label="Mother's maiden name"
-    sx={{ width: '100%', mb: 3 }}
     hint="Her first last name"
     error={
       <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
@@ -82,7 +77,6 @@ import { Alert, Icon } from 'c-components'
   />
   <TextField
     label="Mother's maiden name"
-    sx={{ width: '100%', mb: 3 }}
     hint="Her first last name"
     error={
       <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
@@ -124,7 +118,6 @@ import { Alert, Icon } from 'c-components'
   />
   <TextField
     label="Invalid input"
-    sx={{ width: '100%' }}
     hint="Hint text"
     error={
       <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
@@ -144,7 +137,40 @@ import { Alert, Icon } from 'c-components'
       </div>
     }
   />
-</div>
+</>
+```
+
+With error, no icon:
+
+```jsx
+import { Alert, Icon } from 'c-components'
+;<>
+  <TextField label="Name of your first pet" defaultValue="Roscoe" />
+  <TextField
+    label="Mother's maiden name"
+    hint="Her first last name"
+    error={
+      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+        <span sx={{ variant: 'type.hint', color: 'red' }}>
+          This field cannot be empty
+        </span>
+      </div>
+    }
+  />
+  <TextField
+    label="Invalid input"
+    hint="Hint text"
+    error={
+      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+        <span sx={{ variant: 'type.hint', color: 'red' }}>
+          Houston, we have a problem. Houston, we have a problem. Houston, we
+          have a problem. Houston, we have a problem. Houston, we have a
+          problem.
+        </span>
+      </div>
+    }
+  />
+</>
 ```
 
 Automatically wrapping `PasswordField` if `type="password"`:

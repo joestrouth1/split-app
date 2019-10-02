@@ -51,7 +51,7 @@ interface CurrencyFieldProps extends Omit<TextFieldProps, 'onChange'> {
 }
 
 /**
- * A form field for dollar amounts, with masking & validation.
+ * A form field for dollar amounts, with masking and validation.
  */
 export const CurrencyField = forwardRef<CurrencyFieldRef, CurrencyFieldProps>(
   ({ onChange, ...props }, ref) => {

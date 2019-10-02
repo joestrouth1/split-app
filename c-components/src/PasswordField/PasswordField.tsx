@@ -24,7 +24,11 @@ export interface PasswordFieldProps
 export type PasswordFieldRef = HTMLInputElement
 
 /**
- * Text input that can hide/reveal password contents.
+ * Text field that can hide/reveal password contents.
+ *
+ * Each character will be shown unmasked for a brief period after it's typed.
+ *
+ * You probably want [TextField](./#/TextField) instead, unless you're building something very custom.
  */
 export const PasswordField = forwardRef<PasswordFieldRef, PasswordFieldProps>(
   (

@@ -232,7 +232,7 @@ interface IconProps extends SVGAttributes<SVGSVGElement> {
 export type IconRef = SVGSVGElement
 
 /**
- * Versatile and accessible icon component.
+ * Simple graphics that make an element stand out and increase legibility at a glance.
  */
 export const Icon = forwardRef<IconRef, IconProps>(
   (

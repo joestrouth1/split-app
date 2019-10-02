@@ -4,7 +4,7 @@ import { Alert } from '.'
 
 describe('Alert', () => {
   it('Renders', () => {
-    const { getByText } = render(<Alert>Good news</Alert>)
+    const { getByText } = render(<Alert variant="positive">Good news</Alert>)
     expect(getByText('Good news')).toBeVisible()
   })
   it('Renders, negative', () => {

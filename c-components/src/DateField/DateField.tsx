@@ -31,7 +31,7 @@ interface DateFieldProps extends Omit<TextFieldProps, 'onChange'> {
 }
 
 /**
- * A form field for inputting dates. Includes masking & base validation.
+ * A form field for inputting dates, with masking and validation.
  */
 export const DateField = forwardRef<DateFieldRef, DateFieldProps>(
   ({ onChange, ...props }, ref) => {
