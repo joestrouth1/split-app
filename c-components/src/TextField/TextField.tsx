@@ -116,9 +116,10 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
               borderBottomStyle: 'solid',
               borderTopLeftRadius: 4,
               borderTopRightRadius: 4,
-              backgroundColor: 'white',
+              backgroundColor: error ? 'reds.1' : 'white',
               boxShadow: 'medium',
               variant: 'type.body',
+              color: error ? 'red' : 'text',
               mb: 2,
               outlineColor: 'transparent',
               transitionProperty: 'outline-color',
@@ -170,14 +171,16 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
           </div>
         )}
         {error && (
-          <div
-            sx={
-              {
-                // mb: hint ? 1 : 0
-              }
-            }
-          >
-            {error}
+          <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+            <Icon
+              name="warning"
+              alt="Error: "
+              sx={{ mr: 1, flexShrink: 0 }}
+              width={16}
+              height={16}
+              fill="red"
+            />
+            <span sx={{ variant: 'type.hint', color: 'red' }}>{error}</span>
           </div>
         )}
       </Box>

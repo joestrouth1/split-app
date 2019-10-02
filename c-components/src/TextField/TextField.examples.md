@@ -59,116 +59,17 @@ import { Alert, Icon } from 'c-components'
   <TextField
     label="Mother's maiden name"
     hint="Her first last name"
-    error={
-      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
-        <Icon
-          name="exclamation-circle"
-          alt="Error: "
-          sx={{ mr: 1, flexShrink: 0 }}
-          width={16}
-          height={16}
-          fill="red"
-        />
-        <span sx={{ variant: 'type.hint', color: 'red' }}>
-          This field cannot be empty
-        </span>
-      </div>
-    }
+    error="Please fill out this field"
   />
   <TextField
-    label="Mother's maiden name"
-    hint="Her first last name"
-    error={
-      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
-        <Icon
-          name="warning"
-          alt="Error: "
-          sx={{ mr: 1, flexShrink: 0 }}
-          width={16}
-          height={16}
-          fill="red"
-        />
-        <span sx={{ variant: 'type.hint', color: 'red' }}>
-          This field cannot be empty
-        </span>
-      </div>
-    }
+    label="Favorite happy hour beverage"
+    defaultValue="Milk"
+    error="Enter a different beverage"
   />
   <TextField
-    label="Invalid input"
-    sx={{ width: '100%' }}
-    hint="Hint text"
-    error={
-      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
-        <Icon
-          name="exclamation-circle"
-          alt="Error: "
-          sx={{ mr: 1, flexShrink: 0 }}
-          width={16}
-          height={16}
-          fill="red"
-        />
-        <span sx={{ variant: 'type.hint', color: 'red' }}>
-          Houston, we have a problem. Houston, we have a problem. Houston, we
-          have a problem. Houston, we have a problem. Houston, we have a
-          problem.
-        </span>
-      </div>
-    }
-  />
-  <TextField
-    label="Invalid input"
-    hint="Hint text"
-    error={
-      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
-        <Icon
-          name="warning"
-          alt="Error: "
-          sx={{ mr: 1, flexShrink: 0 }}
-          width={16}
-          height={16}
-          fill="red"
-        />
-        <span sx={{ variant: 'type.hint', color: 'red' }}>
-          Houston, we have a problem. Houston, we have a problem. Houston, we
-          have a problem. Houston, we have a problem. Houston, we have a
-          problem.
-        </span>
-      </div>
-    }
-  />
-</>
-```
-
-With error, no icon:
-
-```jsx
-import { Alert, Icon } from 'c-components'
-;<>
-  <TextField label="Name of your first pet" defaultValue="Roscoe" />
-  <TextField
-    label="Mother's maiden name"
-    hint="Her first last name"
-    error={
-      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
-        <span sx={{ variant: 'type.hint', color: 'red' }}>
-          This field cannot be empty
-        </span>
-      </div>
-    }
-  />
-  <TextField
-    label="Invalid input"
-    hint="Hint text"
-    error={
-      <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
-        <span sx={{ variant: 'type.hint', color: 'red' }}>
-          Houston, we have a problem. Houston, we have a problem. Houston, we
-          have a problem. Houston, we have a problem. Houston, we have a
-          problem.
-        </span>
-      </div>
-    }
+    label="Preferred biome"
+    hint="Cold biomes only"
+    defaultValue="Tundra"
   />
 </>
 ```
