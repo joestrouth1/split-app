@@ -34,7 +34,7 @@ function SpacingScale() {
     >
       {space.map((size, index) => {
         return (
-          <div sx={{ flex: 0, m: 2, display: 'inline-block' }}>
+          <div sx={{ flex: 0, m: 2, display: 'inline-block' }} key={size}>
             {size}px
             <div
               sx={{

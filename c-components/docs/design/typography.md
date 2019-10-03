@@ -2,6 +2,8 @@ Text styles can be chosen from the theme by passing a `variant` to the `sx` prop
 
 ## Title
 
+The primary heading on a page.
+
 ```jsx
 <h1
   sx={{
@@ -14,6 +16,8 @@ Text styles can be chosen from the theme by passing a `variant` to the `sx` prop
 
 ## Subtitle
 
+A brief introduction to the page/section.
+
 ```jsx
 <h2
   sx={{
@@ -24,7 +28,9 @@ Text styles can be chosen from the theme by passing a `variant` to the `sx` prop
 </h2>
 ```
 
-## Paragraph
+## Body
+
+Used for most text in the app. Can be any length.
 
 ```jsx
 <p
@@ -39,11 +45,15 @@ Text styles can be chosen from the theme by passing a `variant` to the `sx` prop
 
 ## Label
 
+Represents the name of a form field.
+
 ```jsx
 <p sx={{ variant: 'type.label' }}>First name</p>
 ```
 
 ## Hint
+
+Helps users understand how to complete a form field by appearing below it. May represent validation errors if shown in red.
 
 ```jsx
 <p sx={{ variant: 'type.hint' }}>Uppercase and lowercase letters (e.g. Aa)</p>
@@ -51,16 +61,18 @@ Text styles can be chosen from the theme by passing a `variant` to the `sx` prop
 
 ## Disclaimer
 
+Fine print and legal text.
+
 ```jsx
 <p sx={{ variant: 'type.disclaimer' }}>
   Legalese:
   <br />
-  By clicking the ‘Check my rates’ button and continuing with the application
+  By clicking the ‘View my options’ button and continuing with the application
   process, you are providing Express Written Consent under the Fair Credit
   Reporting Act for FancyCredit, LLC, to obtain your consumer credit report from
   your credit profile or other information from contract Credit Bureau(s)
   associated with your prequalification for credit inquiry. FancyCredit may also
-  analyze your credit report data with parterns and/or affiliates to ensure you
+  analyze your credit report data with patterns and/or affiliates to ensure you
   are being matched to products or services which are best suited to someone in
   your situation.
 </p>

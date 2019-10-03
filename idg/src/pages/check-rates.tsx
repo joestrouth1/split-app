@@ -72,7 +72,7 @@ const CheckRatesPage = () => {
                 credit profile or other information from contract Credit
                 Bureau(s) associated with your prequalification for credit
                 inquiry. BRAND may also analyze your credit report data with
-                parterns and/or affiliates to ensure you are being matched to
+                patterns and/or affiliates to ensure you are being matched to
                 products or services which are best suited to someone in your
                 situation.
               </small>
