@@ -41,12 +41,23 @@ module.exports = {
       usageMode: 'collapse', // 'hide' | 'collapse' | 'expand'
     },
     {
-      name: 'Typography',
-      content: 'docs/typography.md',
-    },
-    {
-      name: 'Colors',
-      content: 'docs/colors.md',
+      name: 'Design',
+      content: 'docs/design/index.md',
+      sections: [
+        {
+          name: 'Spacing',
+          content: 'docs/design/spacing.md',
+        },
+        {
+          name: 'Typography',
+          content: 'docs/design/typography.md',
+        },
+        {
+          name: 'Colors',
+          content: 'docs/design/colors.md',
+        },
+      ],
+      sectionDepth: 1,
     },
   ],
   moduleAliases: {

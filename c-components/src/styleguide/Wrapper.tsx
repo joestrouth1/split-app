@@ -1,6 +1,12 @@
 /**@jsx jsx */
 import { jsx, Styled, ThemeProvider } from 'theme-ui'
-import { Component, useState, HTMLAttributes, ReactNode } from 'react'
+import {
+  Component,
+  useState,
+  createContext,
+  HTMLAttributes,
+  ReactNode,
+} from 'react'
 import { defaultTheme } from '../theme'
 import 'typeface-open-sans'
 import 'normalize.css'
@@ -41,6 +47,8 @@ function SpacedStack({
   )
 }
 
+export const WidthContext = createContext({})
+
 function WidthSelector({
   children,
 }: {
@@ -49,46 +57,50 @@ function WidthSelector({
   const [width, setWidth] = useState<number>(Width['iPhone SE'])
 
   return (
-    <div sx={{}}>
-      <div
-        sx={{
-          width: '100%',
-          display: 'flex',
-          flexFlow: 'row wrap',
-          justifyContent: 'center',
-          m: -1,
-          borderBottomWidth: 1,
-          borderBottomStyle: 'solid',
-          borderBottomColor: 'grays.6',
-          pb: 2,
-          mb: 3,
-        }}
-      >
-        {Object.entries(Width).map(([device, deviceWidth]) => {
-          return (
-            <button
-              key={device}
-              sx={{
-                variant: 'buttons.base',
-                backgroundColor: 'transparent',
-                textTransform: 'uppercase',
-                fontFamily: 'body',
-                fontWeight: 'body',
-                fontSize: 1,
-                color: deviceWidth === width ? 'primary' : 'grays.8',
-                px: 2,
-                py: 1,
-                m: 1,
-              }}
-              onClick={() => setWidth(deviceWidth)}
-            >
-              {device}
-            </button>
-          )
-        })}
+    <WidthContext.Provider
+      value={{ widths: Width, currentWidth: width, setWidth }}
+    >
+      <div>
+        <div
+          sx={{
+            width: '100%',
+            display: 'flex',
+            flexFlow: 'row wrap',
+            justifyContent: 'center',
+            m: -1,
+            borderBottomWidth: 1,
+            borderBottomStyle: 'solid',
+            borderBottomColor: 'grays.6',
+            pb: 2,
+            mb: 3,
+          }}
+        >
+          {Object.entries(Width).map(([device, deviceWidth]) => {
+            return (
+              <button
+                key={device}
+                sx={{
+                  variant: 'buttons.base',
+                  backgroundColor: 'transparent',
+                  textTransform: 'uppercase',
+                  fontFamily: 'body',
+                  fontWeight: 'body',
+                  fontSize: 1,
+                  color: deviceWidth === width ? 'primary' : 'grays.8',
+                  px: 2,
+                  py: 1,
+                  m: 1,
+                }}
+                onClick={() => setWidth(deviceWidth)}
+              >
+                {device}
+              </button>
+            )
+          })}
+        </div>
+        {children(width)}
       </div>
-      {children(width)}
-    </div>
+    </WidthContext.Provider>
   )
 }
 
