@@ -1,15 +1,10 @@
-<h1 align="center">
-  Ideal Gatsby
-</h1>
+This project uses:
 
-Based on the default Gatsby starter, this boilerplate adds additional plugins and tooling that may or may not fit your use case.
-
-These include:
-
-- [Storybook](https://storybook.js.org), a UI workbench for developing and exploring components.
+- [Typescript](https://typescriptlang.org), a typed superset of JavaScript.
+- [React Styleguidist](https://react-styleguidist.js.org/), a UI workbench for developing, documenting, and exploring components.
 - [Jest](https://jestjs.io/), a framework for writing and running JavaScript tests.
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), a set of utilities for authoring tests in a maintainable, user-centric way.
-- [Tailwind CSS](https://tailwindcss.com/), a utility-first framework for building design systems in CSS.
+- [Theme UI](https://theme-ui.com), a set of tools for building consistent, themeable React apps based on constraint-based design principles.
 - [Purgecss](https://www.purgecss.com/), a tool for removing unused CSS.
 - [Autoprefixer](https://github.com/postcss/autoprefixer), a tool that automatically adds vendor prefixes for CSS rules.
 
@@ -18,7 +13,7 @@ These include:
 1.  **Clone this repository.**
 
     ```sh
-    git clone git@github.com:joestrouth1/ideal-gatsby
+    git clone git@github.com:joestrouth1/split-app
     ```
 
 1.  **Start developing.**
@@ -26,9 +21,9 @@ These include:
     Navigate into the directory, install dependencies, and start it up.
 
     ```sh
-    cd ideal-gatsby/
+    cd split-app/
     yarn
-    gatsby develop
+    yarn develop
     ```
 
 1.  **Open the source code and start editing!**
@@ -37,11 +32,11 @@ These include:
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-    Open the `ideal-gatsby` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+    Open the `idg` directory in your code editor of choice and edit a file in `src/pages/`. Save your changes and the browser will update in real time!
 
 ## 🧐 What's inside?
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+A quick look at some of the top-level files and directories you'll see in a Gatsby project.
 
     .
     ├── node_modules
@@ -75,11 +70,9 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 9.  **`LICENSE`**: Licensed under the MIT license.
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+10. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
+11. **`README.md`**: A text file containing useful reference information about your project.
 
 ## 🎓 Learning Gatsby
 

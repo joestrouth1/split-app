@@ -5,20 +5,17 @@ import merge from 'lodash/merge'
 import reduce from 'lodash/reduce'
 
 function isObject(value: unknown) {
-  var type = typeof value
+  const type = typeof value
   return value != null && (type === 'object' || type === 'function')
 }
 
-const flattenKeys = (
-  obj: any,
-  path: Array<string> = []
-): { [k: string]: string } =>
+const flattenKeys = (obj: any, path: string[] = []): { [k: string]: string } =>
   !isObject(obj)
     ? { [path.join('.')]: obj }
     : reduce(
         obj,
-        (cum: any, next: any, key: any) =>
-          merge(cum, flattenKeys(next, [...path, key])),
+        (acc: any, next: any, key: any) =>
+          merge(acc, flattenKeys(next, [...path, key])),
         {}
       )
 
@@ -35,25 +32,23 @@ export function ColorPalette() {
   })
 
   const withCombinationsByLevel = result.map(color => {
+    const initialValue: { [k: string]: any } = {}
     return {
       ...color,
-      combinations: color.combinations.reduce(
-        (acc, comparison) => {
-          for (const level of Object.keys(comparison.accessibility) as Array<
-            keyof typeof comparison.accessibility
-          >) {
-            if (comparison.accessibility[level]) {
-              if (Array.isArray(acc[level])) {
-                acc[level].push(comparison)
-              } else {
-                acc[level] = [comparison]
-              }
+      combinations: color.combinations.reduce((acc, comparison) => {
+        for (const level of Object.keys(
+          comparison.accessibility
+        ) as (keyof typeof comparison.accessibility)[]) {
+          if (comparison.accessibility[level]) {
+            if (Array.isArray(acc[level])) {
+              acc[level].push(comparison)
+            } else {
+              acc[level] = [comparison]
             }
           }
-          return acc
-        },
-        {} as { [k: string]: any }
-      ),
+        }
+        return acc
+      }, initialValue),
     }
   })
 
@@ -100,8 +95,7 @@ export function ColorPalette() {
                 >
                   {level}
                 </p>,
-                //@ts-ignore
-                ...colors.map(color => {
+                ...colors.map((color: { name: string; hex: string }) => {
                   return (
                     <div
                       key={color.name}

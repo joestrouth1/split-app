@@ -24,7 +24,7 @@ To run tests, use `yarn test`.
 
 ## Configuration
 
-Code quality is [set up for you](https://github.com/palmerhq/tsdx/pull/45/files) with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
+Code quality is set up with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` or the respective config files accordingly.
 
 ### Jest
 
