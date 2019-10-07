@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx, useThemeUI } from 'theme-ui'
 import colorable from 'colorable'
+import { colors } from '../theme/colors'
 import merge from 'lodash/merge'
 import reduce from 'lodash/reduce'
 
@@ -18,6 +19,11 @@ const flattenKeys = (obj: any, path: string[] = []): { [k: string]: string } =>
           merge(acc, flattenKeys(next, [...path, key])),
         {}
       )
+
+const comparisons = colorable(colors, {
+  uniq: true,
+  compact: true,
+})
 
 export function ColorPalette() {
   const {
