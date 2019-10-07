@@ -6,10 +6,10 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Application`,
-    description: `Brand neutral application flow`,
+    title: `Brand App`,
+    description: `Your new favorite banking app`,
     author: `@joestrouth1`,
-    siteUrl: 'https://application.demo.joes.house',
+    siteUrl: 'https://demo.application.joes.house',
   },
   plugins: [
     {
@@ -31,15 +31,21 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Application`,
         /* eslint-disable @typescript-eslint/camelcase */
-        short_name: `Ideal`,
-        start_url: `/`,
+        name: `Brand App`,
+        short_name: `Brand`,
+        description: 'Your new favorite banking app',
+        start_url: `/?utm_source=installed`,
         background_color: `#f8f8f9`,
         theme_color: `#0a7e76`,
+        display: `standalone`,
+        icon: `src/images/icon-square.svg`, // This path is relative to the root of the site.
+        icon_options: {
+          purpose: 'maskable badge any',
+        },
+        categories: ['finance', 'business'],
+        dir: 'ltr',
         /* eslint-enable @typescript-eslint/camelcase */
-        display: `minimal-ui`,
-        icon: `src/images/illustration_leaf.svg`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
@@ -61,7 +67,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://application.demo.joes.house`,
+        siteUrl: `https://demo.application.joes.house`,
         stripQueryString: true,
       },
     },

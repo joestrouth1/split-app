@@ -30,7 +30,7 @@ export const PureIndexPage = ({ data }: PureIndexPageProps) => {
   )
   return (
     <Layout>
-      <SEO title="Application Index" />
+      <SEO title="Table of Contents" />
       <Main>
         <Container
           sx={{

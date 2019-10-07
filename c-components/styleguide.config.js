@@ -10,7 +10,7 @@ module.exports = {
   title: 'App Components',
   theme: styleguideTheme,
   template: {
-    // favicon: 'https://placekitten.com/16/16.png'
+    favicon: 'https://demo.application.joes.house/icons/icon-96x96.png',
   },
   defaultExample: false,
   getExampleFilename(componentPath) {
