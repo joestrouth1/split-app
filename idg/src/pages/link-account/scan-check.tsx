@@ -19,7 +19,7 @@ const ScanCheckPage = () => (
         }}
       >
         <header>
-          <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan your ID card</h1>
+          <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan a check</h1>
           <p sx={{ variant: 'type.subtitle', mb: 3 }}>
             Save time and avoid tedious typing by snapping a photo of a check.
           </p>
