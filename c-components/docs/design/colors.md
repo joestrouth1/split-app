@@ -2,10 +2,13 @@ Designing with accessibility in mind helps reduce the need for costly redesigns,
 
 What follows is a list of accessible color combinations, organized by contrast level:
 
-- AA: What we aim for. Suitable for normal body text and larger. Greater than 4.5 contrast.
-- AA Large: Suitable for bold text or larger than 24px. Greater than 3 contrast.
-- AAA: The strictest standard. Bonus points for using these. Greater than 7 contrast.
-- AAA Large: Same as AA. Bold text or text larger than 24px that would otherwise meet AA standards. Greater than 4.5.
+- AA: What we aim for. Suitable for normal body text and larger. > 4.5 contrast.
+- AA Large: Suitable for bold text or larger than 24px. > 3 contrast.
+- AAA: The strictest standard. Bonus points for using these. > 7 contrast.
+
+Not shown:
+
+- AAA Large: Strictest standard for bold text or text larger than 24px. Same threshold as AA (>4.5).
 
 ```md static
 TODO:
@@ -18,7 +21,7 @@ TODO:
 
 ```jsx noeditor
 import { Card, defaultTheme } from 'c-components'
-import { comparisons } from 'c-components/styleguide/ColorComparisons'
+import { comparisons } from 'c-components/styleguide/color-comparisons'
 const { colors } = defaultTheme
 
 const colorEntries = Object.entries(colors)
@@ -39,7 +42,7 @@ const mainColors = colorEntries.filter(
       ),
     }
     return (
-      <div>
+      <div key={`${name}_${value}`}>
         <h3 sx={{ variant: 'type.label', textTransform: 'uppercase', mb: 2 }}>
           {name} - {value}
         </h3>
@@ -58,7 +61,10 @@ const mainColors = colorEntries.filter(
           const isEmpty = colors.length === 0
 
           return (
-            <div sx={{ display: 'flex', flexFlow: 'column nowrap' }}>
+            <div
+              sx={{ display: 'flex', flexFlow: 'column nowrap' }}
+              key={`${name}_${value}_${level}`}
+            >
               <h4
                 sx={{
                   variant: 'type.label',
@@ -72,8 +78,9 @@ const mainColors = colorEntries.filter(
                 <p>No matches</p>
               ) : (
                 <div>
-                  {colors.map(({ hex, name, contrast }, index) => (
+                  {colors.map(({ hex, name: matchName, contrast }, index) => (
                     <p
+                      key={`${name}_${value}_${level}_${matchName}`}
                       sx={{
                         backgroundColor: hex,
                         variant: 'type.body',
@@ -81,7 +88,7 @@ const mainColors = colorEntries.filter(
                         p: 2,
                       }}
                     >
-                      {name} - {hex} |{' '}
+                      {matchName} - {hex} |{' '}
                       {Math.round(contrast * 100 + Number.EPSILON) / 100}
                       <br />
                       Doggo ipsum maximum borkdrive blep.

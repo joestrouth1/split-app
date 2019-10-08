@@ -23,12 +23,7 @@ declare module 'colorable' {
     uniq?: boolean
   }
 
-  interface ColorResult {
-    hex: string
-    name?: string
-    combinations: ColorComparison[]
-  }
-  interface ColorComparison {
+  export interface ColorComparison {
     hex: string
     name?: string
     contrast: number
@@ -39,9 +34,14 @@ declare module 'colorable' {
       aaaLarge: boolean
     }
   }
+  interface ColorResult {
+    hex: string
+    name?: string
+    combinations: ColorComparison[]
+  }
   function colorable(
     colors: ColorList,
     options?: ColorableOptions
   ): ColorResult[]
-  export = colorable
+  export default colorable
 }
