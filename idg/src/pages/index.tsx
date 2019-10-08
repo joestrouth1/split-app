@@ -1,94 +1,65 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
-import { Link, graphql, useStaticQuery } from 'gatsby'
-import { DefaultLayout as Layout } from '../components/layouts'
+import { Link } from 'gatsby'
+import { useState } from 'react'
+import { SplashLayout as Layout } from '../components/layouts'
+import { TextField } from 'c-components'
 import { SEO } from '../components/seo'
 
-const allPagesQuery = graphql`
-  query {
-    allPages: allSitePage {
-      nodes {
-        path
-      }
-    }
-  }
-`
+export const IndexPage = () => {
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
-interface AllPagesQueryResult {
-  allPages: {
-    nodes: { path: string }[]
-  }
-}
-
-export interface PureIndexPageProps {
-  data: AllPagesQueryResult
-}
-
-export const PureIndexPage = ({ data }: PureIndexPageProps) => {
-  data.allPages.nodes = data.allPages.nodes.filter(
-    ({ path }) => !path.includes('404')
-  )
   return (
     <Layout>
       <SEO title="Table of Contents" />
-      <Main>
+      <Main sx={{ display: 'flex' }}>
         <Container
           sx={{
             px: 3,
-            pt: 3,
             pb: 4,
             maxWidth: theme => theme.breakpoints[0],
             display: 'flex',
             flexFlow: 'column nowrap',
+            justifyContent: 'center',
           }}
         >
-          <h1 sx={{ variant: 'type.title', mb: 4 }}>Welcome to the new app!</h1>
+          <h1 sx={{ variant: 'type.title', mb: 3, textAlign: 'center' }}>
+            Welcome!
+          </h1>
 
-          <Link
-            to="/basic-information"
-            sx={{ variant: 'buttons.primary', mb: 4 }}
-          >
-            Start pre-qual flow
+          <TextField
+            name="email"
+            type="email"
+            label="Email address"
+            onChange={e => setEmail(e.currentTarget.value)}
+            value={email}
+            sx={{
+              mb: 3,
+            }}
+          />
+          <TextField
+            name="password"
+            type="password"
+            label="Password"
+            value={password}
+            onChange={e => setPassword(e.currentTarget.value)}
+            sx={{
+              mb: 3,
+            }}
+          />
+
+          <Link to="/" sx={{ variant: 'buttons.primary', mb: 2 }}>
+            Sign in
           </Link>
 
-          <p>Or jump to a specific page:</p>
-          <ul
-            sx={{
-              m: 0,
-              p: 3,
-              listStyle: 'none',
-              display: 'flex',
-              flexFlow: 'column nowrap',
-              alignItems: 'flex-start',
-              '& > * + *': {
-                mt: 2,
-              },
-            }}
-          >
-            {data.allPages.nodes.map(({ path }) => {
-              return (
-                <li key={path}>
-                  <Link
-                    to={path}
-                    sx={{ variant: 'links.default' }}
-                    activeClassName="active"
-                  >
-                    {path}
-                  </Link>
-                </li>
-              )
-            })}
-          </ul>
+          <Link to="/" sx={{ variant: 'buttons.outline' }}>
+            Apply now
+          </Link>
         </Container>
       </Main>
     </Layout>
   )
-}
-
-const IndexPage = () => {
-  const data = useStaticQuery(allPagesQuery)
-
-  return <PureIndexPage data={data} />
 }
 
 export default IndexPage

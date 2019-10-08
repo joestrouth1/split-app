@@ -17,11 +17,11 @@ if (process.env.NODE_ENV !== 'test') {
   ReactModal.setAppElement('#___gatsby')
 }
 
-export interface DefaultLayoutProps {
+export interface SplashLayoutProps {
   children: ReactNode
 }
 
-export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+export const SplashLayout = ({ children }: SplashLayoutProps) => {
   const [modalState, modalDispatch] = useReducer(
     modalReducer,
     initialModalState
@@ -31,7 +31,12 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     <ThemeProvider theme={{ ...defaultTheme, useCustomProperties: false }}>
       <ModalContext.Provider value={modalDispatch}>
         <Styled.root>
-          <Layout sx={{ bg: 'grays.0', pb: 5 }}>
+          <Layout
+            sx={{
+              bg: 'background',
+              pb: 5,
+            }}
+          >
             <Header />
             <TabBar
               label="Where to start"
@@ -41,11 +46,11 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
                 left: 0,
                 right: 0,
                 zIndex: 1,
-                background: 'white',
+                background: 'transparent',
               }}
             >
-              <TabBarItem icon="sign-in" href="/">
-                Sign in
+              <TabBarItem icon="home" href="/">
+                Home
               </TabBarItem>
               <TabBarItem icon="sign-up" href="/basic-information">
                 Apply now

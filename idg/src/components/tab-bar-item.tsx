@@ -13,9 +13,19 @@ interface TabBarItemProps {
   href: string
   /** Text to display below the icon */
   children: ReactNode
+  /**
+   * Color to fill the icon and text with
+   * @default 'text'
+   */
+  fill?: string
 }
 
-export function TabBarItem({ icon, href, children }: TabBarItemProps) {
+export function TabBarItem({
+  icon,
+  href,
+  children,
+  fill = 'text',
+}: TabBarItemProps) {
   return (
     <Link
       to={href}
@@ -28,9 +38,17 @@ export function TabBarItem({ icon, href, children }: TabBarItemProps) {
         textDecoration: 'none',
         textAlign: 'center',
         px: 1,
+        color: fill,
       }}
     >
-      <Icon name={icon} alt="" width={24} height={24} sx={{ mb: 1 }} />
+      <Icon
+        name={icon}
+        alt=""
+        width={24}
+        height={24}
+        sx={{ mb: 1 }}
+        fill={fill}
+      />
       {children}
     </Link>
   )

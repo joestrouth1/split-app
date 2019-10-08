@@ -15,6 +15,7 @@ type IconName =
   | 'eye'
   | 'eye-slash'
   | 'frown'
+  | 'home'
   | 'id'
   | 'key'
   | 'keyboard'
@@ -108,6 +109,12 @@ const EyeSlash = (props: PathProps) => (
 const Frown = (props: PathProps) => (
   <path
     d="M16 4C9.38 4 4 9.38 4 16s5.38 12 12 12 12-5.38 12-12S22.62 4 16 4zm0 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S6 21.53 6 16 10.47 6 16 6zm-4.5 6a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM16 18a7.98 7.98 0 0 0-6.47 3.34l1.63 1.16a5.94 5.94 0 0 1 9.68 0l1.63-1.16A7.98 7.98 0 0 0 16 18z"
+    {...props}
+  />
+)
+const Home = (props: PathProps) => (
+  <path
+    d="M 16 2.59375 L 15.28125 3.28125 L 2.28125 16.28125 L 3.71875 17.71875 L 5 16.4375 L 5 27 L 5 28 L 6 28 L 13 28 L 14 28 L 14 27 L 14 18 L 18 18 L 18 27 L 18 28 L 19 28 L 26 28 L 27 28 L 27 27 L 27 16.4375 L 28.28125 17.71875 L 29.71875 16.28125 L 16.71875 3.28125 L 16 2.59375 z M 16 5.4375 L 25 14.4375 L 25 26 L 20 26 L 20 17 L 20 16 L 19 16 L 13 16 L 12 16 L 12 17 L 12 26 L 7 26 L 7 14.4375 L 16 5.4375 z"
     {...props}
   />
 )
@@ -304,6 +311,9 @@ export const Icon = forwardRef<IconRef, IconProps>(
         break
       case 'frown':
         path = <Frown sx={pathStyles} />
+        break
+      case 'home':
+        path = <Home sx={pathStyles} />
         break
       case 'id':
         path = <IdCard sx={pathStyles} />

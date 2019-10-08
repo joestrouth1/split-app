@@ -31,6 +31,7 @@ const IconWithName = props => (
   <IconWithName alt="Mail or email" name="envelope" />
   <IconWithName alt="Warning, error" name="exclamation-circle" />
   <IconWithName alt="Negative review/feedback" name="frown" />
+  <IconWithName alt="Home, start screen" name="home" />
   <IconWithName alt="Goverment ID card" name="id" />
   <IconWithName alt="Authentication" name="key" />
   <IconWithName alt="Input or manual entry" name="keyboard" />
