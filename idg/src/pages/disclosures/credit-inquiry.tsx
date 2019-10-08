@@ -59,7 +59,14 @@ const CreditInquiryPage = () => (
   <Layout>
     <SEO title="Consumer Credit Inquiry and Reporting Agreement" />
     <Main>
-      <Container sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}>
+      <Container
+        sx={{
+          px: 3,
+          pt: 3,
+          pb: 4,
+          maxWidth: theme => theme.breakpoints[0],
+        }}
+      >
         <CreditInquiryModal />
       </Container>
     </Main>

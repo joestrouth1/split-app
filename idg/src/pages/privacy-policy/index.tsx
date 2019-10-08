@@ -8,7 +8,14 @@ const PrivacyPolicyPage = () => (
   <Layout>
     <SEO title="Basic info" />
     <Main>
-      <Container sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}>
+      <Container
+        sx={{
+          px: 3,
+          pt: 3,
+          pb: 4,
+          maxWidth: theme => theme.breakpoints[0],
+        }}
+      >
         <ModalVersion />
       </Container>
     </Main>

@@ -16,7 +16,8 @@ const PrequalifiedPage = () => {
         <Container
           sx={{
             px: 3,
-            py: 4,
+            pt: 3,
+            pb: 4,
             maxWidth: theme => theme.breakpoints[0],
             display: 'flex',
             flexFlow: 'column nowrap',

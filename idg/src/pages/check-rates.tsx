@@ -17,7 +17,8 @@ const CheckRatesPage = () => {
         <Container
           sx={{
             px: 3,
-            py: 4,
+            pt: 3,
+            pb: 4,
             maxWidth: theme => theme.breakpoints[0],
             display: 'flex',
             flexFlow: 'column nowrap',
@@ -52,7 +53,7 @@ const CheckRatesPage = () => {
                 name="lightbulb"
                 alt=""
                 fill="greens.6"
-                sx={{ mr: 2 }}
+                sx={{ mr: 2, flexShrink: 0 }}
                 width={16}
                 height={16}
               />
@@ -62,7 +63,7 @@ const CheckRatesPage = () => {
             <Link sx={{ variant: 'buttons.primary', mb: 4 }} to="/prequalified">
               View my options
             </Link>
-            <p sx={{ variant: 'type.disclaimer' }}>
+            <p sx={{ variant: 'type.disclaimer', m: 0 }}>
               <small sx={{ variant: 'type.disclaimer' }}>
                 Legalese: <br />
                 By clicking the &lsquo;View my options&rsquo; button and

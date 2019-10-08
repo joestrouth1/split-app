@@ -59,7 +59,14 @@ const DisputeResolutionPage = () => (
   <Layout>
     <SEO title="Dispute Resolution Agreement" />
     <Main>
-      <Container sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}>
+      <Container
+        sx={{
+          px: 3,
+          pt: 3,
+          pb: 4,
+          maxWidth: theme => theme.breakpoints[0],
+        }}
+      >
         <DisputeResolutionModal />
       </Container>
     </Main>

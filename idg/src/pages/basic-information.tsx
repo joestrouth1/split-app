@@ -91,7 +91,12 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
       <SEO title="Basic info" />
       <Main>
         <Container
-          sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
+          sx={{
+            px: 3,
+            pt: 3,
+            pb: 4,
+            maxWidth: theme => theme.breakpoints[0],
+          }}
         >
           <h1 sx={{ variant: 'type.title', mb: 4 }}>
             Let&rsquo;s get to know each other

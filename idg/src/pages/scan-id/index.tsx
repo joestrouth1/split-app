@@ -11,7 +11,12 @@ const ScanIdPage = () => {
       <SEO title="Scan your ID" />
       <Main>
         <Container
-          sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
+          sx={{
+            px: 3,
+            pt: 3,
+            pb: 4,
+            maxWidth: theme => theme.breakpoints[0],
+          }}
         >
           <header>
             <h1 sx={{ variant: 'type.title', mb: 3 }}>Scan your ID</h1>

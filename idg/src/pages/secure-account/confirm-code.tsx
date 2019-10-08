@@ -29,7 +29,12 @@ const SecureAccountConfirmationPage = () => {
       <SEO title="Enter your verification code" />
       <Main>
         <Container
-          sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
+          sx={{
+            px: 3,
+            pt: 3,
+            pb: 4,
+            maxWidth: theme => theme.breakpoints[0],
+          }}
         >
           <header>
             <h1 sx={{ variant: 'type.title', mb: 3 }}>Confirm your code</h1>
@@ -59,7 +64,7 @@ const SecureAccountConfirmationPage = () => {
                       alt="Error"
                       width={24}
                       height={24}
-                      sx={{ mr: 2 }}
+                      sx={{ mr: 2, flexShrink: 0 }}
                     />
                     <span>
                       Sorry, that code didn’t work. Verify your code and try

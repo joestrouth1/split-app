@@ -57,7 +57,14 @@ const EsignActConsentPage = () => (
   <Layout>
     <SEO title="ESIGN Act Consent Agreement" />
     <Main>
-      <Container sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}>
+      <Container
+        sx={{
+          px: 3,
+          pt: 3,
+          pb: 4,
+          maxWidth: theme => theme.breakpoints[0],
+        }}
+      >
         <EsignActConsentModal />
       </Container>
     </Main>

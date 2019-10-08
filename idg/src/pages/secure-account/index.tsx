@@ -15,7 +15,12 @@ const SecureAccountPage = () => {
       <SEO title="Secure your account" />
       <Main>
         <Container
-          sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
+          sx={{
+            px: 3,
+            pt: 3,
+            pb: 4,
+            maxWidth: theme => theme.breakpoints[0],
+          }}
         >
           <header>
             <h1 sx={{ variant: 'type.title' }}>Secure your account</h1>

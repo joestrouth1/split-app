@@ -28,7 +28,12 @@ const NotFoundPage = () => {
       <SEO title="404: Not found" />
       <Main>
         <Container
-          sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
+          sx={{
+            px: 3,
+            pt: 3,
+            pb: 4,
+            maxWidth: theme => theme.breakpoints[0],
+          }}
         >
           <h1 sx={{ variant: 'type.title', mb: 3 }}>Page not found</h1>
           <p sx={{ variant: 'type.subtitle', mb: 3 }}>

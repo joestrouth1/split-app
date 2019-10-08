@@ -13,7 +13,8 @@ const ScanIdPhotosPage = () => {
         <Container
           sx={{
             px: 3,
-            py: 4,
+            pt: 3,
+            pb: 4,
             maxWidth: theme => theme.breakpoints[0],
             display: 'flex',
             flexFlow: 'column nowrap',
@@ -54,7 +55,7 @@ const ScanIdPhotosPage = () => {
                 alt="Error"
                 width={24}
                 height={24}
-                sx={{ mr: 2 }}
+                sx={{ mr: 2, flexShrink: 0 }}
               />
               <span>Front photo not added</span>
             </Alert>
@@ -66,7 +67,7 @@ const ScanIdPhotosPage = () => {
                 alt="Error"
                 width={24}
                 height={24}
-                sx={{ mr: 2 }}
+                sx={{ mr: 2, flexShrink: 0 }}
               />
               <span>Back photo not added</span>
             </Alert>

@@ -56,8 +56,8 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
               <TabBarItem icon="sign-up" href="/basic-information">
                 Apply now
               </TabBarItem>
-              <TabBarItem icon="menu" href="/">
-                Index
+              <TabBarItem icon="menu" href="/table-of-contents">
+                Pages
               </TabBarItem>
             </TabBar>
             {children}
