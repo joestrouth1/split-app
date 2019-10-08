@@ -32,6 +32,7 @@ const IconWithName = props => (
   <IconWithName alt="Warning, error" name="exclamation-circle" />
   <IconWithName alt="Negative review/feedback" name="frown" />
   <IconWithName alt="Goverment ID card" name="id" />
+  <IconWithName alt="Authentication" name="key" />
   <IconWithName alt="Input or manual entry" name="keyboard" />
   <IconWithName alt="FYI, info alert, idea, general notice" name="lightbulb" />
   <IconWithName alt="Link (account) or link (navigation)" name="link" />
@@ -42,6 +43,8 @@ const IconWithName = props => (
   <IconWithName alt="Print" name="print" />
   <IconWithName alt="Hint, FAQ, help" name="question" />
   <IconWithName alt="Save" name="save" />
+  <IconWithName alt="Sign in" name="sign-in" />
+  <IconWithName alt="Sign up" name="sign-up" />
   <IconWithName alt="Positive review/feedback" name="smile" />
   <IconWithName alt="Invalid or close" name="times" />
   <IconWithName alt="Delete, destructive action" name="trash" />

@@ -6,11 +6,11 @@
  */
 /**@jsx jsx */
 import { ReactNode, useReducer } from 'react'
-import { jsx, ThemeProvider, Layout, Footer, Styled } from 'theme-ui'
-import { Link } from 'gatsby'
+import { jsx, ThemeProvider, Layout, Styled } from 'theme-ui'
 import ReactModal from 'react-modal'
-import { defaultTheme } from 'c-components'
+import { defaultTheme, TabBar } from 'c-components'
 import { Header } from '../header'
+import { TabBarItem } from '../tab-bar-item'
 import './layout-base.css'
 import {
   ModalContext,
@@ -37,47 +37,30 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     <ThemeProvider theme={{ ...defaultTheme, useCustomProperties: false }}>
       <ModalContext.Provider value={modalDispatch}>
         <Styled.root>
-          <Layout sx={{ bg: 'grays.0' }}>
-            <Header>
-              <ul
-                sx={{
-                  m: 0,
-                  p: 3,
-                  listStyle: 'none',
-                  bg: 'white',
-                  display: 'flex',
-                  flexFlow: 'column nowrap',
-                  alignItems: 'center',
-                  '& > * + *': {
-                    mt: 2,
-                  },
-                }}
-              >
-                <li>
-                  <Link
-                    to="/"
-                    sx={{ variant: 'links.default' }}
-                    activeClassName="active"
-                  >
-                    {'Table of Contents'}
-                  </Link>
-                </li>
-              </ul>
-            </Header>
-            {children}
-            <Footer
+          <Layout sx={{ bg: 'grays.0', pb: 5 }}>
+            <Header></Header>
+            <TabBar
+              label="Starting points"
               sx={{
-                variant: 'type.disclaimer',
-                bg: 'grays.2',
-                display: 'flex',
-                flexFlow: 'column nowrap',
-                textAlign: 'center',
-                p: 3,
-                color: 'greens.7',
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                zIndex: 1,
+                background: 'white',
               }}
             >
-              © {new Date().getFullYear()}
-            </Footer>
+              <TabBarItem icon="sign-in" href="/sign-in">
+                Sign in
+              </TabBarItem>
+              <TabBarItem icon="sign-up" href="/basic-information">
+                Apply now
+              </TabBarItem>
+              <TabBarItem icon="menu" href="/">
+                Index
+              </TabBarItem>
+            </TabBar>
+            {children}
             <ReactModal
               isOpen={modalState.isOpen}
               shouldCloseOnOverlayClick={true}

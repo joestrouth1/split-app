@@ -33,7 +33,7 @@ export const Header = ({ children, logo }: HeaderProps) => {
       {children && (
         <nav
           aria-expanded={isNavOpen}
-          aria-label="Main Navigation"
+          aria-label="Main"
           role="navigation"
           sx={{
             width: '100%',
