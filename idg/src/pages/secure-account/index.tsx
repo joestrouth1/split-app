@@ -38,12 +38,12 @@ const SecureAccountPage = () => {
         <Container
           sx={{ px: 3, py: 4, maxWidth: theme => theme.breakpoints[0] }}
         >
-          <p sx={{ variant: 'type.body' }}>
+          <p sx={{ variant: 'type.body', mb: 3 }}>
             To keep your account safe, we need to verify your contact
             information.
           </p>
 
-          <p sx={{ variant: 'type.body', my: 3 }}>How should we reach you?</p>
+          <p sx={{ variant: 'type.body', mb: 3 }}>How should we reach you?</p>
 
           <div sx={{ display: 'flex', flexFlow: 'row nowrap' }}>
             <Link

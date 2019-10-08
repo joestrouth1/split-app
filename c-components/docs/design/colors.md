@@ -72,7 +72,7 @@ const mainColors = colorEntries.filter(
                 <p>No matches</p>
               ) : (
                 <div>
-                  {colors.map(({ hex, name, contrast }) => (
+                  {colors.map(({ hex, name, contrast }, index) => (
                     <p
                       sx={{
                         backgroundColor: hex,

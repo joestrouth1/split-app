@@ -11,7 +11,7 @@ export const Header = ({ children, ...props }: HeaderProps) => (
   <BaseHeader
     logo={
       <Link
-        to="/"
+        to="/table-of-contents"
         sx={{
           lineHeight: 1,
         }}

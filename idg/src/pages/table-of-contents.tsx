@@ -50,7 +50,7 @@ export const PureIndexPage = ({ data }: PureIndexPageProps) => {
             Start pre-qual flow
           </Link>
 
-          <p>Or jump to a specific page:</p>
+          <p sx={{ variant: 'type.body' }}>Or jump to a specific page:</p>
           <ul
             sx={{
               m: 0,

@@ -29,9 +29,6 @@ export const type = {
     fontWeight: 'body',
     fontSize: [2],
     m: 0,
-    '& + &': {
-      mt: 3,
-    },
   },
   label: {
     ...body,
