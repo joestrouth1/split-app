@@ -18,11 +18,12 @@ const CurrentIncomePage = () => {
   }
 
   const [income, setIncome] = useState<string>('')
+  const [housing, setHousing] = useState<string>('')
 
   const [isValid, setIsValid] = useState<boolean>(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
-  }, [formRef.current, income])
+  }, [formRef.current, income, housing])
 
   return (
     <Layout>
@@ -45,7 +46,7 @@ const CurrentIncomePage = () => {
           </header>
           <Illustration
             sx={{
-              height: 245,
+              height: 128,
               maxWidth: '100%',
               mb: 4,
             }}
@@ -65,10 +66,20 @@ const CurrentIncomePage = () => {
             <CurrencyField
               label="Individual annual income"
               required
-              hint="The total amount you make per year before taxes. Include tips, bonuses, and any other income you&rsquo;d like to be considered for this loan."
+              hint="Total amount you make per year before taxes. Include tips, bonuses, and any other income you&rsquo;d like to be considered for this loan."
               name="income"
               value={income}
               onChange={setIncome}
+              sx={{ mb: 3 }}
+            />
+
+            <CurrencyField
+              label="Housing payment"
+              required
+              hint="Total amount you pay per month for housing, e.g. rent or mortgage"
+              name="housing"
+              value={housing}
+              onChange={setHousing}
               sx={{ mb: 3 }}
             />
 
