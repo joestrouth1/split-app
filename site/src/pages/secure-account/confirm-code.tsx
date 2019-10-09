@@ -55,37 +55,15 @@ const SecureAccountConfirmationPage = () => {
                 value={code}
                 onChange={e => setCode(e.currentTarget.value)}
                 required
+                error={
+                  codeRejected
+                    ? `Sorry, that code didn't work. Verify your code and try again.` +
+                      (failedAttempts >= 3 && failedAttempts < 8
+                        ? ` Attempts remaining: ${8 - failedAttempts}`
+                        : '')
+                    : ''
+                }
               />
-              {/*
-                TODO: remove this block, add the text to TextField.error
-                - Should 'Attempts remaining: n' be in the error as well?
-                  Should it be forced to a second line, or flow naturally?
-              */}
-              {codeRejected && (
-                <div>
-                  <Alert variant="negative" sx={{ mb: 3 }}>
-                    <Icon
-                      name="times"
-                      fill="red"
-                      alt="Error"
-                      width={24}
-                      height={24}
-                      sx={{ mr: 2, flexShrink: 0 }}
-                    />
-                    <span>
-                      Sorry, that code didn’t work. Verify your code and try
-                      again.
-                    </span>
-                  </Alert>
-                  {failedAttempts >= 3 && failedAttempts < 8 && (
-                    <p
-                      sx={{ textAlign: 'center', variant: 'type.body', mb: 3 }}
-                    >
-                      Attempts remaining: {8 - failedAttempts}
-                    </p>
-                  )}
-                </div>
-              )}
               <Button variant="primary" type="submit" disabled={!code.length}>
                 Confirm my code
               </Button>
