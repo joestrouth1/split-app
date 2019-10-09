@@ -3,37 +3,39 @@ import { jsx } from 'theme-ui'
 import { Fragment, forwardRef, SVGAttributes } from 'react'
 import { FillProperty } from 'csstype'
 
-type IconName =
-  | 'calendar'
-  | 'camera'
-  | 'car'
-  | 'check'
-  | 'comments'
-  | 'envelope'
-  | 'expand'
-  | 'exclamation-circle'
-  | 'eye'
-  | 'eye-slash'
-  | 'frown'
-  | 'home'
-  | 'id'
-  | 'key'
-  | 'keyboard'
-  | 'lightbulb'
-  | 'link'
-  | 'lock'
-  | 'meh'
-  | 'menu'
-  | 'passport'
-  | 'print'
-  | 'question'
-  | 'save'
-  | 'sign-in'
-  | 'sign-up'
-  | 'smile'
-  | 'times'
-  | 'trash'
-  | 'warning'
+export const ICON_NAMES = [
+  'calendar',
+  'camera',
+  'car',
+  'check',
+  'comments',
+  'envelope',
+  'expand',
+  'exclamation-circle',
+  'eye',
+  'eye-slash',
+  'frown',
+  'home',
+  'id',
+  'key',
+  'keyboard',
+  'lightbulb',
+  'link',
+  'lock',
+  'meh',
+  'menu',
+  'passport',
+  'print',
+  'question',
+  'save',
+  'sign-in',
+  'sign-up',
+  'smile',
+  'times',
+  'trash',
+  'warning',
+] as const
+type IconName = typeof ICON_NAMES[number]
 
 type PathProps = SVGAttributes<SVGPathElement>
 
