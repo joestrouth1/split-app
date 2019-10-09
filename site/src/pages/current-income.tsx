@@ -14,7 +14,7 @@ const CurrentIncomePage = () => {
   const formRef = useRef<HTMLFormElement>(null)
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
-    navigate('/check-rates')
+    navigate('/verify-identity')
   }
 
   const [income, setIncome] = useState<string>('')

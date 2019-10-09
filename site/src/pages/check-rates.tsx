@@ -54,8 +54,8 @@ const CheckRatesPage = () => {
                 alt=""
                 fill="greens.6"
                 sx={{ mr: 2, flexShrink: 0 }}
-                width={16}
-                height={16}
+                width={24}
+                height={24}
               />
               <span>This won&rsquo;t impact your credit score.</span>
             </Alert>

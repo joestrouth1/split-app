@@ -23,7 +23,7 @@ const VerifyIdentityPage = () => {
 
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
-    navigate('/link-account')
+    navigate('/check-rates')
   }
 
   return (

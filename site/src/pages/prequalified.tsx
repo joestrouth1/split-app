@@ -78,10 +78,7 @@ const PrequalifiedPage = () => {
             Next up, you&rsquo;ll need your bank details. Ready?
           </p>
 
-          <Link
-            sx={{ variant: 'buttons.primary', mt: 3 }}
-            to="/verify-identity"
-          >
+          <Link sx={{ variant: 'buttons.primary', mt: 3 }} to="/link-account">
             Let&rsquo;s go
           </Link>
         </Container>
