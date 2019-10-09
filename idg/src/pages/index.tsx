@@ -3,7 +3,7 @@ import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
 import { useState } from 'react'
 import { SplashLayout as Layout } from '../components/layouts'
-import { TextField } from 'c-components'
+import { TextField, Button } from 'c-components'
 import { SEO } from '../components/seo'
 
 export const IndexPage = () => {
@@ -28,32 +28,36 @@ export const IndexPage = () => {
             Welcome!
           </h1>
 
-          <TextField
-            name="email"
-            type="email"
-            label="Email address"
-            onChange={e => setEmail(e.currentTarget.value)}
-            value={email}
-            sx={{
-              mb: 3,
-            }}
-          />
-          <TextField
-            name="password"
-            type="password"
-            label="Password"
-            value={password}
-            onChange={e => setPassword(e.currentTarget.value)}
-            sx={{
-              mb: 3,
-            }}
-          />
+          <form sx={{ display: 'flex', flexFlow: 'column nowrap', mb: 2 }}>
+            <TextField
+              name="email"
+              type="email"
+              label="Email address"
+              required
+              onChange={e => setEmail(e.currentTarget.value)}
+              value={email}
+              sx={{
+                mb: 3,
+              }}
+            />
+            <TextField
+              name="password"
+              type="password"
+              label="Password"
+              value={password}
+              required
+              onChange={e => setPassword(e.target.value)}
+              sx={{
+                mb: 3,
+              }}
+            />
 
-          <Link to="/" sx={{ variant: 'buttons.primary', mb: 2 }}>
-            Sign in
-          </Link>
+            <Button type="submit" variant="primary">
+              Sign in
+            </Button>
+          </form>
 
-          <Link to="/" sx={{ variant: 'buttons.outline' }}>
+          <Link to="/basic-information" sx={{ variant: 'buttons.outline' }}>
             Apply now
           </Link>
         </Container>
