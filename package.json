@@ -16,12 +16,21 @@
   },
   "private": true,
   "workspaces": [
-    "c-components",
-    "idg"
+    "components",
+    "site"
   ],
   "scripts": {
-    "develop": "yarn workspace idg develop",
-    "build": "yarn workspace idg build"
+    "start:site": "yarn workspace site start",
+    "build:site": "yarn workspace site build",
+    "test:site": "yarn workspace site test",
+    "lint:site": "yarn workspace site lint",
+    "serve:site": "yarn workspace site serve",
+    "start:components": "yarn workspace components start",
+    "build:components": "yarn workspace components build",
+    "test:components": "yarn workspace components test",
+    "lint:components": "yarn workspace components lint",
+    "start:styleguide": "yarn workspace components styleguide",
+    "build:styleguide": "yarn workspace components styleguide:build"
   },
   "devDependencies": {
     "husky": "^3.0.5"
