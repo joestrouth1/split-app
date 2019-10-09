@@ -1,16 +1,22 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
-import { render, act, fireEvent } from '../../test-utils'
+import { render, renderWithRouter, act, fireEvent } from '../../test-utils'
 import BasicInformationPage from '../basic-information'
-import { navigate } from 'gatsby'
+jest.requireActual('gatsby')
 
+const startingRoute = '/basic-information'
 const location = {
   search: '',
+  pathname: startingRoute,
 }
 
 const Example = () => <BasicInformationPage location={location} />
 
 describe('Basic info page', () => {
+  beforeEach(() => {
+    // global.___navigate = jest.fn()
+  })
+
   it('Renders name & email fields', () => {
     const { getByLabelText } = render(<Example />)
     expect(getByLabelText('First name')).toBeVisible()
@@ -18,8 +24,10 @@ describe('Basic info page', () => {
     expect(getByLabelText('Email address')).toBeVisible()
   })
 
-  it("Doesn't submit without entry", () => {
-    const { getByTestId, getByText } = render(<Example />)
+  it("Can't advance without valid submission", () => {
+    const { getByTestId, getByText, history } = renderWithRouter(<Example />, {
+      route: startingRoute,
+    })
     const form = getByTestId('basic-information-form')
     const button = getByText('Next')
 
@@ -29,11 +37,18 @@ describe('Basic info page', () => {
       fireEvent.click(button)
     })
 
-    expect(navigate).not.toHaveBeenCalled()
+    expect(history.location.pathname).toBe(startingRoute)
   })
 
-  it('Submits with valid entry', () => {
-    const { getByLabelText, getByText, getByTestId } = render(<Example />)
+  it('Advances with valid submission', () => {
+    const {
+      getByLabelText,
+      getByText,
+      getByTestId,
+      history,
+    } = renderWithRouter(<Example />, {
+      route: startingRoute,
+    })
 
     const form = getByTestId('basic-information-form')
 
@@ -56,6 +71,6 @@ describe('Basic info page', () => {
       fireEvent.click(button)
     })
 
-    expect(navigate).toHaveBeenCalledTimes(1)
+    expect(history.location.pathname).not.toBe(startingRoute)
   })
 })
