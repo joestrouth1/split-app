@@ -1,10 +1,16 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
-import { useState } from 'react'
+import { useState, FormEventHandler } from 'react'
 import { SplashLayout as Layout } from '../components/layouts'
 import { TextField, Button } from 'c-components'
 import { SEO } from '../components/seo'
+
+/* TODO: Validate and navigate to account summary page */
+const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
+  e.preventDefault()
+  alert('Account summary is a work in progress.')
+}
 
 export const IndexPage = () => {
   const [email, setEmail] = useState<string>('')
@@ -16,8 +22,8 @@ export const IndexPage = () => {
       <Main sx={{ display: 'flex' }}>
         <Container
           sx={{
+            p: 0,
             px: 3,
-            pb: 4,
             maxWidth: theme => theme.breakpoints[0],
             display: 'flex',
             flexFlow: 'column nowrap',
@@ -28,11 +34,15 @@ export const IndexPage = () => {
             Welcome!
           </h1>
 
-          <form sx={{ display: 'flex', flexFlow: 'column nowrap', mb: 2 }}>
+          <form
+            sx={{ display: 'flex', flexFlow: 'column nowrap', mb: 2 }}
+            onSubmit={handleSubmit}
+          >
             <TextField
               name="email"
               type="email"
               label="Email address"
+              autoComplete="email"
               required
               onChange={e => setEmail(e.currentTarget.value)}
               value={email}
@@ -44,6 +54,7 @@ export const IndexPage = () => {
               name="password"
               type="password"
               label="Password"
+              autoComplete="current-password"
               value={password}
               required
               onChange={e => setPassword(e.target.value)}
