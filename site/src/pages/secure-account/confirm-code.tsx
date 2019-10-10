@@ -2,7 +2,7 @@
 import { jsx, Container, Main, Flex } from 'theme-ui'
 import { useState, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
-import { Icon, TextField, Button, Alert } from 'components'
+import { TextField, Button } from 'components'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { SEO } from '../../components/seo'
 
