@@ -8,7 +8,9 @@ import { SEO } from '../../components/seo'
 import { Link } from 'gatsby'
 
 interface SecureAccountVerificationPageProps {
-  location: Location
+  location: {
+    search: string
+  }
 }
 
 function maskEmail(email: string): string {
