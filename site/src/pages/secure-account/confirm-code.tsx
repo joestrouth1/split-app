@@ -49,15 +49,14 @@ const SecureAccountConfirmationPage = () => {
                 name="confirmation-code"
                 label="Authentication code"
                 sx={{
-                  /* TODO: remove this margin when using `error` */
-                  mb: codeRejected ? 2 : 3,
+                  mb: 3,
                 }}
                 value={code}
                 onChange={e => setCode(e.currentTarget.value)}
                 required
                 error={
                   codeRejected
-                    ? `Sorry, that code didn't work. Verify your code and try again.` +
+                    ? `Sorry, that code didn’t work. Verify your code and try again.` +
                       (failedAttempts >= 3 && failedAttempts < 8
                         ? ` Attempts remaining: ${8 - failedAttempts}`
                         : '')
