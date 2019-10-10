@@ -22,6 +22,7 @@ export type LinkRef = HTMLAnchorElement
  * Apply a theme variant to those components in order to match this one.
  */
 export const Link = forwardRef<LinkRef, LinkProps>(
+  /* TODO: figure out why next line isn't covered in test(s) */
   ({ variant = 'links.default', children, ...props }, ref) => {
     return (
       <a

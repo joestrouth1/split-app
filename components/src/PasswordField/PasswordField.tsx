@@ -12,12 +12,21 @@ import { useForkRef } from '../utils/useForkRef'
 
 export interface PasswordFieldProps
   extends InputHTMLAttributes<HTMLInputElement> {
-  /** Character(s) to display instead of each password character */
+  /**
+   * Character(s) to display instead of each password character
+   * @default '•'
+   */
   mask?: string
-  /** How long to wait after input before hiding each character  */
+  /**
+   * How long to wait after input before hiding each character
+   * @default 1000
+   */
   timeout?: number
   onChange?: ChangeEventHandler<HTMLInputElement>
-  /** If true, displays legible user input, unmasked */
+  /**
+   * If true, displays legible user input, unmasked
+   * @default false
+   */
   show?: boolean
 }
 
@@ -127,9 +136,3 @@ export const PasswordField = forwardRef<PasswordFieldRef, PasswordFieldProps>(
 )
 
 PasswordField.displayName = 'PasswordField'
-PasswordField.defaultProps = {
-  value: '',
-  timeout: 1000,
-  mask: '•',
-  show: false,
-}

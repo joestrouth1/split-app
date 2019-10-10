@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
 import { render } from '../test-utils'
-import { TabBar } from './TabBar'
+import { TabBar } from '.'
 import { Icon } from '../Icon'
 
 describe('TabBar', () => {

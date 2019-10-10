@@ -1,4 +1,5 @@
 /**@jsx jsx */
+/* istanbul ignore file: For demo only, won't be in final site */
 import { jsx, Container, Main } from 'theme-ui'
 import { Link, graphql, useStaticQuery } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'

@@ -43,7 +43,11 @@ const SecureAccountConfirmationPage = () => {
             Please check your messages and enter it below. It may take a few
             minutes to arrive.
           </p>
-          <form onSubmit={handleSubmit} sx={{ mb: 3 }}>
+          <form
+            onSubmit={handleSubmit}
+            sx={{ mb: 3 }}
+            data-testid="confirmation-code-form"
+          >
             <Flex sx={{ flexFlow: 'column nowrap' }}>
               <TextField
                 name="confirmation-code"

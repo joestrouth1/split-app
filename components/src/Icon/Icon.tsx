@@ -371,8 +371,6 @@ export const Icon = forwardRef<IconRef, IconProps>(
       case 'warning':
         path = <Warning sx={pathStyles} />
         break
-      default:
-        path = null
     }
 
     return (

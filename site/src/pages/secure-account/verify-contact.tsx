@@ -63,14 +63,14 @@ const SecureAccountVerificationPage = ({
           JSON.parse(sessionStorage.user)) ||
         {}
       return user.email || ''
-    } else if (method === 'sms') {
+    } else {
       const address =
         (sessionStorage &&
           sessionStorage.address &&
           JSON.parse(sessionStorage.address)) ||
         {}
       return address.phone || ''
-    } else return ''
+    }
   })
   const [useExisting, setUseExisting] = useState<boolean>(Boolean(savedContact))
   const [currentContact, setCurrentContact] = useState<string>(savedContact)

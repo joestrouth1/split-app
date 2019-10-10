@@ -6,7 +6,7 @@ import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 import { ModalLink } from '../components/modal-link'
-import PrivacyPolicyModal from './privacy-policy/modal'
+import { PrivacyPolicyModal } from './disclosures/privacy-policy'
 
 /**
  * Where applicants give us their SSN and DOB.

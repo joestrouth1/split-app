@@ -37,12 +37,14 @@ describe('Disclosures page', () => {
     const creditInquiry = getByLabelText(
       /Credit Inquiry and Reporting Agreement/i
     )
+    const tcpa = getByLabelText(/Telecommunications Policy/)
 
     act(() => {
       fireEvent.click(edca)
       fireEvent.click(privacyPolicy)
       fireEvent.click(disputeResolution)
       fireEvent.click(creditInquiry)
+      fireEvent.click(tcpa)
     })
 
     expect(form).toBeValid()
@@ -51,7 +53,7 @@ describe('Disclosures page', () => {
       privacyPolicyConsent: true,
       disputeResolutionConsent: true,
       creditInquiryConsent: true,
-      tcpaConsent: false,
+      tcpaConsent: true,
     })
     expect(button).not.toBeDisabled()
 

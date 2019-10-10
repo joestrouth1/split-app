@@ -38,6 +38,7 @@ describe('Basic info page', () => {
     const form = getByTestId('basic-information-form')
 
     const first = getByLabelText('First name')
+    const middle = getByLabelText('Middle')
     const last = getByLabelText('Last name')
     const email = getByLabelText('Email address')
     const eConsent = getByLabelText(/ESIGN Act Consent/i)
@@ -45,7 +46,8 @@ describe('Basic info page', () => {
 
     act(() => {
       fireEvent.change(first, { target: { value: 'John' } })
-      fireEvent.change(last, { target: { value: 'Jacob-Jingleheimerschmidt' } })
+      fireEvent.change(middle, { target: { value: 'Jacob' } })
+      fireEvent.change(last, { target: { value: 'Jingleheimerschmidt' } })
       fireEvent.change(email, { target: { value: 'jimmydean@aol.net' } })
       fireEvent.click(eConsent)
     })
