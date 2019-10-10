@@ -24,6 +24,11 @@ module.exports = {
       exampleMode: 'expand',
     },
     {
+      name: 'Technologies used',
+      content: 'docs/tech.md',
+      exampleMode: 'expand',
+    },
+    {
       name: 'UI Components',
       content: 'docs/components.md',
       components: 'src/**/*.tsx',
