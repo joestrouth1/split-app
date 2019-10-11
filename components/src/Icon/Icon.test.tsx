@@ -5,7 +5,9 @@ import { Icon, ICON_NAMES } from '.'
 describe('Icon', () => {
   it('Renders text alternative', () => {
     const alt = 'Invalid'
-    const { getByText } = render(<Icon alt={alt} name="times" />)
+    const { getByText } = render(
+      <Icon alt={alt} name="times" viewBox="0 0 32 32" />
+    )
     expect(getByText(alt)).toBeVisible()
   })
 
