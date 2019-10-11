@@ -43,7 +43,7 @@ describe('Enter bank details page', () => {
     })
   })
 
-  it('Submits if valid', () => {
+  it('Submits if valid - from location', () => {
     const ROUTING = '123456789'
     const ACCOUNT = '987654312'
     const { getByTestId, getByText } = render(
@@ -53,6 +53,32 @@ describe('Enter bank details page', () => {
     )
     const form = getByTestId('enter-details-form')
     const button = getByText('Next')
+
+    expect(form).toBeValid()
+    expect(button).not.toBeDisabled()
+
+    act(() => {
+      fireEvent.click(button)
+    })
+
+    expect(navigate).toHaveBeenCalledTimes(1)
+  })
+
+  it('Submits if valid - user input', () => {
+    const ROUTING = '123456789'
+    const ACCOUNT = '987654312'
+    const { getByTestId, getByText, getByLabelText } = render(
+      <EnterDetailsPage location={{}} />
+    )
+    const form = getByTestId('enter-details-form')
+    const button = getByText('Next')
+    const routing = getByLabelText(/routing/i)
+    const account = getByLabelText(/account/i)
+
+    act(() => {
+      fireEvent.change(routing, { target: { value: ROUTING } })
+      fireEvent.change(account, { target: { value: ACCOUNT } })
+    })
 
     expect(form).toBeValid()
     expect(button).not.toBeDisabled()

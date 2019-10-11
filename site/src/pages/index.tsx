@@ -1,20 +1,26 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
-import { useState, FormEventHandler } from 'react'
+import { useState, useCallback, FormEventHandler } from 'react'
 import { SplashLayout as Layout } from '../components/layouts'
 import { TextField, Button } from 'components'
 import { SEO } from '../components/seo'
 
-/* TODO: Validate and navigate to account summary page */
-const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
-  e.preventDefault()
-  alert('Account summary is a work in progress.')
-}
-
 export const IndexPage = () => {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+
+  /* TODO: Validate and navigate to account summary page */
+  const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
+    e => {
+      /* istanbul ignore else */
+      if (email && password) {
+        e.preventDefault()
+        alert('Account summary is a work in progress.')
+      }
+    },
+    [email, password]
+  )
 
   return (
     <Layout>
