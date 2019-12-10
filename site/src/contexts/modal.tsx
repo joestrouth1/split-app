@@ -35,6 +35,8 @@ const modalReducer = (state: ModalState, action: ModalAction) => {
 }
 
 const initialModalState: ModalState = { isOpen: false, content: null }
-const ModalContext = createContext<Dispatch<ModalAction>>(() => {})
+const ModalContext = createContext<Dispatch<ModalAction>>(() => {
+  // do nothing
+})
 
 export { ModalContext, modalReducer, initialModalState }

@@ -79,7 +79,14 @@ type PureSEOProps = Omit<SEOProps, 'title'> & {
   siteTitle: string
 }
 export function PureSEO(props: PureSEOProps) {
-  const { lang, siteTitle, pageTitle, description, author, meta = [] } = props
+  const {
+    lang = 'en',
+    siteTitle,
+    pageTitle,
+    description,
+    author,
+    meta = [],
+  } = props
 
   return (
     <Helmet
