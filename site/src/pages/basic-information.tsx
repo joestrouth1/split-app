@@ -72,10 +72,10 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
     []
   )
 
-  const [econsent, setEconsent] = useState<boolean>(false)
+  const [econsent, setEconsent] = useState(false)
 
   const formRef = useRef<HTMLFormElement>(null)
-  const [isValid, setIsValid] = useState<boolean>(false)
+  const [isValid, setIsValid] = useState(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
   }, [formRef.current, user, econsent])
@@ -108,7 +108,6 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
             onSubmit={handleSubmit}
             data-testid="basic-information-form"
           >
-            {/* First name and middle initial */}
             <Flex
               sx={{
                 flexFlow: 'row nowrap',

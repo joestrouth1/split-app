@@ -16,20 +16,16 @@ import { TcpaModal } from './tcpa'
  * Where applicants accept our policies.
  */
 const DisclosuresPage = () => {
-  const [edcaConsent, setEdcaConsent] = useState<boolean>(false)
-  const [privacyPolicyConsent, setPrivacyPolicyConsent] = useState<boolean>(
+  const [edcaConsent, setEdcaConsent] = useState(false)
+  const [privacyPolicyConsent, setPrivacyPolicyConsent] = useState(false)
+  const [disputeResolutionConsent, setDisputeResolutionConsent] = useState(
     false
   )
-  const [disputeResolutionConsent, setDisputeResolutionConsent] = useState<
-    boolean
-  >(false)
-  const [creditInquiryConsent, setCreditInquiryConsent] = useState<boolean>(
-    false
-  )
-  const [tcpaConsent, setTcpaConsent] = useState<boolean>(false)
+  const [creditInquiryConsent, setCreditInquiryConsent] = useState(false)
+  const [tcpaConsent, setTcpaConsent] = useState(false)
 
   const formRef = useRef<HTMLFormElement>(null)
-  const [isValid, setIsValid] = useState<boolean>(false)
+  const [isValid, setIsValid] = useState(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
   }, [

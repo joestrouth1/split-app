@@ -12,8 +12,8 @@ import { PrivacyPolicyModal } from './disclosures/privacy-policy'
  * Where applicants give us their SSN and DOB.
  */
 const VerifyIdentityPage = () => {
-  const [social, setSocial] = useState<string>('')
-  const [dateOfBirth, setDateOfBirth] = useState<string>('')
+  const [social, setSocial] = useState('')
+  const [dateOfBirth, setDateOfBirth] = useState('')
 
   const formRef = useRef<HTMLFormElement>(null)
   const [isValid, setIsValid] = useState(false)

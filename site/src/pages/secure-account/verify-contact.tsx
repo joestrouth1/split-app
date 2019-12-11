@@ -72,8 +72,8 @@ const SecureAccountVerificationPage = ({
       return address.phone || ''
     }
   })
-  const [useExisting, setUseExisting] = useState<boolean>(Boolean(savedContact))
-  const [currentContact, setCurrentContact] = useState<string>(savedContact)
+  const [useExisting, setUseExisting] = useState(Boolean(savedContact))
+  const [currentContact, setCurrentContact] = useState(savedContact)
   useEffect(() => {
     if (useExisting) {
       setCurrentContact(savedContact)

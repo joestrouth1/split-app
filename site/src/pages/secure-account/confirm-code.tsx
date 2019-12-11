@@ -7,9 +7,9 @@ import { DefaultLayout as Layout } from '../../components/layouts'
 import { SEO } from '../../components/seo'
 
 const SecureAccountConfirmationPage = () => {
-  const [code, setCode] = useState<string>('')
-  const [failedAttempts, setFailedAttempts] = useState<number>(0)
-  const [codeRejected, setCodeRejected] = useState<boolean>(false)
+  const [code, setCode] = useState('')
+  const [failedAttempts, setFailedAttempts] = useState(0)
+  const [codeRejected, setCodeRejected] = useState(false)
 
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()

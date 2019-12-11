@@ -4,6 +4,7 @@ import {
   useState,
   useRef,
   useEffect,
+  useCallback,
   FormEventHandler,
   ChangeEvent,
 } from 'react'
@@ -29,61 +30,74 @@ interface ResidentialInfoPageProps {
   }
 }
 
-/** Where applicants tell us their home address. */
-function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
-  // web storage is undefined during prerender
-  const initialAddress: Address | (() => Address) =
-    typeof window === 'undefined'
-      ? {}
-      : () => {
-          // look for initial data in query string
-          const parsedQueryString = parse(location.search)
-          // Look for user-entered values in sessionStorage
-          const sessionAddress: Address =
-            (sessionStorage.address && JSON.parse(sessionStorage.address)) || {}
-          const {
-            address1 = '',
-            address2 = '',
-            city = '',
-            state = '',
-            zip = '',
-            phone = '',
-          } = parsedQueryString
-          // sanitize said data to remove arrays/nulls/etc
-          const sanitizedAddress = Object.entries({
-            address1,
-            address2,
-            city,
-            state,
-            zip,
-            phone,
-          })
-            .map(
-              ([key, value]) =>
-                [key, sanitizeQueryField(value)] as [keyof Address, string]
-            )
-            .reduce<Address>((obj, [key, val]) => {
-              // Prefer user-entered values over URL params
-              if (sessionAddress[key]) {
-                obj[key] = sessionAddress[key]
-              } else {
-                obj[key] = val
-              }
-              return obj
-            }, {})
-          return sanitizedAddress
+/**
+ * Looks for a user address in the query string and/or session storage
+ * Merges the two, returns the address and a setter function
+ * @param queryString - location.search string to parse initial address from
+ */
+function usePersistedAddress(queryString = '') {
+  const initialAddress = useCallback(() => {
+    if (typeof window === 'undefined') return {}
+    // look for initial data in query string
+    const parsedQueryString = parse(queryString)
+    // Look for user-entered values in sessionStorage
+    const sessionAddress: Address =
+      (sessionStorage.address && JSON.parse(sessionStorage.address)) || {}
+    const {
+      address1 = '',
+      address2 = '',
+      city = '',
+      state = '',
+      zip = '',
+      phone = '',
+    } = parsedQueryString
+    // remove arrays/nulls/etc
+    const sanitizedAddress = Object.entries({
+      address1,
+      address2,
+      city,
+      state,
+      zip,
+      phone,
+    })
+      .map(
+        ([key, value]) =>
+          [key, sanitizeQueryField(value)] as [keyof Address, string]
+      )
+      .reduce<Address>((obj, [key, val]) => {
+        // Prefer past user input when merging with query string
+        if (sessionAddress[key]) {
+          obj[key] = sessionAddress[key]
+        } else {
+          obj[key] = val
         }
-  const [address, replaceAddress] = useState<Address>(initialAddress)
-  function setField<T extends keyof Address>(fieldName: T) {
-    return (e: ChangeEvent<HTMLInputElement>) =>
-      replaceAddress({ ...address, [fieldName]: e.target.value })
-  }
+        return obj
+      }, {})
+    return sanitizedAddress
+  }, [queryString])
+  const [address, setAddress] = useState(initialAddress)
   useEffect(() => {
     sessionStorage.address = JSON.stringify(address)
   }, [address])
 
+  return [address, setAddress] as const
+}
+
+/** Where applicants tell us their home address. */
+function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
+  const [address, setAddress] = usePersistedAddress(location.search)
+
+  // generates setter functions for individual address fields
+  const setAddressField = useCallback(
+    <T extends keyof Address>(fieldName: T) => {
+      return (e: ChangeEvent<HTMLInputElement>) =>
+        setAddress({ ...address, [fieldName]: e.target.value })
+    },
+    [address]
+  )
+
   const formRef = useRef<HTMLFormElement>(null)
-  const [isValid, setIsValid] = useState<boolean>(false)
+  const [isValid, setIsValid] = useState(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
   }, [formRef.current, address])
@@ -121,7 +135,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 autoComplete="address-line1"
                 required
                 sx={{ mb: 3 }}
-                onChange={setField('address1')}
+                onChange={setAddressField('address1')}
                 value={address.address1}
               />
 
@@ -130,7 +144,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 name="address2"
                 autoComplete="address-line2"
                 sx={{ mb: 3 }}
-                onChange={setField('address2')}
+                onChange={setAddressField('address2')}
                 value={address.address2}
               />
 
@@ -140,7 +154,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 autoComplete="address-level2"
                 required
                 sx={{ mb: 3 }}
-                onChange={setField('city')}
+                onChange={setAddressField('city')}
                 value={address.city}
               />
 
@@ -151,7 +165,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                   autoComplete="address-level3"
                   required
                   sx={{ flex: 2, mr: 1 }}
-                  onChange={setField('state')}
+                  onChange={setAddressField('state')}
                   value={address.state}
                   /* TODO add dataset */
                 />
@@ -163,7 +177,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                   maxLength={5}
                   autoComplete="postal-code"
                   required
-                  onChange={setField('zip')}
+                  onChange={setAddressField('zip')}
                   value={address.zip}
                   sx={{
                     flex: 1,
@@ -178,7 +192,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 autoComplete="mobile tel"
                 required
                 sx={{ mb: 3 }}
-                onChange={setField('phone')}
+                onChange={setAddressField('phone')}
                 value={address.phone}
               />
               <Flex

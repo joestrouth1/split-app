@@ -7,8 +7,8 @@ import { TextField, Button } from 'components'
 import { SEO } from '../components/seo'
 
 export const IndexPage = () => {
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   /* TODO: Validate and navigate to account summary page */
   const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(

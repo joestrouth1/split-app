@@ -18,7 +18,7 @@ interface AccountDetailsPageProps {
 }
 
 /**
- * Where applicants manulaly enter their bank acct. info or scan a check
+ * Where applicants manually enter their bank acct. info or scan a check
  */
 const AccountDetailsPage = (props: AccountDetailsPageProps) => {
   let account, routing
@@ -26,15 +26,15 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
     account = props.location.state.account
     routing = props.location.state.routing
   }
-  const [routingNumber, setRoutingNumber] = useState<string>(routing || '')
-  const [accountNumber, setAccountNumber] = useState<string>(account || '')
+  const [routingNumber, setRoutingNumber] = useState(routing || '')
+  const [accountNumber, setAccountNumber] = useState(account || '')
 
   // This isn't being used right now, will be used to display alert in case of bad request
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [serverRejected, setServerRejected] = useState(false)
 
   const formRef = useRef<HTMLFormElement>(null)
-  const [isValid, setIsValid] = useState<boolean>(false)
+  const [isValid, setIsValid] = useState(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
   }, [accountNumber, routingNumber, formRef.current])
