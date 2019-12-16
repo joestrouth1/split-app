@@ -18,7 +18,6 @@ module.exports = {
         // isTsx: true
       },
     },
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

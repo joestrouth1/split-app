@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useStaticQuery, graphql } from 'gatsby'
 
 export interface SEOProps {
@@ -93,8 +93,7 @@ export function PureSEO(props: PureSEOProps) {
       htmlAttributes={{
         lang,
       }}
-      title={pageTitle}
-      titleTemplate={`%s | ${siteTitle}`}
+      title={pageTitle || siteTitle}
       meta={[
         {
           name: `description`,

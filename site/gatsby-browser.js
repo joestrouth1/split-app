@@ -1,3 +1,7 @@
+/**@jsx jsx */
+import { jsx } from 'theme-ui'
+import { HelmetProvider } from 'react-helmet-async'
+
 /**
  * Implement Gatsby's Browser APIs in this file.
  *
@@ -13,4 +17,12 @@ export const onServiceWorkerUpdateReady = () => {
   if (answer === true) {
     window.location.reload()
   }
+}
+
+const Providers = ({ children }) => {
+  return <HelmetProvider>{children}</HelmetProvider>
+}
+
+export const wrapRootElement = ({ element }) => {
+  return <Providers>{element}</Providers>
 }
