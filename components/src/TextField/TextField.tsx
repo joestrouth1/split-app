@@ -25,11 +25,11 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
    */
   name?: string
   /**
-   * Additional info to help the user; displayed below the input.
+   * Additional info to help the user; displayed below the input
    */
   hint?: ReactNode
   /**
-   * Error text to display
+   * Error text to display. If defined, the component will appear invalid
    */
   error?: string
   /**

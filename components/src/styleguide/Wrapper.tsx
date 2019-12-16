@@ -107,7 +107,9 @@ function WidthSelector({
 export default class Wrapper extends Component {
   render() {
     return (
-      <ThemeProvider theme={defaultTheme}>
+      <ThemeProvider
+        theme={{ theme: defaultTheme, useCustomProperties: false }}
+      >
         <Styled.root>
           <WidthSelector>
             {width => (

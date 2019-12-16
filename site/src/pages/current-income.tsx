@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
-import { CurrencyField, Button } from 'components'
+import { Button, CurrencyField, Select } from 'components'
 import { useRef, useState, useEffect, FormEventHandler } from 'react'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
