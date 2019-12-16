@@ -23,7 +23,9 @@ const VerifyIdentityPage = () => {
 
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
-    navigate('/check-rates')
+    // Remove prequal screen(s) for Phase I
+    // navigate('/check-rates')
+    navigate('/link-account')
   }
 
   return (

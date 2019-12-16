@@ -128,6 +128,12 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
               }}
             />
 
+            {/*
+            TODO:
+            [] Add debit card input
+            [] Add autopay opt-in/out button(s)
+            */}
+
             <Flex
               onClick={() =>
                 !isValid && formRef.current && formRef.current.reportValidity()
