@@ -56,7 +56,7 @@ const SavePasswordPage = () => {
             Save your progress
           </h1>
           <p sx={{ variant: 'type.subtitle', mb: 4 }}>
-            Finish applying any time. {isValid}
+            Finish applying any time.
           </p>
 
           <Flex
