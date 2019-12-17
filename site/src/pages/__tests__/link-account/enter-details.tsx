@@ -43,7 +43,7 @@ describe('Enter bank details page', () => {
     })
   })
 
-  it('Submits if valid - from location', () => {
+  it('Submits with account details from location', () => {
     const ROUTING = '123456789'
     const ACCOUNT = '987654312'
     const { getByTestId, getByText } = render(
@@ -53,6 +53,14 @@ describe('Enter bank details page', () => {
     )
     const form = getByTestId('enter-details-form')
     const button = getByText('Next')
+    const skipDebitCardButton = getByTestId('skip-debit')
+
+    expect(form).not.toBeValid()
+    expect(button).toBeDisabled()
+
+    act(() => {
+      fireEvent.click(skipDebitCardButton)
+    })
 
     expect(form).toBeValid()
     expect(button).not.toBeDisabled()
@@ -64,7 +72,7 @@ describe('Enter bank details page', () => {
     expect(navigate).toHaveBeenCalledTimes(1)
   })
 
-  it('Submits if valid - user input', () => {
+  it('Submits with account details from user input', () => {
     const ROUTING = '123456789'
     const ACCOUNT = '987654312'
     const { getByTestId, getByText, getByLabelText } = render(
@@ -72,12 +80,14 @@ describe('Enter bank details page', () => {
     )
     const form = getByTestId('enter-details-form')
     const button = getByText('Next')
+    const skipDebitCardButton = getByTestId('skip-debit')
     const routing = getByLabelText(/routing/i)
     const account = getByLabelText(/account/i)
 
     act(() => {
       fireEvent.change(routing, { target: { value: ROUTING } })
       fireEvent.change(account, { target: { value: ACCOUNT } })
+      fireEvent.click(skipDebitCardButton)
     })
 
     expect(form).toBeValid()

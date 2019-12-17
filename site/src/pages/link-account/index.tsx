@@ -38,8 +38,9 @@ const LinkAccountPage = () => {
               mb: 3,
             }}
           >
-            Simply sign in with your online banking credentials (fastest option)
-            or enter your routing and account numbers manually.
+            Simply{' '}
+            {/* sign in with your online banking credentials (fastest option) */}
+            scan a check or enter your routing and account numbers manually.
           </p>
 
           <div>
@@ -50,6 +51,8 @@ const LinkAccountPage = () => {
                 textAlign: 'center',
               }}
             >
+              {/* 
+              Remove decision logic for phase 1, in favor of auto pay
               <Link
                 to="/link-account/decision-logic"
                 sx={{
@@ -66,7 +69,7 @@ const LinkAccountPage = () => {
                 <Icon name="link" alt="" fill="primary" />
                 <span sx={{ variant: 'type.subtitle' }}>Link account</span>
                 <span>(recommended)</span>
-              </Link>
+              </Link> */}
 
               <Link
                 to="/link-account/scan-check"

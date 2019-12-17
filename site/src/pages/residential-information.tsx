@@ -103,7 +103,9 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   }, [formRef.current, address])
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
-    navigate('/secure-account')
+    // 2FA not available in Phase I
+    // navigate('/secure-account')
+    navigate('/current-income')
   }
 
   return (

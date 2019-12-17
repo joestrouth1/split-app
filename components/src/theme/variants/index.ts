@@ -2,6 +2,7 @@ export * from './alerts'
 export * from './buttons'
 export * from './cards'
 export * from './links'
+export * from './selects'
 export * from './type'
 export const visuallyhidden = {
   border: 0,
