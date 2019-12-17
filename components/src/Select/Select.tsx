@@ -1,13 +1,13 @@
 /**@jsx jsx */
 import { jsx, Box } from 'theme-ui'
-import { HTMLAttributes, ReactNode, useMemo } from 'react'
+import { SelectHTMLAttributes, ReactNode, useMemo } from 'react'
 import { Icon } from '../Icon'
 import { uuid } from '../utils/uuid'
 import { defaultTheme } from '../theme'
 
 type SelectVariant = keyof typeof defaultTheme['selects']
 
-interface SelectProps extends HTMLAttributes<HTMLSelectElement> {
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   /**
    * Predefined variant to use, defined in theme.selects
    */

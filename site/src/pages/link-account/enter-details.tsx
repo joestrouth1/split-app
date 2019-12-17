@@ -3,7 +3,7 @@ import { jsx, Container, Main, Flex } from 'theme-ui'
 import { Link, navigate } from 'gatsby'
 // TODO: add form ref, check validity to Form
 import { useState, useEffect, useRef, FormEventHandler } from 'react'
-import { TextField, Button, Alert, Icon } from 'components'
+import { TextField, Button, Alert, Icon, Select } from 'components'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { Illustration } from '../../components/illustration'
 import { SEO } from '../../components/seo'
@@ -17,6 +17,64 @@ interface AccountDetailsPageProps {
   }
 }
 
+type MonthIndex = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
+
+const MONTHS: { name: string; order: MonthIndex }[] = [
+  {
+    name: 'January',
+    order: 1,
+  },
+  {
+    name: 'February',
+    order: 2,
+  },
+  {
+    name: 'March',
+    order: 3,
+  },
+  {
+    name: 'April',
+    order: 4,
+  },
+  {
+    name: 'May',
+    order: 5,
+  },
+  {
+    name: 'June',
+    order: 6,
+  },
+  {
+    name: 'July',
+    order: 7,
+  },
+  {
+    name: 'August',
+    order: 8,
+  },
+  {
+    name: 'September',
+    order: 9,
+  },
+  {
+    name: 'October',
+    order: 10,
+  },
+  {
+    name: 'November',
+    order: 11,
+  },
+  {
+    name: 'December',
+    order: 12,
+  },
+]
+
+interface CardExpiration {
+  month: MonthIndex
+  year: number
+}
+
 /**
  * Where applicants manually enter their bank acct. info or scan a check
  */
@@ -28,6 +86,14 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
   }
   const [routingNumber, setRoutingNumber] = useState(routing || '')
   const [accountNumber, setAccountNumber] = useState(account || '')
+  const [showDebitFields, setShowDebitFields] = useState(true)
+  const [cardNumber, setCardNumber] = useState<number>()
+  const [cardName, setCardName] = useState<string>('')
+  const [cardZip, setCardZip] = useState<number>()
+  const [cardExpiration, setCardExpiration] = useState<CardExpiration>({
+    month: 1,
+    year: 2020,
+  })
 
   // This isn't being used right now, will be used to display alert in case of bad request
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -37,7 +103,16 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
   const [isValid, setIsValid] = useState(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
-  }, [accountNumber, routingNumber, formRef.current])
+  }, [
+    accountNumber,
+    routingNumber,
+    formRef.current,
+    cardNumber,
+    cardName,
+    cardExpiration,
+    cardZip,
+    showDebitFields,
+  ])
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
@@ -128,9 +203,112 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
               }}
             />
 
+            <p sx={{ variant: 'type.subtitle', mb: showDebitFields ? 2 : 3 }}>
+              Add a debit card{' '}
+              <button
+                sx={{ variant: 'buttons.link', fontSize: 2, color: 'grays.8' }}
+                type="button"
+                onClick={() => setShowDebitFields(show => !show)}
+                data-testid="skip-debit"
+              >
+                {showDebitFields ? 'skip' : 'show'}
+              </button>
+            </p>
+            {showDebitFields && (
+              <div>
+                <TextField
+                  label="Name on card"
+                  name="debit-card-name"
+                  autoComplete="name"
+                  value={cardName}
+                  required
+                  onChange={e => setCardName(e.currentTarget.value)}
+                  sx={{
+                    flex: 1,
+                    mb: 3,
+                  }}
+                />
+                {/* TODO: Mask this to split card number groups visually */}
+                <TextField
+                  label="Card number"
+                  name="debit-card-number"
+                  required
+                  inputMode="numeric"
+                  autoComplete="cc-number"
+                  pattern="[0-9-]*"
+                  value={cardNumber}
+                  onChange={e => setCardNumber(Number(e.currentTarget.value))}
+                  sx={{
+                    flex: 1,
+                    mb: 3,
+                  }}
+                />
+                <Flex sx={{ flexFlow: 'row nowrap', mb: 3 }}>
+                  <Select
+                    label="Expiration month"
+                    required
+                    sx={{ mr: 2 }}
+                    autoComplete="cc-exp-month"
+                    onChange={e =>
+                      setCardExpiration(exp => {
+                        return {
+                          ...exp,
+                          month: Number(e.currentTarget.value) as MonthIndex,
+                        }
+                      })
+                    }
+                  >
+                    {MONTHS.map(({ name, order }) => {
+                      const twoDigitMonth = order < 10 ? `0${order}` : order
+                      const label = `${twoDigitMonth} ${name}`
+
+                      return (
+                        <option key={name} value={order}>
+                          {label}
+                        </option>
+                      )
+                    })}
+                  </Select>
+                  <TextField
+                    label="Expiration year"
+                    name="debit-card-exp-year"
+                    autoComplete="cc-exp-year"
+                    required
+                    value={cardExpiration.year}
+                    onChange={e =>
+                      setCardExpiration(exp => {
+                        return { ...exp, year: Number(e.currentTarget.value) }
+                      })
+                    }
+                    sx={{
+                      flex: 1,
+                    }}
+                  />
+                </Flex>
+                <TextField
+                  label="Billing ZIP code"
+                  name="debit-card-zip"
+                  autoComplete="postal-code"
+                  pattern="[0-9]*"
+                  inputMode="numeric"
+                  value={cardZip}
+                  required
+                  onChange={e => setCardName(e.currentTarget.value)}
+                  sx={{
+                    flex: 1,
+                    mb: 3,
+                  }}
+                />
+              </div>
+            )}
+
             {/*
             TODO:
-            [] Add debit card input
+            [] Add debit card inputs
+              [x] Card number
+              [] Card expiration month/year
+              [x] Name on card
+              [] Billing ZIP
             [] Add autopay opt-in/out button(s)
             */}
 
