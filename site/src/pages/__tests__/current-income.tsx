@@ -31,11 +31,17 @@ describe('Current income page', () => {
     const form = getByTestId('current-income-form')
     const income = getByLabelText('Individual annual income')
     const housing = getByLabelText('Housing payment')
+    const paySchedule = getByLabelText('Pay schedule')
+    const nextPayDate = getByLabelText('Next pay date')
+    const weekDay = getByLabelText(/Day of the week/gi)
     const button = getByText('Next')
 
     act(() => {
       fireEvent.change(income, { target: { value: 23499 } })
       fireEvent.change(housing, { target: { value: 850 } })
+      fireEvent.change(paySchedule, { target: { value: 'weekly' } })
+      fireEvent.change(nextPayDate, { target: { value: '12251955' } })
+      fireEvent.change(weekDay, { target: { value: 'friday' } })
     })
 
     expect(form).toBeValid()

@@ -53,7 +53,6 @@ export const DateField = forwardRef<DateFieldRef, DateFieldProps>(
           <TextField
             {...props}
             type="tel"
-            autoComplete="bday"
             pattern="\d\d\/\d\d\/\d\d\d\d"
             value={value}
             onChange={onChange}

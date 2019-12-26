@@ -78,6 +78,7 @@ const VerifyIdentityPage = () => {
               label="Date of birth"
               name="dob"
               type="date"
+              autoComplete="bday"
               sx={{ mb: 3 }}
               value={dateOfBirth}
               onChange={setDateOfBirth}
