@@ -16,7 +16,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   /**
    * Informative label to display above the input
    */
-  label: string
+  label: ReactNode
   /**
    * Additional info to help the user; displayed below the input
    */

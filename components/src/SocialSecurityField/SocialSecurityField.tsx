@@ -31,9 +31,8 @@ interface SocialSecurityFieldProps
   onChange?: (value: string) => void
   /**
    * Identifying text to show above the input.
-   * @default "Social Security Number"
    */
-  label?: string
+  label?: ReactNode
   /**
    * Text to show below the input, as a clue.
    * @default "123-45-6789"
@@ -47,7 +46,7 @@ interface SocialSecurityFieldProps
 export const SocialSecurityField = forwardRef<
   SocialSecurityFieldRef,
   SocialSecurityFieldProps
->(({ onChange, ...props }, ref) => {
+>(({ onChange, label = 'Social Security Number', ...props }, ref) => {
   const [masked, setMasked] = useState('')
   const handleChange = (newMasked: string) => {
     setMasked(newMasked)
@@ -64,10 +63,11 @@ export const SocialSecurityField = forwardRef<
     >
       {({ value, onChange }) => (
         <TextField
-          label={'Social Security Number'}
           hint={'123-45-6789'}
+          label={label}
           {...props}
           type="tel"
+          autoComplete="off"
           pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
           value={value}
           onChange={onChange}
@@ -79,3 +79,6 @@ export const SocialSecurityField = forwardRef<
 })
 
 SocialSecurityField.displayName = 'SocialSecurityField'
+SocialSecurityField.defaultProps = {
+  label: 'Social Security Number',
+}

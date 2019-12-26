@@ -18,7 +18,7 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
    * Informative label to display above the input
    */
-  label: string
+  label: ReactNode
   /**
    * Name of the input, used for input's name, id, and label[htmlFor]
    * @default uuid()
