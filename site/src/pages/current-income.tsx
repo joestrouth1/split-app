@@ -66,7 +66,7 @@ const CurrentIncomePage = () => {
             <CurrencyField
               label="Individual annual income"
               required
-              hint="Total amount you make per year before taxes. Include tips, bonuses, and any other income you&rsquo;d like to be considered for this loan."
+              hint="Total amount you make per year before taxes. Include tips, bonuses, and any other income you&rsquo;d like to be considered for this loan"
               name="income"
               value={income}
               onChange={setIncome}

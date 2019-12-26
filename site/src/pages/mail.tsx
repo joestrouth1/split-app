@@ -13,8 +13,8 @@ const handleSubmit: FormEventHandler = e => {
 
 /** Where prescreened applicants confirm their mailed reservation offer and start applying */
 const MailOfferPage = () => {
-  const [reservationNumber, setReservationNumber] = useState<number>()
-  const [lastFour, setLastFour] = useState<number>()
+  const [reservationNumber, setReservationNumber] = useState('')
+  const [lastFour, setLastFour] = useState('')
 
   return (
     <Layout>
@@ -36,15 +36,11 @@ const MailOfferPage = () => {
           >
             Claim your loan offer
           </h1>
-          <p sx={{ variant: 'type.subtitle', mb: 4 }}>
-            Enter your reservation number and last 4 digits of your Social
-            Security Number to get started.
-          </p>
 
           <form
             sx={{ display: 'flex', flexFlow: 'column nowrap' }}
             onSubmit={handleSubmit}
-            data-testid="save-password-form"
+            data-testid="mail-reservation-form"
           >
             <TextField
               required
@@ -52,11 +48,10 @@ const MailOfferPage = () => {
               name="reservation-number"
               type="text"
               inputMode="numeric"
-              pattern="[0-9-]{4,18}"
+              pattern="[0-9]{4,18}"
+              maxLength={18}
               value={reservationNumber}
-              onChange={e => {
-                setReservationNumber(Number(e.target.value))
-              }}
+              onChange={e => setReservationNumber(e.target.value)}
               sx={{
                 mb: 3,
               }}
@@ -65,15 +60,14 @@ const MailOfferPage = () => {
 
             <TextField
               required
-              label="Last 4 digits of SSN"
+              label="Last 4 digits of Social Security Number"
               name="last-four"
               type="text"
               inputMode="numeric"
               pattern="[0-9]{4}"
+              maxLength={4}
               value={lastFour}
-              onChange={e => {
-                setLastFour(Number(e.target.value))
-              }}
+              onChange={e => setLastFour(e.target.value)}
               sx={{
                 mb: 3,
               }}

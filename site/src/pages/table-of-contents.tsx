@@ -43,13 +43,16 @@ export const PureIndexPage = ({ data }: PureIndexPageProps) => {
             flexFlow: 'column nowrap',
           }}
         >
-          <h1 sx={{ variant: 'type.title', mb: 4 }}>Welcome to the new app!</h1>
+          <h1 sx={{ variant: 'type.title', mb: 3 }}>Welcome to the new app!</h1>
 
           <Link
             to="/basic-information"
-            sx={{ variant: 'buttons.primary', mb: 4 }}
+            sx={{ variant: 'buttons.primary', mb: 3 }}
           >
-            Start pre-qual flow
+            Start organic
+          </Link>
+          <Link to="/mail" sx={{ variant: 'buttons.primary', mb: 3 }}>
+            Start prescreen
           </Link>
 
           <p sx={{ variant: 'type.body' }}>Or jump to a specific page:</p>
