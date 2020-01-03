@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioGroup renders without throwing 1`] = `
+<DocumentFragment>
+  <div
+    class="css-80zs6q"
+    name="test"
+  >
+    Text
+  </div>
+</DocumentFragment>
+`;

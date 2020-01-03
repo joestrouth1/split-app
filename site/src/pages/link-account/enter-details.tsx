@@ -86,10 +86,9 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
   }
   const [routingNumber, setRoutingNumber] = useState(routing || '')
   const [accountNumber, setAccountNumber] = useState(account || '')
-  const [showDebitFields, setShowDebitFields] = useState(true)
   const [cardNumber, setCardNumber] = useState<number>()
-  const [cardName, setCardName] = useState<string>('')
-  const [cardZip, setCardZip] = useState<number>()
+  const [cardName, setCardName] = useState('')
+  const [cardZip, setCardZip] = useState('')
   const [cardExpiration, setCardExpiration] = useState<CardExpiration>({
     month: 1,
     year: 2020,
@@ -111,7 +110,6 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
     cardName,
     cardExpiration,
     cardZip,
-    showDebitFields,
   ])
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
@@ -203,114 +201,142 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
               }}
             />
 
-            <p sx={{ variant: 'type.subtitle', mb: showDebitFields ? 2 : 3 }}>
-              Add a debit card{' '}
-              <button
-                sx={{ variant: 'buttons.link', fontSize: 2, color: 'grays.8' }}
-                type="button"
-                onClick={() => setShowDebitFields(show => !show)}
-                data-testid="skip-debit"
-              >
-                {showDebitFields ? 'skip' : 'show'}
-              </button>
-            </p>
-            {showDebitFields && (
-              <div>
-                <TextField
-                  label="Name on card"
-                  name="debit-card-name"
-                  autoComplete="name"
-                  value={cardName}
-                  required
-                  onChange={e => setCardName(e.currentTarget.value)}
-                  sx={{
-                    flex: 1,
-                    mb: 3,
-                  }}
-                />
-                {/* TODO: Mask this to split card number groups visually */}
-                <TextField
-                  label="Card number"
-                  name="debit-card-number"
-                  required
-                  inputMode="numeric"
-                  autoComplete="cc-number"
-                  pattern="[0-9-]*"
-                  value={cardNumber}
-                  onChange={e => setCardNumber(Number(e.currentTarget.value))}
-                  sx={{
-                    flex: 1,
-                    mb: 3,
-                  }}
-                />
-                <Flex sx={{ flexFlow: 'row nowrap', mb: 3 }}>
-                  <Select
-                    label="Expiration month"
-                    required
-                    sx={{ mr: 2 }}
-                    autoComplete="cc-exp-month"
-                    onChange={e =>
-                      setCardExpiration(exp => {
-                        return {
-                          ...exp,
-                          month: Number(e.currentTarget.value) as MonthIndex,
-                        }
-                      })
-                    }
-                  >
-                    {MONTHS.map(({ name, order }) => {
-                      const twoDigitMonth = order < 10 ? `0${order}` : order
-                      const label = `${twoDigitMonth} ${name}`
+            <p sx={{ variant: 'type.subtitle', mb: 2 }}>Add a debit card</p>
 
-                      return (
-                        <option key={name} value={order}>
-                          {label}
-                        </option>
-                      )
-                    })}
-                  </Select>
-                  <TextField
-                    label="Expiration year"
-                    name="debit-card-exp-year"
-                    autoComplete="cc-exp-year"
-                    required
-                    value={cardExpiration.year}
-                    onChange={e =>
-                      setCardExpiration(exp => {
-                        return { ...exp, year: Number(e.currentTarget.value) }
-                      })
-                    }
-                    sx={{
-                      flex: 1,
-                    }}
-                  />
-                </Flex>
+            <div>
+              <TextField
+                label="Name on card"
+                name="debit-card-name"
+                autoComplete="name"
+                value={cardName}
+                onChange={e => setCardName(e.currentTarget.value)}
+                sx={{
+                  flex: 1,
+                  mb: 3,
+                }}
+              />
+              {/* TODO: Mask this to split card number groups visually */}
+              <TextField
+                label="Card number"
+                name="debit-card-number"
+                inputMode="numeric"
+                autoComplete="cc-number"
+                pattern="[0-9-]*"
+                value={cardNumber}
+                onChange={e => setCardNumber(Number(e.currentTarget.value))}
+                sx={{
+                  flex: 1,
+                  mb: 3,
+                }}
+              />
+              <Flex sx={{ flexFlow: 'row nowrap', mb: 3 }}>
+                <Select
+                  label="Expiration month"
+                  sx={{ mr: 2 }}
+                  autoComplete="cc-exp-month"
+                  onChange={e =>
+                    setCardExpiration(exp => {
+                      return {
+                        ...exp,
+                        month: Number(e.currentTarget.value) as MonthIndex,
+                      }
+                    })
+                  }
+                >
+                  {MONTHS.map(({ name, order }) => {
+                    const twoDigitMonth = order < 10 ? `0${order}` : order
+                    const label = `${twoDigitMonth} ${name}`
+
+                    return (
+                      <option key={name} value={order}>
+                        {label}
+                      </option>
+                    )
+                  })}
+                </Select>
                 <TextField
-                  label="Billing ZIP code"
-                  name="debit-card-zip"
-                  autoComplete="postal-code"
-                  pattern="[0-9]*"
-                  inputMode="numeric"
-                  value={cardZip}
-                  required
-                  onChange={e => setCardName(e.currentTarget.value)}
+                  label="Expiration year"
+                  name="debit-card-exp-year"
+                  autoComplete="cc-exp-year"
+                  value={cardExpiration.year}
+                  onChange={e =>
+                    setCardExpiration(exp => {
+                      return { ...exp, year: Number(e.currentTarget.value) }
+                    })
+                  }
                   sx={{
                     flex: 1,
-                    mb: 3,
                   }}
                 />
-              </div>
-            )}
+              </Flex>
+              <TextField
+                label="Billing ZIP code"
+                name="debit-card-zip"
+                autoComplete="postal-code"
+                pattern="[0-9]*"
+                inputMode="numeric"
+                value={cardZip}
+                onChange={e => setCardZip(e.currentTarget.value)}
+                sx={{
+                  flex: 1,
+                  mb: 3,
+                }}
+              />
+            </div>
 
             {/*
             TODO:
-            [] Add debit card inputs
-              [x] Card number
-              [] Card expiration month/year
-              [x] Name on card
-              [] Billing ZIP
+            [x] Add debit card inputs
+            [] Validate debit card inputs if 1+ are dirty
             [] Add autopay opt-in/out button(s)
             */}
+
+            <p sx={{ variant: 'type.subtitle', mb: 2 }}>Auto pay</p>
+            <Flex
+              sx={{
+                flexFlow: 'row nowrap',
+              }}
+            >
+              <input
+                type="radio"
+                name="auto-pay-status"
+                value="enabled"
+                id="auto-pay-enable"
+                sx={{
+                  variant: 'visuallyhidden',
+                }}
+              />
+              <label
+                sx={{
+                  variant: 'cards.radio',
+                  flex: '1 1 auto',
+                  textAlign: 'center',
+                  mr: 3,
+                }}
+                htmlFor="auto-pay-enable"
+              >
+                Opt in
+              </label>
+              <input
+                type="radio"
+                name="auto-pay-status"
+                value="disabled"
+                id="auto-pay-disable"
+                sx={{
+                  variant: 'visuallyhidden',
+                }}
+              />
+              <label
+                sx={{
+                  variant: 'cards.radio',
+                  flex: '1 1 auto',
+                  textAlign: 'center',
+                }}
+                htmlFor="auto-pay-disable"
+              >
+                Opt out
+              </label>
+            </Flex>
 
             <Flex
               onClick={() =>
