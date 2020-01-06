@@ -295,6 +295,7 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
             <Flex
               sx={{
                 flexFlow: 'row nowrap',
+                mb: 3,
               }}
             >
               <input
