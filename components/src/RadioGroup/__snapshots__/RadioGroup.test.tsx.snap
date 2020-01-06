@@ -3,10 +3,13 @@
 exports[`RadioGroup renders without throwing 1`] = `
 <DocumentFragment>
   <div
-    class="css-80zs6q"
-    name="test"
+    class="css-1qol7jq"
   >
-    Text
+    <div
+      class="css-80zs6q"
+    >
+      Text
+    </div>
   </div>
 </DocumentFragment>
 `;

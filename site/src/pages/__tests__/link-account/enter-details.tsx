@@ -53,14 +53,6 @@ describe('Enter bank details page', () => {
     )
     const form = getByTestId('enter-details-form')
     const button = getByText('Next')
-    const skipDebitCardButton = getByTestId('skip-debit')
-
-    expect(form).not.toBeValid()
-    expect(button).toBeDisabled()
-
-    act(() => {
-      fireEvent.click(skipDebitCardButton)
-    })
 
     expect(form).toBeValid()
     expect(button).not.toBeDisabled()
@@ -80,14 +72,12 @@ describe('Enter bank details page', () => {
     )
     const form = getByTestId('enter-details-form')
     const button = getByText('Next')
-    const skipDebitCardButton = getByTestId('skip-debit')
     const routing = getByLabelText(/routing/i)
     const account = getByLabelText(/account/i)
 
     act(() => {
       fireEvent.change(routing, { target: { value: ROUTING } })
       fireEvent.change(account, { target: { value: ACCOUNT } })
-      fireEvent.click(skipDebitCardButton)
     })
 
     expect(form).toBeValid()
