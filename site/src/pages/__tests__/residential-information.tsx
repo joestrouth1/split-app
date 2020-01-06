@@ -7,7 +7,7 @@ const LOCATION = {
   search: '',
 }
 
-describe('Prequalified page', () => {
+describe('Residential info page', () => {
   it('Renders without throwing', () => {
     const { getByText } = render(<Page location={LOCATION} />)
     expect(getByText('Where do you live?')).toBeVisible()
