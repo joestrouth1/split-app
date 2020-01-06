@@ -53,7 +53,15 @@ const CurrentIncomePage = () => {
   const [isValid, setIsValid] = useState(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
-  }, [formRef.current, income, housing])
+  }, [
+    formRef.current,
+    income,
+    housing,
+    paySchedule,
+    nextPayDate,
+    firstMonthlyPayDate,
+    secondMonthlyPayDate,
+  ])
 
   const paidWeekly = paySchedule.value.match('weekly')
   const paidMonthly = paySchedule.value === 'monthly'
