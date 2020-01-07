@@ -39,7 +39,7 @@ export const StridePolicyModal = () => (
 
 const StridePrivacyPage = () => (
   <Layout>
-    <SEO title="Privacy Policy" />
+    <SEO title="Stride Bank Privacy Policy" />
     <Main>
       <Container
         sx={{

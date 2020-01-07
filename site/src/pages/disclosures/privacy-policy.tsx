@@ -39,7 +39,7 @@ export const VergePrivacyModal = () => (
 
 const VergePrivacyPage = () => (
   <Layout>
-    <SEO title="Privacy Policy" />
+    <SEO title="Verge Credit Privacy Policy" />
     <Main>
       <Container
         sx={{
