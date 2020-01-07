@@ -22,11 +22,17 @@ const DeniedPage = () => {
           }}
         >
           <header>
-            <h1 sx={{ variant: 'type.title', mb: 3 }}>Loan denied</h1>
+            <h1 sx={{ variant: 'type.title', mb: 3 }}>
+              Your application was denied
+            </h1>
           </header>
+          <p sx={{ variant: 'type.body', mb: 3 }}>
+            Your application was carefully evaluated, but unfortunately we
+            cannot approve you for a loan at this time.
+          </p>
           <p sx={{ variant: 'type.body' }}>
-            Unfortunately we&rsquo;re unable to grant your request for a loan at
-            this time.
+            We will send a notice of our decision to the email address
+            associated with your account within the next 24 hours.
           </p>
         </Container>
       </Main>

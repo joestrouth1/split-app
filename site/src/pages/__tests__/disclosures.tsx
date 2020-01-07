@@ -30,7 +30,7 @@ describe('Disclosures page', () => {
     const edca = getByLabelText(
       /Electronic Disclosure and Communication Agreement/i
     )
-    const privacyPolicy = getByLabelText(/Privacy Policy/i)
+    const privacyPolicy = getByLabelText(/Privacy Notice/i)
     const disputeResolution = getByLabelText(
       /Agreements for Resolving Disputes/i
     )
