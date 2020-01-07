@@ -41,7 +41,7 @@ describe('Basic info page', () => {
     const middle = getByLabelText('Middle')
     const last = getByLabelText('Last name')
     const email = getByLabelText('Email address')
-    const eConsent = getByLabelText(/ESIGN Act Consent/i)
+    const eConsent = getByLabelText(/Consent/i)
     const button = getByText('Next')
 
     act(() => {

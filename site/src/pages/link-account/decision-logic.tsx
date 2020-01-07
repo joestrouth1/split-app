@@ -61,7 +61,7 @@ const DecisionLogicPage = () => {
             go back and enter your account details manually.
           </p>
 
-          <p sx={{ variant: 'type.disclaimer', mt: 0, mb: 3 }}>
+          <p sx={{ variant: 'type.disclaimer', mb: 3 }}>
             <small sx={{ variant: 'type.disclaimer' }}>
               Bank sign in is provided by Decision Logic, a third party. By
               using the service you agree to their terms of service.

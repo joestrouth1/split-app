@@ -7,6 +7,7 @@ const heading = {
 }
 
 const body = {
+  mt: 0,
   fontFamily: 'body',
   letterSpacing: 'body',
   lineHeight: 'body',

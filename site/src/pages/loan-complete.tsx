@@ -172,16 +172,16 @@ const LoanCompletePage = () => {
           >
             Manage account
           </Link>
-          <p sx={{ variant: 'type.disclaimer', mt: 0, mb: 3 }}>
+          <p sx={{ variant: 'type.disclaimer', mb: 3 }}>
             <sup>&dagger;</sup> Transfer times vary and are controlled by your
             bank. Generally, your money will be in your account by noon on the
             date stated.
           </p>
-          <p sx={{ variant: 'type.disclaimer', mt: 0, mb: 3 }}>
+          <p sx={{ variant: 'type.disclaimer' }}>
             Your loan is not complete until you receive your loan funds. We
             reserve the right to cancel your request for a loan, in our sole
-            discretion subject to applicable law,at any time prior to funding or
-            disbursing loan funds to you.
+            discretion subject to applicable law, at any time prior to funding
+            or disbursing loan funds to you.
           </p>
         </Container>
       </Main>
