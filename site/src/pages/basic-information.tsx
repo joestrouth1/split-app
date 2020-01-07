@@ -13,7 +13,7 @@ import { TextField, Button, Icon, Checkbox } from 'components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 import { ModalLink } from '../components/modal-link'
-import { PrivacyPolicyModal } from './disclosures/privacy-policy'
+import { VergePrivacyModal } from './disclosures/verge-privacy'
 import { EsignActConsentModal } from './disclosures/esign-act-consent'
 import { sanitizeQueryField } from '../utils'
 
@@ -85,7 +85,6 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
     navigate('/save-password')
   }
 
-  // For popping up privacy-policy modal
   return (
     <Layout>
       <SEO title="Basic info" />
@@ -174,7 +173,7 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
                   />
                   <span>
                     We take your privacy seriously.{' '}
-                    <ModalLink modalContent={<PrivacyPolicyModal />}>
+                    <ModalLink modalContent={<VergePrivacyModal />}>
                       Our policy
                     </ModalLink>
                   </span>
@@ -191,9 +190,9 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
               }}
             >
               I have read, understood, and consent to the language and
-              authorizations outlined in Brand&rsquo;s{' '}
+              authorizations outlined in{' '}
               <ModalLink modalContent={<EsignActConsentModal />}>
-                ESIGN Act Consent.
+                the Notice and Consent of Electronic Records.
               </ModalLink>
             </Checkbox>
 

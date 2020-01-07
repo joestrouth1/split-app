@@ -9,7 +9,7 @@ import { SEO } from '../../components/seo'
 import { CreditInquiryModal } from './credit-inquiry'
 import { DisputeResolutionModal } from './dispute-resolution'
 import { EdcaModal } from './edca'
-import { PrivacyPolicyModal } from './privacy-policy'
+import { VergePrivacyModal } from './verge-privacy'
 import { TcpaModal } from './tcpa'
 
 /**
@@ -89,11 +89,11 @@ const DisclosuresPage = () => {
               By checking this box, I acknowledge that Stride Bank is the lender
               offering this product which is facilitated and serviced by Verge
               Credit and agree that I have read and understand{' '}
-              <ModalLink modalContent={<PrivacyPolicyModal />}>
+              <ModalLink modalContent={<VergePrivacyModal />}>
                 Stride Bank&rsquo;s Privacy Notice
               </ModalLink>{' '}
               and{' '}
-              <ModalLink modalContent={<PrivacyPolicyModal />}>
+              <ModalLink modalContent={<VergePrivacyModal />}>
                 Verge Credit&rsquo;s Privacy Notice
               </ModalLink>
             </Checkbox>

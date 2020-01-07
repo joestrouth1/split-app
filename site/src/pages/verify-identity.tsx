@@ -6,7 +6,7 @@ import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 import { ModalLink } from '../components/modal-link'
-import { PrivacyPolicyModal } from './disclosures/privacy-policy'
+import { VergePrivacyModal } from './disclosures/verge-privacy'
 
 /**
  * Where applicants give us their SSN and DOB.
@@ -54,7 +54,7 @@ const VerifyIdentityPage = () => {
           >
             <Icon name="lock" alt="" width={16} height={16} sx={{ mr: 1 }} />
             Your information is encrypted and held securely according to{' '}
-            <ModalLink modalContent={<PrivacyPolicyModal />}>
+            <ModalLink modalContent={<VergePrivacyModal />}>
               our privacy policy
             </ModalLink>
             .

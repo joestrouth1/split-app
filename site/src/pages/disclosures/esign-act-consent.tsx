@@ -13,7 +13,9 @@ export const EsignActConsentModal = () => (
     }}
   >
     <article>
-      <h1 sx={{ variant: 'type.title', flex: 1 }}>ESIGN Act Consent</h1>
+      <h1 sx={{ variant: 'type.title', flex: 1 }}>
+        Notice and Consent of Electronic Records
+      </h1>
       {/* TODO: get real policy */}
       <p>
         Doggo ipsum long bois puggo yapper such treat heckin angery woofer, he
@@ -55,7 +57,7 @@ export const EsignActConsentModal = () => (
 
 const EsignActConsentPage = () => (
   <Layout>
-    <SEO title="ESIGN Act Consent Agreement" />
+    <SEO title="Notice and Consent of Electronic Records" />
     <Main>
       <Container
         sx={{
