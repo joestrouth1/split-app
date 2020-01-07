@@ -86,9 +86,15 @@ const DisclosuresPage = () => {
               name="privacyPolicyConsent"
               onChange={() => setPrivacyPolicyConsent(!privacyPolicyConsent)}
             >
-              By checking this box, I agree to the terms of the{' '}
+              By checking this box, I acknowledge that Stride Bank is the lender
+              offering this product which is facilitated and serviced by Verge
+              Credit and agree that I have read and understand{' '}
               <ModalLink modalContent={<PrivacyPolicyModal />}>
-                Privacy Policy.
+                Stride Bank&rsquo;s Privacy Notice
+              </ModalLink>{' '}
+              and{' '}
+              <ModalLink modalContent={<PrivacyPolicyModal />}>
+                Verge Credit&rsquo;s Privacy Notice
               </ModalLink>
             </Checkbox>
             <Checkbox
