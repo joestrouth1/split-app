@@ -35,6 +35,9 @@ const formatFloatingPointNumber = (value: string, maxDigits: number) => {
   return formatted
 }
 
-const formatCurrency = (str: string) => '$' + formatFloatingPointNumber(str, 2)
+const formatCurrency = (str: string, includeSymbol = true) => {
+  const prefix = includeSymbol ? '$' : ''
+  return prefix + formatFloatingPointNumber(str, 2)
+}
 
 export { formatCurrency }

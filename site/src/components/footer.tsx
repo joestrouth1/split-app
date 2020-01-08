@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import { jsx, Flex } from 'theme-ui'
+import { jsx } from 'theme-ui'
 import { Footer as BaseFooter } from 'components'
 import { ComponentPropsWithoutRef, HTMLAttributes } from 'react'
 import { VergePrivacyModal } from '../pages/disclosures/verge-privacy'
