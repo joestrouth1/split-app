@@ -19,7 +19,7 @@ type ModalLinkRef = HTMLAnchorElement
  * @description Buttons are for actions on the current page, while links are expected to trigger navigation. Opening a modal does not cause navigation; hence, button.
  */
 const ModalLink = forwardRef<ModalLinkRef, ModalLinkProps>(
-  ({ modalContent, children }: ModalLinkProps, ref) => {
+  ({ modalContent, children, ...props }: ModalLinkProps, ref) => {
     const dispatch = useContext(ModalContext)
     const openModal = (content: ReactNode) => {
       dispatch({ type: 'SET_CONTENT', payload: content })
@@ -41,6 +41,7 @@ const ModalLink = forwardRef<ModalLinkRef, ModalLinkProps>(
           openModal(modalContent)
         }}
         ref={ref}
+        {...props}
       >
         {children}
       </a>

@@ -42,7 +42,7 @@ const Disclaimers = (props: DisclaimersProps) => {
 
 type CopyrightProps = HTMLAttributes<HTMLParagraphElement>
 const Copyright = (props: CopyrightProps) => (
-  <p sx={{ variant: 'type.disclaimer', m: 0 }} {...props}>
+  <p sx={{ variant: 'type.body', m: 0 }} {...props}>
     &copy; {new Date().getFullYear()} Verge Credit
   </p>
 )
@@ -97,3 +97,4 @@ export const Footer = ({ children, ...props }: FooterProps) => {
 Footer.displayName = 'Footer'
 Footer.Disclaimers = Disclaimers
 Footer.Copyright = Copyright
+Footer.Contact = Contact
