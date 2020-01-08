@@ -5,14 +5,14 @@ import Page, { EsignActConsentModal } from '../../disclosures/esign-act-consent'
 describe('ESIGN Act consent disclosure', () => {
   it('renders as page', () => {
     const { getByText } = render(<Page />)
-    const title = getByText(/ESIGN Act Consent/i)
+    const title = getByText(/Consent/i)
 
     expect(title).toBeVisible()
   })
 
   it('renders as modal content only', () => {
     const { getByText } = render(<EsignActConsentModal />)
-    const title = getByText(/ESIGN Act Consent/i)
+    const title = getByText(/Consent/i)
 
     expect(title).toBeVisible()
   })

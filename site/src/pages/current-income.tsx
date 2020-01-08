@@ -126,7 +126,7 @@ const CurrentIncomePage = () => {
             />
 
             <Select
-              label="Pay schedule"
+              label="Primary pay schedule"
               name="pay-schedule"
               sx={{ mb: 3 }}
               value={paySchedule.value}

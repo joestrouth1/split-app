@@ -35,16 +35,18 @@ export const RadioOption = ({ children, ...props }: RadioOptionProps) => {
         id={id}
         sx={{
           variant: 'visuallyhidden',
-          '&:focus + label, &:active + label': {
-            outline: 'solid blue 4px',
+          '&:focus + label, &:active + label, &:checked + label': {
+            boxShadow: 'outline',
           },
         }}
       />
-      <div sx={{ variant: 'cards.radio', flex: '1 1 auto' }}>
-        <label htmlFor={id} sx={{ variant: 'type.label' }} {...props}>
-          {children}
-        </label>
-      </div>
+      <label
+        htmlFor={id}
+        sx={{ variant: 'cards.radio', flex: '1 1 auto' }}
+        {...props}
+      >
+        <span sx={{ variant: 'type.label' }}>{children}</span>
+      </label>
     </Fragment>
   )
 }

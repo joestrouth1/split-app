@@ -291,7 +291,17 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
             [] Add autopay opt-in/out button(s)
             */}
 
-            <p sx={{ variant: 'type.subtitle', mb: 2 }}>Auto pay</p>
+            <p sx={{ variant: 'type.subtitle', mb: 2 }}>
+              How would you like to pay?
+            </p>
+            <p sx={{ variant: 'type.body', mb: 2 }}>
+              Enrolling in Auto Pay is the most convenient way to make your
+              payments. If you do not entroll in Auto Pay, you will need to
+              remember to make your payments manually by your due date. You can
+              do this by logging into your account to make your payment online
+              or by mailing a check to Avio Credit P.O. Box 780408 Wichita KS
+              67278. Payments made by check may take 7-10 days to process.
+            </p>
             <Flex
               sx={{
                 flexFlow: 'row nowrap',

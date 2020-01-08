@@ -6,6 +6,6 @@ describe('Denied - renders', () => {
   it('visible page title', () => {
     const { getByText } = render(<Page />)
 
-    expect(getByText(/Loan denied/i)).toBeVisible()
+    expect(getByText(/denied/i)).toBeVisible()
   })
 })

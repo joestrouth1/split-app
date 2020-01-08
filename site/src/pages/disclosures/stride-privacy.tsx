@@ -3,7 +3,7 @@ import { jsx, Main, Container } from 'theme-ui'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { SEO } from '../../components/seo'
 
-export const VergePrivacyModal = () => (
+export const StridePolicyModal = () => (
   <div
     sx={{
       bg: 'grays.1',
@@ -37,9 +37,9 @@ export const VergePrivacyModal = () => (
   </div>
 )
 
-const VergePrivacyPage = () => (
+const StridePrivacyPage = () => (
   <Layout>
-    <SEO title="Verge Credit Privacy Policy" />
+    <SEO title="Stride Bank Privacy Policy" />
     <Main>
       <Container
         sx={{
@@ -49,10 +49,10 @@ const VergePrivacyPage = () => (
           maxWidth: theme => theme.breakpoints[0],
         }}
       >
-        <VergePrivacyModal />
+        <StridePolicyModal />
       </Container>
     </Main>
   </Layout>
 )
 
-export default VergePrivacyPage
+export default StridePrivacyPage

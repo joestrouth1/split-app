@@ -1,14 +1,14 @@
 import React from 'react'
 import { render } from '../../../test-utils'
-import Page, { VergePrivacyModal } from '../../disclosures/verge-privacy'
+import Page, { StridePolicyModal } from '../../disclosures/stride-privacy'
 
-describe('Verge - Privacy policy disclosure', () => {
+describe('Stride - Privacy policy disclosure', () => {
   it('renders as page', () => {
     expect(() => render(<Page />)).not.toThrow()
   })
 
   it('renders as modal content only', () => {
-    const example = () => render(<VergePrivacyModal />)
+    const example = () => render(<StridePolicyModal />)
 
     expect(example).not.toThrow()
   })

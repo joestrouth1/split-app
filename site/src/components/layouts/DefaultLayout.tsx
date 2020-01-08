@@ -1,9 +1,10 @@
 /**@jsx jsx */
 import { ReactNode, useReducer } from 'react'
-import { jsx, ThemeProvider, Layout, Styled } from 'theme-ui'
+import { jsx, ThemeProvider, Layout, Styled, Container } from 'theme-ui'
 import ReactModal from 'react-modal'
 import { defaultTheme, TabBar } from 'components'
 import { Header } from '../header'
+import { Footer } from '../footer'
 import { TabBarItem } from '../tab-bar-item'
 import './layout-base.css'
 import {
@@ -31,7 +32,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     <ThemeProvider theme={{ ...defaultTheme, useCustomProperties: false }}>
       <ModalContext.Provider value={modalDispatch}>
         <Styled.root>
-          <Layout sx={{ bg: 'grays.0', pb: 5 }}>
+          <Layout sx={{ bg: 'grays.0', pb: 4 }}>
             <Header />
             <TabBar
               label="Where to start"
@@ -55,6 +56,28 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
               </TabBarItem>
             </TabBar>
             {children}
+            <div
+              sx={{
+                backgroundColor: 'grays.1',
+                borderTopWidth: 1,
+                borderTopStyle: 'solid',
+                borderTopColor: 'grays.2',
+              }}
+            >
+              <Container
+                sx={{
+                  mt: 2,
+                  py: 3,
+                  px: 3,
+                  maxWidth: theme => theme.breakpoints[0],
+                  display: 'flex',
+                  flexFlow: 'column nowrap',
+                  justifyContent: 'center',
+                }}
+              >
+                <Footer />
+              </Container>
+            </div>
             <ReactModal
               isOpen={modalState.isOpen}
               shouldCloseOnOverlayClick={true}
