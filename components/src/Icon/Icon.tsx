@@ -8,6 +8,7 @@ export const ICON_NAMES = [
   'camera',
   'car',
   'check',
+  'chevron-down',
   'comments',
   'envelope',
   'expand',
@@ -62,6 +63,13 @@ const Car = (props: PathProps) => (
 const Check = (props: PathProps) => (
   <path
     d="M28.28 6.28L11 23.56l-7.28-7.28-1.44 1.44 8 8 .72.69.72-.7 18-18-1.44-1.43z"
+    {...props}
+  />
+)
+
+const ChevronDown = (props: PathProps) => (
+  <path
+    d="M6.90625 6.59375L6.1875 7.28125L2.28125 11.1875L1.59375 11.9062L2.28125 12.5938L15.2812 25.5938L16 26.3125L16.7188 25.5938L29.7188 12.5938L30.4062 11.9062L29.7188 11.1875L25.8125 7.28125L25.0938 6.59375L24.4062 7.28125L16 15.6875L7.59375 7.28125L6.90625 6.59375ZM6.875 9.4375L15.2812 17.8125L16 18.5L16.7188 17.8125L25.125 9.4375L27.5625 11.875L16 23.4688L4.4375 11.875L6.875 9.4375Z"
     {...props}
   />
 )
@@ -292,6 +300,9 @@ export const Icon = forwardRef<IconRef, IconProps>(
         break
       case 'check':
         path = <Check sx={pathStyles} />
+        break
+      case 'chevron-down':
+        path = <ChevronDown sx={pathStyles} />
         break
       case 'comments':
         path = <Comments sx={pathStyles} />

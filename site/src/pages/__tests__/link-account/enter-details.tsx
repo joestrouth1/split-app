@@ -52,7 +52,12 @@ describe('Enter bank details page', () => {
       />
     )
     const form = getByTestId('enter-details-form')
+    const autoPayRadio = getByText(/enroll in auto pay/gi)
     const button = getByText('Next')
+
+    act(() => {
+      fireEvent.change(autoPayRadio, { target: { checked: true } })
+    })
 
     expect(form).toBeValid()
     expect(button).not.toBeDisabled()
@@ -70,14 +75,16 @@ describe('Enter bank details page', () => {
     const { getByTestId, getByText, getByLabelText } = render(
       <EnterDetailsPage location={{}} />
     )
-    const form = getByTestId('enter-details-form')
+    const form = getByTestId('enter-details-form') as HTMLFormElement
     const button = getByText('Next')
+    const autoPayRadio = getByText(/enroll in auto pay/gi)
     const routing = getByLabelText(/routing/i)
     const account = getByLabelText(/account/i)
 
     act(() => {
       fireEvent.change(routing, { target: { value: ROUTING } })
       fireEvent.change(account, { target: { value: ACCOUNT } })
+      fireEvent.change(autoPayRadio, { target: { checked: true } })
     })
 
     expect(form).toBeValid()
