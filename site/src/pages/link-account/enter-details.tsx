@@ -337,6 +337,10 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
               </p>
             )}
 
+            <p sx={{ variant: 'type-body', mb: 3, mt: 0 }}>
+              Please review the information you provided above. The bank account
+              provided is where your loan funds will be sent, if approved.
+            </p>
             <Flex
               onClick={() =>
                 !isValid && formRef.current && formRef.current.reportValidity()
