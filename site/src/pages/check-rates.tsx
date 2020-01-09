@@ -69,12 +69,12 @@ const CheckRatesPage = () => {
                 By clicking the &lsquo;View my options&rsquo; button and
                 continuing with the application process, you are providing
                 Express Written Consent under the Fair Credit Reporting Act for
-                BRAND, LLC, to obtain your consumer credit report from your
+                Verge Credit to obtain your consumer credit report from your
                 credit profile or other information from contract Credit
                 Bureau(s) associated with your prequalification for credit
-                inquiry. BRAND may also analyze your credit report data with
-                patterns and/or affiliates to ensure you are being matched to
-                products or services which are best suited to someone in your
+                inquiry. Verge Credit may also analyze your credit report data
+                with patterns and/or affiliates to ensure you are being matched
+                to products or services which are best suited to someone in your
                 situation.
               </small>
             </p>

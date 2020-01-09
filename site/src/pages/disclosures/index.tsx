@@ -102,8 +102,8 @@ const DisclosuresPage = () => {
               name="creditInquiryConsent"
               onChange={() => setCreditInquiryConsent(!creditInquiryConsent)}
             >
-              By checking this box, I authorize Brand to the application terms
-              outlined in the{' '}
+              By checking this box, I authorize Stride Bank to the application
+              terms outlined in the{' '}
               <ModalLink modalContent={<CreditInquiryModal />}>
                 Consumer Credit Inquiry and Reporting Agreement.
               </ModalLink>
@@ -113,7 +113,7 @@ const DisclosuresPage = () => {
               checked={tcpaConsent}
               onChange={() => setTcpaConsent(!tcpaConsent)}
             >
-              By checking this box, I authorize Brand to contact me via
+              By checking this box, I authorize Stride Bank to contact me via
               automated phone calls and/or text messages in accordance with the{' '}
               <ModalLink modalContent={<TcpaModal />}>
                 Telecommunications Policy
