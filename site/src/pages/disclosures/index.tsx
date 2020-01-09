@@ -109,7 +109,6 @@ const DisclosuresPage = () => {
               </ModalLink>
             </Checkbox>
             <Checkbox
-              sx={{ my: 3 }}
               name="tcpaConsent"
               checked={tcpaConsent}
               onChange={() => setTcpaConsent(!tcpaConsent)}
@@ -121,6 +120,12 @@ const DisclosuresPage = () => {
               </ModalLink>{' '}
               (optional).
             </Checkbox>
+            <p sx={{ variant: 'type.disclaimer', my: 3 }}>
+              Florida Residents: A documentary stamp tax required by law of
+              $0.35 per $100 loaned will be paid directly to the Department of
+              Revenue. Taxes are paid by Verge Credit and therefore do not
+              impact your funding amount, if approved.
+            </p>
             <Flex
               onClick={() =>
                 !isValid && formRef.current && formRef.current.reportValidity()
