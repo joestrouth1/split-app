@@ -51,28 +51,28 @@ const CurrentIncomePage = () => {
   const [monthlyPayDates, setMonthlyPayDates] = useState('1-15')
 
   // Make sure that annual income is not unusually low, or monthly housing payment is not unusually high
-  const [incomeError, setIncomeError] = useState<string>()
-  const [housingError, setHousingError] = useState<string>()
+  const [incomeWarning, setIncomeWarning] = useState<string>()
+  const [housingWarning, setHousingWarning] = useState<string>()
   function testIncomeValue() {
     const incomeValue = income.match(/[\d.]*/g)?.join('')
     if (parseFloat(incomeValue || '') < 10_000) {
       console.log('blurred')
-      setIncomeError(
+      setIncomeWarning(
         'That number seems low. Please verify that your individual annual income is correct before proceeding.'
       )
     } else {
-      setIncomeError(undefined)
+      setIncomeWarning(undefined)
     }
   }
   function testHousingValue() {
     const housingValue = housing.match(/[\d.]*/g)?.join('')
     if (parseFloat(housingValue || '') > 10_000) {
       console.log('blurred')
-      setHousingError(
+      setHousingWarning(
         'That number seems high. Please verify that your monthly housing payment is correct before proceeding.'
       )
     } else {
-      setHousingError(undefined)
+      setHousingWarning(undefined)
     }
   }
 
@@ -146,7 +146,7 @@ const CurrentIncomePage = () => {
               value={income}
               onChange={setIncome}
               sx={{ mb: 3 }}
-              error={incomeError}
+              warning={incomeWarning}
               onBlur={testIncomeValue}
             />
 
@@ -158,7 +158,7 @@ const CurrentIncomePage = () => {
               value={housing}
               onChange={setHousing}
               sx={{ mb: 3 }}
-              error={housingError}
+              warning={housingWarning}
               onBlur={testHousingValue}
             />
 

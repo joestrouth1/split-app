@@ -33,6 +33,10 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
    */
   error?: string
   /**
+   * Warning text to dipslay. If defined, the component will appear potentially invalid
+   */
+  warning?: ReactNode
+  /**
    * Icon to show at right of input, e.g. eye for password
    */
   icon?: ReactNode
@@ -48,7 +52,10 @@ export type TextFieldRef = HTMLInputElement
  * Wrapper for HTML's `input` element.
  */
 export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
-  ({ name: nameProp, label, hint, error, className, icon, ...props }, ref) => {
+  (
+    { name: nameProp, label, hint, error, warning, className, icon, ...props },
+    ref
+  ) => {
     const isPassword = props.type ? props.type === 'password' : false
     const Input = isPassword ? PasswordField : 'input'
 
@@ -76,6 +83,19 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
       if (nameProp) return nameProp
       return uuid()
     }, [nameProp])
+
+    // Style the component based on warning/error state
+    let backgroundColor = 'white'
+    let borderColor = 'grays.7'
+    let textColor = 'text'
+    if (error) {
+      backgroundColor = 'reds.1'
+      borderColor = 'red'
+      textColor = 'red'
+    } else if (warning) {
+      borderColor = 'warning'
+      textColor = 'warning'
+    }
 
     return (
       <Box className={className}>
@@ -112,14 +132,14 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
               borderRight: 0,
               borderBottom: 2,
               borderLeft: 0,
-              borderBottomColor: error ? 'red' : 'grays.7',
+              borderBottomColor: borderColor,
               borderBottomStyle: 'solid',
               borderTopLeftRadius: 4,
               borderTopRightRadius: 4,
-              backgroundColor: error ? 'reds.1' : 'white',
+              backgroundColor,
               boxShadow: 'medium',
               variant: 'type.body',
-              color: error ? 'red' : 'text',
+              color: textColor,
               mb: 2,
               outlineColor: 'transparent',
               transitionProperty: 'outline-color',
@@ -163,11 +183,32 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
           <div
             sx={{
               variant: 'type.hint',
-              mb: error ? 1 : 0,
+              mb: warning || error ? 1 : 0,
             }}
             id={`input-${name}__hint`}
           >
             {hint}
+          </div>
+        )}
+        {warning && (
+          <div
+            sx={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              mb: error ? 1 : 0,
+            }}
+          >
+            <Icon
+              name="warning"
+              alt="Warning: "
+              sx={{ mr: 1, flexShrink: 0 }}
+              width={16}
+              height={16}
+              fill="warning"
+            />
+            <span sx={{ variant: 'type.hint', color: 'warning' }}>
+              {warning}
+            </span>
           </div>
         )}
         {error && (
