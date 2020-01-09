@@ -35,9 +35,14 @@ const formatFloatingPointNumber = (value: string, maxDigits: number) => {
   return formatted
 }
 
-const formatCurrency = (str: string, includeSymbol = true) => {
+/**
+ * Given a numerical string, formats it with commas and (optionally) a dollar sign
+ * @param amount Currency string to format
+ * @param includeSymbol Whether to prefix with `$`
+ */
+const formatCurrency = (amount: string, includeSymbol = true) => {
   const prefix = includeSymbol ? '$' : ''
-  return prefix + formatFloatingPointNumber(str, 2)
+  return prefix + formatFloatingPointNumber(amount, 2)
 }
 
 export { formatCurrency }
