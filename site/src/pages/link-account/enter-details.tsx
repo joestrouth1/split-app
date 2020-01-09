@@ -316,6 +316,9 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
             >
               <RadioOption value="true" sx={{ mb: 2 }} required={true}>
                 Enroll in Auto Pay using the information above
+                <sup>
+                  <small>&dagger;</small>
+                </sup>
                 <br />
                 <span sx={{ variant: 'type.hint' }}>(Recommended)</span>
               </RadioOption>
@@ -369,10 +372,15 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
                 variant="primary"
                 type="submit"
                 disabled={!isValid}
-                sx={{ flex: 1 }}
+                sx={{ flex: 1, mb: 3 }}
               >
                 Next
               </Button>
+              <p sx={{ variant: 'type.disclaimer' }}>
+                &dagger;Opt-in applies to ALL information on this page; your
+                bank account and debit card (if given) will both be enrolled in
+                Auto Pay.
+              </p>
             </Flex>
           </form>
         </Container>
