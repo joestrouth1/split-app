@@ -71,6 +71,18 @@ With error, with icon:
 />
 ```
 
+With warning, with icon:
+
+```jsx
+<TextField label="Name of your first pet" defaultValue="Roscoe" />
+<TextField
+  label="Mother's maiden name"
+  hint="Her first last name"
+  defaultValue="T"
+  warning="That name looks a little short."
+/>
+```
+
 Automatically wrapping `PasswordField` if `type="password"`:
 
 ```jsx

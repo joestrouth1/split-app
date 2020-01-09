@@ -47,8 +47,34 @@ const CurrentIncomePage = () => {
   const [housing, setHousing] = useState('')
   const [paySchedule, setPaySchedule] = useState(paySchedules[0])
   const [nextPayDate, setNextPayDate] = useState('')
-  const [firstMonthlyPayDate, setFirstMonthlyPayDate] = useState('1')
-  const [secondMonthlyPayDate, setSecondMonthlyPayDate] = useState('15')
+  const [monthlyPayDate, setMonthlyPayDate] = useState('1')
+  const [monthlyPayDates, setMonthlyPayDates] = useState('1-15')
+
+  // Make sure that annual income is not unusually low, or monthly housing payment is not unusually high
+  const [incomeWarning, setIncomeWarning] = useState<string>()
+  const [housingWarning, setHousingWarning] = useState<string>()
+  function testIncomeValue() {
+    const incomeValue = income.match(/[\d.]*/g)?.join('')
+    if (parseFloat(incomeValue || '') < 10_000) {
+      console.log('blurred')
+      setIncomeWarning(
+        'That number seems low. Please verify that your individual annual income is correct before proceeding.'
+      )
+    } else {
+      setIncomeWarning(undefined)
+    }
+  }
+  function testHousingValue() {
+    const housingValue = housing.match(/[\d.]*/g)?.join('')
+    if (parseFloat(housingValue || '') > 10_000) {
+      console.log('blurred')
+      setHousingWarning(
+        'That number seems high. Please verify that your monthly housing payment is correct before proceeding.'
+      )
+    } else {
+      setHousingWarning(undefined)
+    }
+  }
 
   const [isValid, setIsValid] = useState(false)
   useEffect(() => {
@@ -59,11 +85,12 @@ const CurrentIncomePage = () => {
     housing,
     paySchedule,
     nextPayDate,
-    firstMonthlyPayDate,
-    secondMonthlyPayDate,
+    monthlyPayDate,
+    monthlyPayDates,
   ])
 
-  const paidWeekly = paySchedule.value.match('weekly')
+  const paidWeekly = paySchedule.value === 'weekly'
+  const paidBiWeekly = paySchedule.value === 'bi-weekly'
   const paidMonthly = paySchedule.value === 'monthly'
   const paidSemiMonthly = paySchedule.value === 'semi-monthly'
 
@@ -108,11 +135,19 @@ const CurrentIncomePage = () => {
             <CurrencyField
               label="Individual annual income"
               required
-              hint="Total amount you make per year before taxes. Include tips, bonuses, and any other income you&rsquo;d like to be considered for this loan"
+              hint={
+                <span>
+                  <strong>Total amount you make per year before taxes.</strong>{' '}
+                  Include tips, bonuses, and any other income you&rsquo;d like
+                  to be considered for this loan
+                </span>
+              }
               name="income"
               value={income}
               onChange={setIncome}
               sx={{ mb: 3 }}
+              warning={incomeWarning}
+              onBlur={testIncomeValue}
             />
 
             <CurrencyField
@@ -123,6 +158,8 @@ const CurrentIncomePage = () => {
               value={housing}
               onChange={setHousing}
               sx={{ mb: 3 }}
+              warning={housingWarning}
+              onBlur={testHousingValue}
             />
 
             <Select
@@ -148,9 +185,31 @@ const CurrentIncomePage = () => {
             </Select>
 
             {/* 
-              If paid [bi-]weekly, we need next pay date and typical weekday
+              If paid weekly, we need [next pay date] and typical weekday
              */}
             {paidWeekly && (
+              <Fragment>
+                <Select
+                  label="Day of the week you are usually paid"
+                  sx={{
+                    mb: 3,
+                  }}
+                  value={nextPayDate}
+                  onChange={e => setNextPayDate(e.target.value)}
+                >
+                  {daysOfTheWeek.map(day => (
+                    <option key={day} value={day.toLowerCase()}>
+                      {day}
+                    </option>
+                  ))}
+                </Select>
+              </Fragment>
+            )}
+
+            {/* 
+              If paid bi-weekly, we need next pay date and typical weekday
+             */}
+            {paidBiWeekly && (
               <Fragment>
                 <DateField
                   label="Next pay date"
@@ -189,8 +248,8 @@ const CurrentIncomePage = () => {
                   sx={{
                     mb: 3,
                   }}
-                  value={firstMonthlyPayDate}
-                  onChange={e => setFirstMonthlyPayDate(e.target.value)}
+                  value={monthlyPayDate}
+                  onChange={e => setMonthlyPayDate(e.target.value)}
                   required
                 >
                   {[...Array(31).keys()].map(num => {
@@ -207,43 +266,25 @@ const CurrentIncomePage = () => {
             {paidSemiMonthly && (
               <Fragment>
                 <Select
-                  label="First date you are usually paid"
+                  label="Dates you are usually paid"
                   sx={{
                     mb: 3,
                   }}
-                  value={firstMonthlyPayDate}
-                  onChange={e => setFirstMonthlyPayDate(e.target.value)}
+                  value={monthlyPayDates}
+                  onChange={e => setMonthlyPayDates(e.target.value)}
                   required
                 >
-                  {[...Array(31).keys()].map(num => {
-                    const date = num + 1
-                    return (
-                      <option key={date} value={date}>
-                        {date}
-                      </option>
-                    )
-                  })}
-                </Select>
-                <Select
-                  label="Second date you are usually paid"
-                  sx={{
-                    mb: 3,
-                  }}
-                  value={secondMonthlyPayDate}
-                  onChange={e => setSecondMonthlyPayDate(e.target.value)}
-                  required
-                >
-                  {[...Array(31).keys()].map(num => {
-                    const date = num + 1
-                    return (
-                      <option key={date} value={date}>
-                        {date}
-                      </option>
-                    )
-                  })}
+                  <option value="1-15">1st and 15th</option>
+                  <option value="5-20">5th and 20th</option>
+                  <option value="7-22">7th and 22nd</option>
+                  <option value="10-25">10th and 25th</option>
+                  <option value="15-last">
+                    15th and last day of the month
+                  </option>
                 </Select>
               </Fragment>
             )}
+
             <Flex
               onClick={() =>
                 !isValid && formRef.current && formRef.current.reportValidity()

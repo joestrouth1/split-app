@@ -13,12 +13,21 @@ interface RadioOptionProps extends HTMLAttributes<HTMLLabelElement> {
    * @default uuid()
    */
   id?: string
+  /**
+   * Whether or not the user must choose an option for this radio group.
+   */
+  required?: boolean
 }
 
 /**
  * Radio input - used inside of RadioGroup.
  */
-export const RadioOption = ({ children, ...props }: RadioOptionProps) => {
+export const RadioOption = ({
+  children,
+  required = false,
+  value: optionValue,
+  ...props
+}: RadioOptionProps) => {
   const context = useContext(RadioContext)
   const { name, value, onChange } = context
 
@@ -30,8 +39,8 @@ export const RadioOption = ({ children, ...props }: RadioOptionProps) => {
         type="radio"
         name={name}
         onChange={onChange}
-        checked={value === props.value}
-        value={props.value}
+        checked={optionValue === value}
+        value={optionValue}
         id={id}
         sx={{
           variant: 'visuallyhidden',
@@ -39,6 +48,7 @@ export const RadioOption = ({ children, ...props }: RadioOptionProps) => {
             boxShadow: 'outline',
           },
         }}
+        required={required}
       />
       <label
         htmlFor={id}

@@ -47,6 +47,7 @@ export const colors = {
   secondary: greens[2],
   accent: '#044c8a',
   muted: greens[0],
+  warning: '#996f2f',
   grays,
   greens,
   green,

@@ -95,7 +95,7 @@ const ScanIdPage = () => {
               to="/residential-information"
               sx={{ variant: 'links.default' }}
             >
-              Enter your information manually.
+              ID not listed? Enter your information manually.
             </Link>
           </p>
         </Container>

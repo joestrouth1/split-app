@@ -9,7 +9,7 @@ import {
   ChangeEvent,
 } from 'react'
 import { navigate } from 'gatsby'
-import { Button, TextField } from 'components'
+import { Button, TextField, Select } from 'components'
 import { parse } from 'query-string'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
@@ -83,6 +83,13 @@ function usePersistedAddress(queryString = '') {
   return [address, setAddress] as const
 }
 
+enum IDType {
+  dl = 'dl',
+  state = 'state',
+  passport = 'passport',
+  military = 'military',
+}
+
 /** Where applicants tell us their home address. */
 function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   const [address, setAddress] = usePersistedAddress(location.search)
@@ -96,11 +103,14 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
     [address]
   )
 
+  const [idNumber, setIdNumber] = useState('')
+  const [idType, setIdType] = useState<IDType>(IDType['dl'])
+
   const formRef = useRef<HTMLFormElement>(null)
   const [isValid, setIsValid] = useState(false)
   useEffect(() => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
-  }, [formRef.current, address])
+  }, [formRef.current, address, idNumber, idType])
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
     // 2FA not available in Phase I
@@ -197,6 +207,29 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 onChange={setAddressField('phone')}
                 value={address.phone}
               />
+
+              <TextField
+                label="ID number"
+                name="id-number"
+                inputMode="numeric"
+                required
+                sx={{ mb: 3 }}
+                onChange={e => setIdNumber(e.target.value)}
+                value={idNumber}
+              />
+
+              <Select
+                label="ID type"
+                value={idType}
+                sx={{ mb: 3 }}
+                onChange={e => setIdType(e.target.value as IDType)}
+              >
+                <option value={IDType['dl']}>Driver&rsquo;s License</option>
+                <option value={IDType['state']}>State ID</option>
+                <option value={IDType['passport']}>Passport</option>
+                <option value={IDType['military']}>Military ID</option>
+              </Select>
+
               <Flex
                 onClick={() =>
                   !isValid &&

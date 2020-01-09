@@ -21,11 +21,11 @@ const LoanOptionsPage = () => {
           <header>
             <h1
               sx={{
-                variant: 'page.title',
+                variant: 'type.title',
                 mb: 3,
               }}
             >
-              You&rsquo;re approved for up to $5,000!
+              You&rsquo;re approved!
             </h1>
             <p sx={{ variant: 'type.subtitle', mb: 4 }}>
               Customize your loan by selecting an amount and term that fit your

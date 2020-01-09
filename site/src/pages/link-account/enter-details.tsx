@@ -3,7 +3,15 @@ import { jsx, Container, Main, Flex } from 'theme-ui'
 import { Link, navigate } from 'gatsby'
 // TODO: add form ref, check validity to Form
 import { useState, useEffect, useRef, FormEventHandler } from 'react'
-import { TextField, Button, Alert, Icon, Select } from 'components'
+import {
+  TextField,
+  Button,
+  Alert,
+  Icon,
+  Select,
+  RadioGroup,
+  RadioOption,
+} from 'components'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { Illustration } from '../../components/illustration'
 import { SEO } from '../../components/seo'
@@ -86,13 +94,14 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
   }
   const [routingNumber, setRoutingNumber] = useState(routing || '')
   const [accountNumber, setAccountNumber] = useState(account || '')
-  const [cardNumber, setCardNumber] = useState<number>()
+  const [cardNumber, setCardNumber] = useState('')
   const [cardName, setCardName] = useState('')
   const [cardZip, setCardZip] = useState('')
   const [cardExpiration, setCardExpiration] = useState<CardExpiration>({
     month: 1,
     year: 2020,
   })
+  const [autoPayEnabled, setAutoPayEnabled] = useState<string | undefined>()
 
   // This isn't being used right now, will be used to display alert in case of bad request
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -110,6 +119,7 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
     cardName,
     cardExpiration,
     cardZip,
+    autoPayEnabled,
   ])
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
@@ -223,7 +233,7 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
                 autoComplete="cc-number"
                 pattern="[0-9-]*"
                 value={cardNumber}
-                onChange={e => setCardNumber(Number(e.currentTarget.value))}
+                onChange={e => setCardNumber(e.currentTarget.value)}
                 sx={{
                   flex: 1,
                   mb: 3,
@@ -294,61 +304,43 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
             <p sx={{ variant: 'type.subtitle', mb: 2 }}>
               How would you like to pay?
             </p>
-            <p sx={{ variant: 'type.body', mb: 2 }}>
-              Enrolling in Auto Pay is the most convenient way to make your
-              payments. If you do not entroll in Auto Pay, you will need to
-              remember to make your payments manually by your due date. You can
-              do this by logging into your account to make your payment online
-              or by mailing a check to Avio Credit P.O. Box 780408 Wichita KS
-              67278. Payments made by check may take 7-10 days to process.
-            </p>
-            <Flex
+            <RadioGroup
+              name="autopay"
               sx={{
-                flexFlow: 'row nowrap',
                 mb: 3,
+                textAlign: 'center',
+                flexFlow: 'column nowrap',
               }}
+              value={autoPayEnabled}
+              onChange={e => setAutoPayEnabled(e.target.value)}
             >
-              <input
-                type="radio"
-                name="auto-pay-status"
-                value="enabled"
-                id="auto-pay-enable"
-                sx={{
-                  variant: 'visuallyhidden',
-                }}
-              />
-              <label
-                sx={{
-                  variant: 'cards.radio',
-                  flex: '1 1 auto',
-                  textAlign: 'center',
-                  mr: 3,
-                }}
-                htmlFor="auto-pay-enable"
-              >
-                Opt in
-              </label>
-              <input
-                type="radio"
-                name="auto-pay-status"
-                value="disabled"
-                id="auto-pay-disable"
-                sx={{
-                  variant: 'visuallyhidden',
-                }}
-              />
-              <label
-                sx={{
-                  variant: 'cards.radio',
-                  flex: '1 1 auto',
-                  textAlign: 'center',
-                }}
-                htmlFor="auto-pay-disable"
-              >
-                Opt out
-              </label>
-            </Flex>
+              <RadioOption value="true" sx={{ mb: 2 }} required={true}>
+                Enroll in Auto Pay using the information above
+                <sup>
+                  <small>&dagger;</small>
+                </sup>
+                <br />
+                <span sx={{ variant: 'type.hint' }}>(Recommended)</span>
+              </RadioOption>
+              <RadioOption value="false">Make payments manually</RadioOption>
+            </RadioGroup>
 
+            {autoPayEnabled === 'false' && (
+              <p sx={{ variant: 'type.body', mb: 3 }}>
+                Enrolling in Auto Pay is the most convenient way to make your
+                payments. If you do not enroll in Auto Pay, you will need to
+                remember to make your payments manually by your due date. You
+                can do this by logging into your account to make your payment
+                online or by mailing a check to Avío Credit P.O. Box 780408
+                Wichita KS 67278. Payments made by check may take 7-10 days to
+                process.
+              </p>
+            )}
+
+            <p sx={{ variant: 'type-body', mb: 3, mt: 0 }}>
+              Please review the information you provided above. The bank account
+              provided is where your loan funds will be sent, if approved.
+            </p>
             <Flex
               onClick={() =>
                 !isValid && formRef.current && formRef.current.reportValidity()
@@ -384,10 +376,15 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
                 variant="primary"
                 type="submit"
                 disabled={!isValid}
-                sx={{ flex: 1 }}
+                sx={{ flex: 1, mb: 3 }}
               >
                 Next
               </Button>
+              <p sx={{ variant: 'type.disclaimer' }}>
+                &dagger;Opt-in applies to ALL information on this page; your
+                bank account and debit card (if given) will both be enrolled in
+                Auto Pay.
+              </p>
             </Flex>
           </form>
         </Container>
