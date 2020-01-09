@@ -8,7 +8,6 @@ import { ModalLink } from '../../components/modal-link'
 import { SEO } from '../../components/seo'
 import { CreditInquiryModal } from './credit-inquiry'
 import { DisputeResolutionModal } from './dispute-resolution'
-import { EdcaModal } from './edca'
 import { VergePrivacyModal } from './verge-privacy'
 import { TcpaModal } from './tcpa'
 
@@ -16,7 +15,6 @@ import { TcpaModal } from './tcpa'
  * Where applicants accept our policies.
  */
 const DisclosuresPage = () => {
-  const [edcaConsent, setEdcaConsent] = useState(false)
   const [privacyPolicyConsent, setPrivacyPolicyConsent] = useState(false)
   const [disputeResolutionConsent, setDisputeResolutionConsent] = useState(
     false
@@ -30,7 +28,6 @@ const DisclosuresPage = () => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
   }, [
     formRef.current,
-    edcaConsent,
     privacyPolicyConsent,
     disputeResolutionConsent,
     creditInquiryConsent,
@@ -70,17 +67,6 @@ const DisclosuresPage = () => {
             }}
             data-testid="disclosures-form"
           >
-            <Checkbox
-              required
-              name="edcaConsent"
-              onChange={() => setEdcaConsent(!edcaConsent)}
-            >
-              By checking this box, I agree to the terms and conditions set out
-              in the{' '}
-              <ModalLink modalContent={<EdcaModal />}>
-                Consent to Electronic Disclosure and Communication Agreement.
-              </ModalLink>
-            </Checkbox>
             <Checkbox
               required
               name="privacyPolicyConsent"
