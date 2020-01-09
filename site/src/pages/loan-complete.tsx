@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
 import { Link } from 'gatsby'
+import { Alert, Icon } from 'components'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 import { Illustration } from '../components/illustration'
@@ -166,6 +167,22 @@ const LoanCompletePage = () => {
             aria-labelledby={'repayment-details-heading'}
             sx={{ mb: 3 }}
           />
+          <Alert variant="positive" sx={{ mb: 3 }}>
+            <Icon
+              name="lightbulb"
+              alt=""
+              fill="greens.6"
+              sx={{ mr: 2, flexShrink: 0 }}
+              width={24}
+              height={24}
+            />
+            <span>
+              Never miss a payment with Auto Pay!{' '}
+              <Link to="/account/auto-pay" sx={{ variant: 'links.default' }}>
+                Enroll today
+              </Link>
+            </span>
+          </Alert>
           <Link
             to="/account-summary"
             sx={{ variant: 'buttons.primary', mb: 4 }}

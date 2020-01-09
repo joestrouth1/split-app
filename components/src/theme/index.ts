@@ -38,7 +38,7 @@ export const defaultTheme = {
     body: 'normal',
     heading: '-0.03em',
     button: '-0.03em',
-    caps: '0.2em',
+    caps: '0.02em',
   },
   colors,
   styles: {

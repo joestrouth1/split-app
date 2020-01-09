@@ -49,7 +49,7 @@ export const RadioGroup = ({
         onChange: onChange,
       }}
     >
-      <Flex sx={{ flexFlow: 'column nowrap' }}>
+      <Flex sx={{ flexFlow: 'column nowrap', position: 'relative' }}>
         {props.label && (
           <p sx={{ variant: 'type.label', mb: 0 }}>{props.label}</p>
         )}

@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
 import { FormEventHandler, useState, Fragment } from 'react'
-import { TextField, Button, Icon } from 'components'
+import { TextField, Button, Icon, Select } from 'components'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
@@ -28,16 +28,23 @@ const StatusIcon = ({ isValid }: StatusIconProps) => (
 /** Where applicants choose a password for their new account */
 const SavePasswordPage = () => {
   const [password, setPassword] = useState('')
+  const [securityQuestion, setSecurityQuestion] = useState('')
+  const [securityAnswer, setSecurityAnswer] = useState('')
 
   const isMultiCase = /[A-Z]/.test(password) && /[a-z]/.test(password)
   const isComplex = /[\d\W_]/.test(password)
   const isCorrectLength = 8 <= password.length && password.length <= 25
 
-  const isValid = isMultiCase && isComplex && isCorrectLength
+  const isValid =
+    isMultiCase &&
+    isComplex &&
+    isCorrectLength &&
+    securityQuestion &&
+    securityAnswer
 
   return (
     <Layout>
-      <SEO title="Basic info" />
+      <SEO title="Save your progress" />
       <Main>
         <Container
           sx={{
@@ -112,6 +119,49 @@ const SavePasswordPage = () => {
                   </div>
                 </Fragment>
               }
+            />
+
+            <Select
+              label="Security question"
+              required
+              name="security-question"
+              value={securityQuestion}
+              onChange={e => setSecurityQuestion(e.target.value)}
+              sx={{
+                mb: 3,
+              }}
+            >
+              <option value="" selected disabled></option>
+              <option value="wedding-reception">
+                Where was your wedding reception held?
+              </option>
+              <option value="favorite-pet">
+                What is the name of your favorite pet?
+              </option>
+              <option value="home-street">
+                What street did you grow up on?
+              </option>
+              <option value="favorite-color">
+                What is your favorite color?
+              </option>
+              <option value="first-grade-teacher">
+                What is the name of your first grade teacher?
+              </option>
+              <option value="first-car">
+                What was the make of your first car?
+              </option>
+            </Select>
+
+            <TextField
+              name="security-answer"
+              label="Security question answer"
+              value={securityAnswer}
+              onChange={e => {
+                setSecurityAnswer(e.target.value)
+              }}
+              sx={{
+                mb: 3,
+              }}
             />
 
             <Button variant="primary" type="submit" disabled={!isValid}>
