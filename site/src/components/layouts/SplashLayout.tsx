@@ -46,7 +46,7 @@ export const SplashLayout = ({ children }: SplashLayoutProps) => {
                 left: 0,
                 right: 0,
                 zIndex: 1,
-                background: 'transparent',
+                background: 'white',
               }}
             >
               <TabBarItem icon="home" href="/">

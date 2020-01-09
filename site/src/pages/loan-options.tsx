@@ -180,10 +180,13 @@ const LoanOptionsPage = () => {
             <p sx={{ variant: 'type.subtitle', mb: 4 }}>
               Customize your loan by selecting an amount and term that fit your
               needs.
+              <sup>
+                <small>&dagger;</small>
+              </sup>
             </p>
           </header>
           <form
-            sx={{ display: 'flex', flexFlow: 'column nowrap' }}
+            sx={{ display: 'flex', flexFlow: 'column nowrap', mb: 3 }}
             onSubmit={handleSubmit}
           >
             <RadioGroup
@@ -201,6 +204,11 @@ const LoanOptionsPage = () => {
               Next
             </Button>
           </form>
+          <p sx={{ variant: 'type.disclaimer' }}>
+            <sup>&dagger;</sup>Based on your pay cycle, your term may be
+            slightly longer based on payment due dates. Refer to your loan
+            document for details.
+          </p>
         </Container>
       </Main>
     </Layout>
