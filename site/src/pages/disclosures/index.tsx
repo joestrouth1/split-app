@@ -46,7 +46,7 @@ const DisclosuresPage = () => {
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
     if (currentFlow === UserFlow.LOAN_BY_PHONE) {
-      navigate('/loan-options')
+      navigate('/sign-docs')
     } else {
       navigate('/scoring')
     }

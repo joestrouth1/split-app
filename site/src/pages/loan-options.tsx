@@ -1,9 +1,16 @@
 /**@jsx jsx */
 import { jsx, Main, Container, Flex } from 'theme-ui'
 import { RadioGroup, RadioOption, Button } from 'components'
-import { useState, ChangeEventHandler, Fragment, FormEventHandler } from 'react'
+import {
+  useState,
+  useContext,
+  ChangeEventHandler,
+  Fragment,
+  FormEventHandler,
+} from 'react'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
+import { RoutingContext, UserFlow } from '../contexts/routing'
 import { formatCurrency } from '../utils/currency'
 import { navigate } from 'gatsby'
 
@@ -148,13 +155,16 @@ const LoanOptionsPage = () => {
     const matchingOption = options.find(({ id }) => id === value)
     setSelectedOption(matchingOption)
   }
-  const isValid = selectedOption != null
 
+  const { currentFlow } = useContext(RoutingContext)
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
     if (e.currentTarget.checkValidity()) {
-      console.log({ selectedOption, isValid })
-      navigate('/sign-docs')
+      if (currentFlow === UserFlow.LOAN_BY_PHONE) {
+        navigate('/disclosures')
+      } else {
+        navigate('/sign-docs')
+      }
     } else {
       e.currentTarget.reportValidity()
     }
@@ -184,8 +194,7 @@ const LoanOptionsPage = () => {
               You&rsquo;re approved!
             </h1>
             <p sx={{ variant: 'type.subtitle', mb: 4 }}>
-              Customize your loan by selecting an amount and term that fit your
-              needs.
+              Select the loan that fits your needs.
             </p>
           </header>
           <form
