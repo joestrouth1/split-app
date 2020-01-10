@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
 import { HelmetProvider } from 'react-helmet-async'
+import { RoutingContext, useRoutingState } from './src/contexts/routing'
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
@@ -10,7 +11,14 @@ import { HelmetProvider } from 'react-helmet-async'
 const helmetContext = {}
 
 const Providers = ({ children }) => {
-  return <HelmetProvider context={helmetContext}>{children}</HelmetProvider>
+  const routingState = useRoutingState()
+  return (
+    <HelmetProvider context={helmetContext}>
+      <RoutingContext.Provider value={routingState}>
+        {children}
+      </RoutingContext.Provider>
+    </HelmetProvider>
+  )
 }
 
 export const wrapRootElement = ({ element }) => {

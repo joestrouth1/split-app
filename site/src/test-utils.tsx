@@ -3,6 +3,7 @@ import { render, RenderOptions } from '@testing-library/react'
 import { jsx, ThemeProvider } from 'theme-ui'
 import { ReactNode, ReactElement } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
+import { RoutingContext, useRoutingState } from './contexts/routing'
 import { defaultTheme } from 'components'
 
 // eslint-disable-next-line
@@ -11,9 +12,14 @@ HelmetProvider.canUseDOM = false
 
 const Wrapped = ({ children }: { children?: ReactNode }) => {
   const helmetContext = {}
+  const routingState = useRoutingState()
   return (
     <ThemeProvider theme={defaultTheme}>
-      <HelmetProvider context={helmetContext}>{children}</HelmetProvider>
+      <HelmetProvider context={helmetContext}>
+        <RoutingContext.Provider value={routingState}>
+          {children}
+        </RoutingContext.Provider>
+      </HelmetProvider>
     </ThemeProvider>
   )
 }

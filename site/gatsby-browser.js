@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
 import { HelmetProvider } from 'react-helmet-async'
-import { RoutingContext } from './src/contexts/routing'
+import { RoutingContext, useRoutingState } from './src/contexts/routing'
 
 /**
  * Implement Gatsby's Browser APIs in this file.
@@ -21,7 +21,14 @@ export const onServiceWorkerUpdateReady = () => {
 }
 
 const Providers = ({ children }) => {
-  return <HelmetProvider>{children}</HelmetProvider>
+  const routingState = useRoutingState()
+  return (
+    <HelmetProvider>
+      <RoutingContext.Provider value={routingState}>
+        {children}
+      </RoutingContext.Provider>
+    </HelmetProvider>
+  )
 }
 
 export const wrapRootElement = ({ element }) => {

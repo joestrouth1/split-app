@@ -167,7 +167,7 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
                     name="lock"
                     alt=""
                     fill="grays.7"
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 2, flexShrink: 0 }}
                     width={16}
                     height={16}
                   />

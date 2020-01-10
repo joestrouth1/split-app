@@ -1,6 +1,4 @@
-/**@jsx jsx */
-import { createContext } from 'react'
-import { jsx } from 'theme-ui'
+import { createContext, useState, Dispatch, SetStateAction } from 'react'
 
 enum UserFlow {
   PRESCREEN = 'PRESCREEN',
@@ -25,12 +23,34 @@ const routes: Route[] = [
   },
 ]
 
-interface RoutingState {
-  flow: UserFlow
+interface RoutingContextValue {
+  currentFlow: UserFlow
+  setCurrentFlow: Dispatch<SetStateAction<UserFlow>>
   routes: Route[]
 }
 
-const initialRoutingState: RoutingState = { flow: UserFlow.ORGANIC, routes }
+const initialRoutingState: RoutingContextValue = {
+  currentFlow: UserFlow.ORGANIC,
+  routes,
+  setCurrentFlow: () => {
+    return
+  },
+}
+
 const RoutingContext = createContext(initialRoutingState)
 
-export { RoutingContext, initialRoutingState }
+const useRoutingState = (
+  initialState = initialRoutingState
+): RoutingContextValue => {
+  const [currentFlow, setCurrentFlow] = useState(initialState.currentFlow)
+  const { routes } = initialState
+  return { routes, currentFlow, setCurrentFlow }
+}
+
+export {
+  RoutingContext,
+  initialRoutingState,
+  UserFlow,
+  routes,
+  useRoutingState,
+}
