@@ -1,20 +1,33 @@
 /**@jsx jsx */
 import { jsx, Container, Main } from 'theme-ui'
-import { FormEventHandler, useState } from 'react'
+import { FormEventHandler, useState, useContext, useEffect } from 'react'
 import { TextField, Button } from 'components'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
-
-const handleSubmit: FormEventHandler = e => {
-  e.preventDefault()
-  navigate('/basic-information')
-}
+import { RoutingContext, UserFlow } from '../contexts/routing'
 
 /** Where prescreened applicants confirm their mailed reservation offer and start applying */
 const MailOfferPage = () => {
   const [reservationNumber, setReservationNumber] = useState('')
   const [lastFour, setLastFour] = useState('')
+
+  /**
+   * This page is for prescreen customers only, so the flow should be set accordingly.
+   * Right now there's no later routing/behavior that's prescreen specific,
+   * but there could be.
+   */
+  const { currentFlow, setCurrentFlow } = useContext(RoutingContext)
+  useEffect(() => {
+    if (currentFlow !== UserFlow.PRESCREEN) {
+      setCurrentFlow(UserFlow.PRESCREEN)
+    }
+  }, [])
+
+  const handleSubmit: FormEventHandler = e => {
+    e.preventDefault()
+    navigate('/basic-information')
+  }
 
   return (
     <Layout>

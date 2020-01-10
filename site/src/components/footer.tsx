@@ -1,10 +1,11 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
 import { Footer as BaseFooter } from 'components'
-import { ComponentPropsWithoutRef, HTMLAttributes } from 'react'
+import { useContext, ComponentPropsWithoutRef, HTMLAttributes } from 'react'
 import { VergePrivacyModal } from '../pages/disclosures/verge-privacy'
 import { StridePolicyModal } from '../pages/disclosures/stride-privacy'
 import { ModalLink } from '../components/modal-link'
+import { RoutingContext } from '../contexts/routing'
 
 type PolicyLinksProps = HTMLAttributes<HTMLDivElement>
 const PolicyLinks = (props: PolicyLinksProps) => (
@@ -24,11 +25,17 @@ const PolicyLinks = (props: PolicyLinksProps) => (
 
 type FooterProps = ComponentPropsWithoutRef<typeof BaseFooter>
 
-export const Footer = ({ ...props }: FooterProps) => (
-  <BaseFooter {...props}>
-    <BaseFooter.Copyright sx={{ mb: 3 }} />
-    <BaseFooter.Contact sx={{ mb: 3 }} />
-    <PolicyLinks sx={{ mb: 3 }} />
-    <BaseFooter.Disclaimers sx={{ mb: 3 }} />
-  </BaseFooter>
-)
+export const Footer = ({ ...props }: FooterProps) => {
+  const { currentFlow } = useContext(RoutingContext)
+  return (
+    <BaseFooter {...props}>
+      <BaseFooter.Copyright sx={{ mb: 3 }} />
+      <BaseFooter.Contact sx={{ mb: 3 }} />
+      <PolicyLinks sx={{ mb: 3 }} />
+      <BaseFooter.Disclaimers sx={{ mb: 3 }} />
+      <output sx={{ mb: 3, variant: 'type.disclaimer' }}>
+        Current user flow: {currentFlow}
+      </output>
+    </BaseFooter>
+  )
+}

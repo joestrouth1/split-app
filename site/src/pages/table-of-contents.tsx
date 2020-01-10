@@ -54,6 +54,12 @@ export const PureIndexPage = ({ data }: PureIndexPageProps) => {
           <Link to="/mail" sx={{ variant: 'buttons.primary', mb: 3 }}>
             Start prescreen
           </Link>
+          <Link
+            to="/create-account-by-phone"
+            sx={{ variant: 'buttons.primary', mb: 3 }}
+          >
+            Start by phone
+          </Link>
 
           <p sx={{ variant: 'type.body' }}>Or jump to a specific page:</p>
           <ul
