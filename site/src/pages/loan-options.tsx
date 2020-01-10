@@ -68,83 +68,110 @@ const loanDataSecondaryStyles = {
   color: 'greens.8',
 } as const
 
-const LoanOptionRadios = ({ options }: { options: LoanOption[] }) => {
+interface LoanOptionRadioProps {
+  /**
+   * The loan option to render details of.
+   */
+  option: LoanOption
+  /**
+   * Whether this loan option is currently selected.
+   */
+  checked: boolean
+}
+const LoanOptionRadio = ({ option, checked }: LoanOptionRadioProps) => {
+  const loanLabelStyles = {
+    fontSize: 1,
+    color: checked ? 'grays.3' : 'text',
+    letterSpacing: 'caps',
+    textTransform: 'uppercase',
+  } as const
+
+  const loanDataPrimaryStyles = {
+    variant: 'type.subtitle',
+    color: checked ? 'greens.0' : undefined,
+  } as const
+
+  const loanDataSecondaryStyles = {
+    variant: 'type.body',
+    color: checked ? 'greens.1' : undefined,
+  } as const
+
+  const activeCardStyles = {
+    background: 'white',
+    backgroundColor: 'greens.8',
+  } as const
+
+  const { id, amount, payment, apr, termLength, termUnits } = option
+
   return (
-    <Fragment>
-      {options.map(({ id, amount, payment, apr, termLength, termUnits }) => {
-        return (
-          <RadioOption
-            value={id}
-            key={id}
-            required
+    <RadioOption
+      value={id}
+      key={id}
+      required
+      sx={{
+        mb: 3,
+        '&:last-of-type': {
+          mb: 0,
+        },
+        ...Object.assign({}, checked ? activeCardStyles : {}),
+      }}
+    >
+      <div
+        sx={{
+          mx: 'auto',
+          maxWidth: '20rem',
+        }}
+      >
+        <Flex
+          sx={{
+            flexFlow: 'row nowrap',
+            justifyContent: 'space-between',
+            mb: 2,
+          }}
+        >
+          <Flex sx={{ flexFlow: 'column nowrap' }}>
+            <span sx={loanLabelStyles}>Loan amount</span>
+            <span sx={loanDataPrimaryStyles}>
+              {formatCurrency(amount.toString())}
+            </span>
+          </Flex>
+          <Flex
             sx={{
-              mb: 3,
-              '&:last-of-type': {
-                mb: 0,
-              },
+              flexFlow: 'column nowrap',
+              textAlign: 'right',
             }}
           >
-            <div
-              sx={{
-                mx: 'auto',
-                maxWidth: '20rem',
-              }}
-            >
-              <Flex
-                sx={{
-                  flexFlow: 'row nowrap',
-                  justifyContent: 'space-between',
-                  mb: 2,
-                }}
-              >
-                <Flex sx={{ flexFlow: 'column nowrap' }}>
-                  <span sx={loanLabelStyles}>Loan amount</span>
-                  <span sx={loanDataPrimaryStyles}>
-                    {formatCurrency(amount.toString())}
-                  </span>
-                </Flex>
-                <Flex
-                  sx={{
-                    flexFlow: 'column nowrap',
-                    textAlign: 'right',
-                  }}
-                >
-                  <span sx={loanLabelStyles}>Payment</span>
-                  <span sx={loanDataPrimaryStyles}>
-                    {formatCurrency(payment.toString())}
-                  </span>
-                </Flex>
-              </Flex>
+            <span sx={loanLabelStyles}>Payment</span>
+            <span sx={loanDataPrimaryStyles}>
+              {formatCurrency(payment.toString())}
+            </span>
+          </Flex>
+        </Flex>
 
-              <Flex
-                sx={{ flexFlow: 'row nowrap', justifyContent: 'space-between' }}
-              >
-                <Flex sx={{ flexFlow: 'column nowrap' }}>
-                  <span sx={loanLabelStyles}>
-                    Loan term
-                    <sup>&dagger;</sup>
-                  </span>
-                  <span sx={loanDataSecondaryStyles}>
-                    {termLength} {termUnits}
-                  </span>
-                </Flex>
-                <Flex
-                  sx={{
-                    flexFlow: 'column nowrap',
-                    textAlign: 'right',
-                  }}
-                >
-                  <span sx={loanLabelStyles}>
-                    <abbr title="Annual Percentage Rate">APR</abbr>
-                  </span>
-                  <span sx={loanDataSecondaryStyles}>{apr}%</span>
-                </Flex>
-              </Flex>
-            </div>
-          </RadioOption>
-        )
-      })}
-    </Fragment>
+        <Flex sx={{ flexFlow: 'row nowrap', justifyContent: 'space-between' }}>
+          <Flex sx={{ flexFlow: 'column nowrap' }}>
+            <span sx={loanLabelStyles}>
+              Loan term
+              <sup>&dagger;</sup>
+            </span>
+            <span sx={loanDataSecondaryStyles}>
+              {termLength} {termUnits}
+            </span>
+          </Flex>
+          <Flex
+            sx={{
+              flexFlow: 'column nowrap',
+              textAlign: 'right',
+            }}
+          >
+            <span sx={loanLabelStyles}>
+              <abbr title="Annual Percentage Rate">APR</abbr>
+            </span>
+            <span sx={loanDataSecondaryStyles}>{apr}%</span>
+          </Flex>
+        </Flex>
+      </div>
+    </RadioOption>
   )
 }
 
@@ -210,7 +237,15 @@ const LoanOptionsPage = () => {
               value={selectedOption?.id}
               onChange={selectOption}
             >
-              <LoanOptionRadios options={options} />
+              {options.map(option => {
+                return (
+                  <LoanOptionRadio
+                    option={option}
+                    key={option.id}
+                    checked={option.id === selectedOption?.id}
+                  />
+                )
+              })}
             </RadioGroup>
             <Button variant="primary" type="submit">
               Next
