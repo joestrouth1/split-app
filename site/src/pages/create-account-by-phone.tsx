@@ -1,15 +1,20 @@
 /**@jsx jsx */
 import { jsx, Flex, Container, Main } from 'theme-ui'
-import { FormEventHandler, useState, Fragment } from 'react'
-import { TextField, Button, Icon, Select } from 'components'
+import {
+  FormEventHandler,
+  useState,
+  useMemo,
+  useContext,
+  Fragment,
+} from 'react'
+import { TextField, Button, Icon, Select, Checkbox } from 'components'
 import { navigate } from 'gatsby'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
-
-const handleSubmit: FormEventHandler = e => {
-  e.preventDefault()
-  navigate('/scan-id')
-}
+import { ModalLink } from '../components/modal-link'
+import { VergePrivacyModal } from '../pages/disclosures/verge-privacy'
+import { EsignActConsentModal } from '../pages/disclosures/esign-act-consent'
+import { RoutingContext, UserFlow } from '../contexts/routing'
 
 interface StatusIconProps {
   isValid: boolean
@@ -25,26 +30,49 @@ const StatusIcon = ({ isValid }: StatusIconProps) => (
   />
 )
 
-/** Where applicants choose a password for their new account */
-const SavePasswordPage = () => {
+/** Where Loan By Phone customers land to set up their account */
+const CreateAccountByPhonePage = () => {
+  const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
   const [securityQuestion, setSecurityQuestion] = useState('')
   const [securityAnswer, setSecurityAnswer] = useState('')
+  const [esignConsent, setEsignConsent] = useState(false)
 
   const isMultiCase = /[A-Z]/.test(password) && /[a-z]/.test(password)
   const isComplex = /[\d\W_]/.test(password)
   const isCorrectLength = 8 <= password.length && password.length <= 25
 
-  const isValid =
-    isMultiCase &&
-    isComplex &&
-    isCorrectLength &&
-    securityQuestion &&
-    securityAnswer
+  const isValid = useMemo(() => {
+    return (
+      isMultiCase &&
+      isComplex &&
+      isCorrectLength &&
+      securityQuestion &&
+      securityAnswer &&
+      esignConsent
+    )
+  }, [
+    isMultiCase,
+    isComplex,
+    isCorrectLength,
+    securityQuestion,
+    securityAnswer,
+    esignConsent,
+  ])
+
+  const { currentFlow, setCurrentFlow } = useContext(RoutingContext)
+
+  const handleSubmit: FormEventHandler = e => {
+    e.preventDefault()
+    if (currentFlow !== UserFlow.LOAN_BY_PHONE) {
+      setCurrentFlow(UserFlow.LOAN_BY_PHONE)
+    }
+    navigate('/disclosures')
+  }
 
   return (
     <Layout>
-      <SEO title="Save your progress" />
+      <SEO title="Create your account" />
       <Main>
         <Container
           sx={{
@@ -54,24 +82,59 @@ const SavePasswordPage = () => {
             maxWidth: theme => theme.breakpoints[0],
           }}
         >
-          <h1
-            sx={{
-              variant: 'type.title',
-              mb: 3,
-            }}
-          >
-            Save your progress
-          </h1>
-          <p sx={{ variant: 'type.subtitle', mb: 4 }}>
-            Finish applying any time.
-          </p>
+          <header>
+            <h1
+              sx={{
+                variant: 'type.title',
+                mb: 3,
+              }}
+            >
+              Create your account
+            </h1>
+          </header>
 
           <Flex
             as="form"
             sx={{ flexFlow: 'column nowrap' }}
             onSubmit={handleSubmit}
-            data-testid="save-password-form"
+            data-testid="create-account-form"
           >
+            <TextField
+              required
+              label="Email address"
+              name="email"
+              autoComplete="email"
+              value={emailAddress}
+              type="email"
+              onChange={e => setEmailAddress(e.target.value)}
+              sx={{
+                mb: 3,
+              }}
+              hint={
+                <div
+                  sx={{
+                    display: 'flex',
+                    flexFlow: 'row nowrap',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Icon
+                    name="lock"
+                    alt=""
+                    fill="grays.7"
+                    sx={{ mr: 2, flexShrink: 0 }}
+                    width={16}
+                    height={16}
+                  />
+                  <span>
+                    We take your privacy seriously.{' '}
+                    <ModalLink modalContent={<VergePrivacyModal />}>
+                      Our policy
+                    </ModalLink>
+                  </span>
+                </div>
+              }
+            />
             <TextField
               required
               label="Password"
@@ -164,6 +227,22 @@ const SavePasswordPage = () => {
               }}
             />
 
+            <Checkbox
+              checked={esignConsent}
+              onChange={() => setEsignConsent(!esignConsent)}
+              name="econsent"
+              required
+              sx={{
+                mb: 3,
+              }}
+            >
+              I have read, understood, and consent to the language and
+              authorizations outlined in{' '}
+              <ModalLink modalContent={<EsignActConsentModal />}>
+                the Notice and Consent of Electronic Records.
+              </ModalLink>
+            </Checkbox>
+
             <Button variant="primary" type="submit" disabled={!isValid}>
               Next
             </Button>
@@ -174,4 +253,4 @@ const SavePasswordPage = () => {
   )
 }
 
-export default SavePasswordPage
+export default CreateAccountByPhonePage

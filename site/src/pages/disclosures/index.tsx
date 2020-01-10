@@ -1,11 +1,18 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
-import { useEffect, useRef, useState, FormEventHandler } from 'react'
+import {
+  useEffect,
+  useRef,
+  useState,
+  useContext,
+  FormEventHandler,
+} from 'react'
 import { navigate } from 'gatsby'
 import { Button, Checkbox } from 'components'
 import { DefaultLayout as Layout } from '../../components/layouts'
 import { ModalLink } from '../../components/modal-link'
 import { SEO } from '../../components/seo'
+import { RoutingContext, UserFlow } from '../../contexts/routing'
 import { CreditInquiryModal } from './credit-inquiry'
 import { DisputeResolutionModal } from './dispute-resolution'
 import { VergePrivacyModal } from './verge-privacy'
@@ -33,9 +40,16 @@ const DisclosuresPage = () => {
     creditInquiryConsent,
     tcpaConsent,
   ])
+
+  const { currentFlow } = useContext(RoutingContext)
+
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
-    navigate('/scoring')
+    if (currentFlow === UserFlow.LOAN_BY_PHONE) {
+      navigate('/loan-options')
+    } else {
+      navigate('/scoring')
+    }
   }
 
   return (

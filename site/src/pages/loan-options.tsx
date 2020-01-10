@@ -148,9 +148,12 @@ const LoanOptionsPage = () => {
   const isValid = selectedOption != null
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
+    e.preventDefault()
     if (e.currentTarget.checkValidity()) {
       console.log({ selectedOption, isValid })
       navigate('/sign-docs')
+    } else {
+      e.currentTarget.reportValidity()
     }
   }
 

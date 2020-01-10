@@ -5,11 +5,13 @@ import {
   useCallback,
   useEffect,
   useRef,
+  useContext,
   useState,
 } from 'react'
 import { navigate } from 'gatsby'
 import { parse } from 'query-string'
 import { TextField, Button, Icon, Checkbox } from 'components'
+import { UserFlow, RoutingContext } from '../contexts/routing'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 import { ModalLink } from '../components/modal-link'
@@ -80,8 +82,16 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
     setIsValid((formRef.current && formRef.current.checkValidity()) || false)
   }, [formRef.current, user, econsent])
 
+  const { currentFlow, setCurrentFlow } = useContext(RoutingContext)
+  useEffect(() => {
+    if (currentFlow !== UserFlow.PRESCREEN) {
+      setCurrentFlow(UserFlow.ORGANIC)
+    }
+  }, [currentFlow])
+
   const handleSubmit: FormEventHandler = e => {
     e.preventDefault()
+
     navigate('/save-password')
   }
 
@@ -167,7 +177,7 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
                     name="lock"
                     alt=""
                     fill="grays.7"
-                    sx={{ mr: 2 }}
+                    sx={{ mr: 2, flexShrink: 0 }}
                     width={16}
                     height={16}
                   />
