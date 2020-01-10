@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui'
 import { HelmetProvider } from 'react-helmet-async'
+import { RoutingContext } from './src/contexts/routing'
 
 /**
  * Implement Gatsby's Browser APIs in this file.
