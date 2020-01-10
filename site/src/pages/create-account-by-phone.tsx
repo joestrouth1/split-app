@@ -67,7 +67,7 @@ const CreateAccountByPhonePage = () => {
     if (currentFlow !== UserFlow.LOAN_BY_PHONE) {
       setCurrentFlow(UserFlow.LOAN_BY_PHONE)
     }
-    navigate('/disclosures')
+    navigate('/loan-options')
   }
 
   return (

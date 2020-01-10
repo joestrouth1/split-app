@@ -1,11 +1,14 @@
 /**@jsx jsx */
 import { jsx, Container, Main, Flex } from 'theme-ui'
 import { Link } from 'gatsby'
-import { Icon } from 'components'
+import { Icon, Button } from 'components'
 import { SEO } from '../../components/seo'
 import { DefaultLayout as Layout } from '../../components/layouts'
+import { useState } from 'react'
 
 const ScanIdPage = () => {
+  const [showHelp, setShowHelp] = useState(false)
+
   return (
     <Layout>
       <SEO title="Scan your ID" />
@@ -89,15 +92,45 @@ const ScanIdPage = () => {
               </Link>
             </Flex>
           </div>
-
-          <p sx={{ variant: 'type.body', mt: 3 }}>
+          <Flex
+            sx={{
+              flexFlow: 'row nowrap',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              mt: 3,
+            }}
+          >
             <Link
               to="/residential-information"
               sx={{ variant: 'links.default' }}
             >
-              ID not listed? Enter your information manually.
+              Enter your information manually.
             </Link>
-          </p>
+            <Button
+              variant="link"
+              sx={{ display: 'inline-flex' }}
+              onClick={() => setShowHelp(!showHelp)}
+            >
+              <Icon
+                name="question"
+                alt="Why would I enter my information manually?"
+                width={24}
+                height={24}
+                sx={{ m: 0, p: 0 }}
+              ></Icon>
+            </Button>
+          </Flex>
+
+          {/* Help container */}
+          <div aria-live="polite">
+            {showHelp && (
+              <p sx={{ variant: 'type.body', mt: 3 }}>
+                Don&rsquo;t have your ID handy or don&rsquo;t see your ID type
+                listed? Click the link above to see more ID types and enter your
+                information manually.
+              </p>
+            )}
+          </div>
         </Container>
       </Main>
     </Layout>

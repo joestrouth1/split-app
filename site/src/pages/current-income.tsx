@@ -137,7 +137,15 @@ const CurrentIncomePage = () => {
               required
               hint={
                 <span>
-                  <strong>Total amount you make per year before taxes.</strong>{' '}
+                  <strong>
+                    Total amount you make per year{' '}
+                    <em
+                      sx={{ fontStyle: 'normal', textDecoration: 'underline' }}
+                    >
+                      before taxes
+                    </em>
+                    .
+                  </strong>{' '}
                   Include tips, bonuses, and any other income you&rsquo;d like
                   to be considered for this loan
                 </span>
@@ -151,9 +159,9 @@ const CurrentIncomePage = () => {
             />
 
             <CurrencyField
-              label="Housing payment"
+              label="Monthly housing payment"
               required
-              hint="Total amount you pay per month for housing, e.g. rent or mortgage"
+              hint="Total amount you pay per month for housing (rent or mortgage)"
               name="housing"
               value={housing}
               onChange={setHousing}

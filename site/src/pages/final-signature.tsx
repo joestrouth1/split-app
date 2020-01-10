@@ -38,8 +38,9 @@ const FinalSignaturePage = () => {
           }}
         >
           <header>
-            <h1 sx={{ variant: 'type.title', mb: 3 }}>Finally, last step!</h1>
-            <p sx={{ variant: 'type.subtitle', mb: 3 }}>Final signature</p>
+            <h1 sx={{ variant: 'type.title', mb: 3 }}>
+              Last step; your signature
+            </h1>
           </header>
 
           <form
@@ -61,7 +62,7 @@ const FinalSignaturePage = () => {
               }}
             />
             <Button type="submit" variant="primary">
-              Next
+              Complete loan
             </Button>
           </form>
         </Container>
