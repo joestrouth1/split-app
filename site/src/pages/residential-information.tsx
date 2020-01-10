@@ -208,16 +208,6 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 value={address.phone}
               />
 
-              <TextField
-                label="ID number"
-                name="id-number"
-                inputMode="numeric"
-                required
-                sx={{ mb: 3 }}
-                onChange={e => setIdNumber(e.target.value)}
-                value={idNumber}
-              />
-
               <Select
                 label="ID type"
                 value={idType}
@@ -229,6 +219,16 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 <option value={IDType['passport']}>Passport</option>
                 <option value={IDType['military']}>Military ID</option>
               </Select>
+
+              <TextField
+                label="ID number"
+                name="id-number"
+                inputMode="numeric"
+                required
+                sx={{ mb: 3 }}
+                onChange={e => setIdNumber(e.target.value)}
+                value={idNumber}
+              />
 
               <Flex
                 onClick={() =>

@@ -95,8 +95,13 @@ const ScanIdPage = () => {
               to="/residential-information"
               sx={{ variant: 'links.default' }}
             >
-              ID not listed? Enter your information manually.
+              Enter your information manually.
             </Link>
+            {/* 
+              TODO:
+              [] Add info/help icon
+              [] Conditionally render help text when icon is pressed
+             */}
           </p>
         </Container>
       </Main>
