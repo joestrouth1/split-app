@@ -113,7 +113,10 @@ const LoanOptionRadios = ({ options }: { options: LoanOption[] }) => {
                 sx={{ flexFlow: 'row nowrap', justifyContent: 'space-between' }}
               >
                 <Flex sx={{ flexFlow: 'column nowrap' }}>
-                  <span sx={loanLabelStyles}>Loan term</span>
+                  <span sx={loanLabelStyles}>
+                    Loan term
+                    <sup>&dagger;</sup>
+                  </span>
                   <span sx={loanDataSecondaryStyles}>
                     {termLength} {termUnits}
                   </span>
@@ -183,9 +186,6 @@ const LoanOptionsPage = () => {
             <p sx={{ variant: 'type.subtitle', mb: 4 }}>
               Customize your loan by selecting an amount and term that fit your
               needs.
-              <sup>
-                <small>&dagger;</small>
-              </sup>
             </p>
           </header>
           <form
