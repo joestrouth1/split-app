@@ -179,7 +179,7 @@ const LoanCompletePage = () => {
             <span>
               Never miss a payment with Auto Pay!{' '}
               <Link to="/account/auto-pay" sx={{ variant: 'links.default' }}>
-                Enroll today
+                Enroll now
               </Link>
             </span>
           </Alert>
