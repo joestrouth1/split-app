@@ -101,7 +101,7 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
     month: 1,
     year: 2020,
   })
-  const [autoPayEnabled, setAutoPayEnabled] = useState<string | undefined>()
+  const [autoPayEnabled, setAutoPayEnabled] = useState<string>('true')
 
   // This isn't being used right now, will be used to display alert in case of bad request
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -316,9 +316,6 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
             >
               <RadioOption value="true" sx={{ mb: 2 }} required={true}>
                 Enroll in Auto Pay using the information above
-                <sup>
-                  <small>&dagger;</small>
-                </sup>
                 <br />
                 <span sx={{ variant: 'type.hint' }}>(Recommended)</span>
               </RadioOption>
@@ -337,7 +334,7 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
               </p>
             )}
 
-            <p sx={{ variant: 'type-body', mb: 3, mt: 0 }}>
+            <p sx={{ variant: 'type.body', mb: 3, mt: 0 }}>
               Please review the information you provided above. The bank account
               provided is where your loan funds will be sent, if approved.
             </p>
@@ -380,11 +377,6 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
               >
                 Next
               </Button>
-              <p sx={{ variant: 'type.disclaimer' }}>
-                &dagger;Opt-in applies to ALL information on this page; your
-                bank account and debit card (if given) will both be enrolled in
-                Auto Pay.
-              </p>
             </Flex>
           </form>
         </Container>
