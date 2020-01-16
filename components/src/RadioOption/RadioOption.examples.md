@@ -1,3 +1,6 @@
 ```jsx
-<RadioOption value="first" label="First option" />
+import { RadioGroup } from 'components'
+;<RadioGroup name="example">
+  <RadioOption value="first" label="First option" />
+</RadioGroup>
 ```

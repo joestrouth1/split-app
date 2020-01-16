@@ -6,7 +6,6 @@ import {
   ChangeEventHandler,
   createContext,
 } from 'react'
-// import { RadioOption } from '../RadioOption'
 
 interface RadioGroupProps extends HTMLAttributes<HTMLDivElement> {
   /**
