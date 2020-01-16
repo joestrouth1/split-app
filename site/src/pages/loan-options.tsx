@@ -5,7 +5,6 @@ import {
   useState,
   useContext,
   ChangeEventHandler,
-  Fragment,
   FormEventHandler,
 } from 'react'
 import { DefaultLayout as Layout } from '../components/layouts'
@@ -16,11 +15,11 @@ import { navigate } from 'gatsby'
 
 interface LoanOption {
   id: string
-  amount: number
-  payment: number
+  loanAmount: number
+  paymentAmount: number
   apr: number
-  termLength: number
-  termUnits: 'months' | 'payments'
+  termLengthInMonths: number
+  termLengthInPayments: number
 }
 
 /**
@@ -30,43 +29,29 @@ interface LoanOption {
 const options: LoanOption[] = [
   {
     id: 'first',
-    amount: 5000.0,
-    payment: 140.17,
+    loanAmount: 5000.0,
+    paymentAmount: 477.8,
     apr: 99.982,
-    termLength: 18,
-    termUnits: 'months',
+    termLengthInMonths: 18,
+    termLengthInPayments: 20,
   },
   {
     id: 'second',
-    amount: 2500.0,
-    payment: 125.19,
+    loanAmount: 2500.0,
+    paymentAmount: 299.15,
     apr: 99.829,
-    termLength: 12,
-    termUnits: 'months',
+    termLengthInMonths: 11,
+    termLengthInPayments: 13,
   },
   {
     id: 'third',
-    amount: 1500.0,
-    payment: 114.47,
+    loanAmount: 1500.0,
+    paymentAmount: 199.25,
     apr: 99.291,
-    termLength: 10,
-    termUnits: 'months',
+    termLengthInMonths: 10,
+    termLengthInPayments: 11,
   },
 ]
-
-const loanLabelStyles = {
-  fontSize: 1,
-  color: 'text',
-  letterSpacing: 'caps',
-  textTransform: 'uppercase',
-} as const
-
-const loanDataPrimaryStyles = { variant: 'type.subtitle' } as const
-
-const loanDataSecondaryStyles = {
-  variant: 'type.body',
-  color: 'greens.8',
-} as const
 
 interface LoanOptionRadioProps {
   /**
@@ -101,7 +86,14 @@ const LoanOptionRadio = ({ option, checked }: LoanOptionRadioProps) => {
     backgroundColor: 'greens.8',
   } as const
 
-  const { id, amount, payment, apr, termLength, termUnits } = option
+  const {
+    id,
+    loanAmount: amount,
+    paymentAmount: payment,
+    apr,
+    termLengthInMonths,
+    termLengthInPayments,
+  } = option
 
   return (
     <RadioOption
@@ -155,7 +147,7 @@ const LoanOptionRadio = ({ option, checked }: LoanOptionRadioProps) => {
               <sup>&dagger;</sup>
             </span>
             <span sx={loanDataSecondaryStyles}>
-              {termLength} {termUnits}
+              {termLengthInMonths} months ({termLengthInPayments} payments)
             </span>
           </Flex>
           <Flex
