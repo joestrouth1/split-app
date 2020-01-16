@@ -3,6 +3,7 @@ import { jsx, Flex } from 'theme-ui'
 import { useCombobox } from 'downshift'
 import { useState, ReactNode } from 'react'
 import { Icon } from '../Icon'
+import { useFieldColors } from '../hooks/forms'
 
 interface TypeaheadProps {
   /**
@@ -62,6 +63,11 @@ export const Typeahead = ({
 
   const hasBottomLine = hint || error || warning
 
+  const { backgroundColor, textColor, borderColor } = useFieldColors({
+    error,
+    warning,
+  })
+
   return (
     <Flex sx={{ position: 'relative', flexFlow: 'column nowrap' }}>
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
@@ -93,14 +99,14 @@ export const Typeahead = ({
               borderRight: 0,
               borderBottom: 2,
               borderLeft: 0,
-              borderBottomColor: error ? 'red' : 'grays.7',
+              borderBottomColor: borderColor,
               borderBottomStyle: 'solid',
               borderTopLeftRadius: 4,
               borderTopRightRadius: 4,
-              backgroundColor: error ? 'reds.1' : 'white',
+              backgroundColor,
               boxShadow: 'medium',
               variant: 'type.body',
-              color: error ? 'red' : 'text',
+              color: textColor,
               outlineColor: 'transparent',
               transitionProperty: 'outline-color',
               transitionDuration: '150ms',
@@ -135,7 +141,7 @@ export const Typeahead = ({
             alt=""
             width={24}
             height={24}
-            fill={error ? 'red' : 'text'}
+            fill={textColor}
           />
         </button>
       </Flex>

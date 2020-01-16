@@ -13,6 +13,7 @@ import {
 import { PasswordField } from '../PasswordField'
 import { Icon } from '../Icon'
 import { uuid } from '../utils/uuid'
+import { useFieldColors } from '../hooks/forms'
 
 export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   /**
@@ -84,18 +85,10 @@ export const TextField = forwardRef<TextFieldRef, TextFieldProps>(
       return uuid()
     }, [nameProp])
 
-    // Style the component based on warning/error state
-    let backgroundColor = 'white'
-    let borderColor = 'grays.7'
-    let textColor = 'text'
-    if (error) {
-      backgroundColor = 'reds.1'
-      borderColor = 'red'
-      textColor = 'red'
-    } else if (warning) {
-      borderColor = 'warning'
-      textColor = 'warning'
-    }
+    const { backgroundColor, textColor, borderColor } = useFieldColors({
+      error,
+      warning,
+    })
 
     return (
       <Box className={className}>
