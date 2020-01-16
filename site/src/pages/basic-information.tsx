@@ -199,8 +199,8 @@ const BasicInfoPage = ({ location }: BasicInfoPageProps) => {
                 mb: 3,
               }}
             >
-              I have read, understood, and consent to the language and
-              authorizations outlined in{' '}
+              I have read, understood, and consent to the authorizations
+              outlined in{' '}
               <ModalLink modalContent={<EsignActConsentModal />}>
                 the Notice and Consent of Electronic Records.
               </ModalLink>
