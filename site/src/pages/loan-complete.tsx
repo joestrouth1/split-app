@@ -197,7 +197,7 @@ const LoanCompletePage = () => {
           <p sx={{ variant: 'type.disclaimer', mb: 3 }}>
             Your loan is not complete until you receive your loan funds. We
             reserve the right to cancel your request for a loan, in our sole
-            discretion subject to applicable law, at any time prior to funding
+            discretion, subject to applicable law, at any time prior to funding
             or disbursing loan funds to you.
           </p>
         </Container>
