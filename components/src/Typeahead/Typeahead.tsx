@@ -6,7 +6,7 @@ import { Icon } from '../Icon'
 
 interface TypeaheadProps {
   /**
-   * Informative label to display above the input
+   * Informative label text to display above the input
    */
   label: ReactNode
   /**
@@ -17,6 +17,10 @@ interface TypeaheadProps {
    * Error text to display. If defined, the component will appear invalid
    */
   error?: string
+  /**
+   * Warning text to dipslay. If defined, the component will appear potentially invalid
+   */
+  warning?: ReactNode
   /**
    * List of items to select from
    */
@@ -30,7 +34,10 @@ interface TypeaheadProps {
 export const Typeahead = ({
   items,
   isOpen: isOpenProp,
-  ...props
+  error,
+  label,
+  hint,
+  warning,
 }: TypeaheadProps) => {
   const [inputItems, setInputItems] = useState(items)
   const {
@@ -52,7 +59,8 @@ export const Typeahead = ({
       )
     },
   })
-  const [error, setError] = useState(false)
+
+  const hasBottomLine = hint || error || warning
 
   return (
     <Flex sx={{ position: 'relative', flexFlow: 'column nowrap' }}>
@@ -64,7 +72,7 @@ export const Typeahead = ({
           },
         })}
       >
-        Choose an element:
+        {label}
       </label>
       <Flex
         {...getComboboxProps({
@@ -122,9 +130,64 @@ export const Typeahead = ({
           })}
           aria-label={'toggle menu'}
         >
-          <Icon name="chevron-down" alt="" width={24} height={24} />
+          <Icon
+            name="chevron-down"
+            alt=""
+            width={24}
+            height={24}
+            fill={error ? 'red' : 'text'}
+          />
         </button>
       </Flex>
+      {hasBottomLine && (
+        <div sx={{ my: 2 }}>
+          {hint && (
+            <div
+              sx={{
+                variant: 'type.hint',
+                mb: warning || error ? 1 : 0,
+              }}
+              id={`input-${name}__hint`}
+            >
+              {hint}
+            </div>
+          )}
+          {warning && (
+            <div
+              sx={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                mb: error ? 1 : 0,
+              }}
+            >
+              <Icon
+                name="warning"
+                alt="Warning: "
+                sx={{ mr: 1, flexShrink: 0 }}
+                width={16}
+                height={16}
+                fill="warning"
+              />
+              <span sx={{ variant: 'type.hint', color: 'warning' }}>
+                {warning}
+              </span>
+            </div>
+          )}
+          {error && (
+            <div sx={{ display: 'flex', alignItems: 'flex-start' }}>
+              <Icon
+                name="warning"
+                alt="Error: "
+                sx={{ mr: 1, flexShrink: 0 }}
+                width={16}
+                height={16}
+                fill="red"
+              />
+              <span sx={{ variant: 'type.hint', color: 'red' }}>{error}</span>
+            </div>
+          )}
+        </div>
+      )}
       <ul
         {...getMenuProps({
           sx: {
