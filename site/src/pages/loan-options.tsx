@@ -244,9 +244,9 @@ const LoanOptionsPage = () => {
             </Button>
           </form>
           <p sx={{ variant: 'type.disclaimer' }}>
-            <sup>&dagger;</sup>Based on your pay cycle, your term may be
+            <sup>&dagger;</sup>Based on your pay cycle, this term may be
             slightly longer based on payment due dates. Refer to your loan
-            document for details.
+            agreement for details.
           </p>
         </Container>
       </Main>
