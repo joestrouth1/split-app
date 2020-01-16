@@ -126,7 +126,7 @@ const CurrentIncomePage = () => {
           </Illustration>
 
           <form
-            sx={{ display: 'flex', flexFlow: 'column nowrap' }}
+            sx={{ display: 'flex', flexFlow: 'column nowrap', mb: 3 }}
             ref={formRef}
             onSubmit={handleSubmit}
             data-testid="current-income-form"
@@ -147,7 +147,7 @@ const CurrentIncomePage = () => {
                     .
                   </strong>{' '}
                   Include tips, bonuses, and any other income you&rsquo;d like
-                  to be considered for this loan
+                  to be considered for this loan<sup>*</sup>
                 </span>
               }
               name="income"
@@ -308,6 +308,11 @@ const CurrentIncomePage = () => {
               </Button>
             </Flex>
           </form>
+          <p sx={{ variant: 'type.disclaimer' }}>
+            <sup>*</sup>Alimony, child support, or separate maintenance income
+            need not be revealed if you do not wish it to be considered as a
+            basis for repaying this obligation.
+          </p>
         </Container>
       </Main>
     </Layout>

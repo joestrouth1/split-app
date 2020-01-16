@@ -87,7 +87,6 @@ enum IDType {
   dl = 'dl',
   state = 'state',
   passport = 'passport',
-  military = 'military',
 }
 
 /** Where applicants tell us their home address. */
@@ -217,7 +216,6 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 <option value={IDType['dl']}>Driver&rsquo;s License</option>
                 <option value={IDType['state']}>State ID</option>
                 <option value={IDType['passport']}>Passport</option>
-                <option value={IDType['military']}>Military ID</option>
               </Select>
 
               <TextField
