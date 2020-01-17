@@ -298,7 +298,6 @@ const AccountDetailsPage = (props: AccountDetailsPageProps) => {
             TODO:
             [x] Add debit card inputs
             [] Validate debit card inputs if 1+ are dirty
-            [] Add autopay opt-in/out button(s)
             */}
 
             <p sx={{ variant: 'type.subtitle', mb: 2 }}>

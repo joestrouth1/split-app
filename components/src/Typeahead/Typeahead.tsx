@@ -19,7 +19,7 @@ interface TypeaheadProps {
    */
   error?: string
   /**
-   * Warning text to dipslay. If defined, the component will appear potentially invalid
+   * Warning text to display. If defined, the component will appear potentially invalid
    */
   warning?: ReactNode
   /**
@@ -30,6 +30,10 @@ interface TypeaheadProps {
    * Whether the list of options is visible or not
    */
   isOpen?: boolean
+  /**
+   * Initial value of the input
+   */
+  defaultValue?: string
 }
 
 export const Typeahead = ({
@@ -39,6 +43,7 @@ export const Typeahead = ({
   label,
   hint,
   warning,
+  defaultValue,
 }: TypeaheadProps) => {
   const [inputItems, setInputItems] = useState(items)
   const {
@@ -52,6 +57,7 @@ export const Typeahead = ({
     getItemProps,
   } = useCombobox({
     items: inputItems,
+    initialInputValue: defaultValue,
     onInputValueChange: ({ inputValue = '' }) => {
       setInputItems(
         items.filter(item => {
