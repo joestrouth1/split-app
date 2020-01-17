@@ -54,7 +54,8 @@ const CurrentIncomePage = () => {
   const [incomeWarning, setIncomeWarning] = useState<string>()
   const [housingWarning, setHousingWarning] = useState<string>()
   function testIncomeValue() {
-    const incomeValue = income.match(/[\d.]*/g)?.join('')
+    const incomeMatches = income.match(/[\d.]*/g) || []
+    const incomeValue = incomeMatches.join('')
     if (parseFloat(incomeValue || '') < 10_000) {
       console.log('blurred')
       setIncomeWarning(
@@ -65,7 +66,8 @@ const CurrentIncomePage = () => {
     }
   }
   function testHousingValue() {
-    const housingValue = housing.match(/[\d.]*/g)?.join('')
+    const housingMatches = housing.match(/[\d.]*/g) || []
+    const housingValue = housingMatches.join('')
     if (parseFloat(housingValue || '') > 10_000) {
       console.log('blurred')
       setHousingWarning(

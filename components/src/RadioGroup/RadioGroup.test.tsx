@@ -6,7 +6,8 @@ import { RadioGroup } from '.'
 
 describe('RadioGroup', () => {
   it('renders without throwing', () => {
-    const { asFragment } = render(<RadioGroup name="test">Text</RadioGroup>)
-    expect(asFragment()).toMatchSnapshot()
+    expect(() =>
+      render(<RadioGroup name="test">Text</RadioGroup>)
+    ).not.toThrow()
   })
 })

@@ -226,7 +226,7 @@ const LoanOptionsPage = () => {
                 mb: 3,
                 flexFlow: 'column nowrap',
               }}
-              value={selectedOption?.id}
+              value={selectedOption && selectedOption.id}
               onChange={selectOption}
             >
               {options.map(option => {
@@ -234,7 +234,9 @@ const LoanOptionsPage = () => {
                   <LoanOptionRadio
                     option={option}
                     key={option.id}
-                    checked={option.id === selectedOption?.id}
+                    checked={
+                      option.id === (selectedOption && selectedOption.id)
+                    }
                   />
                 )
               })}

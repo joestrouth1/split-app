@@ -153,8 +153,9 @@ const SavePasswordPage = () => {
             </Select>
 
             <TextField
-              name="security-answer"
               label="Security question answer"
+              required
+              name="security-answer"
               value={securityAnswer}
               onChange={e => {
                 setSecurityAnswer(e.target.value)

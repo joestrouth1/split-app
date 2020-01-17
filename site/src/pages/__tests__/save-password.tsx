@@ -24,10 +24,14 @@ describe('Save password page', () => {
     const { getByLabelText, getByText, getByTestId } = render(<Page />)
     const form = getByTestId('save-password-form')
     const password = getByLabelText('Password')
+    const securityQuestion = getByLabelText('Security question')
+    const securityAnswer = getByLabelText('Security question answer')
     const button = getByText('Next')
 
     act(() => {
       fireEvent.change(password, { target: { value: 'SuperS3cur3' } })
+      fireEvent.change(securityQuestion, { target: { value: 'favorite-pet' } })
+      fireEvent.change(securityAnswer, { target: { value: 'Rocky' } })
     })
     expect(form).toBeValid()
     expect(button).not.toBeDisabled()

@@ -27,9 +27,6 @@ describe('Disclosures page', () => {
     const form = getByTestId('disclosures-form')
     const button = getByText('Next')
 
-    const edca = getByLabelText(
-      /Electronic Disclosure and Communication Agreement/i
-    )
     const privacyPolicy = getByLabelText(/Privacy Notice/i)
     const disputeResolution = getByLabelText(
       /Agreements for Resolving Disputes/i
@@ -40,7 +37,6 @@ describe('Disclosures page', () => {
     const tcpa = getByLabelText(/Telecommunications Policy/)
 
     act(() => {
-      fireEvent.click(edca)
       fireEvent.click(privacyPolicy)
       fireEvent.click(disputeResolution)
       fireEvent.click(creditInquiry)
@@ -49,7 +45,6 @@ describe('Disclosures page', () => {
 
     expect(form).toBeValid()
     expect(form).toHaveFormValues({
-      edcaConsent: true,
       privacyPolicyConsent: true,
       disputeResolutionConsent: true,
       creditInquiryConsent: true,

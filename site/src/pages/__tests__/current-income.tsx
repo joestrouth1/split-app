@@ -30,11 +30,14 @@ describe('Current income page', () => {
     const { getByTestId, getByLabelText, getByText } = render(<Example />)
     const form = getByTestId('current-income-form')
     const income = getByLabelText('Individual annual income')
-    const housing = getByLabelText('Housing payment')
-    const paySchedule = getByLabelText(/pay schedule/i)
-    const nextPayDate = getByLabelText('Next pay date')
+    const housing = getByLabelText(/Housing payment/gi)
+    const paySchedule = getByLabelText(/Pay schedule/i)
     const weekDay = getByLabelText(/Day of the week/gi)
     const button = getByText('Next')
+    act(() => {
+      fireEvent.change(paySchedule, { target: { value: 'bi-weekly' } })
+    })
+    const nextPayDate = getByLabelText('Next pay date')
 
     act(() => {
       fireEvent.change(income, { target: { value: 23499 } })
