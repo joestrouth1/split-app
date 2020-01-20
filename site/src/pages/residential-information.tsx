@@ -9,11 +9,12 @@ import {
   ChangeEvent,
 } from 'react'
 import { navigate } from 'gatsby'
-import { Button, TextField, Select } from 'components'
+import { Button, TextField, Select, Typeahead } from 'components'
 import { parse } from 'query-string'
 import { DefaultLayout as Layout } from '../components/layouts'
 import { SEO } from '../components/seo'
 import { sanitizeQueryField } from '../utils'
+import { states } from '../data/states'
 
 interface Address {
   address1?: string
@@ -83,16 +84,9 @@ function usePersistedAddress(queryString = '') {
   return [address, setAddress] as const
 }
 
-enum IDType {
-  dl = 'dl',
-  state = 'state',
-  passport = 'passport',
-}
-
 /** Where applicants tell us their home address. */
 function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   const [address, setAddress] = usePersistedAddress(location.search)
-
   // generates setter functions for individual address fields
   const setAddressField = useCallback(
     <T extends keyof Address>(fieldName: T) => {
@@ -103,7 +97,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
   )
 
   const [idNumber, setIdNumber] = useState('')
-  const [idType, setIdType] = useState<IDType>(IDType['dl'])
+  const [idType, setIdType] = useState('dl')
 
   const formRef = useRef<HTMLFormElement>(null)
   const [isValid, setIsValid] = useState(false)
@@ -170,6 +164,18 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
               />
 
               <Flex sx={{ flexFlow: 'row nowrap', mb: 3 }}>
+                <Typeahead
+                  label="State"
+                  onChange={state =>
+                    setAddress(address => ({ ...address, state }))
+                  }
+                  required
+                  autoComplete="address-level3"
+                  sx={{ flex: 2, mr: 1 }}
+                  items={states}
+                  defaultValue={address.state}
+                />
+
                 <TextField
                   label="State"
                   name="state"
@@ -211,11 +217,11 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                 label="ID type"
                 value={idType}
                 sx={{ mb: 3 }}
-                onChange={e => setIdType(e.target.value as IDType)}
+                onChange={e => setIdType(e.target.value)}
               >
-                <option value={IDType['dl']}>Driver&rsquo;s License</option>
-                <option value={IDType['state']}>State ID</option>
-                <option value={IDType['passport']}>Passport</option>
+                <option value={'dl'}>Driver&rsquo;s License</option>
+                <option value={'state'}>State ID</option>
+                <option value={'passport'}>Passport</option>
               </Select>
 
               <TextField

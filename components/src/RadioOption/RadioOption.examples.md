@@ -1,13 +1,13 @@
 ```jsx
 import { RadioGroup } from 'components'
-;<RadioGroup name="example">
+;<RadioGroup name="example" onChange={() => false}>
   <RadioOption value="first">First option</RadioOption>
 </RadioGroup>
 ```
 
 ```jsx
 import { RadioGroup } from 'components'
-;<RadioGroup name="example">
+;<RadioGroup name="example" onChange={() => false}>
   <RadioOption
     value="first"
     sx={{

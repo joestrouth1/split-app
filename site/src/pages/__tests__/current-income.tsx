@@ -42,7 +42,6 @@ describe('Current income page', () => {
     act(() => {
       fireEvent.change(income, { target: { value: 23499 } })
       fireEvent.change(housing, { target: { value: 850 } })
-      fireEvent.change(paySchedule, { target: { value: 'weekly' } })
       fireEvent.change(nextPayDate, { target: { value: '12251955' } })
       fireEvent.change(weekDay, { target: { value: 'friday' } })
     })

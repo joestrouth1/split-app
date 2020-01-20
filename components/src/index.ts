@@ -16,4 +16,6 @@ export * from './Select'
 export * from './SocialSecurityField'
 export * from './TabBar'
 export * from './TextField'
+export * from './Typeahead'
+
 export * from './theme'

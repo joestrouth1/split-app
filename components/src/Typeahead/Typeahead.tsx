@@ -17,33 +17,46 @@ interface TypeaheadProps {
   /**
    * Error text to display. If defined, the component will appear invalid
    */
-  error?: string
+  error?: ReactNode
   /**
    * Warning text to display. If defined, the component will appear potentially invalid
    */
   warning?: ReactNode
   /**
-   * List of items to select from
+   * List of values to suggest in the dropdown
    */
   items: string[]
-  /**
-   * Whether the list of options is visible or not
-   */
-  isOpen?: boolean
   /**
    * Initial value of the input
    */
   defaultValue?: string
+  /**
+   * Controls if/how the browser will offer autocomplete.
+   */
+  autoComplete?: string
+  required?: boolean
+  /**
+   * Change handler called with the latest input value.
+   */
+  onChange?: (value: string) => void
+  className?: string
+  /**
+   * TODO:
+   * - [] add ability to fully control it by passing value
+   */
 }
 
 export const Typeahead = ({
   items,
-  isOpen: isOpenProp,
   error,
   label,
   hint,
   warning,
-  defaultValue,
+  defaultValue = '',
+  onChange,
+  className,
+  autoComplete,
+  required,
 }: TypeaheadProps) => {
   const [inputItems, setInputItems] = useState(items)
   const {
@@ -64,6 +77,7 @@ export const Typeahead = ({
           return item.toLowerCase().startsWith(inputValue.toLowerCase())
         })
       )
+      onChange && onChange(inputValue)
     },
   })
 
@@ -75,7 +89,10 @@ export const Typeahead = ({
   })
 
   return (
-    <Flex sx={{ position: 'relative', flexFlow: 'column nowrap' }}>
+    <Flex
+      sx={{ position: 'relative', flexFlow: 'column nowrap' }}
+      className={className}
+    >
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label
         {...getLabelProps({
@@ -93,6 +110,8 @@ export const Typeahead = ({
       >
         <input
           {...getInputProps({
+            autoComplete,
+            required,
             sx: {
               flex: '1 0 auto',
               appearance: 'none',
@@ -128,6 +147,7 @@ export const Typeahead = ({
         />
         <button
           {...getToggleButtonProps({
+            type: 'button',
             sx: {
               variant: 'buttons.base',
               backgroundColor: 'transparent',
@@ -217,7 +237,7 @@ export const Typeahead = ({
           },
         })}
       >
-        {(isOpen || isOpenProp) &&
+        {isOpen &&
           inputItems.map((item, index) => {
             const isHighlighted = highlightedIndex === index
             return (

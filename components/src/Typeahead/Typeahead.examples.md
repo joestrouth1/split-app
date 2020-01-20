@@ -1,5 +1,11 @@
 ```jsx
-const Example = () => <Typeahead label="State" items={states} />
+const Example = () => (
+  <Typeahead
+    label="State"
+    onChange={value => console.log({ value })}
+    items={states}
+  />
+)
 var states = [
   'Alabama',
   'Alaska',
