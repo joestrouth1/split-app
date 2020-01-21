@@ -104,7 +104,7 @@ const ScanIdPage = () => {
               to="/residential-information"
               sx={{ variant: 'links.default' }}
             >
-              Enter your information manually.
+              Don’t see your ID? Enter your information manually.
             </Link>
             <Button
               variant="link"
@@ -125,9 +125,9 @@ const ScanIdPage = () => {
           <div aria-live="polite">
             {showHelp && (
               <p sx={{ variant: 'type.body', mt: 3 }}>
-                Don&rsquo;t have your ID handy or don&rsquo;t see your ID type
-                listed? Click the link above to see more ID types and enter your
-                information manually.
+                Don&rsquo;t have your ID handy, don&rsquo;t want to scan it, or
+                don&rsquo;t see your ID type listed? Click the link above to see
+                more ID types and enter your information manually.
               </p>
             )}
           </div>
