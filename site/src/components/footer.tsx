@@ -33,9 +33,9 @@ export const Footer = ({ ...props }: FooterProps) => {
       <BaseFooter.Contact sx={{ mb: 3 }} />
       <PolicyLinks sx={{ mb: 3 }} />
       <BaseFooter.Disclaimers sx={{ mb: 3 }} />
-      <output sx={{ mb: 3, variant: 'type.disclaimer' }}>
+      {/* <output sx={{ mb: 3, variant: 'type.disclaimer' }}>
         Current user flow: {currentFlow}
-      </output>
+      </output> */}
     </BaseFooter>
   )
 }
