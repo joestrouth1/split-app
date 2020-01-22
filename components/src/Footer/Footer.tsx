@@ -53,8 +53,8 @@ const Contact = (props: ContactProps) => (
     <p sx={{ fontSize: 3, lineHeight: 'heading', mt: 0, mb: 2 }}>Contact us:</p>
     <p sx={{ m: 0 }}>
       Phone:{' '}
-      <a href="tel:+13168675309" sx={{ variant: 'links.default' }}>
-        (316) 867-5309
+      <a href="tel:+1XXXXXXXXX" sx={{ variant: 'links.default' }}>
+        (XXX) XXX-XXXX
       </a>
     </p>
   </div>

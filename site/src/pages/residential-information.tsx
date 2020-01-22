@@ -164,7 +164,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
               />
 
               <Flex sx={{ flexFlow: 'row nowrap', mb: 3 }}>
-                <Typeahead
+                {/* <Typeahead
                   label="State"
                   onChange={state =>
                     setAddress(address => ({ ...address, state }))
@@ -174,7 +174,7 @@ function ResidentialInfoPage({ location }: ResidentialInfoPageProps) {
                   sx={{ flex: 2, mr: 1 }}
                   items={states}
                   defaultValue={address.state}
-                />
+                /> */}
 
                 <TextField
                   label="State"
